@@ -25,7 +25,7 @@
                 android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_turbo"
+                        android:id="@+id/imageBtn_turbo"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="90"
@@ -52,7 +52,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/image_turbo_2000"
+                    android:id="@+id/imageBtn_turbo_2000"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="90"
@@ -78,7 +78,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/image_turbo_classic"
+                    android:id="@+id/imageBtn_turbo_classic"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="90"
@@ -105,7 +105,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/image_turbo_legends"
+                    android:id="@+id/imageBtn_turbo_legends"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="90"
@@ -118,7 +118,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical|center_horizontal"
-                    android:text="Turbo Classic" />
+                    android:text="Turbo Legends" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -130,7 +130,7 @@
                     android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_turbo_power"
+                        android:id="@+id/imageBtn_turbo_power"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="90"
@@ -155,7 +155,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/image_turbo_sport"
+                    android:id="@+id/imageBtn_turbo_sport"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="90"
@@ -182,7 +182,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/image_turbo_sport_2003"
+                    android:id="@+id/imageBtn_turbo_sport_2003"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="90"
@@ -209,7 +209,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/image_turbo_super_2003"
+                    android:id="@+id/imageBtn_turbo_super_2003"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="90"
@@ -236,7 +236,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/image_turbo_super_2007"
+                    android:id="@+id/imageBtn_turbo_super_2007"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="90"
