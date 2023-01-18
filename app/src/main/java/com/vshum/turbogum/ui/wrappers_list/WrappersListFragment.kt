@@ -13,8 +13,7 @@ import com.vshum.turbogum.ui.wrappers_list.impl.WrappersListContract
 import com.vshum.turbogum.ui.wrappers_list.impl.WrappersListPresenterImpl
 
 
-class WrappersListFragment : Fragment(), WrappersListContract.View,
-    AdapterWrappersList.SetOnClickListener {
+class WrappersListFragment : Fragment() {
 
     private lateinit var binding: FragmentWrappersListBinding
     private lateinit var presenter: WrappersListPresenterImpl
@@ -28,36 +27,36 @@ class WrappersListFragment : Fragment(), WrappersListContract.View,
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        presenter = WrappersListPresenterImpl()
-        presenter.attachView(this)
-        presenter.responseData()
-    }
-
-    override fun onClickLiner(nameWrapper: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onSuccessList(wrappersList: ArrayList<WrappersList>) {
-        val adapterWrappersList = AdapterWrappersList(wrappersList, this)
-        binding.recyclerView.adapter = adapterWrappersList
-    }
-
-    override fun error(errMessage: String) {
-        binding.noInternetLayout.visibility = View.VISIBLE
-        binding.btnRepeat.setOnClickListener {
-            presenter.responseData()
-        }
-    }
-
-    override fun progress(show: Boolean) {
-        if (show) {
-            binding.noInternetLayout.visibility = View.GONE
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.noInternetLayout.visibility = View.GONE
-            binding.progressBar.visibility = View.GONE
-        }
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        presenter = WrappersListPresenterImpl()
+//        presenter.attachView(this)
+//        presenter.responseData()
+//    }
+//
+//    override fun onClickLiner(nameWrapper: String) {
+//        TODO("Not yet implemented")
+//    }
+//
+//    override fun onSuccessList(wrappersList: ArrayList<WrappersList>) {
+//        val adapterWrappersList = AdapterWrappersList(wrappersList, this)
+//        binding.recyclerView.adapter = adapterWrappersList
+//    }
+//
+//    override fun error(errMessage: String) {
+//        binding.noInternetLayout.visibility = View.VISIBLE
+//        binding.btnRepeat.setOnClickListener {
+//            presenter.responseData()
+//        }
+//    }
+//
+//    override fun progress(show: Boolean) {
+//        if (show) {
+//            binding.noInternetLayout.visibility = View.GONE
+//            binding.progressBar.visibility = View.VISIBLE
+//        } else {
+//            binding.noInternetLayout.visibility = View.GONE
+//            binding.progressBar.visibility = View.GONE
+//        }
+//    }
 }
