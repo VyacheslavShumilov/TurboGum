@@ -1,48 +1,47 @@
-package com.vshum.turbogum.ui.liners_list
+package com.vshum.turbogum.ui.wrappers_list
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.vshum.turbogum.R
-import com.vshum.turbogum.databinding.FragmentLinersListBinding
-import com.vshum.turbogum.model.LinersList
+import com.vshum.turbogum.databinding.FragmentWrappersListBinding
+import com.vshum.turbogum.model.WrappersList
 import com.vshum.turbogum.navigator.AppNavigator
-import com.vshum.turbogum.ui.liners_list.adapter.AdapterLinersList
-import com.vshum.turbogum.ui.liners_list.impl.LinersListContract
-import com.vshum.turbogum.ui.liners_list.impl.LinersListPresenterImpl
+import com.vshum.turbogum.ui.wrappers_list.adapter.AdapterWrappersList
+import com.vshum.turbogum.ui.wrappers_list.impl.WrappersListContract
+import com.vshum.turbogum.ui.wrappers_list.impl.WrappersListPresenterImpl
 
 
-class LinersListFragment : Fragment(), LinersListContract.View,
-    AdapterLinersList.SetOnClickListener {
+class WrappersListFragment : Fragment(), WrappersListContract.View,
+    AdapterWrappersList.SetOnClickListener {
 
-    private lateinit var binding: FragmentLinersListBinding
-    private lateinit var presenter: LinersListPresenterImpl
+    private lateinit var binding: FragmentWrappersListBinding
+    private lateinit var presenter: WrappersListPresenterImpl
     private lateinit var appNavigator: AppNavigator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLinersListBinding.inflate(inflater, container, false)
+        binding = FragmentWrappersListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter = LinersListPresenterImpl()
+        presenter = WrappersListPresenterImpl()
         presenter.attachView(this)
         presenter.responseData()
     }
 
-    override fun onClickLiner(nameLiner: String) {
+    override fun onClickLiner(nameWrapper: String) {
         TODO("Not yet implemented")
     }
 
-    override fun onSuccessList(linersList: ArrayList<LinersList>) {
-        val adapterLinersList = AdapterLinersList(linersList, this)
-        binding.recyclerView.adapter = adapterLinersList
+    override fun onSuccessList(wrappersList: ArrayList<WrappersList>) {
+        val adapterWrappersList = AdapterWrappersList(wrappersList, this)
+        binding.recyclerView.adapter = adapterWrappersList
     }
 
     override fun error(errMessage: String) {

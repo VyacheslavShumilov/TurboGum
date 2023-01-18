@@ -1,24 +1,24 @@
-package com.vshum.turbogum.ui.liners_list.impl
+package com.vshum.turbogum.ui.wrappers_list.impl
 
-import com.vshum.turbogum.model.LinersList
+import com.vshum.turbogum.model.WrappersList
 import com.vshum.turbogum.services.Api
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LinersListPresenterImpl: LinersListContract.Presenter {
+class WrappersListPresenterImpl: WrappersListContract.Presenter {
 
-    private var mvpView: LinersListContract.View? = null
+    private var mvpView: WrappersListContract.View? = null
     private var api = Api.create()
 
 
     override fun responseData() {
         mvpView?.let { view ->
             view.progress(true)
-            api.getLinersList().enqueue(object: Callback<ArrayList<LinersList>> {
+            api.getWrappersList().enqueue(object: Callback<ArrayList<WrappersList>> {
                 override fun onResponse(
-                    call: Call<ArrayList<LinersList>>,
-                    response: Response<ArrayList<LinersList>>
+                    call: Call<ArrayList<WrappersList>>,
+                    response: Response<ArrayList<WrappersList>>
                 ) {
                     if (response.isSuccessful) {
                         view.progress(false)
@@ -28,7 +28,7 @@ class LinersListPresenterImpl: LinersListContract.Presenter {
                     }
                 }
 
-                override fun onFailure(call: Call<ArrayList<LinersList>>, t: Throwable) {
+                override fun onFailure(call: Call<ArrayList<WrappersList>>, t: Throwable) {
                     view.progress(false)
                     view.error("No internet")
                 }
@@ -37,7 +37,7 @@ class LinersListPresenterImpl: LinersListContract.Presenter {
         }
     }
 
-    override fun attachView(view: LinersListContract.View) {
+    override fun attachView(view: WrappersListContract.View) {
         mvpView = view
     }
 

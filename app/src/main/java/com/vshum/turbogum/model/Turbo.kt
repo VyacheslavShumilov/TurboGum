@@ -3,9 +3,9 @@ package com.vshum.turbogum.model
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class LinersList(
-    @SerializedName("NameLiner") val nameLiner: String,
-    @SerializedName("ImageUrlLiner") val imageUrlLiner: String
+data class WrappersList(
+    @SerializedName("NameWrapper") val nameWrapper: String,
+    @SerializedName("ImageUrlWrapper") val imageUrlWrapper: String
 ): Serializable
 
 data class Liner(
@@ -17,7 +17,7 @@ data class Liner(
     @SerializedName("WikiArticle") val wikiArticle: String,
     @SerializedName("VkArticle") val vkArticle: String,
     @SerializedName("Video") val video: String,
-    @SerializedName("nameLiner") val nameLiner: String
+    @SerializedName("nameWrapper") val nameWrapper: String
 ): Serializable
 
 

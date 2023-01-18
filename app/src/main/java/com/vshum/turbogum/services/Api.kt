@@ -1,6 +1,6 @@
 package com.vshum.turbogum.services
 
-import com.vshum.turbogum.model.LinersList
+import com.vshum.turbogum.model.WrappersList
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 interface Api {
     @GET("dataLiners.json")
-    fun getLinersList(): Call<ArrayList<LinersList>>
+    fun getWrappersList(): Call<ArrayList<WrappersList>>
 
 //    @GET("dataTurbo.json")
 //    fun getTurbo(): Call<ArrayList<Liner>>

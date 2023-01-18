@@ -1,11 +1,11 @@
-package com.vshum.turbogum.ui.liners_list.impl
+package com.vshum.turbogum.ui.wrappers_list.impl
 
-import com.vshum.turbogum.model.LinersList
+import com.vshum.turbogum.model.WrappersList
 import com.vshum.turbogum.mvp.BaseContract
 
-interface LinersListContract {
+interface WrappersListContract {
     interface View: BaseContract.View {
-        fun onSuccessList(linersList: ArrayList<LinersList>)
+        fun onSuccessList(wrappersList: ArrayList<WrappersList>)
         fun error(errMessage: String)
         fun progress(show: Boolean)
     }

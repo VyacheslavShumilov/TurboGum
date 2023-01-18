@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_for_liner_card_turbo"
+    android:id="@+id/layut_for_liner_card_turbo"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     style="@style/Widget.Material3.CardView.Elevated"
@@ -18,7 +18,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/liner_imageView"
+            android:id="@+id/wrapper_imageView"
             android:layout_width="280dp"
             android:layout_height="300dp"
             android:src="@drawable/turbo"
@@ -28,14 +28,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/liner_name_txtView"
+            android:id="@+id/wrapper_name_txtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/liner_imageView"
+            app:layout_constraintTop_toBottomOf="@id/wrapper_imageView"
             tools:text="Turbo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
