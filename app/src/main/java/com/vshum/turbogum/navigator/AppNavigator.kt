@@ -13,8 +13,25 @@ enum class Screen {
     TURBO_SPORT_2003,
     TURBO_SUPER_2003,
     TURBO_SUPER_2007
+
 }
 
 interface AppNavigator {
     fun navigateTo(screen: Screen)
+}
+
+enum class ScreenParam {
+    TURBO_LINER,
+    TURBO_2000_LINER,
+    TURBO_CLASSIC_LINER,
+    TURBO_LEGENDS_LINER,
+    TURBO_POWER_LINER,
+    TURBO_SPORT_LINER,
+    TURBO_SPORT_2003_LINER,
+    TURBO_SUPER_2003_LINER,
+    TURBO_SUPER_2007_LINER
+}
+
+interface AppNavigatorParam {
+    fun navigateToParam(screen: ScreenParam, idLiner: String)
 }

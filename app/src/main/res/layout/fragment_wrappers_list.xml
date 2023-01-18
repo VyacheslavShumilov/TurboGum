@@ -255,74 +255,8 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-
-
     </HorizontalScrollView>
-
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-    <!--        android:id="@+id/recyclerView"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        android:visibility="visible"-->
-    <!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-    <!--        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.0"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintVertical_bias="1.0"-->
-    <!--        app:spanCount="1"-->
-    <!--        tools:listitem="@layout/card_wrapper" />-->
-
-    <!--    <ProgressBar-->
-    <!--        android:id="@+id/progressBar"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_gravity="center"-->
-    <!--        android:visibility="gone" />-->
-
-    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--        android:id="@+id/noInternetLayout"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        app:layout_constraintBottom_toTopOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        android:visibility="gone">-->
-
-    <!--        <TextView-->
-    <!--            android:id="@+id/textView"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="Проверьте подключение к интернету\nи повторите запрос"-->
-    <!--            android:textAlignment="center"-->
-    <!--            android:textSize="16sp"-->
-    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--        <com.google.android.material.button.MaterialButton-->
-    <!--            android:id="@+id/btnRepeat"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginTop="24dp"-->
-    <!--            android:text="Повторный запрос"-->
-    <!--            app:layout_constraintEnd_toEndOf="@+id/textView"-->
-    <!--            app:layout_constraintStart_toStartOf="@+id/textView"-->
-    <!--            app:layout_constraintTop_toBottomOf="@+id/textView" />-->
-
-    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.appcompat.widget.LinearLayoutCompat>
