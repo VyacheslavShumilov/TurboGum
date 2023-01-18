@@ -40,6 +40,9 @@ class StartScreenFragment : Fragment() {
             startBtn.setOnClickListener {
                 appNavigator.navigateTo(Screen.LINERS_LIST_SCREEN)
             }
+            helpBtn.setOnClickListener {
+                appNavigator.navigateTo(Screen.HELP_SCREEN)
+            }
         }
     }
 }
