@@ -1,5 +1,7 @@
 package com.vshum.turbogum.navigator
 
+import com.vshum.turbogum.model.Liner
+
 enum class Screen {
     START_SCREEN,
     HELP_SCREEN,
@@ -38,17 +40,9 @@ interface AppNavigatorParamWrapper {
 }
 
 enum class ScreenParamLiner {
-    TURBO_LINER
-//    TURBO_2000_LINER,
-//    TURBO_CLASSIC_LINER,
-//    TURBO_LEGENDS_LINER,
-//    TURBO_POWER_LINER,
-//    TURBO_SPORT_LINER,
-//    TURBO_SPORT_2003_LINER,
-//    TURBO_SUPER_2003_LINER,
-//    TURBO_SUPER_2007_LINER
+    TURBO
 }
 
 interface AppNavigatorParamLiner {
-    fun navigateToParamLiner(screen: ScreenParamLiner, idLiner: String)
+    fun navigateToParamLiner(screen: ScreenParamLiner, liner: Liner)
 }

@@ -1,4 +1,4 @@
-package com.vshum.turbogum.ui.liners_lists.turbo
+package com.vshum.turbogum.ui.liners_lists
 
 import android.content.Context
 import android.os.Bundle
@@ -7,19 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.vshum.turbogum.App
-import com.vshum.turbogum.databinding.FragmentTurboBinding
+import com.vshum.turbogum.databinding.FragmentLinersListBinding
 import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.navigator.AppNavigatorParamLiner
 import com.vshum.turbogum.navigator.ScreenParamLiner
-import com.vshum.turbogum.ui.liners_lists.turbo.adapter.AdapterLinersList
-import com.vshum.turbogum.ui.liners_lists.turbo.impl.LinersListContract
-import com.vshum.turbogum.ui.liners_lists.turbo.impl.LinersListPresenterImpl
+import com.vshum.turbogum.ui.liners_lists.adapter.AdapterLinersList
+import com.vshum.turbogum.ui.liners_lists.impl.LinersListContract
+import com.vshum.turbogum.ui.liners_lists.impl.LinersListPresenterImpl
 
 
 class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContract.View,
     AdapterLinersList.SetOnClickListener {
 
-    private lateinit var binding: FragmentTurboBinding
+    private lateinit var binding: FragmentLinersListBinding
     private lateinit var presenter: LinersListPresenterImpl
     private lateinit var appNavigatorParamLiner: AppNavigatorParamLiner
     lateinit var linersTurboList: ArrayList<Liner>
@@ -37,7 +37,7 @@ class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContra
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTurboBinding.inflate(inflater, container, false)
+        binding = FragmentLinersListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -146,8 +146,8 @@ class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContra
         }
     }
 
-    override fun onClickLiner(idLiner: String) {
-        appNavigatorParamLiner.navigateToParamLiner(ScreenParamLiner.TURBO_LINER, idLiner)
+    override fun onClickLiner(liner: Liner) {
+        appNavigatorParamLiner.navigateToParamLiner(ScreenParamLiner.TURBO, liner)
     }
 
     override fun onAttach(context: Context) {

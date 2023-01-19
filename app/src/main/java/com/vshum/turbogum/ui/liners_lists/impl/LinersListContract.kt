@@ -1,4 +1,4 @@
-package com.vshum.turbogum.ui.liners_lists.turbo.impl
+package com.vshum.turbogum.ui.liners_lists.impl
 
 import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.mvp.BaseContract

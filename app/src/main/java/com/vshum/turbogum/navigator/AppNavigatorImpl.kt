@@ -2,11 +2,12 @@ package com.vshum.turbogum.navigator
 
 import androidx.fragment.app.FragmentActivity
 import com.vshum.turbogum.R
+import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.ui.HelpScreenFragment
 import com.vshum.turbogum.ui.wrappers_list.WrappersListFragment
 import com.vshum.turbogum.ui.StartScreenFragment
 import com.vshum.turbogum.ui.liner.*
-import com.vshum.turbogum.ui.liners_lists.turbo.LinersListFragment
+import com.vshum.turbogum.ui.liners_lists.LinersListFragment
 
 class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavigator, AppNavigatorParamWrapper, AppNavigatorParamLiner {
     override fun navigateTo(screen: Screen) {
@@ -50,9 +51,9 @@ class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavi
     }
 
 
-    override fun navigateToParamLiner(screen: ScreenParamLiner, idLiner: String) {
+    override fun navigateToParamLiner(screen: ScreenParamLiner, liner: Liner) {
         val fragment = when(screen) {
-            ScreenParamLiner.TURBO_LINER -> TurboLinerFragment(idLiner)
+            ScreenParamLiner.TURBO -> LinerFragment(liner)
         }
 
         fragmentActivity.supportFragmentManager.beginTransaction()

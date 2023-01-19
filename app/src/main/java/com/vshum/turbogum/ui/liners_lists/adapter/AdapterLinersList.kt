@@ -1,4 +1,4 @@
-package com.vshum.turbogum.ui.liners_lists.turbo.adapter
+package com.vshum.turbogum.ui.liners_lists.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,10 +11,11 @@ class AdapterLinersList(
     private var linersList: ArrayList<Liner>,
     private val listener: SetOnClickListener
 ) : RecyclerView.Adapter<AdapterLinersList.ViewHolder>() {
+
     inner class ViewHolder(var binding: ItemLinerBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindView(linersList: Liner) {
+        fun bindView(liner: Liner) {
             itemView.setOnClickListener {
-                listener.onClickLiner(linersList.id)
+                listener.onClickLiner(liner)
             }
         }
     }
@@ -42,7 +43,7 @@ class AdapterLinersList(
     override fun getItemCount(): Int = linersList.size
 
     interface SetOnClickListener {
-        fun onClickLiner(idLiner: String)
+        fun onClickLiner(liner: Liner)
     }
 }
 

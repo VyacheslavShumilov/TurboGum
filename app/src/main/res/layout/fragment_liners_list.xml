@@ -5,17 +5,16 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:animateLayoutChanges="true"
-tools:context=".ui.liners_lists.turbo.LinersListFragment">
+tools:context=".ui.liners_lists.LinersListFragment">
 
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
     android:visibility="visible"
     tools:listitem="@layout/item_liner"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-    app:spanCount="4"
+    app:spanCount="5"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
         <ProgressBar
