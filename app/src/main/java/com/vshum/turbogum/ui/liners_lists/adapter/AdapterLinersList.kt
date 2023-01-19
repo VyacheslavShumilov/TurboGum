@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import com.vshum.turbogum.databinding.ItemLiner2Binding
 import com.vshum.turbogum.databinding.ItemLinerBinding
 import com.vshum.turbogum.model.Liner
 
@@ -12,7 +13,7 @@ class AdapterLinersList(
     private val listener: SetOnClickListener
 ) : RecyclerView.Adapter<AdapterLinersList.ViewHolder>() {
 
-    inner class ViewHolder(var binding: ItemLinerBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding: ItemLiner2Binding) : RecyclerView.ViewHolder(binding.root) {
         fun bindView(liner: Liner) {
             itemView.setOnClickListener {
                 listener.onClickLiner(liner)
@@ -23,7 +24,7 @@ class AdapterLinersList(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemLinerBinding.inflate(
+            ItemLiner2Binding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -36,6 +37,7 @@ class AdapterLinersList(
         with(holder.binding) {
             Picasso.get().load(liner.imageUrlLiner).into(linerImageView)
             linerNumberTxtView.text = liner.numberLiner.toString()
+            linerBrandTxtView.text = liner.brand
             holder.bindView(liner)
         }
     }

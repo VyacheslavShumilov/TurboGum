@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import com.vshum.turbogum.App
 import com.vshum.turbogum.databinding.FragmentLinersListBinding
 import com.vshum.turbogum.model.Liner
@@ -14,6 +15,7 @@ import com.vshum.turbogum.navigator.ScreenParamLiner
 import com.vshum.turbogum.ui.liners_lists.adapter.AdapterLinersList
 import com.vshum.turbogum.ui.liners_lists.impl.LinersListContract
 import com.vshum.turbogum.ui.liners_lists.impl.LinersListPresenterImpl
+import com.vshum.turbogum.utility.Utility
 
 
 class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContract.View,
@@ -39,6 +41,7 @@ class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContra
     ): View {
         binding = FragmentLinersListBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

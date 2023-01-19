@@ -12,9 +12,9 @@ tools:context=".ui.liners_lists.LinersListFragment">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:visibility="visible"
-    tools:listitem="@layout/item_liner"
+    tools:listitem="@layout/item_liner_2"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-    app:spanCount="5"
+    app:spanCount="4"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
         <ProgressBar
