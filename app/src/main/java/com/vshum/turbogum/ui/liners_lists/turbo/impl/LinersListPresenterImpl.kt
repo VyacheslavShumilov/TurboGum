@@ -6,16 +6,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class TurboPresenterImpl : TurboContract.Presenter {
+class LinersListPresenterImpl : LinersListContract.Presenter {
 
-    private var mvpView: TurboContract.View? = null
+    private var mvpView: LinersListContract.View? = null
     private var api = Api.create()
 
 
     override fun responseData() {
         mvpView?.let { view ->
             view.progress(true)
-            api.getWrappersList().enqueue(object : Callback<ArrayList<Liner>> {
+            api.getLinersList().enqueue(object : Callback<ArrayList<Liner>> {
                 override fun onResponse(
                     call: Call<ArrayList<Liner>>,
                     response: Response<ArrayList<Liner>>
@@ -36,7 +36,7 @@ class TurboPresenterImpl : TurboContract.Presenter {
         }
     }
 
-    override fun attachView(view: TurboContract.View) {
+    override fun attachView(view: LinersListContract.View) {
         mvpView = view
     }
 

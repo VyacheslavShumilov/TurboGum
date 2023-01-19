@@ -8,14 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.vshum.turbogum.App
 import com.vshum.turbogum.databinding.FragmentWrappersListBinding
-import com.vshum.turbogum.navigator.AppNavigator
-import com.vshum.turbogum.navigator.Screen
+import com.vshum.turbogum.navigator.AppNavigatorParamWrapper
+import com.vshum.turbogum.navigator.ScreenParamWrapper
 
 
 class WrappersListFragment : Fragment() {
 
     private lateinit var binding: FragmentWrappersListBinding
-    private lateinit var appNavigator: AppNavigator
+    private lateinit var appNavigatorParamWrapper: AppNavigatorParamWrapper
+
+
 
 
     override fun onCreateView(
@@ -28,8 +30,8 @@ class WrappersListFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        appNavigator =
-            (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
+        appNavigatorParamWrapper =
+            (context.applicationContext as App).servicesLocator.providerNavigatorParamWrapper(requireActivity())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,35 +39,32 @@ class WrappersListFragment : Fragment() {
         with(binding) {
 
             imageBtnTurbo.setOnClickListener {
-                appNavigator.navigateTo(Screen.TURBO)
+                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.TURBO, "Turbo")
             }
             imageBtnTurbo2000.setOnClickListener {
-                appNavigator.navigateTo(Screen.TURBO_2000)
+                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.TURBO, "Turbo 2000")
             }
             imageBtnTurboClassic.setOnClickListener {
-                appNavigator.navigateTo(Screen.TURBO_CLASSIC)
+                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.TURBO, "Turbo classic")
             }
             imageBtnTurboLegends.setOnClickListener {
-                appNavigator.navigateTo(Screen.TURBO_LEGENDS)
+                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.TURBO, "Turbo legends")
             }
             imageBtnTurboPower.setOnClickListener {
-                appNavigator.navigateTo(Screen.TURBO_POWER)
+                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.TURBO, "Turbo power")
             }
             imageBtnTurboSport.setOnClickListener {
-                appNavigator.navigateTo(Screen.TURBO_SPORT)
+                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.TURBO, "Turbo sport")
             }
             imageBtnTurboSport2003.setOnClickListener {
-                appNavigator.navigateTo(Screen.TURBO_SPORT_2003)
+                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.TURBO, "Turbo sport 2003")
             }
             imageBtnTurboSuper2003.setOnClickListener {
-                appNavigator.navigateTo(Screen.TURBO_SUPER_2003)
+                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.TURBO, "Turbo super 2003")
             }
             imageBtnTurboSuper2007.setOnClickListener {
-                appNavigator.navigateTo(Screen.TURBO_SUPER_2007)
+                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.TURBO, "Turbo super 2007")
             }
         }
-
     }
-
-
 }

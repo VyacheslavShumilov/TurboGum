@@ -17,7 +17,7 @@ data class Liner(
     @SerializedName("WikiArticle") val wikiArticle: String,
     @SerializedName("VkArticle") val vkArticle: String,
     @SerializedName("Video") val video: String,
-    @SerializedName("nameWrapper") val nameWrapper: String
+    @SerializedName("NameWrapper") val nameWrapper: String
 ): Serializable
 
 

@@ -3,9 +3,9 @@ package com.vshum.turbogum.ui.liners_lists.turbo.impl
 import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.mvp.BaseContract
 
-interface TurboContract {
+interface LinersListContract {
     interface View: BaseContract.View {
-        fun onSuccessList(linersTurboList: ArrayList<Liner>)
+        fun onSuccessList(linersList: ArrayList<Liner>)
         fun error(errMessage: String)
         fun progress(show: Boolean)
     }
