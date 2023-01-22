@@ -14,7 +14,6 @@ tools:context=".ui.liners_lists.LinersListFragment">
     android:visibility="visible"
     tools:listitem="@layout/item_liner_2"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-    app:spanCount="4"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
         <ProgressBar

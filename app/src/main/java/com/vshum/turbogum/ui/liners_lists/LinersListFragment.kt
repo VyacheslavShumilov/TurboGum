@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.vshum.turbogum.App
 import com.vshum.turbogum.databinding.FragmentLinersListBinding
 import com.vshum.turbogum.model.Liner
@@ -33,6 +34,18 @@ class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContra
     lateinit var linersTurboSport2003List: ArrayList<Liner>
     lateinit var linersTurboSuper2003List: ArrayList<Liner>
     lateinit var linersTurboSuper2007List: ArrayList<Liner>
+
+//    private val linersLists = hashMapOf(
+//        "Turbo" to ArrayList<Liner>(),
+//        "Turbo 2000" to ArrayList<Liner>(),
+//        "Turbo classic" to ArrayList<Liner>(),
+//        "Turbo legends" to ArrayList<Liner>(),
+//        "Turbo power" to ArrayList<Liner>(),
+//        "Turbo sport" to ArrayList<Liner>(),
+//        "Turbo sport 2003" to ArrayList<Liner>(),
+//        "Turbo super 2003" to ArrayList<Liner>(),
+//        "Turbo super 2007" to ArrayList<Liner>()
+//    )
 
 
     override fun onCreateView(
@@ -64,6 +77,23 @@ class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContra
     }
 
 
+//    override fun onSuccessList(linersList: ArrayList<Liner>) {
+//        for (i in linersList) {
+//            val list = linersLists[i.nameWrapper]
+//            if (list != null) list.add(i)
+//        }
+//
+//        val targetList = linersLists[nameWrapper]
+//        if (targetList != null) {
+//            val filteredList = ArrayList<Liner>()
+//            filteredList.addAll(targetList)
+//            val adapterLiners = AdapterLinersList(filteredList, this)
+//            binding.recyclerView.adapter = adapterLiners
+//            setRecyclerViewAutoFit(binding.recyclerView)
+//        }
+//    }
+
+
     override fun onSuccessList(linersList: ArrayList<Liner>) {
         for (i in linersList) {
             when (i.nameWrapper) {
@@ -86,51 +116,69 @@ class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContra
                 linersList.addAll(linersTurboList)
                 val adapterLiners = AdapterLinersList(linersList, this)
                 binding.recyclerView.adapter = adapterLiners
+                setRecyclerViewAutoFit(binding.recyclerView)
+
 
             }
             "Turbo 2000" -> {
                 linersList.addAll(linersTurbo2000List)
                 val adapterLiners = AdapterLinersList(linersList, this)
                 binding.recyclerView.adapter = adapterLiners
+                setRecyclerViewAutoFit(binding.recyclerView)
+
 
             }
             "Turbo classic" -> {
                 linersList.addAll(linersTurboClassicList)
                 val adapterLiners = AdapterLinersList(linersList, this)
                 binding.recyclerView.adapter = adapterLiners
+                setRecyclerViewAutoFit(binding.recyclerView)
+
             }
             "Turbo legends" -> {
                 linersList.addAll(linersTurboLegendsList)
                 val adapterLiners = AdapterLinersList(linersList, this)
                 binding.recyclerView.adapter = adapterLiners
+                setRecyclerViewAutoFit(binding.recyclerView)
+
             }
             "Turbo power" -> {
                 linersList.addAll(linersTurboPowerList)
                 val adapterLiners = AdapterLinersList(linersList, this)
                 binding.recyclerView.adapter = adapterLiners
+                setRecyclerViewAutoFit(binding.recyclerView)
+
             }
             "Turbo sport" -> {
                 linersList.addAll(linersTurboSportList)
                 val adapterLiners = AdapterLinersList(linersList, this)
                 binding.recyclerView.adapter = adapterLiners
+                setRecyclerViewAutoFit(binding.recyclerView)
+
             }
             "Turbo sport 2003" -> {
                 linersList.addAll(linersTurboSport2003List)
                 val adapterLiners = AdapterLinersList(linersList, this)
                 binding.recyclerView.adapter = adapterLiners
+                setRecyclerViewAutoFit(binding.recyclerView)
+
             }
             "Turbo super 2003" -> {
                 linersList.addAll(linersTurboSuper2003List)
                 val adapterLiners = AdapterLinersList(linersList, this)
                 binding.recyclerView.adapter = adapterLiners
+                setRecyclerViewAutoFit(binding.recyclerView)
+
             }
             "Turbo super 2007" -> {
                 linersList.addAll(linersTurboSuper2007List)
                 val adapterLiners = AdapterLinersList(linersList, this)
                 binding.recyclerView.adapter = adapterLiners
+                setRecyclerViewAutoFit(binding.recyclerView)
             }
         }
     }
+
 
     override fun error(errMessage: String) {
         binding.noInternetLayout.visibility = View.VISIBLE
@@ -161,4 +209,19 @@ class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContra
             )
     }
 
+    //авто подсчет количества элементов по ширине в списке
+    private fun setRecyclerViewAutoFit(recyclerView: RecyclerView) {
+        val layoutManager = recyclerView.layoutManager as GridLayoutManager
+        layoutManager.spanCount = calculateNoOfColumns(recyclerView.context)
+        recyclerView.layoutManager = layoutManager
+    }
+
+    private fun calculateNoOfColumns(context: Context): Int {
+        val displayMetrics = context.resources.displayMetrics
+        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
+        return (screenWidthDp / 180 + 0.5).toInt()
+    }
+
+
 }
+
