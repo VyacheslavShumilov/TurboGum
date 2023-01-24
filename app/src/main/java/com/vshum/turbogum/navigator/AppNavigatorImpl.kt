@@ -61,6 +61,4 @@ class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavi
             .addToBackStack(fragment::class.java.canonicalName)
             .commit()
     }
-
-
 }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import com.vshum.turbogum.databinding.FragmentLinerBinding
@@ -23,7 +24,6 @@ class LinerFragment(var liner: Liner) : Fragment() {
         return binding.root
 
 
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,24 +32,34 @@ class LinerFragment(var liner: Liner) : Fragment() {
 
 
         binding.linkVideo.setOnClickListener {
-            val uri: Uri = Uri.parse(liner.video)
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+            if (liner.video != "-") {
+                val uri: Uri = Uri.parse(liner.video)
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            } else {
+                Toast.makeText(requireActivity(), "Видео отсуствует", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.linkVk.setOnClickListener {
-            val uri: Uri = Uri.parse(liner.vkArticle)
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+            if (liner.vkArticle != "-") {
+                val uri: Uri = Uri.parse(liner.vkArticle)
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            } else {
+                Toast.makeText(requireActivity(), "Статья VK в разработке", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
         }
         binding.linkWiki.setOnClickListener {
-            val uri: Uri = Uri.parse(liner.wikiArticle)
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+            if (liner.wikiArticle != "-") {
+                val uri: Uri = Uri.parse(liner.wikiArticle)
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            } else {
+                Toast.makeText(requireActivity(), "Статья отсутствует", Toast.LENGTH_SHORT).show()
+            }
         }
-
-
     }
-
-
 }

@@ -16,8 +16,6 @@ import com.vshum.turbogum.navigator.ScreenParamLiner
 import com.vshum.turbogum.ui.liners_lists.adapter.AdapterLinersList
 import com.vshum.turbogum.ui.liners_lists.impl.LinersListContract
 import com.vshum.turbogum.ui.liners_lists.impl.LinersListPresenterImpl
-import com.vshum.turbogum.utility.Utility
-
 
 class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContract.View,
     AdapterLinersList.SetOnClickListener {
@@ -60,6 +58,10 @@ class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContra
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (nameWrapper == null) {
+            nameWrapper = ""
+        }
+
         linersTurboList = ArrayList()
         linersTurbo2000List = ArrayList()
         linersTurboClassicList = ArrayList()
@@ -96,16 +98,18 @@ class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContra
 
     override fun onSuccessList(linersList: ArrayList<Liner>) {
         for (i in linersList) {
-            when (i.nameWrapper) {
-                "Turbo" -> linersTurboList.add(i)
-                "Turbo 2000" -> linersTurbo2000List.add(i)
-                "Turbo classic" -> linersTurboClassicList.add(i)
-                "Turbo legends" -> linersTurboLegendsList.add(i)
-                "Turbo power" -> linersTurboPowerList.add(i)
-                "Turbo sport" -> linersTurboSportList.add(i)
-                "Turbo sport 2003" -> linersTurboSport2003List.add(i)
-                "Turbo super 2003" -> linersTurboSuper2003List.add(i)
-                "Turbo super 2007" -> linersTurboSuper2007List.add(i)
+            if(i.nameWrapper != null) {
+                when (i.nameWrapper) {
+                    "Turbo" -> linersTurboList.add(i)
+                    "Turbo 2000" -> linersTurbo2000List.add(i)
+                    "Turbo classic" -> linersTurboClassicList.add(i)
+                    "Turbo legends" -> linersTurboLegendsList.add(i)
+                    "Turbo power" -> linersTurboPowerList.add(i)
+                    "Turbo sport" -> linersTurboSportList.add(i)
+                    "Turbo sport 2003" -> linersTurboSport2003List.add(i)
+                    "Turbo super 2003" -> linersTurboSuper2003List.add(i)
+                    "Turbo super 2007" -> linersTurboSuper2007List.add(i)
+                }
             }
         }
 
@@ -117,8 +121,6 @@ class LinersListFragment(var nameWrapper: String) : Fragment(), LinersListContra
                 val adapterLiners = AdapterLinersList(linersList, this)
                 binding.recyclerView.adapter = adapterLiners
                 setRecyclerViewAutoFit(binding.recyclerView)
-
-
             }
             "Turbo 2000" -> {
                 linersList.addAll(linersTurbo2000List)
