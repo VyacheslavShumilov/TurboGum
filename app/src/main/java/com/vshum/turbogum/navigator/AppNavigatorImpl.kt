@@ -6,24 +6,18 @@ import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.ui.HelpScreenFragment
 import com.vshum.turbogum.ui.wrappers_list.WrappersListFragment
 import com.vshum.turbogum.ui.StartScreenFragment
+import com.vshum.turbogum.ui.favourite.FavouriteFragment
 import com.vshum.turbogum.ui.liner.*
 import com.vshum.turbogum.ui.liners_lists.LinersListFragment
 
-class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavigator, AppNavigatorParamWrapper, AppNavigatorParamLiner {
+class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavigator,
+    AppNavigatorParamWrapper, AppNavigatorParamLiner {
     override fun navigateTo(screen: Screen) {
         val fragment = when (screen) {
             Screen.START_SCREEN -> StartScreenFragment()
             Screen.HELP_SCREEN -> HelpScreenFragment()
             Screen.WRAPPERS_LIST_SCREEN -> WrappersListFragment()
-//            Screen.TURBO -> LinersListFragment()
-//            Screen.TURBO_2000 -> LinersListFragment()
-//            Screen.TURBO_CLASSIC -> LinersListFragment()
-//            Screen.TURBO_LEGENDS -> LinersListFragment()
-//            Screen.TURBO_POWER -> LinersListFragment()
-//            Screen.TURBO_SPORT -> LinersListFragment()
-//            Screen.TURBO_SPORT_2003 -> LinersListFragment()
-//            Screen.TURBO_SUPER_2003 -> LinersListFragment()
-//            Screen.TURBO_SUPER_2007 -> LinersListFragment()
+            Screen.FAVOURITE -> FavouriteFragment()
         }
 
         fragmentActivity.supportFragmentManager.beginTransaction()
@@ -33,7 +27,7 @@ class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavi
     }
 
     override fun navigateToParamWrapper(screen: ScreenParamWrapper, nameWrapper: String) {
-        val fragment = when(screen) {
+        val fragment = when (screen) {
             ScreenParamWrapper.TURBO -> LinersListFragment(nameWrapper)
             ScreenParamWrapper.TURBO_2000 -> LinersListFragment(nameWrapper)
             ScreenParamWrapper.TURBO_CLASSIC -> LinersListFragment(nameWrapper)
@@ -52,7 +46,7 @@ class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavi
 
 
     override fun navigateToParamLiner(screen: ScreenParamLiner, liner: Liner) {
-        val fragment = when(screen) {
+        val fragment = when (screen) {
             ScreenParamLiner.TURBO -> LinerFragment(liner)
         }
 

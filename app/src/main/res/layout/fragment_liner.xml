@@ -21,8 +21,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/linkVideo"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
         android:autoLink="all"
         android:src="@drawable/video"
         app:layout_constraintBottom_toTopOf="@+id/linkVk"
@@ -33,8 +34,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/linkVk"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
         android:autoLink="all"
         android:src="@drawable/vk"
         app:layout_constraintBottom_toTopOf="@+id/linkWiki"
@@ -46,8 +47,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/linkWiki"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
         android:autoLink="all"
         android:src="@drawable/wiki"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,6 +56,42 @@
         app:layout_constraintStart_toStartOf="@+id/linkVk"
         app:layout_constraintTop_toBottomOf="@+id/linkVk"
         app:layout_constraintVertical_bias="0.5" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_delete_favourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_favorite_outline"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/linkVideo"
+        app:layout_constraintStart_toStartOf="@+id/linkVideo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_add_favourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_favorite_border"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/linkVideo"
+        app:layout_constraintStart_toStartOf="@+id/linkVideo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_to_favourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_list_favourite"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_delete_favourite"
+        app:layout_constraintEnd_toEndOf="@+id/linkVideo"
+        app:layout_constraintTop_toTopOf="@+id/btn_delete_favourite" />
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
