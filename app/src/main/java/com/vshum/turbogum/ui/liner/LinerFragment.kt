@@ -21,6 +21,7 @@ import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class LinerFragment(var liner: Liner) : Fragment() {
@@ -41,7 +42,10 @@ class LinerFragment(var liner: Liner) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Picasso.get().load(liner.imageUrlLiner).into(binding.imageView)
-        appDao = (context?.applicationContext as App).getDatabase().linersDao()
+//        appDao = (context?.applicationContext as App).getDatabase().linersDao()
+        val app = requireActivity().application as App
+        appDao = app.getDatabase().linersDao()
+
 
 
         with(binding) {
@@ -90,12 +94,29 @@ class LinerFragment(var liner: Liner) : Fragment() {
                         liner.imageUrlLiner,
                         liner.nameWrapper
                     )
+                    appDao.insertLiner(linerFavourite)
                 }
                 btnAddFavourite.visibility = View.GONE
                 btnDeleteFavourite.visibility = View.VISIBLE
-
-
             }
+
+            btnDeleteFavourite.setOnClickListener {
+                lifecycleScope.launch(Dispatchers.IO){
+                    val linerFromDbFavourite = appDao.getLinerFavorite(liner.id)
+                    if (linerFromDbFavourite != null) {
+                        if (liner.id == linerFromDbFavourite.id){
+                            appDao.deleteLiner(linerFromDbFavourite)
+                        }
+
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(requireActivity(), "Удален из избранного", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                btnAddFavourite.visibility = View.VISIBLE
+                btnDeleteFavourite.visibility = View.GONE
+            }
+
 
             binding.btnToFavourite.setOnClickListener {
                 appNavigator.navigateTo(Screen.FAVOURITE)

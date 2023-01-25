@@ -18,5 +18,5 @@ interface LinersDao {
     fun deleteLiner(liner: LinersFavourite)
 
     @Query("SELECT * FROM linersFavourite WHERE id =:id")
-    fun getLinerFavorite(id: String): LinersFavourite
+    fun getLinerFavorite(id: String): LinersFavourite?
 }
