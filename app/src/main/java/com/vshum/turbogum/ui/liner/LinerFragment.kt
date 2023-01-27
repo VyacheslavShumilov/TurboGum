@@ -13,7 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import com.squareup.picasso.Picasso
 import com.vshum.turbogum.App
 import com.vshum.turbogum.R
-import com.vshum.turbogum.dao.LinersDao
 import com.vshum.turbogum.databinding.FragmentLinerBinding
 import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.model.LinersFavourite
