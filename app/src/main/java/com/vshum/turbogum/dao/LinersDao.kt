@@ -19,6 +19,6 @@ interface LinersDao {
     @Query("SELECT * FROM linersFavourite ORDER BY id DESC")
     fun getAllFavouriteLiners(): List<LinersFavourite>
 
-    @Query("SELECT * FROM linersFavourite WHERE id =:id")
-    fun getLinerFavorite(id: String): LinersFavourite
+    @Query("SELECT * FROM linersFavourite WHERE numberLiner =:numberLiner")
+    fun getLinerFavorite(numberLiner: String): LinersFavourite
 }

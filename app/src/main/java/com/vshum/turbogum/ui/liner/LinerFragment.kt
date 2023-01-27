@@ -1,6 +1,5 @@
 package com.vshum.turbogum.ui.liner
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -14,13 +13,13 @@ import androidx.lifecycle.lifecycleScope
 import com.squareup.picasso.Picasso
 import com.vshum.turbogum.App
 import com.vshum.turbogum.R
-import com.vshum.turbogum.dao.AppDatabase
 import com.vshum.turbogum.dao.LinersDao
 import com.vshum.turbogum.databinding.FragmentLinerBinding
 import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.model.LinersFavourite
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -29,101 +28,106 @@ import kotlinx.coroutines.withContext
 class LinerFragment(var liner: Liner) : Fragment() {
     private lateinit var binding: FragmentLinerBinding
     private lateinit var appNavigator: AppNavigator
-    lateinit var appDao: LinersDao
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         binding = FragmentLinerBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Picasso.get().load(liner.imageUrlLiner).into(binding.imageView)
-        appDao = (context?.applicationContext as App).getDatabase().linersDao()
+        if (liner.imageUrlLiner.isEmpty()) {
+            binding.imageView.setImageResource(R.drawable.placeholder2)
+        } else {
+            Picasso.get().load(liner.imageUrlLiner).into(binding.imageView)
+        }
 
-
-
-        with(binding) {
-            linkVideo.setOnClickListener {
-                if (liner.video != "-") {
-                    val uri: Uri = Uri.parse(liner.video)
-                    val intent = Intent(Intent.ACTION_VIEW, uri)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(requireActivity(), "Видео отсуствует", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            linkVk.setOnClickListener {
-                if (liner.vkArticle != "-") {
-                    val uri: Uri = Uri.parse(liner.vkArticle)
-                    val intent = Intent(Intent.ACTION_VIEW, uri)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(requireActivity(), "Статья VK в разработке", Toast.LENGTH_SHORT)
-                        .show()
-                }
-
-            }
-            linkWiki.setOnClickListener {
-                if (liner.wikiArticle != "-") {
-                    val uri: Uri = Uri.parse(liner.wikiArticle)
-                    val intent = Intent(Intent.ACTION_VIEW, uri)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(requireActivity(), "Статья отсутствует", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_border))
-
-            btnAddFavourite.setOnClickListener {
-                lifecycleScope.launch(Dispatchers.IO) {
-                    val linerFavourite = LinersFavourite(
-                        0,
-                        liner.id,
-                        liner.numberLiner,
-                        liner.brand,
-                        liner.model,
-                        liner.wikiArticle,
-                        liner.video,
-                        liner.vkArticle,
-                        liner.imageUrlLiner,
-                        liner.nameWrapper
-                    )
-                    appDao.insertLiner(linerFavourite)
-                }
-
-                btnAddFavourite.isClickable = false
-                btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_outline))
-                Toast.makeText(context, "Добавлен в избраное", Toast.LENGTH_SHORT).show()
-
-            }
-
-            lifecycleScope.launch(Dispatchers.IO) {
-                val linerFav = appDao.getLinerFavorite(liner.numberLiner)
-
-                linerFav.let { a ->
-                    withContext(Dispatchers.Main) {
-                        @Suppress("SENSELESS_COMPARISON")
-                        btnAddFavourite.isClickable = a == null
-                    }
-                }
-            }
-
-            binding.btnToFavourite.setOnClickListener {
-                appNavigator.navigateTo(Screen.FAVOURITE)
+        binding.linkVideo.setOnClickListener {
+            if (liner.video != "-") {
+                val uri: Uri = Uri.parse(liner.video)
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            } else {
+                Toast.makeText(requireActivity(), "Видео отсуствует", Toast.LENGTH_SHORT).show()
             }
         }
 
+        binding.linkVk.setOnClickListener {
+            if (liner.vkArticle != "-") {
+                val uri: Uri = Uri.parse(liner.vkArticle)
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            } else {
+                Toast.makeText(requireActivity(), "Статья VK в разработке", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        }
+
+        binding.linkWiki.setOnClickListener {
+            if (liner.wikiArticle != "-") {
+                val uri: Uri = Uri.parse(liner.wikiArticle)
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            } else {
+                Toast.makeText(requireActivity(), "Статья отсутствует", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_border))
+
+        binding.btnToFavourite.setOnClickListener {
+            appNavigator.navigateTo(Screen.FAVOURITE)
+        }
+
+        binding.btnAddFavourite.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                val linerFavourite = LinersFavourite(
+                    0,
+                    liner.id,
+                    liner.numberLiner,
+                    liner.brand,
+                    liner.model,
+                    liner.wikiArticle,
+                    liner.video,
+                    liner.vkArticle,
+                    liner.imageUrlLiner,
+                    liner.nameWrapper
+                )
+                (context?.applicationContext as App).getDatabase().linersDao()
+                    .insertLiner(linerFavourite)
+            }
+            binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_outline))
+            binding.btnAddFavourite.isClickable = false
+        }
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            val linerFav = (context?.applicationContext as App).getDatabase().linersDao().getLinerFavorite(liner.numberLiner)
+            linerFav.let { data ->
+                withContext(Dispatchers.Main) {
+                    @Suppress("SENSELESS_COMPARISON")
+                    binding.btnAddFavourite.isClickable = data == null
+                    if (binding.btnAddFavourite.isClickable) {
+                        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_border))
+                    } else {
+                        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_outline))
+                    }
+                }
+            }
+        }
+
+        return binding.root
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        appNavigator = (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
+        appNavigator =
+            (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
     }
 }
+
+
+
+
+
