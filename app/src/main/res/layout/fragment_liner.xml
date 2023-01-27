@@ -57,24 +57,22 @@
         app:layout_constraintTop_toBottomOf="@+id/linkVk"
         app:layout_constraintVertical_bias="0.5" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_delete_favourite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        android:src="@drawable/ic_favorite_outline"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/linkVideo"
-        app:layout_constraintStart_toStartOf="@+id/linkVideo"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <androidx.appcompat.widget.AppCompatImageButton-->
+<!--        android:id="@+id/btn_delete_favourite"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/transparent"-->
+<!--        android:src="@drawable/ic_favorite_outline"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/linkVideo"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/linkVideo"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btn_add_favourite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/transparent"
-        android:src="@drawable/ic_favorite_border"
-        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/linkVideo"
         app:layout_constraintStart_toStartOf="@+id/linkVideo"
         app:layout_constraintTop_toTopOf="parent" />
@@ -85,9 +83,9 @@
         android:layout_height="wrap_content"
         android:background="@color/transparent"
         android:src="@drawable/ic_list_favourite"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_delete_favourite"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_add_favourite"
         app:layout_constraintEnd_toEndOf="@+id/linkVideo"
-        app:layout_constraintTop_toTopOf="@+id/btn_delete_favourite" />
+        app:layout_constraintTop_toTopOf="@+id/btn_add_favourite" />
 
 
 

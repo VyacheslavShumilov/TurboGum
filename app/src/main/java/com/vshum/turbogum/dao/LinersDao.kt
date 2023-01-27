@@ -8,15 +8,17 @@ import com.vshum.turbogum.model.LinersFavourite
 
 @Dao
 interface LinersDao {
-    @Query("SELECT * FROM linersFavourite ORDER BY id DESC")
-    fun getAllFavouriteLiners(): List<LinersFavourite>
+
 
     @Insert
     fun insertLiner(liner: LinersFavourite)
 
     @Delete
-    fun deleteLiner(liner: LinersFavourite)
+    fun deleteFavoriteLiner(liner: LinersFavourite)
+
+    @Query("SELECT * FROM linersFavourite ORDER BY id DESC")
+    fun getAllFavouriteLiners(): List<LinersFavourite>
 
     @Query("SELECT * FROM linersFavourite WHERE id =:id")
-    fun getLinerFavorite(id: String): LinersFavourite?
+    fun getLinerFavorite(id: String): LinersFavourite
 }

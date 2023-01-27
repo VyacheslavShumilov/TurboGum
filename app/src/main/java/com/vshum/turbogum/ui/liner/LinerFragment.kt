@@ -1,5 +1,6 @@
 package com.vshum.turbogum.ui.liner
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.squareup.picasso.Picasso
 import com.vshum.turbogum.App
+import com.vshum.turbogum.R
 import com.vshum.turbogum.dao.AppDatabase
 import com.vshum.turbogum.dao.LinersDao
 import com.vshum.turbogum.databinding.FragmentLinerBinding
@@ -35,16 +37,13 @@ class LinerFragment(var liner: Liner) : Fragment() {
     ): View {
         binding = FragmentLinerBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Picasso.get().load(liner.imageUrlLiner).into(binding.imageView)
-//        appDao = (context?.applicationContext as App).getDatabase().linersDao()
-        val app = requireActivity().application as App
-        appDao = app.getDatabase().linersDao()
+        appDao = (context?.applicationContext as App).getDatabase().linersDao()
 
 
 
@@ -80,6 +79,8 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 }
             }
 
+            btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_border))
+
             btnAddFavourite.setOnClickListener {
                 lifecycleScope.launch(Dispatchers.IO) {
                     val linerFavourite = LinersFavourite(
@@ -96,27 +97,23 @@ class LinerFragment(var liner: Liner) : Fragment() {
                     )
                     appDao.insertLiner(linerFavourite)
                 }
-                btnAddFavourite.visibility = View.GONE
-                btnDeleteFavourite.visibility = View.VISIBLE
+
+                btnAddFavourite.isClickable = false
+                btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_outline))
+                Toast.makeText(context, "Добавлен в избраное", Toast.LENGTH_SHORT).show()
+
             }
 
-            btnDeleteFavourite.setOnClickListener {
-                lifecycleScope.launch(Dispatchers.IO){
-                    val linerFromDbFavourite = appDao.getLinerFavorite(liner.id)
-                    if (linerFromDbFavourite != null) {
-                        if (liner.id == linerFromDbFavourite.id){
-                            appDao.deleteLiner(linerFromDbFavourite)
-                        }
+            lifecycleScope.launch(Dispatchers.IO) {
+                val linerFav = appDao.getLinerFavorite(liner.numberLiner)
 
-                        withContext(Dispatchers.Main) {
-                            Toast.makeText(requireActivity(), "Удален из избранного", Toast.LENGTH_SHORT).show()
-                        }
+                linerFav.let { a ->
+                    withContext(Dispatchers.Main) {
+                        @Suppress("SENSELESS_COMPARISON")
+                        btnAddFavourite.isClickable = a == null
                     }
                 }
-                btnAddFavourite.visibility = View.VISIBLE
-                btnDeleteFavourite.visibility = View.GONE
             }
-
 
             binding.btnToFavourite.setOnClickListener {
                 appNavigator.navigateTo(Screen.FAVOURITE)
