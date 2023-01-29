@@ -2,6 +2,8 @@ package com.vshum.turbogum
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import com.vshum.turbogum.databinding.ActivityMainBinding
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
@@ -14,6 +16,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+//        // remove title
+//        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN)
+//        actionBar?.hide()
+
         setContentView(binding.root)
 
         appNavigator = (applicationContext as App).servicesLocator.providerNavigator(this)

@@ -31,10 +31,13 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/startBtn"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="150dp"
         android:layout_height="60dp"
+        app:strokeWidth="3dp"
+        app:strokeColor="@color/secondaryLightColor"
         android:layout_marginBottom="10dp"
-        android:text="Turbo"
+        android:text="Старт"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

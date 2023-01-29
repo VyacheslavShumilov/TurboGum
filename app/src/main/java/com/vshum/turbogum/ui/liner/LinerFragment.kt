@@ -74,7 +74,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
             }
         }
 
-        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_border))
+        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_border))
 
         binding.btnToFavourite.setOnClickListener {
             appNavigator.navigateTo(Screen.FAVOURITE)
@@ -97,7 +97,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 (context?.applicationContext as App).getDatabase().linersDao()
                     .insertLiner(linerFavourite)
             }
-            binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_outline))
+            binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_filled))
             binding.btnAddFavourite.isClickable = false
         }
 
@@ -108,9 +108,9 @@ class LinerFragment(var liner: Liner) : Fragment() {
                     @Suppress("SENSELESS_COMPARISON")
                     binding.btnAddFavourite.isClickable = data == null
                     if (binding.btnAddFavourite.isClickable) {
-                        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_border))
+                        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_border))
                     } else {
-                        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite_outline))
+                        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_filled))
                     }
                 }
             }
