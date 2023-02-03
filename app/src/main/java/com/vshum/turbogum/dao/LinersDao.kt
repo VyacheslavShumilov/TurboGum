@@ -9,7 +9,6 @@ import com.vshum.turbogum.model.LinersFavourite
 @Dao
 interface LinersDao {
 
-
     @Insert
     fun insertLiner(liner: LinersFavourite)
 

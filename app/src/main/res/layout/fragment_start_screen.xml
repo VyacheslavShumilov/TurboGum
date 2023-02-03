@@ -22,7 +22,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/logo"
+        android:src="@drawable/placeholder3"
         android:scaleType="centerCrop"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,13 +31,14 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/startBtn"
-        style="@style/Widget.Material3.Button.OutlinedButton"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
         android:layout_width="150dp"
         android:layout_height="60dp"
         app:strokeWidth="3dp"
         app:strokeColor="@color/secondaryLightColor"
         android:layout_marginBottom="10dp"
         android:text="Старт"
+        android:textColor="@color/secondaryColor"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

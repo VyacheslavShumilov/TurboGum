@@ -12,18 +12,6 @@ interface Api {
     @GET("dataLinersTest.json")
     fun getLinersList(): Call<ArrayList<Liner>>
 
-//    @GET("dataTurbo.json")
-//    fun getTurbo(): Call<ArrayList<Liner>>
-//
-//    @GET("dataTurbo2000.json")
-//    fun getTurbo2000(): Call<ArrayList<Liner>>
-//
-//    @GET("dataTurboClassic.json")
-//    fun getTurboClassic(): Call<ArrayList<Liner>>
-//
-//    @GET("dataTurboLegends.json")
-//    fun getTurboLegends(): Call<ArrayList<Liner>>
-
     companion object {
         var BASE_URL = "https://raw.githubusercontent.com/VyacheslavShumilov/JsonTurbo/main/"
         fun create(): Api {

@@ -1,262 +1,524 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".ui.wrappers_list.WrappersListFragment">
 
-    <HorizontalScrollView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_gravity="center"
         >
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_series_1"
+                android:layout_width="@dimen/btn_img_width"
+                android:layout_height="@dimen/btn_img_height"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/t1"
+                app:layout_constraintEnd_toStartOf="@+id/image_btn_series_2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/index_series_1"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:weightSum="100"
-                android:layout_margin="5dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:text="T1#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_1"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_1" />
 
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/imageBtn_turbo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="90"
-                        android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/transparent"
-                        android:src="@drawable/turbo" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="10"
-                        android:layout_gravity="center_vertical|center_horizontal"
-                        android:text="Turbo" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <TextView
+                android:id="@+id/numbers_series_1"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:weightSum="100"
-                android:layout_margin="5dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:text="1-50"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_1"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_1" />
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imageBtn_turbo_2000"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="90"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    android:background="@color/transparent"
-                    android:src="@drawable/turbo_2000" />
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_series_2"
+                android:layout_width="@dimen/btn_img_width"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/t2"
+                app:layout_constraintBottom_toBottomOf="@+id/image_btn_series_1"
+                app:layout_constraintEnd_toStartOf="@+id/image_btn_series_3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/image_btn_series_1"
+                app:layout_constraintTop_toTopOf="@+id/image_btn_series_1" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="10"
-                    android:layout_gravity="center_vertical|center"
-                    android:text="Turbo 2000" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <TextView
+                android:id="@+id/index_series_2"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:weightSum="100"
-                android:layout_margin="5dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:text="T2#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_2"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_2" />
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imageBtn_turbo_classic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="90"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/transparent"
-                    android:src="@drawable/turbo_classic" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="10"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:text="Turbo Classic" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <TextView
+                android:id="@+id/numbers_series_2"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:weightSum="100"
-                android:layout_margin="5dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:text="51-120"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_2"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_2" />
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imageBtn_turbo_legends"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="90"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/transparent"
-                    android:src="@drawable/turbo_legends" />
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_series_3"
+                android:layout_width="@dimen/btn_img_width"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/t3"
+                app:layout_constraintBottom_toBottomOf="@+id/image_btn_series_2"
+                app:layout_constraintEnd_toStartOf="@+id/image_btn_series_4"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/image_btn_series_2"
+                app:layout_constraintTop_toTopOf="@+id/image_btn_series_2" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="10"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:text="Turbo Legends" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:weightSum="100"
-                    android:layout_margin="5dp"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/imageBtn_turbo_power"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="90"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/transparent"
-                        android:src="@drawable/turbo_power" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="10"
-                        android:layout_gravity="center_vertical|center_horizontal"
-                        android:text="Turbo Power" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <TextView
+                android:id="@+id/index_series_3"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:weightSum="100"
-                android:layout_margin="5dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:text="T3#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_3"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_3" />
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imageBtn_turbo_sport"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="90"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/transparent"
-                    android:src="@drawable/turbo_sport" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="10"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:text="Turbo Sport" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <TextView
+                android:id="@+id/numbers_series_3"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:weightSum="100"
-                android:layout_margin="5dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:text="121-190"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_3"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_3" />
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imageBtn_turbo_sport_2003"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="90"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/transparent"
-                    android:src="@drawable/turbo_sport_2003" />
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_series_4"
+                android:layout_width="@dimen/btn_img_width"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/t4"
+                app:layout_constraintBottom_toBottomOf="@+id/image_btn_series_3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/image_btn_series_3"
+                app:layout_constraintTop_toTopOf="@+id/image_btn_series_3" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="10"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:text="Turbo Sport 2003" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <TextView
+                android:id="@+id/index_series_4"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:weightSum="100"
-                android:layout_margin="5dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:text="T4#"
+                app:layout_constraintStart_toEndOf="@+id/image_btn_series_3"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_4"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_4" />
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imageBtn_turbo_super_2003"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="90"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/transparent"
-                    android:src="@drawable/turbo_super_2003" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="10"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:text="Turbo Super 2003" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <TextView
+                android:id="@+id/numbers_series_4"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:weightSum="100"
-                android:layout_margin="5dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:text="191-260"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_4"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_4" />
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imageBtn_turbo_super_2007"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="90"
-                    android:scaleType="fitCenter"
-                    android:adjustViewBounds="true"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/transparent"
-                    android:src="@drawable/turbo_super_2007" />
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_series_5"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/btn_img_height"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/t5"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_1"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_1"
+                app:layout_constraintTop_toBottomOf="@+id/index_series_1" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="10"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:text="Turbo Super 2007" />
+            <TextView
+                android:id="@+id/index_series_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:text="T5#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_5"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_5" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            <TextView
+                android:id="@+id/numbers_series_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="261-330"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_5"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_5" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </HorizontalScrollView>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_super_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/t6"
+                app:layout_constraintBottom_toBottomOf="@+id/image_btn_series_5"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_2"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_2"
+                app:layout_constraintTop_toTopOf="@+id/image_btn_series_5" />
 
+            <TextView
+                android:id="@+id/index_super_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:text="T6#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_super_1"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_super_1" />
+
+            <TextView
+                android:id="@+id/numbers_super_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="331-400"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_super_1"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_super_1" />
+
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_super_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/t7"
+                app:layout_constraintBottom_toBottomOf="@+id/image_btn_super_1"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_3"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_3"
+                app:layout_constraintTop_toTopOf="@+id/image_btn_super_1" />
+
+            <TextView
+                android:id="@+id/index_super_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T7#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_super_2"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_super_2" />
+
+            <TextView
+                android:id="@+id/numbers_super_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="401-470"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_super_2"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_super_2" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_super_3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/t8"
+                app:layout_constraintBottom_toBottomOf="@+id/image_btn_super_2"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_4"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_4"
+                app:layout_constraintTop_toTopOf="@+id/image_btn_super_2" />
+
+            <TextView
+                android:id="@+id/index_super_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T8#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_super_3"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_super_3" />
+
+
+            <TextView
+                android:id="@+id/numbers_super_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="471-540"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_super_3"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_super_3" />
+
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_sport_1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/btn_img_height"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ts1"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_1"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_1"
+                app:layout_constraintTop_toBottomOf="@+id/index_series_5" />
+
+            <TextView
+                android:id="@+id/index_sport_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:text="TS#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_1"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_1" />
+
+            <TextView
+                android:id="@+id/numbers_sport_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1-70"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_1"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_1" />
+
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_sport_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ts2"
+                app:layout_constraintBottom_toBottomOf="@+id/image_btn_sport_1"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_2"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_2"
+                app:layout_constraintTop_toTopOf="@+id/image_btn_sport_1" />
+
+            <TextView
+                android:id="@+id/index_sport_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:text="TS#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_2"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_2" />
+
+            <TextView
+                android:id="@+id/numbers_sport_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="71-140"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_2"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_2" />
+
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_classic_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/tc1"
+                app:layout_constraintBottom_toBottomOf="@+id/image_btn_sport_2"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_3"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_3"
+                app:layout_constraintTop_toTopOf="@+id/image_btn_sport_2" />
+
+            <TextView
+                android:id="@+id/index_classic_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TC#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_classic_1"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_classic_1" />
+
+            <TextView
+                android:id="@+id/numbers_classic_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1-70"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_classic_1"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_classic_1" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_classic_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/tc2"
+                app:layout_constraintBottom_toBottomOf="@+id/image_btn_classic_1"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_4"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_4"
+                app:layout_constraintTop_toTopOf="@+id/image_btn_classic_1" />
+
+            <TextView
+                android:id="@+id/index_classic_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TC#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_classic_2"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_classic_2" />
+
+
+            <TextView
+                android:id="@+id/numbers_classic_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="71-140"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_classic_2"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_classic_2" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_power"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/btn_img_height"
+                android:layout_marginTop="5dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/tp"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_1"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_1"
+                app:layout_constraintTop_toBottomOf="@+id/index_sport_1" />
+
+            <TextView
+                android:id="@+id/index_power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:text="TP#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_power"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_power" />
+
+            <TextView
+                android:id="@+id/numbers_power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="148-259"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_power"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_power" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_sport_3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ts3"
+                app:layout_constraintBottom_toBottomOf="@+id/image_btn_power"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_2"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_2"
+                app:layout_constraintTop_toTopOf="@+id/image_btn_power" />
+
+            <TextView
+                android:id="@+id/index_sport_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:text="TS#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_3"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_3" />
+
+            <TextView
+                android:id="@+id/numbers_sport_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="141-210"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_3"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_3" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_sport_4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ts4"
+                app:layout_constraintBottom_toBottomOf="@+id/image_btn_sport_3"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_3"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_3"
+                app:layout_constraintTop_toTopOf="@+id/image_btn_sport_3" />
+
+            <TextView
+                android:id="@+id/index_sport_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TS#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_4"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_4" />
+
+            <TextView
+                android:id="@+id/numbers_sport_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="410-470"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_4"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_4" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_sport_5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ts5"
+                app:layout_constraintBottom_toBottomOf="@+id/image_btn_sport_4"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_4"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_series_4"
+                app:layout_constraintTop_toTopOf="@+id/image_btn_sport_4" />
+
+            <TextView
+                android:id="@+id/index_sport_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TSTS#"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_5"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_5" />
+
+
+            <TextView
+                android:id="@+id/numbers_sport_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="471-540"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_5"
+                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_5" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
+
+
+
+
+
+
+

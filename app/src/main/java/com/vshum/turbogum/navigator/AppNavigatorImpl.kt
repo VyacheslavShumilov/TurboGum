@@ -12,6 +12,7 @@ import com.vshum.turbogum.ui.liners_lists.LinersListFragment
 
 class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavigator,
     AppNavigatorParamWrapper, AppNavigatorParamLiner {
+
     override fun navigateTo(screen: Screen) {
         val fragment = when (screen) {
             Screen.START_SCREEN -> StartScreenFragment()
@@ -26,17 +27,24 @@ class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavi
             .commit()
     }
 
-    override fun navigateToParamWrapper(screen: ScreenParamWrapper, nameWrapper: String) {
+    override fun navigateToParamWrapper(screen: ScreenParamWrapper, series: String) {
         val fragment = when (screen) {
-            ScreenParamWrapper.TURBO -> LinersListFragment(nameWrapper)
-            ScreenParamWrapper.TURBO_2000 -> LinersListFragment(nameWrapper)
-            ScreenParamWrapper.TURBO_CLASSIC -> LinersListFragment(nameWrapper)
-            ScreenParamWrapper.TURBO_LEGENDS -> LinersListFragment(nameWrapper)
-            ScreenParamWrapper.TURBO_POWER -> LinersListFragment(nameWrapper)
-            ScreenParamWrapper.TURBO_SPORT -> LinersListFragment(nameWrapper)
-            ScreenParamWrapper.TURBO_SPORT_2003 -> LinersListFragment(nameWrapper)
-            ScreenParamWrapper.TURBO_SUPER_2003 -> LinersListFragment(nameWrapper)
-            ScreenParamWrapper.TURBO_SUPER_2007 -> LinersListFragment(nameWrapper)
+            ScreenParamWrapper.SERIES_1 -> LinersListFragment(series)
+            ScreenParamWrapper.SERIES_2 -> LinersListFragment(series)
+            ScreenParamWrapper.SERIES_3 -> LinersListFragment(series)
+            ScreenParamWrapper.SERIES_4 -> LinersListFragment(series)
+            ScreenParamWrapper.SERIES_5 -> LinersListFragment(series)
+            ScreenParamWrapper.SUPER_1 -> LinersListFragment(series)
+            ScreenParamWrapper.SUPER_2 -> LinersListFragment(series)
+            ScreenParamWrapper.SUPER_3 -> LinersListFragment(series)
+            ScreenParamWrapper.SPORT_1 -> LinersListFragment(series)
+            ScreenParamWrapper.SPORT_2 -> LinersListFragment(series)
+            ScreenParamWrapper.SPORT_3 -> LinersListFragment(series)
+            ScreenParamWrapper.SPORT_4 -> LinersListFragment(series)
+            ScreenParamWrapper.SPORT_5 -> LinersListFragment(series)
+            ScreenParamWrapper.CLASSIC_1 -> LinersListFragment(series)
+            ScreenParamWrapper.CLASSIC_2 -> LinersListFragment(series)
+            ScreenParamWrapper.POWER -> LinersListFragment(series)
         }
         fragmentActivity.supportFragmentManager.beginTransaction()
             .replace(R.id.mainContainer, fragment)

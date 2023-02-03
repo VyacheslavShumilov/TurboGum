@@ -3,11 +3,6 @@ package com.vshum.turbogum.model
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-//data class WrappersList(
-//    @SerializedName("NameWrapper") val nameWrapper: String,
-//    @SerializedName("ImageUrlWrapper") val imageUrlWrapper: String
-//): Serializable
-
 data class Liner(
     @SerializedName("Id") val id: String,
     @SerializedName("NumberLiner") val numberLiner: String,
@@ -17,7 +12,8 @@ data class Liner(
     @SerializedName("Video") val video: String,
     @SerializedName("VkArticle") val vkArticle: String,
     @SerializedName("ImageUrlLiner") val imageUrlLiner: String,
-    @SerializedName("NameWrapper") val nameWrapper: String
+    @SerializedName("Index") val index: String,
+    @SerializedName("Series") val series: String
 ): Serializable
 
 

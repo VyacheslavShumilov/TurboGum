@@ -7,16 +7,6 @@ enum class Screen {
     HELP_SCREEN,
     WRAPPERS_LIST_SCREEN,
     FAVOURITE
-//    TURBO,
-//    TURBO_2000,
-//    TURBO_CLASSIC,
-//    TURBO_LEGENDS,
-//    TURBO_POWER,
-//    TURBO_SPORT,
-//    TURBO_SPORT_2003,
-//    TURBO_SUPER_2003,
-//    TURBO_SUPER_2007
-
 }
 
 interface AppNavigator {
@@ -24,20 +14,32 @@ interface AppNavigator {
 }
 
 enum class ScreenParamWrapper {
-    TURBO,
-    TURBO_2000,
-    TURBO_CLASSIC,
-    TURBO_LEGENDS,
-    TURBO_POWER,
-    TURBO_SPORT,
-    TURBO_SPORT_2003,
-    TURBO_SUPER_2003,
-    TURBO_SUPER_2007
+    SERIES_1,
+    SERIES_2,
+    SERIES_3,
+    SERIES_4,
+    SERIES_5,
+    SUPER_1,
+    SUPER_2,
+    SUPER_3,
+    SPORT_1,
+    SPORT_2,
+    SPORT_3,
+    SPORT_4,
+    SPORT_5,
+    CLASSIC_1,
+    CLASSIC_2,
+    POWER,
+//    T_2000_A,
+//    T_2000_B,
+//    SPORT_2003,
+//    SUPER_2003,
+//    SUPER_2007
 
 }
 
 interface AppNavigatorParamWrapper {
-    fun navigateToParamWrapper(screen: ScreenParamWrapper, nameWrapper: String)
+    fun navigateToParamWrapper(screen: ScreenParamWrapper, series: String)
 }
 
 enum class ScreenParamLiner {

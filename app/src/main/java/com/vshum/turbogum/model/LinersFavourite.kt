@@ -15,5 +15,6 @@ data class LinersFavourite(
     @ColumnInfo(name ="video") val video: String,
     @ColumnInfo(name ="vkArticle") val vkArticle: String,
     @ColumnInfo(name ="imageUrlLiner") val imageUrlLiner: String,
-    @ColumnInfo(name ="nameWrapper") val nameWrapper: String
+    @ColumnInfo(name ="index") val index: String,
+    @ColumnInfo(name ="series") val series: String,
     )

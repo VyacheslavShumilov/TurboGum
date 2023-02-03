@@ -92,7 +92,8 @@ class LinerFragment(var liner: Liner) : Fragment() {
                     liner.video,
                     liner.vkArticle,
                     liner.imageUrlLiner,
-                    liner.nameWrapper
+                    liner.index,
+                    liner.series
                 )
                 (context?.applicationContext as App).getDatabase().linersDao()
                     .insertLiner(linerFavourite)
