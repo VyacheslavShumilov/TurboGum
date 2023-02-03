@@ -40,19 +40,6 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
     lateinit var linersClassic2List: ArrayList<Liner>
     lateinit var linersPowerList: ArrayList<Liner>
 
-//    private val linersLists = hashMapOf(
-//        "Turbo" to ArrayList<Liner>(),
-//        "Turbo 2000" to ArrayList<Liner>(),
-//        "Turbo classic" to ArrayList<Liner>(),
-//        "Turbo legends" to ArrayList<Liner>(),
-//        "Turbo power" to ArrayList<Liner>(),
-//        "Turbo sport" to ArrayList<Liner>(),
-//        "Turbo sport 2003" to ArrayList<Liner>(),
-//        "Turbo super 2003" to ArrayList<Liner>(),
-//        "Turbo super 2007" to ArrayList<Liner>()
-//    )
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -93,23 +80,6 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
     }
 
 
-//    override fun onSuccessList(linersList: ArrayList<Liner>) {
-//        for (i in linersList) {
-//            val list = linersLists[i.nameWrapper]
-//            if (list != null) list.add(i)
-//        }
-//
-//        val targetList = linersLists[nameWrapper]
-//        if (targetList != null) {
-//            val filteredList = ArrayList<Liner>()
-//            filteredList.addAll(targetList)
-//            val adapterLiners = AdapterLinersList(filteredList, this)
-//            binding.recyclerView.adapter = adapterLiners
-//            setRecyclerViewAutoFit(binding.recyclerView)
-//        }
-//    }
-
-
     override fun onSuccessList(linersList: ArrayList<Liner>) {
         for (i in linersList) {
             if(i.series != null) {
@@ -139,108 +109,76 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
         when (series) {
             "Серия 1" -> {
                 linersList.addAll(linersSeries1List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Серия 2" -> {
                 linersList.addAll(linersSeries2List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Серия 3" -> {
                 linersList.addAll(linersSeries3List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Серия 4" -> {
                 linersList.addAll(linersSeries4List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Серия 5" -> {
                 linersList.addAll(linersSeries5List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Super 1" -> {
                 linersList.addAll(linersSuper1List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Super 2" -> {
                 linersList.addAll(linersSuper2List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Super 3" -> {
                 linersList.addAll(linersSuper3List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Sport 1" -> {
                 linersList.addAll(linersSport1List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Sport 2" -> {
                 linersList.addAll(linersSport2List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Sport 3" -> {
                 linersList.addAll(linersSport3List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Sport 4" -> {
                 linersList.addAll(linersSport4List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Sport 5" -> {
                 linersList.addAll(linersSport5List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Classic 1" -> {
                 linersList.addAll(linersClassic1List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Classic 2" -> {
                 linersList.addAll(linersClassic2List)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
             "Power" -> {
                 linersList.addAll(linersPowerList)
-                val adapterLiners = AdapterLinersList(linersList, this)
-                binding.recyclerView.adapter = adapterLiners
-                setRecyclerViewAutoFit(binding.recyclerView)
+                initRecyclerView(linersList)
             }
         }
     }
 
-//    private fun initRecyclerView(linersList: ArrayList<Liner>) {
-//        val adapterLiners = AdapterLinersList(linersList, this)
-//        binding.recyclerView.adapter = adapterLiners
-//        setRecyclerViewAutoFit(binding.recyclerView)
-//    }
+    private fun initRecyclerView(linersList: ArrayList<Liner>) {
+        val adapterLiners = AdapterLinersList(linersList, this)
+        binding.recyclerView.adapter = adapterLiners
+        setRecyclerViewAutoFit(binding.recyclerView)
+    }
 
 
     override fun error(errMessage: String) {

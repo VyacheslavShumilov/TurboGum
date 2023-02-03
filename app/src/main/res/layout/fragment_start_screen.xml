@@ -38,7 +38,7 @@
         app:strokeColor="@color/secondaryLightColor"
         android:layout_marginBottom="10dp"
         android:text="Старт"
-        android:textColor="@color/secondaryColor"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

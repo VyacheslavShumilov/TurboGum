@@ -12,36 +12,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/t001_" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/liner_brand_txtView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="8dp"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:layout_marginBottom="5dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="Марка"-->
-<!--            android:textAppearance="?attr/textAppearanceBodyMedium"-->
-<!--            android:textStyle="bold"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/liner_imageView"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/liner_imageView" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/liner_number_txtView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="5dp"-->
-<!--            android:text="1"-->
-<!--            android:textAppearance="?attr/textAppearanceBodyMedium"-->
-<!--            android:textColor="?android:attr/textColorSecondary"-->
-<!--            android:textStyle="bold"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/liner_brand_txtView"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/liner_imageView"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/liner_brand_txtView" />-->
 </com.google.android.material.card.MaterialCardView>
