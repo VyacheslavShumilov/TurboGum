@@ -19,8 +19,8 @@ class AdapterLinersFavList(
         fun bindView(linersFavourite: LinersFavourite) {
             with(binding) {
                 Picasso.get().load(linersFavourite.imageUrlLiner).into(linerImageView)
-                linerNumberTxtView.text = linersFavourite.numberLiner
-                linerBrandTxtView.text = linersFavourite.brand
+//                linerNumberTxtView.text = linersFavourite.numberLiner
+//                linerBrandTxtView.text = linersFavourite.brand
 
                 imageBtnDelete.setOnClickListener {
                     listener.onDeleteFavorite(linersFavourite)
