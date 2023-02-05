@@ -46,11 +46,11 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
     ): View {
         binding = FragmentLinersListBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         if (series == null) {
             series = ""
@@ -73,12 +73,10 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
         linersClassic2List = ArrayList()
         linersPowerList = ArrayList()
 
-
         presenter = LinersListPresenterImpl()
         presenter.attachView(this)
         presenter.responseData()
     }
-
 
     override fun onSuccessList(linersList: ArrayList<Liner>) {
         for (i in linersList) {
@@ -222,7 +220,5 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
         val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
         return (screenWidthDp / 180 + 0.5).toInt()
     }
-
-
 }
 

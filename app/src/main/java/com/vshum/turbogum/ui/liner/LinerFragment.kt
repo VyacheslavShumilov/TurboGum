@@ -36,6 +36,10 @@ class LinerFragment(var liner: Liner) : Fragment() {
 
         binding = FragmentLinerBinding.inflate(inflater, container, false)
 
+        if (liner.video == "-") binding.linkVideo.visibility = View.GONE
+        if (liner.vkArticle == "-") binding.linkVk.visibility = View.GONE
+        if (liner.wikiArticle == "-") binding.linkWiki.visibility = View.GONE
+
         if (liner.imageUrlLiner.isEmpty()) {
             binding.imageView.setImageResource(R.drawable.placeholder2)
         } else {
@@ -48,7 +52,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 val intent = Intent(Intent.ACTION_VIEW, uri)
                 startActivity(intent)
             } else {
-                Toast.makeText(requireActivity(), "Видео отсуствует", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireActivity(), "Видео отсуствует", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -58,10 +62,9 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 val intent = Intent(Intent.ACTION_VIEW, uri)
                 startActivity(intent)
             } else {
-                Toast.makeText(requireActivity(), "Статья VK в разработке", Toast.LENGTH_SHORT)
-                    .show()
+                //Toast.makeText(requireActivity(), "Статья VK в разработке", Toast.LENGTH_SHORT)
+                   // .show()
             }
-
         }
 
         binding.linkWiki.setOnClickListener {
@@ -70,7 +73,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 val intent = Intent(Intent.ACTION_VIEW, uri)
                 startActivity(intent)
             } else {
-                Toast.makeText(requireActivity(), "Статья отсутствует", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireActivity(), "Статья отсутствует", Toast.LENGTH_SHORT).show()
             }
         }
 
