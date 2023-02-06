@@ -6,35 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".ui.liner.LinerFragment">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/id_fav_layout"
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_add_favourite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linkVideo"
+        android:layout_gravity="center"
+        android:background="@color/transparent"
+        android:src="@drawable/btn_fav_filled"
+        app:layout_constraintBottom_toTopOf="@+id/btn_to_favourite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@id/imageView">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_add_favourite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="5dp"
-            android:background="@color/transparent"
-            android:src="@drawable/btn_fav_filled" />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_to_favourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_list_favourite"
+        app:layout_constraintBottom_toTopOf="@+id/linkVideo"
+        app:layout_constraintEnd_toEndOf="@+id/btn_add_favourite"
+        app:layout_constraintStart_toStartOf="@+id/btn_add_favourite"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_favourite"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_to_favourite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="5dp"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_list_favourite" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView"
@@ -44,22 +42,20 @@
         android:scaleType="fitCenter"
         android:src="@drawable/t031"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/linkVideo"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/linkVideo"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:autoLink="all"
         android:src="@drawable/video"
         app:layout_constraintBottom_toTopOf="@+id/linkVk"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@id/id_fav_layout"
+        app:layout_constraintEnd_toEndOf="@+id/btn_to_favourite"
+        app:layout_constraintStart_toStartOf="@+id/btn_to_favourite"
+        app:layout_constraintTop_toBottomOf="@+id/btn_to_favourite"
         app:layout_constraintVertical_bias="0.5" />
 
     <androidx.appcompat.widget.AppCompatImageView

@@ -22,7 +22,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/placeholder3"
+        android:src="@drawable/t031"
         android:scaleType="centerCrop"
 
         app:layout_constraintEnd_toEndOf="parent"
