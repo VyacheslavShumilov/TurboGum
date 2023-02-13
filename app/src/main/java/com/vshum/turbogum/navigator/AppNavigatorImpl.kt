@@ -4,6 +4,7 @@ import androidx.fragment.app.FragmentActivity
 import com.vshum.turbogum.R
 import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.ui.HelpScreenFragment
+import com.vshum.turbogum.ui.RegistrationFragment
 import com.vshum.turbogum.ui.wrappers_list.WrappersListFragment
 import com.vshum.turbogum.ui.StartScreenFragment
 import com.vshum.turbogum.ui.favourite.FavouriteFragment
@@ -16,6 +17,7 @@ class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavi
     override fun navigateTo(screen: Screen) {
         val fragment = when (screen) {
             Screen.START_SCREEN -> StartScreenFragment()
+            Screen.REGISTRATION_SCREEN -> RegistrationFragment()
             Screen.HELP_SCREEN -> HelpScreenFragment()
             Screen.WRAPPERS_LIST_SCREEN -> WrappersListFragment()
             Screen.FAVOURITE -> FavouriteFragment()

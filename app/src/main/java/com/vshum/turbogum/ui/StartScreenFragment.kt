@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.vshum.turbogum.App
+import com.vshum.turbogum.Constants
 import com.vshum.turbogum.databinding.FragmentStartScreenBinding
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
@@ -31,13 +32,18 @@ class StartScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding) {
 
+        val sharedPreferences = context?.getSharedPreferences("preferences", Context.MODE_PRIVATE)
+        val password = sharedPreferences?.getString("password", "")
+
+
+        with(binding) {
             startBtn.setOnClickListener {
-                appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
-            }
-            helpBtn.setOnClickListener {
-                appNavigator.navigateTo(Screen.HELP_SCREEN)
+                if (password.isNullOrBlank() || password != Constants.PASSWORD) {
+                    appNavigator.navigateTo(Screen.REGISTRATION_SCREEN)
+                } else {
+                    appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
+                }
             }
         }
     }
