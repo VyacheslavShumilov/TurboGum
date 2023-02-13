@@ -1,19 +1,53 @@
 package com.vshum.turbogum.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.vshum.turbogum.R
+import com.vshum.turbogum.databinding.FragmentHelpScreenBinding
 
 class HelpScreenFragment : Fragment() {
+
+    private lateinit var binding: FragmentHelpScreenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_help_screen, container, false)
+    ): View {
+        binding = FragmentHelpScreenBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.emailFirstTxtView.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("vvshumilov@mail.ru"))
+            intent.putExtra(Intent.EXTRA_SUBJECT, "О приложении TurboGum")
+            intent.putExtra(
+                Intent.EXTRA_TEXT,
+                "Добрый день, я хотел бы получить пароль к приложению, что для этого нужно?"
+            )
+            startActivity(Intent.createChooser(intent, "Отправить сообщение"))
+        }
+
+        binding.emailSecondTxtView.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("vyachess14607@gmail.com"))
+            intent.putExtra(Intent.EXTRA_SUBJECT, "О приложении TurboGum")
+            intent.putExtra(
+                Intent.EXTRA_TEXT,
+                "Добрый день, я хотел бы получить пароль к приложению, что для этого нужно?"
+            )
+            startActivity(Intent.createChooser(intent, "Отправить сообщение"))
+        }
     }
 
 }
