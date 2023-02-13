@@ -39,14 +39,14 @@ class FavouriteFragment : Fragment(), AdapterLinersFavList.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showProgress(true)
         appDao = (context?.applicationContext as App).getDatabase().linersDao()
-
         lifecycleScope.launch(Dispatchers.IO) {
             favorite.addAll(appDao.getAllFavouriteLiners())
+            showProgress(false)
             adapterLinersFav = AdapterLinersFavList(favorite, this@FavouriteFragment)
             binding.recyclerView.adapter = adapterLinersFav
             setRecyclerViewAutoFit(binding.recyclerView)
-
 
             withContext(Dispatchers.Main) {
                 if (favorite.size == 0) {
@@ -78,6 +78,14 @@ class FavouriteFragment : Fragment(), AdapterLinersFavList.OnClickListener {
         val displayMetrics = context.resources.displayMetrics
         val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
         return (screenWidthDp / 180 + 0.5).toInt()
+    }
+
+    private fun showProgress(show: Boolean) {
+        if (show) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
     }
 
 }

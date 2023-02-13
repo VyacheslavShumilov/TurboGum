@@ -181,6 +181,7 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
 
     override fun error(errMessage: String) {
         binding.noInternetLayout.visibility = View.VISIBLE
+        binding.btnRepeat.visibility = View.VISIBLE
         binding.btnRepeat.setOnClickListener {
             presenter.responseData()
         }
@@ -191,7 +192,7 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
             binding.noInternetLayout.visibility = View.GONE
             binding.progressBar.visibility = View.VISIBLE
         } else {
-            binding.btnRepeat.visibility = View.GONE
+            binding.noInternetLayout.visibility = View.GONE
             binding.progressBar.visibility = View.GONE
         }
     }
