@@ -25,22 +25,10 @@ class HelpScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.emailFirstTxtView.setOnClickListener {
+        binding.emailBtn.setOnClickListener {
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
             intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("vvshumilov@mail.ru"))
-            intent.putExtra(Intent.EXTRA_SUBJECT, "О приложении TurboGum")
-            intent.putExtra(
-                Intent.EXTRA_TEXT,
-                "Добрый день, я хотел бы получить пароль к приложению, что для этого нужно?"
-            )
-            startActivity(Intent.createChooser(intent, "Отправить сообщение"))
-        }
-
-        binding.emailSecondTxtView.setOnClickListener {
-            val intent = Intent(Intent.ACTION_SEND)
-            intent.type = "text/plain"
-            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("vyachess14607@gmail.com"))
             intent.putExtra(Intent.EXTRA_SUBJECT, "О приложении TurboGum")
             intent.putExtra(
                 Intent.EXTRA_TEXT,
