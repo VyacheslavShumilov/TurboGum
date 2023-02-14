@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+
     tools:context=".ui.StartScreenFragment">
 
 <!--    <com.airbnb.lottie.LottieAnimationView-->
@@ -23,31 +25,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/brabham"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:src="@drawable/turbo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/startBtn"
-        style="@style/Widget.Material3.Button.IconButton.Filled"
+        style="@style/Widget.Material3.Button"
         android:layout_width="150dp"
         android:layout_height="60dp"
         app:strokeWidth="3dp"
-        app:strokeColor="@color/primaryDarkColor"
-        android:backgroundTint="@color/primaryLightColor"
         android:layout_marginBottom="10dp"
         android:text="Старт"
-        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

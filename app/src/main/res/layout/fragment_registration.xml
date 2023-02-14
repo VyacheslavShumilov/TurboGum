@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".ui.RegistrationFragment">
 
 
@@ -27,8 +28,8 @@
         android:layout_height="wrap_content"
         android:text="Вход"
         android:textAlignment="center"
-        android:textColor="?attr/colorPrimary"
-        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/login_password_input_container"
         app:layout_constraintEnd_toEndOf="@+id/login_password_input_container"
@@ -43,6 +44,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Пароль"
+
+        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/black"
+        android:textColorHint="@color/white"
+        app:errorTextColor="@color/secondaryDarkColor"
+        app:boxStrokeErrorColor="@color/secondaryDarkColor"
         app:endIconMode="password_toggle"
         app:layout_constraintBottom_toTopOf="@+id/login_button"
         app:layout_constraintEnd_toEndOf="@id/login_end_constraint_line"
@@ -55,17 +62,21 @@
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Пароль"
+            android:textColorHint="@color/black"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login_button"
+        style="@style/Widget.Material3.Button"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:text="Продолжить"
         android:textSize="16sp"
+        app:strokeColor="@color/black"
+        android:textStyle="bold"
+        app:strokeWidth="3dp"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toTopOf="@+id/help_button"
         app:layout_constraintEnd_toEndOf="@id/login_end_constraint_line"
@@ -80,6 +91,10 @@
         android:layout_height="60dp"
         android:text="Забыли пароль?"
         android:textSize="16sp"
+        app:strokeWidth="3dp"
+        app:strokeColor="@color/black"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/login_end_constraint_line"
         app:layout_constraintStart_toStartOf="@+id/login_start_constraint_line"

@@ -18,6 +18,10 @@
     <color name="secondaryTextColor">#000000</color>
     <color name="transparent">#00FFFFFF</color>
 
+    <color name="start_gradient_color">#C9AE1F</color>
+    <color name="end_gradient_color">#B25D48</color>
+
+
 
 
 </resources>

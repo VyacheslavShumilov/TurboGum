@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".ui.HelpScreenFragment">
 
     <com.google.android.material.textview.MaterialTextView
@@ -13,6 +14,8 @@
         android:text="Чтобы узнать пароль,\nобратитесь к разработчику приложения:"
         android:textAlignment="center"
         android:textSize="28sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/email_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,13 +24,16 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/email_btn"
-        style="@style/Widget.Material3.Button.OutlinedButton"
+        style="@style/Widget.Material3.Button"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:minWidth="350dp"
+        app:strokeColor="@color/black"
+        app:strokeWidth="3dp"
         android:text="Отправить сообщение"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

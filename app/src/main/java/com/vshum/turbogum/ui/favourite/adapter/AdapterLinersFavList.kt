@@ -19,7 +19,7 @@ class AdapterLinersFavList(
         fun bindView(linersFavourite: LinersFavourite) {
             with(binding) {
                 Picasso.get().load(linersFavourite.imageUrlLiner).into(linerImageView)
-//                linerNumberTxtView.text = linersFavourite.numberLiner
+                indexSeries.text = linersFavourite.index
 //                linerBrandTxtView.text = linersFavourite.brand
 
                 imageBtnDelete.setOnClickListener {
