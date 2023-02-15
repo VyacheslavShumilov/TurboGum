@@ -1,4 +1,4 @@
-package com.vshum.turbogum.ui.favourite.adapter
+package com.vshum.turbogum.ui.favourite_list.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -49,7 +49,10 @@ class AdapterLinersFavList(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindView(linersFavourite[position])
+//        holder.bindView(linersFavourite[position])
+        linersFavourite?.let {
+            holder.bindView(it[position])
+        }
     }
 
     override fun getItemCount(): Int = linersFavourite.size
@@ -58,5 +61,11 @@ class AdapterLinersFavList(
         fun onDeleteFavorite(linersFav: LinersFavourite)
         fun notFavorite()
         fun onClickLinerFavorite(linersFav: LinersFavourite)
+    }
+
+    fun updateData(newList: ArrayList<LinersFavourite>) {
+        linersFavourite.clear()
+        linersFavourite.addAll(newList)
+        notifyDataSetChanged()
     }
 }

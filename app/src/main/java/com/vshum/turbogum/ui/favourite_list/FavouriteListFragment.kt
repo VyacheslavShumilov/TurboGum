@@ -1,4 +1,4 @@
-package com.vshum.turbogum.ui.favourite
+package com.vshum.turbogum.ui.favourite_list
 
 import android.content.Context
 import android.os.Bundle
@@ -16,18 +16,18 @@ import com.vshum.turbogum.databinding.FragmentFavouriteBinding
 import com.vshum.turbogum.model.LinersFavourite
 import com.vshum.turbogum.navigator.AppNavigatorParamLinerFav
 import com.vshum.turbogum.navigator.ScreenParamLinerFav
-import com.vshum.turbogum.ui.favourite.adapter.AdapterLinersFavList
+import com.vshum.turbogum.ui.favourite_list.adapter.AdapterLinersFavList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class FavouriteFragment : Fragment(), AdapterLinersFavList.OnClickListener {
+class FavouriteListFragment : Fragment(), AdapterLinersFavList.OnClickListener {
 
     private lateinit var binding: FragmentFavouriteBinding
     private lateinit var appDao: LinersDao
     private lateinit var adapterLinersFav: AdapterLinersFavList
-    private lateinit var appNavigationParamLinerFav: AppNavigatorParamLinerFav
+    private lateinit var appNavigator: AppNavigatorParamLinerFav
     private var favorite: ArrayList<LinersFavourite> = arrayListOf()
 
 
@@ -47,7 +47,7 @@ class FavouriteFragment : Fragment(), AdapterLinersFavList.OnClickListener {
         lifecycleScope.launch(Dispatchers.IO) {
             favorite.addAll(appDao.getAllFavouriteLiners())
             showProgress(false)
-            adapterLinersFav = AdapterLinersFavList(favorite, this@FavouriteFragment)
+            adapterLinersFav = AdapterLinersFavList(favorite, this@FavouriteListFragment)
             binding.recyclerView.adapter = adapterLinersFav
             setRecyclerViewAutoFit(binding.recyclerView)
 
@@ -93,11 +93,31 @@ class FavouriteFragment : Fragment(), AdapterLinersFavList.OnClickListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        appNavigationParamLinerFav = (context.applicationContext as App).servicesLocator.providerNavigatorParamFavLiner(requireActivity())
+        appNavigator = (context.applicationContext as App).servicesLocator.providerNavigatorParamLinerFav(requireActivity())
     }
 
     override fun onClickLinerFavorite(linersFav: LinersFavourite) {
-        appNavigationParamLinerFav.navigateToParamLinerFav(ScreenParamLinerFav.FAVORITE_LINER, linersFav)
+        appNavigator.navigateToParamLinerFav(ScreenParamLinerFav.FAVORITE_LINER, linersFav)
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        /*** Удаление дубликатов из списка при возврате из FavoriteLinerFragment
+         * Чтобы исправить проблему, можно пересоздать адаптер в методе onResume, чтобы он обновился с новыми данными, а затем присвоить его списку. Также можно добавить проверку, чтобы адаптер не создавался заново, если он уже создан.
+         * сли адаптер уже инициализирован, мы вызываем метод updateData с новым списком данных для обновления адаптера. Если адаптер не инициализирован, мы создаем новый адаптер с новым списком данных и присваиваем его списку.
+         */
+
+        val uniqueList = (favorite.distinctBy { it.numberLiner}) as ArrayList
+
+        if (::adapterLinersFav.isInitialized) {
+            favorite.clear()
+            adapterLinersFav.updateData(uniqueList)
+        } else {
+            adapterLinersFav = AdapterLinersFavList(uniqueList, this@FavouriteListFragment)
+            binding.recyclerView.adapter = adapterLinersFav
+        }
+    }
+
 
 }

@@ -89,7 +89,8 @@ class LinerFragment(var liner: Liner) : Fragment() {
                     liner.vkArticle,
                     liner.imageUrlLiner,
                     liner.index,
-                    liner.series
+                    liner.series,
+                    liner.note
                 )
                 (context?.applicationContext as App).getDatabase().linersDao()
                     .insertLiner(linerFavourite)
@@ -115,6 +116,8 @@ class LinerFragment(var liner: Liner) : Fragment() {
 
         return binding.root
     }
+
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

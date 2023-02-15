@@ -5,19 +5,19 @@ import com.vshum.turbogum.navigator.*
 
 class ServicesLocator {
     fun providerNavigator(fragmentActivity: FragmentActivity): AppNavigator {
-        return AppNavigatorImplFav(fragmentActivity)
+        return AppNavigatorImpl(fragmentActivity)
     }
 
     fun providerNavigatorParamWrapper(fragmentActivity: FragmentActivity): AppNavigatorParamWrapper {
-        return AppNavigatorImplFav(fragmentActivity)
+        return AppNavigatorImpl(fragmentActivity)
     }
 
     fun providerNavigatorParamLiners(fragmentActivity: FragmentActivity): AppNavigatorParamLiner {
-        return AppNavigatorImplFav(fragmentActivity)
+        return AppNavigatorImpl(fragmentActivity)
     }
 
-    fun providerNavigatorParamFavLiner(fragmentActivity: FragmentActivity): AppNavigatorParamLinerFav {
-        return AppNavigatorImplFav(fragmentActivity)
+    fun providerNavigatorParamLinerFav(fragmentActivity: FragmentActivity): AppNavigatorParamLinerFav {
+        return AppNavigatorImpl(fragmentActivity)
     }
 
 }

@@ -20,4 +20,15 @@ interface LinersDao {
 
     @Query("SELECT * FROM linersFavourite WHERE numberLiner =:numberLiner")
     fun getLinerFavorite(numberLiner: String): LinersFavourite
+
+    @Query("UPDATE linersFavourite SET note = :note  WHERE numberLiner =:numberLiner")
+    fun editNoteLiner(numberLiner: String, note:String)
+
+    /***
+     * Запрос выбирает заметку (note) для строки, где номер вкладыша (numberLiner) равен заданному.
+     */
+    @Query("SELECT note FROM linersFavourite WHERE numberLiner = :numberLiner")
+    fun getNoteLiner(numberLiner: String): String
+
+
 }

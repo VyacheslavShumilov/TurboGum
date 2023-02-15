@@ -7,14 +7,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.squareup.picasso.Picasso
+import com.vshum.turbogum.App
 import com.vshum.turbogum.R
+import com.vshum.turbogum.dao.LinersDao
 import com.vshum.turbogum.databinding.FragmentFavoriteLinerBinding
 import com.vshum.turbogum.model.LinersFavourite
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
     private lateinit var binding: FragmentFavoriteLinerBinding
+    private lateinit var appDao: LinersDao
+    private  var addedNote: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,14 +30,26 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
     ): View {
         binding = FragmentFavoriteLinerBinding.inflate(inflater, container, false)
 
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        /***
+         * Нужно инициализировать свойство "linersDao" перед его использованием. Одним из способов сделать это является инициализация свойства в методе "onCreateView" до того, как вы вызываете метод "launch" в блоке "lifecycleScope"
+         */
+        appDao = (context?.applicationContext as App).getDatabase().linersDao()
 
         initIcons()
         initTextViews()
+
+        // Извлекаем заметку из базы данных
+            lifecycleScope.launch(Dispatchers.IO) {
+                addedNote = appDao.getNoteLiner(linerFav.numberLiner)
+                withContext(Dispatchers.Main) {
+                    if (addedNote != "-") {
+                        binding.noteTxtView.text = addedNote // устанавливаем значение в поле noteTxtView
+                    }  else addedNote = "Заметка отсутствует"
+                }
+            }
+
+
+
 
         binding.linkVideo.setOnClickListener {
             if (linerFav.video != "-") {
@@ -57,8 +77,15 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
 
         binding.saveNoteBtn.setOnClickListener {
             val note = binding.noteInput.text.toString()
-            binding.noteTxtView.text = note
+            lifecycleScope.launch(Dispatchers.IO) {
+                appDao.editNoteLiner(linerFav.numberLiner, note)
+                withContext(Dispatchers.Main) {
+                    binding.noteTxtView.text = note
+                }
+            }
         }
+
+        return binding.root
     }
 
     private fun initIcons() {
@@ -79,5 +106,17 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
             numberLinerTxtView.text = linerFav.numberLiner
         }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("noteText", binding.noteTxtView.text.toString())
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        val noteText = savedInstanceState?.getString("noteText")
+        binding.noteTxtView.text = noteText
+    }
+
 
 }

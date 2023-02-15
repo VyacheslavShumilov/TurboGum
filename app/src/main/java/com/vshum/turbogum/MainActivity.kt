@@ -17,11 +17,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-//        // remove title
-//        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//            WindowManager.LayoutParams.FLAG_FULLSCREEN)
-//        actionBar?.hide()
-
         setContentView(binding.root)
 
         appNavigator = (applicationContext as App).servicesLocator.providerNavigator(this)

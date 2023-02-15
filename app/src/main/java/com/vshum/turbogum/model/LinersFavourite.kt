@@ -17,4 +17,5 @@ data class LinersFavourite(
     @ColumnInfo(name ="imageUrlLiner") val imageUrlLiner: String,
     @ColumnInfo(name ="index") val index: String,
     @ColumnInfo(name ="series") val series: String,
+    @ColumnInfo(name = "note") val note: String
     )

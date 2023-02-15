@@ -9,11 +9,11 @@ import com.vshum.turbogum.ui.RegistrationFragment
 import com.vshum.turbogum.ui.wrappers_list.WrappersListFragment
 import com.vshum.turbogum.ui.StartScreenFragment
 import com.vshum.turbogum.ui.favorite_liner.FavoriteLinerFragment
-import com.vshum.turbogum.ui.favourite.FavouriteFragment
+import com.vshum.turbogum.ui.favourite_list.FavouriteListFragment
 import com.vshum.turbogum.ui.liner.*
 import com.vshum.turbogum.ui.liners_lists.LinersListFragment
 
-class AppNavigatorImplFav(private var fragmentActivity: FragmentActivity) : AppNavigator,
+class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavigator,
     AppNavigatorParamWrapper, AppNavigatorParamLiner, AppNavigatorParamLinerFav {
 
     override fun navigateTo(screen: Screen) {
@@ -22,7 +22,7 @@ class AppNavigatorImplFav(private var fragmentActivity: FragmentActivity) : AppN
             Screen.REGISTRATION_SCREEN -> RegistrationFragment()
             Screen.HELP_SCREEN -> HelpScreenFragment()
             Screen.WRAPPERS_LIST_SCREEN -> WrappersListFragment()
-            Screen.FAVOURITE -> FavouriteFragment()
+            Screen.FAVOURITE -> FavouriteListFragment()
         }
 
         fragmentActivity.supportFragmentManager.beginTransaction()

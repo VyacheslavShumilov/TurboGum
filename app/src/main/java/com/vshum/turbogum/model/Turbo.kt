@@ -13,7 +13,9 @@ data class Liner(
     @SerializedName("VkArticle") val vkArticle: String,
     @SerializedName("ImageUrlLiner") val imageUrlLiner: String,
     @SerializedName("Index") val index: String,
-    @SerializedName("Series") val series: String
+    @SerializedName("Series") val series: String,
+    @SerializedName("Note") val note: String
+
 ): Serializable
 
 
