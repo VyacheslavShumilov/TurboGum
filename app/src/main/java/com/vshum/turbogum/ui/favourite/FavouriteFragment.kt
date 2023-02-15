@@ -14,6 +14,8 @@ import com.vshum.turbogum.App
 import com.vshum.turbogum.dao.LinersDao
 import com.vshum.turbogum.databinding.FragmentFavouriteBinding
 import com.vshum.turbogum.model.LinersFavourite
+import com.vshum.turbogum.navigator.AppNavigatorParamLinerFav
+import com.vshum.turbogum.navigator.ScreenParamLinerFav
 import com.vshum.turbogum.ui.favourite.adapter.AdapterLinersFavList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,6 +27,7 @@ class FavouriteFragment : Fragment(), AdapterLinersFavList.OnClickListener {
     private lateinit var binding: FragmentFavouriteBinding
     private lateinit var appDao: LinersDao
     private lateinit var adapterLinersFav: AdapterLinersFavList
+    private lateinit var appNavigationParamLinerFav: AppNavigatorParamLinerFav
     private var favorite: ArrayList<LinersFavourite> = arrayListOf()
 
 
@@ -86,6 +89,15 @@ class FavouriteFragment : Fragment(), AdapterLinersFavList.OnClickListener {
         } else {
             binding.progressBar.visibility = View.GONE
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        appNavigationParamLinerFav = (context.applicationContext as App).servicesLocator.providerNavigatorParamFavLiner(requireActivity())
+    }
+
+    override fun onClickLinerFavorite(linersFav: LinersFavourite) {
+        appNavigationParamLinerFav.navigateToParamLinerFav(ScreenParamLinerFav.FAVORITE_LINER, linersFav)
     }
 
 }

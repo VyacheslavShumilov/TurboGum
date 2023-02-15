@@ -1,6 +1,7 @@
 package com.vshum.turbogum.navigator
 
 import com.vshum.turbogum.model.Liner
+import com.vshum.turbogum.model.LinersFavourite
 
 enum class Screen {
     START_SCREEN,
@@ -39,14 +40,15 @@ enum class ScreenParamWrapper {
 
 }
 
-interface AppNavigatorParamWrapper {
-    fun navigateToParamWrapper(screen: ScreenParamWrapper, series: String)
-}
+interface AppNavigatorParamWrapper { fun navigateToParamWrapper(screen: ScreenParamWrapper, series: String) }
 
-enum class ScreenParamLiner {
-    TURBO
-}
 
-interface AppNavigatorParamLiner {
-    fun navigateToParamLiner(screen: ScreenParamLiner, liner: Liner)
-}
+enum class ScreenParamLiner { TURBO }
+interface AppNavigatorParamLiner { fun navigateToParamLiner(screen: ScreenParamLiner, liner: Liner) }
+
+
+/***
+ * Для Favorite Liner Fragment
+ */
+enum class ScreenParamLinerFav { FAVORITE_LINER }
+interface AppNavigatorParamLinerFav { fun navigateToParamLinerFav(screen: ScreenParamLinerFav, linerFav: LinersFavourite) }

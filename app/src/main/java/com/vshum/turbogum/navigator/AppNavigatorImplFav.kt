@@ -3,16 +3,18 @@ package com.vshum.turbogum.navigator
 import androidx.fragment.app.FragmentActivity
 import com.vshum.turbogum.R
 import com.vshum.turbogum.model.Liner
+import com.vshum.turbogum.model.LinersFavourite
 import com.vshum.turbogum.ui.HelpScreenFragment
 import com.vshum.turbogum.ui.RegistrationFragment
 import com.vshum.turbogum.ui.wrappers_list.WrappersListFragment
 import com.vshum.turbogum.ui.StartScreenFragment
+import com.vshum.turbogum.ui.favorite_liner.FavoriteLinerFragment
 import com.vshum.turbogum.ui.favourite.FavouriteFragment
 import com.vshum.turbogum.ui.liner.*
 import com.vshum.turbogum.ui.liners_lists.LinersListFragment
 
-class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavigator,
-    AppNavigatorParamWrapper, AppNavigatorParamLiner {
+class AppNavigatorImplFav(private var fragmentActivity: FragmentActivity) : AppNavigator,
+    AppNavigatorParamWrapper, AppNavigatorParamLiner, AppNavigatorParamLinerFav {
 
     override fun navigateTo(screen: Screen) {
         val fragment = when (screen) {
@@ -60,6 +62,16 @@ class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavi
             ScreenParamLiner.TURBO -> LinerFragment(liner)
         }
 
+        fragmentActivity.supportFragmentManager.beginTransaction()
+            .replace(R.id.mainContainer, fragment)
+            .addToBackStack(fragment::class.java.canonicalName)
+            .commit()
+    }
+
+    override fun navigateToParamLinerFav(screen: ScreenParamLinerFav, linerFav: LinersFavourite) {
+        val fragment = when(screen) {
+            ScreenParamLinerFav.FAVORITE_LINER -> FavoriteLinerFragment(linerFav)
+        }
         fragmentActivity.supportFragmentManager.beginTransaction()
             .replace(R.id.mainContainer, fragment)
             .addToBackStack(fragment::class.java.canonicalName)
