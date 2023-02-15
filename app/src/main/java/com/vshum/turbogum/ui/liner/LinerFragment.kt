@@ -51,8 +51,6 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 val uri: Uri = Uri.parse(liner.video)
                 val intent = Intent(Intent.ACTION_VIEW, uri)
                 startActivity(intent)
-            } else {
-                //Toast.makeText(requireActivity(), "Видео отсуствует", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -61,9 +59,6 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 val uri: Uri = Uri.parse(liner.vkArticle)
                 val intent = Intent(Intent.ACTION_VIEW, uri)
                 startActivity(intent)
-            } else {
-                //Toast.makeText(requireActivity(), "Статья VK в разработке", Toast.LENGTH_SHORT)
-                   // .show()
             }
         }
 
@@ -72,8 +67,6 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 val uri: Uri = Uri.parse(liner.wikiArticle)
                 val intent = Intent(Intent.ACTION_VIEW, uri)
                 startActivity(intent)
-            } else {
-                //Toast.makeText(requireActivity(), "Статья отсутствует", Toast.LENGTH_SHORT).show()
             }
         }
 

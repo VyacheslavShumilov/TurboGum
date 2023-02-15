@@ -37,12 +37,12 @@
         android:layout_height="90dp"
         android:autoLink="all"
         android:src="@drawable/vk"
-        app:layout_constraintBottom_toBottomOf="@+id/linkVideo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/linkWiki"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/linkVideo"
-        app:layout_constraintTop_toTopOf="@+id/linkVideo"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+         />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/linkWiki"
@@ -50,11 +50,11 @@
         android:layout_height="90dp"
         android:autoLink="all"
         android:src="@drawable/wiki"
-        app:layout_constraintBottom_toBottomOf="@+id/linkVk"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/linkVk"
-        app:layout_constraintTop_toTopOf="@+id/linkVk" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/textView2"
@@ -84,7 +84,7 @@
         android:layout_width="0dp"
         android:layout_height="3dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/login_password_input_container"
+        app:layout_constraintEnd_toEndOf="@+id/note_input_container"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -136,7 +136,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_password_input_container"
+        android:id="@+id/note_input_container"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
         app:layout_constraintTop_toBottomOf="@+id/indexDivider">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password_input"
+            android:id="@+id/note_input"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -169,11 +169,9 @@
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:text="Сохранить"
-        app:layout_constraintBottom_toTopOf="@+id/linkWiki"
-        app:layout_constraintEnd_toEndOf="@+id/login_password_input_container"
-        app:layout_constraintTop_toBottomOf="@+id/login_password_input_container"
+        app:layout_constraintEnd_toEndOf="@+id/note_input_container"
+        app:layout_constraintTop_toBottomOf="@+id/note_input_container"
         app:strokeColor="@color/black"
         app:strokeWidth="3dp" />
 
@@ -184,17 +182,19 @@
         app:layout_constraintBaseline_toBottomOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/saveNoteBtn"
-        app:layout_constraintStart_toStartOf="@+id/login_password_input_container"
-        app:layout_constraintTop_toTopOf="@+id/linkWiki">
+        app:layout_constraintStart_toStartOf="@+id/note_input_container"
+        app:layout_constraintTop_toBottomOf="@+id/saveNoteBtn">
 
         <TextView
             android:id="@+id/noteTxtView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:text="Вкладыши жвачек - это маленькие карточки с изображениями различных автомобилей, которые можно найти внутри упаковок жевательной резинки. Они являются популярным среди детей и коллекционеров, так как позволяют собрать коллекцию разных моделей автомобилей. Каждый вкладыш обычно содержит название марки и модели машины, а также ее основные характеристики. Собирание вкладышей жвачек про машины может стать увлекательным хобби для автомобильных энтузиастов всех возрастов"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
