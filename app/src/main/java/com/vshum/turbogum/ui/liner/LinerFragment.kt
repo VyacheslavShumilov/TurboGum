@@ -80,6 +80,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
             CoroutineScope(Dispatchers.IO).launch {
                 val linerFavourite = LinersFavourite(
                     0,
+                    liner.uniqueNumber,
                     liner.id,
                     liner.numberLiner,
                     liner.brand,
@@ -100,7 +101,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
         }
 
         lifecycleScope.launch(Dispatchers.IO) {
-            val linerFav = (context?.applicationContext as App).getDatabase().linersDao().getLinerFavorite(liner.numberLiner)
+            val linerFav = (context?.applicationContext as App).getDatabase().linersDao().getLinerFavorite(liner.uniqueNumber)
             linerFav.let { data ->
                 withContext(Dispatchers.Main) {
                     @Suppress("SENSELESS_COMPARISON")

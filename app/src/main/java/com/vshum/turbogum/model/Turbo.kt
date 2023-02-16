@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class Liner(
+    @SerializedName("UniqueNumber") val uniqueNumber: String,
     @SerializedName("Id") val id: String,
     @SerializedName("NumberLiner") val numberLiner: String,
     @SerializedName("Brand") val brand: String,

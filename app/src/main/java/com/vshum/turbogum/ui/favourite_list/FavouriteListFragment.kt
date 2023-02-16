@@ -42,6 +42,8 @@ class FavouriteListFragment : Fragment(), AdapterLinersFavList.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        appNavigator = (context?.applicationContext as App).servicesLocator.providerNavigatorParamLinerFav(requireActivity())
+
         showProgress(true)
         appDao = (context?.applicationContext as App).getDatabase().linersDao()
         lifecycleScope.launch(Dispatchers.IO) {
@@ -91,10 +93,6 @@ class FavouriteListFragment : Fragment(), AdapterLinersFavList.OnClickListener {
         }
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        appNavigator = (context.applicationContext as App).servicesLocator.providerNavigatorParamLinerFav(requireActivity())
-    }
 
     override fun onClickLinerFavorite(linersFav: LinersFavourite) {
         appNavigator.navigateToParamLinerFav(ScreenParamLinerFav.FAVORITE_LINER, linersFav)
@@ -118,6 +116,4 @@ class FavouriteListFragment : Fragment(), AdapterLinersFavList.OnClickListener {
             binding.recyclerView.adapter = adapterLinersFav
         }
     }
-
-
 }

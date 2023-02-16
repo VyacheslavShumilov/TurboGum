@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "linersFavourite")
 data class LinersFavourite(
     @PrimaryKey(autoGenerate = true) val key: Int,
+    @ColumnInfo(name = "uniqueNumber") val uniqueNumber: String,
     @ColumnInfo(name = "id") val id: String,
     @ColumnInfo(name ="numberLiner") val numberLiner: String,
     @ColumnInfo(name ="brand") val brand: String,

@@ -23,7 +23,7 @@ class AdapterLinersFavList(
 
                 imageBtnDelete.setOnClickListener {
                     listener.onDeleteFavorite(linersFavourite)
-                    notifyDataSetChanged()
+                    //notifyDataSetChanged()
                     deleteItem(linersFavourite)
                     notifyDataSetChanged()
                 }

@@ -18,17 +18,16 @@ interface LinersDao {
     @Query("SELECT * FROM linersFavourite ORDER BY id DESC")
     fun getAllFavouriteLiners(): List<LinersFavourite>
 
-    @Query("SELECT * FROM linersFavourite WHERE numberLiner =:numberLiner")
-    fun getLinerFavorite(numberLiner: String): LinersFavourite
+    @Query("SELECT * FROM linersFavourite WHERE uniqueNumber =:uniqueNumber")
+    fun getLinerFavorite(uniqueNumber: String): LinersFavourite
 
-    @Query("UPDATE linersFavourite SET note = :note  WHERE numberLiner =:numberLiner")
-    fun editNoteLiner(numberLiner: String, note:String)
+    @Query("UPDATE linersFavourite SET note = :note  WHERE uniqueNumber =:uniqueNumber")
+    fun editNoteLiner(uniqueNumber: String, note:String)
 
     /***
-     * Запрос выбирает заметку (note) для строки, где номер вкладыша (numberLiner) равен заданному.
+     * Запрос выбирает заметку (note) для строки, где номер вкладыша (uniqueNumber) равен заданному.
      */
-    @Query("SELECT note FROM linersFavourite WHERE numberLiner = :numberLiner")
-    fun getNoteLiner(numberLiner: String): String
-
+    @Query("SELECT note FROM linersFavourite WHERE uniqueNumber = :uniqueNumber")
+    fun getNoteLiner(uniqueNumber: String): String
 
 }

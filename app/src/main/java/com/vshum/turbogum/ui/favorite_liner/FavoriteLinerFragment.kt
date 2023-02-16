@@ -40,7 +40,7 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
 
         // Извлекаем заметку из базы данных
             lifecycleScope.launch(Dispatchers.IO) {
-                addedNote = appDao.getNoteLiner(linerFav.numberLiner)
+                addedNote = appDao.getNoteLiner(linerFav.uniqueNumber)
                 withContext(Dispatchers.Main) {
                     if (addedNote != "-") {
                         binding.noteTxtView.text = addedNote // устанавливаем значение в поле noteTxtView
@@ -78,7 +78,7 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
         binding.saveNoteBtn.setOnClickListener {
             val note = binding.noteInput.text.toString()
             lifecycleScope.launch(Dispatchers.IO) {
-                appDao.editNoteLiner(linerFav.numberLiner, note)
+                appDao.editNoteLiner(linerFav.uniqueNumber, note)
                 withContext(Dispatchers.Main) {
                     binding.noteTxtView.text = note
                 }
