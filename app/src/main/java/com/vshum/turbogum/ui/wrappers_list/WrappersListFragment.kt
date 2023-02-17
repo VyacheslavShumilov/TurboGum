@@ -65,24 +65,24 @@ class WrappersListFragment : Fragment() {
             imageBtnSport2.setOnClickListener {
                 appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Sport 2")
             }
-            imageBtnSport3.setOnClickListener {
-                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Sport 3")
-            }
-            imageBtnSport4.setOnClickListener {
-                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Sport 4")
-            }
-            imageBtnSport5.setOnClickListener {
-                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Sport 5")
-            }
+//            imageBtnSport3.setOnClickListener {
+//                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Sport 3")
+//            }
+//            imageBtnSport4.setOnClickListener {
+//                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Sport 4")
+//            }
+//            imageBtnSport5.setOnClickListener {
+//                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Sport 5")
+//            }
             imageBtnClassic1.setOnClickListener {
                 appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Classic 1")
             }
             imageBtnClassic2.setOnClickListener {
                 appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Classic 2")
             }
-            imageBtnPower.setOnClickListener {
-                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Power")
-            }
+//            imageBtnPower.setOnClickListener {
+//                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Power")
+//            }
         }
     }
 }

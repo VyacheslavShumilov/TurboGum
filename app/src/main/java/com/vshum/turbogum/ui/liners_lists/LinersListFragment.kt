@@ -33,12 +33,12 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
     lateinit var linersSuper3List: ArrayList<Liner>
     lateinit var linersSport1List: ArrayList<Liner>
     lateinit var linersSport2List: ArrayList<Liner>
-    lateinit var linersSport3List: ArrayList<Liner>
-    lateinit var linersSport4List: ArrayList<Liner>
-    lateinit var linersSport5List: ArrayList<Liner>
+//    lateinit var linersSport3List: ArrayList<Liner>
+//    lateinit var linersSport4List: ArrayList<Liner>
+//    lateinit var linersSport5List: ArrayList<Liner>
     lateinit var linersClassic1List: ArrayList<Liner>
     lateinit var linersClassic2List: ArrayList<Liner>
-    lateinit var linersPowerList: ArrayList<Liner>
+//    lateinit var linersPowerList: ArrayList<Liner>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,12 +66,12 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
         linersSuper3List = ArrayList()
         linersSport1List = ArrayList()
         linersSport2List = ArrayList()
-        linersSport3List = ArrayList()
-        linersSport4List = ArrayList()
-        linersSport5List = ArrayList()
+//        linersSport3List = ArrayList()
+//        linersSport4List = ArrayList()
+//        linersSport5List = ArrayList()
         linersClassic1List = ArrayList()
         linersClassic2List = ArrayList()
-        linersPowerList = ArrayList()
+//        linersPowerList = ArrayList()
 
         presenter = LinersListPresenterImpl()
         presenter.attachView(this)
@@ -92,12 +92,12 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
                     "Super 3" -> linersSuper3List.add(i)
                     "Sport 1" -> linersSport1List.add(i)
                     "Sport 2"-> linersSport2List.add(i)
-                    "Sport 3"-> linersSport3List.add(i)
-                    "Sport 4"-> linersSport4List.add(i)
-                    "Sport 5"-> linersSport5List.add(i)
+//                    "Sport 3"-> linersSport3List.add(i)
+//                    "Sport 4"-> linersSport4List.add(i)
+//                    "Sport 5"-> linersSport5List.add(i)
                     "Classic 1"-> linersClassic1List.add(i)
                     "Classic 2"-> linersClassic2List.add(i)
-                    "Power"-> linersPowerList.add(i)
+//                    "Power"-> linersPowerList.add(i)
                 }
             }
         }
@@ -145,18 +145,18 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
                 linersList.addAll(linersSport2List)
                 initRecyclerView(linersList)
             }
-            "Sport 3" -> {
-                linersList.addAll(linersSport3List)
-                initRecyclerView(linersList)
-            }
-            "Sport 4" -> {
-                linersList.addAll(linersSport4List)
-                initRecyclerView(linersList)
-            }
-            "Sport 5" -> {
-                linersList.addAll(linersSport5List)
-                initRecyclerView(linersList)
-            }
+//            "Sport 3" -> {
+//                linersList.addAll(linersSport3List)
+//                initRecyclerView(linersList)
+//            }
+//            "Sport 4" -> {
+//                linersList.addAll(linersSport4List)
+//                initRecyclerView(linersList)
+//            }
+//            "Sport 5" -> {
+//                linersList.addAll(linersSport5List)
+//                initRecyclerView(linersList)
+//            }
             "Classic 1" -> {
                 linersList.addAll(linersClassic1List)
                 initRecyclerView(linersList)
@@ -165,10 +165,10 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
                 linersList.addAll(linersClassic2List)
                 initRecyclerView(linersList)
             }
-            "Power" -> {
-                linersList.addAll(linersPowerList)
-                initRecyclerView(linersList)
-            }
+//            "Power" -> {
+//                linersList.addAll(linersPowerList)
+//                initRecyclerView(linersList)
+//            }
         }
     }
 
