@@ -32,7 +32,7 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
 
         /***
          * Нужно инициализировать свойство "linersDao" перед его использованием. Одним из способов сделать это является инициализация свойства в методе "onCreateView" до того, как вы вызываете метод "launch" в блоке "lifecycleScope"
-         */
+         */5
         appDao = (context?.applicationContext as App).getDatabase().linersDao()
 
         initIcons()

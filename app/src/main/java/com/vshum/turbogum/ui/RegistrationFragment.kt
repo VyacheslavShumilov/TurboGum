@@ -1,7 +1,9 @@
 package com.vshum.turbogum.ui
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -83,6 +85,12 @@ class RegistrationFragment : Fragment() {
 
             helpButton.setOnClickListener {
                 appNavigator.navigateTo(Screen.HELP_SCREEN)
+            }
+
+            policyTxt.setOnClickListener {
+                val uri: Uri = Uri.parse(Constants.POLICY)
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
             }
         }
     }

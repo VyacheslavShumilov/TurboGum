@@ -36,8 +36,6 @@ class AdapterLinersList(
         val liner = linersList[position]
         with(holder.binding) {
             Picasso.get().load(liner.imageUrlLiner).into(linerImageView)
-//            linerNumberTxtView.text = liner.numberLiner
-//            linerBrandTxtView.text = liner.brand
             holder.bindView(liner)
         }
     }

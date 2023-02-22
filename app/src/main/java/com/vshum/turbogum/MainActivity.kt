@@ -7,6 +7,7 @@ import android.view.WindowManager
 import com.vshum.turbogum.databinding.ActivityMainBinding
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
+import com.vshum.turbogum.ui.liners_lists.LinersListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,11 +26,18 @@ class MainActivity : AppCompatActivity() {
             appNavigator.navigateTo(Screen.START_SCREEN)
         }
     }
-
     override fun onBackPressed() {
-        super.onBackPressed()
-        if (supportFragmentManager.backStackEntryCount == 0) {
-            finish()
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStack()
+        } else {
+            super.onBackPressed()
         }
     }
+
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        if (supportFragmentManager.backStackEntryCount == 0) {
+//            finish()
+//        }
+//    }
 }

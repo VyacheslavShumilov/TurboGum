@@ -13,8 +13,8 @@ android {
         applicationId "com.vshum.turbogum"
         minSdk 24
         targetSdk 33
-        versionCode 3
-        versionName "3.0"
+        versionCode 5
+        versionName "5.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -69,6 +69,7 @@ dependencies {
 
     implementation "androidx.room:room-runtime:2.5.0"
     kapt "androidx.room:room-compiler:2.5.0"
+    implementation "androidx.room:room-ktx:2.5.0"
 
 
     //coroutines
@@ -82,7 +83,8 @@ dependencies {
     // Lifecycles only (without ViewModel or LiveData)
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 
-
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
 
 
 

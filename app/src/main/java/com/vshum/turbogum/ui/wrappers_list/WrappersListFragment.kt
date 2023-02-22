@@ -37,6 +37,7 @@ class WrappersListFragment : Fragment() {
 
             imageBtnSeries1.setOnClickListener {
                 appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Серия 1")
+
             }
             imageBtnSeries2.setOnClickListener {
                 appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Серия 2")

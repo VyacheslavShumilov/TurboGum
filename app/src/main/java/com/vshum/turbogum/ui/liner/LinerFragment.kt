@@ -18,6 +18,7 @@ import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.model.LinersFavourite
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
+import com.vshum.turbogum.navigator.ScreenParamWrapper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -125,6 +126,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
         appNavigator =
             (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
     }
+
 }
 
 

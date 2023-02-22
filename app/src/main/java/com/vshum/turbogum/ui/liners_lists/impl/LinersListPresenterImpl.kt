@@ -16,7 +16,7 @@ class LinersListPresenterImpl : LinersListContract.Presenter {
         mvpView?.let { view ->
             view.progress(true)
             api.getLinersList().enqueue(object : Callback<ArrayList<Liner>> {
-                override fun onResponse(
+                    override fun onResponse(
                     call: Call<ArrayList<Liner>>,
                     response: Response<ArrayList<Liner>>
                 ) {
