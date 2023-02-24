@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--    В этом файле мы создаем анимацию, которая изменяет альфа-канал с 1.0 до 0.5 за 100 миллисекунд-->
-<!--    Кнопка будет изменять свой альфа-канал, что создаст эффект затухания.-->
+<!--    Кнопка btn_to_favourite из LinerFragment будет изменять свой альфа-канал, что создаст эффект затухания.-->
+<!--    Свойство fromAlpha определяет начальную прозрачность элемента, toAlpha определяет конечную прозрачность, а duration устанавливает продолжительность анимации в миллисекундах.-->
+
 <alpha xmlns:android="http://schemas.android.com/apk/res/android"
     android:fromAlpha="1.0"
-    android:toAlpha="0.5"
-    android:duration="500" />
+    android:toAlpha="0.3"
+    android:duration="400" />

@@ -4,10 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -73,14 +74,24 @@ class LinerFragment(var liner: Liner) : Fragment() {
 
         binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_border))
 
-        val alphaAnimation = AlphaAnimation(0.2f, 1.0f)
-        alphaAnimation.duration = 300
-        //val fadeOut = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_out)
+
+        val fadeOut = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_out)
         binding.btnToFavourite.setOnClickListener {
-            appNavigator.navigateTo(Screen.FAVOURITE)
-            binding.btnToFavourite.startAnimation(alphaAnimation)
 
+            //Запуск анимации кнопки
+            binding.btnToFavourite.startAnimation(fadeOut)
 
+            /***
+             * Handler - это класс, который позволяет отправлять и обрабатывать сообщения и задачи из очереди в потоке, к которому он привязан.
+             * В данном случае, мы создаем новый экземпляр Handler и указываем Looper.myLooper()!! в качестве аргумента конструктора,
+             * чтобы связать его с текущим потоком.
+             * Looper отвечает за обработку цикла сообщений в потоке. postDelayed - это метод класса Handler, который позволяет запланировать выполнение задачи через определенное время.
+             * В данном случае, мы запускаем задачу, которая открывает фрагмент Screen.FAVOURITE через 500 миллисекунд.
+             * Таким образом, данный код позволяет сделать задержку в 500 миллисекунд перед переходом на другой фрагмент, чтобы анимация кнопки успела выполниться.
+             */
+            Handler(Looper.myLooper()!!).postDelayed({
+                appNavigator.navigateTo(Screen.FAVOURITE)
+            }, 400)
         }
 
         binding.btnAddFavourite.setOnClickListener {
@@ -103,7 +114,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 (context?.applicationContext as App).getDatabase().linersDao()
                     .insertLiner(linerFavourite)
             }
-            // запуск анимации
+            // запуск анимации Изменение размеров
             val scaleAnim = AnimationUtils.loadAnimation(requireContext(), R.anim.btn_scale_anim)
             binding.btnAddFavourite.startAnimation(scaleAnim)
 
