@@ -72,7 +72,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
             }
         }
 
-        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_border))
+        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_outlined))
 
 
         val fadeOut = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_out)
@@ -83,8 +83,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
 
             /***
              * Handler - это класс, который позволяет отправлять и обрабатывать сообщения и задачи из очереди в потоке, к которому он привязан.
-             * В данном случае, мы создаем новый экземпляр Handler и указываем Looper.myLooper()!! в качестве аргумента конструктора,
-             * чтобы связать его с текущим потоком.
+             * В данном случае, мы создаем новый экземпляр Handler и указываем Looper.myLooper()!! в качестве аргумента конструктора, чтобы связать его с текущим потоком.
              * Looper отвечает за обработку цикла сообщений в потоке. postDelayed - это метод класса Handler, который позволяет запланировать выполнение задачи через определенное время.
              * В данном случае, мы запускаем задачу, которая открывает фрагмент Screen.FAVOURITE через 500 миллисекунд.
              * Таким образом, данный код позволяет сделать задержку в 500 миллисекунд перед переходом на другой фрагмент, чтобы анимация кнопки успела выполниться.
@@ -118,7 +117,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
             val scaleAnim = AnimationUtils.loadAnimation(requireContext(), R.anim.btn_scale_anim)
             binding.btnAddFavourite.startAnimation(scaleAnim)
 
-            binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_filled))
+            binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav))
             binding.btnAddFavourite.isClickable = false
         }
 
@@ -129,9 +128,9 @@ class LinerFragment(var liner: Liner) : Fragment() {
                     @Suppress("SENSELESS_COMPARISON")
                     binding.btnAddFavourite.isClickable = data == null
                     if (binding.btnAddFavourite.isClickable) {
-                        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_border))
+                        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_outlined))
                     } else {
-                        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_filled))
+                        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav))
                     }
                 }
             }

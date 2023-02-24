@@ -166,10 +166,11 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveNoteBtn"
         style="@style/Widget.Material3.Button.IconButton.Filled"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:text="Сохранить"
+        app:layout_constraintStart_toStartOf="@+id/note_input_container"
         app:layout_constraintEnd_toEndOf="@+id/note_input_container"
         app:layout_constraintTop_toBottomOf="@+id/note_input_container"
         app:strokeColor="@color/black"
