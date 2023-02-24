@@ -3,21 +3,27 @@ package com.vshum.turbogum.ui.liners_lists
 import androidx.lifecycle.ViewModel
 import com.vshum.turbogum.model.Liner
 
+/***
+ * LinersListViewModel нужна для хранения списков вкладышей по сериям.
+ * Также она позволяет только один раз выполнить запрос в сеть и получить ВЕСЬ список вкладышей, далее сортировка проводится с данными сохраненными локально
+ * В предыдущей реализации каждый раз, когда переходишь из списка на вкладыш или из оберток на список выполнялся запрос в сеть
+ */
+
 class LinersListViewModel : ViewModel() {
     var linersListLocal = arrayListOf<Liner>()
 
-    var linersSeries1List = arrayListOf<Liner>()
-    var linersSeries2List = arrayListOf<Liner>()
-    var linersSeries3List = arrayListOf<Liner>()
-    var linersSeries4List = arrayListOf<Liner>()
-    var linersSeries5List = arrayListOf<Liner>()
-    var linersSuper1List = arrayListOf<Liner>()
-    var linersSuper2List = arrayListOf<Liner>()
-    var linersSuper3List = arrayListOf<Liner>()
-    var linersSport1List = arrayListOf<Liner>()
-    var linersSport2List = arrayListOf<Liner>()
-    var linersClassic1List = arrayListOf<Liner>()
-    var linersClassic2List = arrayListOf<Liner>()
+    var series1List = arrayListOf<Liner>()
+    var series2List = arrayListOf<Liner>()
+    var series3List = arrayListOf<Liner>()
+    var series4List = arrayListOf<Liner>()
+    var series5List = arrayListOf<Liner>()
+    var super1List = arrayListOf<Liner>()
+    var super2List = arrayListOf<Liner>()
+    var super3List = arrayListOf<Liner>()
+    var sport1List = arrayListOf<Liner>()
+    var sport2List = arrayListOf<Liner>()
+    var classic1List = arrayListOf<Liner>()
+    var classic2List = arrayListOf<Liner>()
 //        linersPowerList = ArrayList()
 //        linersSport3List = ArrayList()
 //        linersSport4List = ArrayList()

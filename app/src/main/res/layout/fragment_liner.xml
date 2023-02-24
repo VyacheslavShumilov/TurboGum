@@ -54,8 +54,8 @@
         android:autoLink="all"
         android:src="@drawable/video"
         app:layout_constraintBottom_toTopOf="@+id/linkVk"
-        app:layout_constraintEnd_toEndOf="@+id/btn_to_favourite"
-        app:layout_constraintStart_toStartOf="@+id/btn_to_favourite"
+        app:layout_constraintEnd_toEndOf="@+id/btn_add_favourite"
+        app:layout_constraintStart_toStartOf="@+id/btn_add_favourite"
         app:layout_constraintTop_toBottomOf="@+id/btn_to_favourite"
         app:layout_constraintVertical_bias="0.5" />
 
@@ -66,9 +66,9 @@
         android:autoLink="all"
         android:src="@drawable/vk"
         app:layout_constraintBottom_toTopOf="@+id/linkWiki"
-        app:layout_constraintEnd_toEndOf="@+id/linkVideo"
+        app:layout_constraintEnd_toEndOf="@+id/btn_add_favourite"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="@+id/linkVideo"
+        app:layout_constraintStart_toStartOf="@+id/btn_add_favourite"
         app:layout_constraintTop_toBottomOf="@+id/linkVideo"
         app:layout_constraintVertical_bias="0.5" />
 
@@ -79,8 +79,8 @@
         android:autoLink="all"
         android:src="@drawable/wiki"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linkVk"
-        app:layout_constraintStart_toStartOf="@+id/linkVk"
+        app:layout_constraintEnd_toEndOf="@+id/btn_add_favourite"
+        app:layout_constraintStart_toStartOf="@+id/btn_add_favourite"
         app:layout_constraintTop_toBottomOf="@+id/linkVk"
         app:layout_constraintVertical_bias="0.5" />
 

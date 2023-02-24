@@ -24,9 +24,9 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
     private lateinit var binding: FragmentLinersListBinding
     private lateinit var presenter: LinersListPresenterImpl
     private lateinit var appNavigatorParamLiner: AppNavigatorParamLiner
-    private lateinit var linersListViewModel: LinersListViewModel
+    private lateinit var viewModel: LinersListViewModel
 
-    private val linersListLocal: ArrayList<Liner> by lazy { linersListViewModel.linersListLocal }
+    private val linersListLocal: ArrayList<Liner> by lazy { viewModel.linersListLocal }
 
 
     override fun onCreateView(
@@ -40,42 +40,50 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        linersListViewModel =
+        viewModel =
             ViewModelProvider(requireActivity()).get(LinersListViewModel::class.java)
 
-        if (linersListViewModel.linersSeries1List.isEmpty() ||
-            linersListViewModel.linersSeries2List.isEmpty() ||
-            linersListViewModel.linersSeries3List.isEmpty() ||
-            linersListViewModel.linersSeries4List.isEmpty() ||
-            linersListViewModel.linersSeries5List.isEmpty() ||
-            linersListViewModel.linersSuper1List.isEmpty() ||
-            linersListViewModel.linersSuper2List.isEmpty() ||
-            linersListViewModel.linersSuper3List.isEmpty() ||
-            linersListViewModel.linersSport1List.isEmpty() ||
-            linersListViewModel.linersSport2List.isEmpty() ||
-            linersListViewModel.linersClassic1List.isEmpty() ||
-            linersListViewModel.linersClassic2List.isEmpty()
+        if (viewModel.series1List.isEmpty() ||
+            viewModel.series2List.isEmpty() ||
+            viewModel.series3List.isEmpty() ||
+            viewModel.series4List.isEmpty() ||
+            viewModel.series5List.isEmpty() ||
+            viewModel.super1List.isEmpty() ||
+            viewModel.super2List.isEmpty() ||
+            viewModel.super3List.isEmpty() ||
+            viewModel.sport1List.isEmpty() ||
+            viewModel.sport2List.isEmpty() ||
+            viewModel.classic1List.isEmpty() ||
+            viewModel.classic2List.isEmpty()
         ) {
             presenter = LinersListPresenterImpl()
             presenter.attachView(this)
             presenter.responseData()
         } else {
             when (series) {
-                "Серия 1" -> initRecyclerView(linersListViewModel.linersSeries1List)
-                "Серия 2" -> initRecyclerView(linersListViewModel.linersSeries2List)
-                "Серия 3" -> initRecyclerView(linersListViewModel.linersSeries3List)
-                "Серия 4" -> initRecyclerView(linersListViewModel.linersSeries4List)
-                "Серия 5" -> initRecyclerView(linersListViewModel.linersSeries5List)
-                "Super 1" -> initRecyclerView(linersListViewModel.linersSuper1List)
-                "Super 2" -> initRecyclerView(linersListViewModel.linersSuper2List)
-                "Super 3" -> initRecyclerView(linersListViewModel.linersSuper3List)
-                "Sport 1" -> initRecyclerView(linersListViewModel.linersSport1List)
-                "Sport 2" -> initRecyclerView(linersListViewModel.linersSport2List)
-                "Classic 1" -> initRecyclerView(linersListViewModel.linersClassic1List)
-                "Classic 2" -> initRecyclerView(linersListViewModel.linersClassic2List)
+                "Серия 1" -> initRecyclerView(viewModel.series1List)
+                "Серия 2" -> initRecyclerView(viewModel.series2List)
+                "Серия 3" -> initRecyclerView(viewModel.series3List)
+                "Серия 4" -> initRecyclerView(viewModel.series4List)
+                "Серия 5" -> initRecyclerView(viewModel.series5List)
+                "Super 1" -> initRecyclerView(viewModel.super1List)
+                "Super 2" -> initRecyclerView(viewModel.super2List)
+                "Super 3" -> initRecyclerView(viewModel.super3List)
+                "Sport 1" -> initRecyclerView(viewModel.sport1List)
+                "Sport 2" -> initRecyclerView(viewModel.sport2List)
+                "Classic 1" -> initRecyclerView(viewModel.classic1List)
+                "Classic 2" -> initRecyclerView(viewModel.classic2List)
             }
         }
     }
+
+    /***
+     * Сортирока вкладышей по принципу:
+     * - юзер кликнул на обертку, в этот фрагмент передается (series: String)
+     * - получаю полный список из БД
+     * - фильтрую полный список по series и добавляю отфильтрованный список в список ViewModel'и
+     * - передаю отфильтрованный список в адаптер и отображаю на экране
+     */
 
     override fun onSuccessList(linersList: ArrayList<Liner>) {
         // Update cached data
@@ -85,77 +93,77 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
         when (series) {
             "Серия 1" -> {
                 val filteredItems = linersListLocal.filter { it.series == series }
-                linersListViewModel.linersSeries1List.clear()
-                linersListViewModel.linersSeries1List.addAll(filteredItems)
-                initRecyclerView(linersListViewModel.linersSeries1List)
+                viewModel.series1List.clear()
+                viewModel.series1List.addAll(filteredItems)
+                initRecyclerView(viewModel.series1List)
             }
             "Серия 2" -> {
                 val filteredItems = linersListLocal.filter { it.series == series }
-                linersListViewModel.linersSeries2List.clear()
-                linersListViewModel.linersSeries2List.addAll(filteredItems)
-                initRecyclerView(linersListViewModel.linersSeries2List)
+                viewModel.series2List.clear()
+                viewModel.series2List.addAll(filteredItems)
+                initRecyclerView(viewModel.series2List)
             }
             "Серия 3" -> {
                 val filteredItems = linersListLocal.filter { it.series == series }
-                linersListViewModel.linersSeries3List.clear()
-                linersListViewModel.linersSeries3List.addAll(filteredItems)
-                initRecyclerView(linersListViewModel.linersSeries3List)
+                viewModel.series3List.clear()
+                viewModel.series3List.addAll(filteredItems)
+                initRecyclerView(viewModel.series3List)
 
             }
             "Серия 4" -> {
                 val filteredItems = linersListLocal.filter { it.series == series }
-                linersListViewModel.linersSeries4List.clear()
-                linersListViewModel.linersSeries4List.addAll(filteredItems)
-                initRecyclerView(linersListViewModel.linersSeries4List)
+                viewModel.series4List.clear()
+                viewModel.series4List.addAll(filteredItems)
+                initRecyclerView(viewModel.series4List)
 
             }
             "Серия 5" -> {
                 val filteredItems = linersListLocal.filter { it.series == series }
-                linersListViewModel.linersSeries5List.clear()
-                linersListViewModel.linersSeries5List.addAll(filteredItems)
-                initRecyclerView(linersListViewModel.linersSeries5List)
+                viewModel.series5List.clear()
+                viewModel.series5List.addAll(filteredItems)
+                initRecyclerView(viewModel.series5List)
             }
             "Super 1" -> {
                 val filteredItems = linersListLocal.filter { it.series == series }
-                linersListViewModel.linersSuper1List.clear()
-                linersListViewModel.linersSuper1List.addAll(filteredItems)
-                initRecyclerView(linersListViewModel.linersSuper1List)
+                viewModel.super1List.clear()
+                viewModel.super1List.addAll(filteredItems)
+                initRecyclerView(viewModel.super1List)
             }
             "Super 2" -> {
                 val filteredItems = linersListLocal.filter { it.series == series }
-                linersListViewModel.linersSuper2List.clear()
-                linersListViewModel.linersSuper2List.addAll(filteredItems)
-                initRecyclerView(linersListViewModel.linersSuper2List)
+                viewModel.super2List.clear()
+                viewModel.super2List.addAll(filteredItems)
+                initRecyclerView(viewModel.super2List)
             }
             "Super 3" -> {
                 val filteredItems = linersListLocal.filter { it.series == series }
-                linersListViewModel.linersSuper3List.clear()
-                linersListViewModel.linersSuper3List.addAll(filteredItems)
-                initRecyclerView(linersListViewModel.linersSuper3List)
+                viewModel.super3List.clear()
+                viewModel.super3List.addAll(filteredItems)
+                initRecyclerView(viewModel.super3List)
             }
             "Sport 1" -> {
                 val filteredItems = linersListLocal.filter { it.series == series }
-                linersListViewModel.linersSport1List.clear()
-                linersListViewModel.linersSport1List.addAll(filteredItems)
-                initRecyclerView(linersListViewModel.linersSport1List)
+                viewModel.sport1List.clear()
+                viewModel.sport1List.addAll(filteredItems)
+                initRecyclerView(viewModel.sport1List)
             }
             "Sport 2" -> {
                 val filteredItems = linersListLocal.filter { it.series == series }
-                linersListViewModel.linersSport2List.clear()
-                linersListViewModel.linersSport2List.addAll(filteredItems)
-                initRecyclerView(linersListViewModel.linersSport2List)
+                viewModel.sport2List.clear()
+                viewModel.sport2List.addAll(filteredItems)
+                initRecyclerView(viewModel.sport2List)
             }
             "Classic 1" -> {
                 val filteredItems = linersListLocal.filter { it.series == series }
-                linersListViewModel.linersClassic1List.clear()
-                linersListViewModel.linersClassic1List.addAll(filteredItems)
-                initRecyclerView(linersListViewModel.linersClassic1List)
+                viewModel.classic1List.clear()
+                viewModel.classic1List.addAll(filteredItems)
+                initRecyclerView(viewModel.classic1List)
             }
             "Classic 2" -> {
                 val filteredItems = linersListLocal.filter { it.series == series }
-                linersListViewModel.linersClassic2List.clear()
-                linersListViewModel.linersClassic2List.addAll(filteredItems)
-                initRecyclerView(linersListViewModel.linersClassic2List)
+                viewModel.classic2List.clear()
+                viewModel.classic2List.addAll(filteredItems)
+                initRecyclerView(viewModel.classic2List)
             }
         }
     }
