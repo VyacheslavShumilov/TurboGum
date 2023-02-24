@@ -7,7 +7,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.view.animation.AlphaAnimation
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.squareup.picasso.Picasso
@@ -18,7 +19,6 @@ import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.model.LinersFavourite
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
-import com.vshum.turbogum.navigator.ScreenParamWrapper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -73,8 +73,14 @@ class LinerFragment(var liner: Liner) : Fragment() {
 
         binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_border))
 
+        val alphaAnimation = AlphaAnimation(0.2f, 1.0f)
+        alphaAnimation.duration = 300
+        //val fadeOut = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_out)
         binding.btnToFavourite.setOnClickListener {
             appNavigator.navigateTo(Screen.FAVOURITE)
+            binding.btnToFavourite.startAnimation(alphaAnimation)
+
+
         }
 
         binding.btnAddFavourite.setOnClickListener {
@@ -97,6 +103,10 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 (context?.applicationContext as App).getDatabase().linersDao()
                     .insertLiner(linerFavourite)
             }
+            // запуск анимации
+            val scaleAnim = AnimationUtils.loadAnimation(requireContext(), R.anim.btn_scale_anim)
+            binding.btnAddFavourite.startAnimation(scaleAnim)
+
             binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_filled))
             binding.btnAddFavourite.isClickable = false
         }

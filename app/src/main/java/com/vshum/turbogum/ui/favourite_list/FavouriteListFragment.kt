@@ -2,6 +2,7 @@ package com.vshum.turbogum.ui.favourite_list
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +31,10 @@ class FavouriteListFragment : Fragment(), AdapterLinersFavList.OnClickListener {
     private lateinit var appNavigator: AppNavigatorParamLinerFav
     private var favorite: ArrayList<LinersFavourite> = arrayListOf()
 
+    //для проверки ошибки index bound of exception
+    private val TAG = "FavouriteListFragment"
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,12 +53,17 @@ class FavouriteListFragment : Fragment(), AdapterLinersFavList.OnClickListener {
         appDao = (context?.applicationContext as App).getDatabase().linersDao()
         lifecycleScope.launch(Dispatchers.IO) {
             favorite.addAll(appDao.getAllFavouriteLiners())
-            showProgress(false)
-            adapterLinersFav = AdapterLinersFavList(favorite, this@FavouriteListFragment)
-            binding.recyclerView.adapter = adapterLinersFav
-            setRecyclerViewAutoFit(binding.recyclerView)
 
             withContext(Dispatchers.Main) {
+                showProgress(false)
+            }
+            adapterLinersFav = AdapterLinersFavList(favorite, this@FavouriteListFragment)
+
+
+            withContext(Dispatchers.Main) {
+                binding.recyclerView.adapter = adapterLinersFav
+                setRecyclerViewAutoFit(binding.recyclerView)
+
                 if (favorite.size == 0) {
                     Toast.makeText(requireActivity(), "Список пуст", Toast.LENGTH_SHORT).show()
                 }
@@ -82,7 +92,12 @@ class FavouriteListFragment : Fragment(), AdapterLinersFavList.OnClickListener {
     private fun calculateNoOfColumns(context: Context): Int {
         val displayMetrics = context.resources.displayMetrics
         val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
-        return (screenWidthDp / 180 + 0.5).toInt()
+        val noOfColumns = (screenWidthDp / 180 + 0.5).toInt()
+
+        Log.d(TAG, "Screen width: ${displayMetrics.widthPixels}, density: ${displayMetrics.density}, dp: $screenWidthDp, noOfColumns: $noOfColumns")
+        return noOfColumns
+        //Приведенный выше код будет регистрировать значения ширины экрана, плотности, dp и noOfColumns каждый раз, когда вызывается функция calculateNoOfColumns. Затем Можно проверить журналы в logcat, чтобы увидеть возвращаемые значения.
+
     }
 
     private fun showProgress(show: Boolean) {

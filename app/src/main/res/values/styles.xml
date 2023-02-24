@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    <style name="ButtonFavStyle">-->
+<!--        <item name="android:background">@drawable/btn_fav_border</item>-->
+<!--        <item name="android:tint">@color/btn_fav_unselected</item>-->
+<!--        <item name="android:stateListAnimator">@null</item>-->
+<!--    </style>-->
+<!--    <style name="ButtonFavStyle.Selected">-->
+<!--        <item name="android:background">@drawable/btn_fav_filled</item>-->
+<!--        <item name="android:tint">@color/btn_fav_selected</item>-->
+<!--        <item name="android:stateListAnimator">@null</item>-->
+<!--    </style>-->
+</resources>

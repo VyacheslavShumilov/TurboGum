@@ -53,6 +53,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     // Retrofit && Gson lib
@@ -85,6 +86,10 @@ dependencies {
 
     implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
     implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+
+    //Обычно она уже подключена в новых проектах на Kotlin, но если у вас возникают проблемы с ее использованием
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.20"
+
 
 
 
