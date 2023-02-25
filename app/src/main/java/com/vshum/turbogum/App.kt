@@ -2,6 +2,10 @@ package com.vshum.turbogum
 
 import android.app.Application
 import androidx.room.Room
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.initialize
 import com.vshum.turbogum.dao.AppDatabase
 import com.vshum.turbogum.services.ServicesLocator
 
@@ -19,6 +23,9 @@ class App : Application() {
 //            .addMigration(MIGRATION_1_2)
             .fallbackToDestructiveMigration()
             .build()
+
+
+
     }
     /***
      * Можно позволить Room выполнять деструктивные миграции, когда изменяю схему базы данных.
