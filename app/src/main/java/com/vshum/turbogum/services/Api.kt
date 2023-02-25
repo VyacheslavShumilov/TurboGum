@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface Api {
-    @GET(Constants.JSON)
+    @GET(Constants.JSON_LINERS)
     fun getLinersList(): Call<ArrayList<Liner>>
 
     companion object {

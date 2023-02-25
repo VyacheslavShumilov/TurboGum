@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 
 }
 
@@ -13,8 +14,8 @@ android {
         applicationId "com.vshum.turbogum"
         minSdk 24
         targetSdk 33
-        versionCode 5
-        versionName "5.0"
+        versionCode 6
+        versionName "6.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -91,6 +92,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.20"
 
 
-
+    // Import the Firebase BoM
+    implementation 'com.google.firebase:firebase-bom:31.2.2'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.0'
 
 }
