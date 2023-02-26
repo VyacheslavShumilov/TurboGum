@@ -18,6 +18,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.vshum.turbogum.App
 import com.vshum.turbogum.Constants
+import com.vshum.turbogum.R
 import com.vshum.turbogum.databinding.FragmentRegistrationBinding
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
@@ -90,62 +91,84 @@ class RegistrationFragment : Fragment() {
             }
 
             loginButton.setOnClickListener {
+                loginButton.text = ""
+                loginButtonProgress.visibility = View.VISIBLE
+
                 val email = inputEmail.text.toString()
                 val password = inputPassword.text.toString()
                 Log.d(TAG, "Email: $email, Password: $password")
 
-                db.collection("UsersData")
-                    /***
-                     * whereEqualTo() для поиска документов в коллекции UsersData  у которых значение поля "email" совпадает со значением переменной email
-                     * Затем вызывается метод get(), который возвращает результат запроса в виде объекта Task<QuerySnapshot>
-                     */
-                    .whereEqualTo("email", email)
-                    .get()
-                    /***
-                     * При успешном выполнении запроса, метод addOnSuccessListener() вызывается для обработки полученного результата.
-                     * Если запрос выполнен успешно, то переменной result будет присвоено значение объекта QuerySnapshot,
-                     * который содержит все найденные документы из коллекции UsersData, у которых значение поля "email" равно значению переменной email
-                     */
-                    .addOnSuccessListener { result ->
-                        Log.d("SIZE OF DB", "Result size: ${result.size()}")
+                // Добавляем задержку в 1 секунду, чтобы увидеть progressbar на кнопке
+                loginButton.postDelayed({
+                    db.collection("UsersData")
                         /***
-                         * Далее код проверяет, есть ли результаты запроса (result.size() > 0). Если да, то находим первый документ, соответствующий запросу (val user = result.documents[0]),
+                         * whereEqualTo() для поиска документов в коллекции UsersData  у которых значение поля "email" совпадает со значением переменной email
+                         * Затем вызывается метод get(), который возвращает результат запроса в виде объекта Task<QuerySnapshot>
                          */
-                        if (result.size() > 0) {
-                            val user = result.documents[0]
-                            // и проверяем, совпадает ли значение поля "password" этого документа с введенным пользователем паролем.
-                            if (user.getString("password") == password) {
+                        .whereEqualTo("email", email)
+                        .get()
+                        /***
+                         * При успешном выполнении запроса, метод addOnSuccessListener() вызывается для обработки полученного результата.
+                         * Если запрос выполнен успешно, то переменной result будет присвоено значение объекта QuerySnapshot,
+                         * который содержит все найденные документы из коллекции UsersData, у которых значение поля "email" равно значению переменной email
+                         */
+                        .addOnSuccessListener { result ->
+                            Log.d("SIZE OF DB", "Result size: ${result.size()}")
+                            /***
+                             * Далее код проверяет, есть ли результаты запроса (result.size() > 0). Если да, то находим первый документ, соответствующий запросу (val user = result.documents[0]),
+                             */
+                            if (result.size() > 0) {
+                                val user = result.documents[0]
+                                // и проверяем, совпадает ли значение поля "password" этого документа с введенным пользователем паролем.
+                                if (user.getString("password") == password) {
 
-                                /***
-                                 * Пользователь успешно аутентифицирован. Сохраняем пароль в SharedPreferences
-                                 * Метод edit() возвращает объект SharedPreferences.Editor, который используется для редактирования SharedPreferences.
-                                 * Метод putString(key, value) используется для сохранения значения value под ключом key в SharedPreferences.
-                                 * В данном случае, key - это значение константы Constants.PASSWORD, а value - это значение переменной password, которое мы получили от пользователя.
-                                 * Таким образом, sharedPreferences.edit().putString(Constants.PASSWORD, password).apply() сохраняет пароль пользователя в SharedPreferences
-                                 * под ключом Constants.PASSWORD. Мы можем получить это значение позже из любой части приложения, используя тот же самый ключ Constants.PASSWORD.
-                                 */
-                                sharedPreferences.edit().putString(Constants.PASSWORD, password)
-                                    .apply()
+                                    /***
+                                     * Пользователь успешно аутентифицирован. Сохраняем пароль в SharedPreferences
+                                     * Метод edit() возвращает объект SharedPreferences.Editor, который используется для редактирования SharedPreferences.
+                                     * Метод putString(key, value) используется для сохранения значения value под ключом key в SharedPreferences.
+                                     * В данном случае, key - это значение константы Constants.PASSWORD, а value - это значение переменной password, которое мы получили от пользователя.
+                                     * Таким образом, sharedPreferences.edit().putString(Constants.PASSWORD, password).apply() сохраняет пароль пользователя в SharedPreferences
+                                     * под ключом Constants.PASSWORD. Мы можем получить это значение позже из любой части приложения, используя тот же самый ключ Constants.PASSWORD.
+                                     */
+                                    sharedPreferences.edit().putString(Constants.PASSWORD, password)
+                                        .apply()
 
-                                // Переходим на экран WRAPPERS_LIST_SCREEN
-                                appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
+                                    loginButton.text = getString(R.string.login_button_text)
+                                    loginButtonProgress.visibility = View.GONE
+
+
+                                    // Переходим на экран WRAPPERS_LIST_SCREEN
+                                    appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
+                                } else {
+                                    loginButton.text = getString(R.string.login_button_text)
+                                    loginButtonProgress.visibility = View.GONE
+                                    // Неправильный пароль
+                                    Toast.makeText(
+                                        context,
+                                        "Неправильный email или пароль",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
                             } else {
-                                // Неправильный пароль
-                                Toast.makeText(context, "Неправильный email или пароль", Toast.LENGTH_SHORT).show()
+                                loginButton.text = getString(R.string.login_button_text)
+                                loginButtonProgress.visibility = View.GONE
+                                // Если запрос возвращает пустой результат (т.е. result.size() == 0), значит, пользователь с таким email не найден в базе данны
+                                Toast.makeText(
+                                    context,
+                                    "Пользователь не найден",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
-                        } else {
-                            // Если запрос возвращает пустой результат (т.е. result.size() == 0), значит, пользователь с таким email не найден в базе данны
-                            Toast.makeText(context, "Пользователь не найден", Toast.LENGTH_SHORT).show()
                         }
-                    }
-                    /***
-                     * Если выполнение запроса завершается неудачей (например, из-за ошибки сети), то вызывается метод addOnFailureListener(),
-                     * в котором можно обработать ошибку и вывести сообщение об ошибке.
-                     */
-                    .addOnFailureListener { exception ->
-                        Log.d(TAG, "Error getting documents: ", exception)
-                        Toast.makeText(context, "Ошибка авторизации", Toast.LENGTH_SHORT).show()
-                    }
+                        /***
+                         * Если выполнение запроса завершается неудачей (например, из-за ошибки сети), то вызывается метод addOnFailureListener(),
+                         * в котором можно обработать ошибку и вывести сообщение об ошибке.
+                         */
+                        .addOnFailureListener { exception ->
+                            Log.d(TAG, "Error getting documents: ", exception)
+                            Toast.makeText(context, "Ошибка авторизации", Toast.LENGTH_SHORT).show()
+                        }
+                }, 600)
             }
 
 
