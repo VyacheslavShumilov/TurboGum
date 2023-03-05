@@ -168,7 +168,7 @@ class RegistrationFragment : Fragment() {
                             Log.d(TAG, "Error getting documents: ", exception)
                             Toast.makeText(context, "Ошибка авторизации", Toast.LENGTH_SHORT).show()
                         }
-                }, 600)
+                }, 1000)
             }
 
 
