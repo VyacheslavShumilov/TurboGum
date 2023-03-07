@@ -1,5 +1,6 @@
 package com.vshum.turbogum.ui.favorite_liner
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -14,6 +15,8 @@ import com.vshum.turbogum.R
 import com.vshum.turbogum.dao.LinersDao
 import com.vshum.turbogum.databinding.FragmentFavoriteLinerBinding
 import com.vshum.turbogum.model.LinersFavourite
+import com.vshum.turbogum.navigator.AppNavigator
+import com.vshum.turbogum.navigator.Screen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,7 +25,9 @@ import kotlinx.coroutines.withContext
 class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
     private lateinit var binding: FragmentFavoriteLinerBinding
     private lateinit var appDao: LinersDao
-    private  var addedNote: String = ""
+    private var addedNote: String = ""
+    private lateinit var appNavigator: AppNavigator
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,21 +37,32 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
 
         /***
          * Нужно инициализировать свойство "linersDao" перед его использованием. Одним из способов сделать это является инициализация свойства в методе "onCreateView" до того, как вы вызываете метод "launch" в блоке "lifecycleScope"
-         */5
+         */
+
         appDao = (context?.applicationContext as App).getDatabase().linersDao()
 
         initIcons()
         initTextViews()
 
+
+
+
+
         // Извлекаем заметку из базы данных
-            lifecycleScope.launch(Dispatchers.IO) {
-                addedNote = appDao.getNoteLiner(linerFav.uniqueNumber)
-                withContext(Dispatchers.Main) {
-                    if (addedNote != "-") {
-                        binding.noteTxtView.text = addedNote // устанавливаем значение в поле noteTxtView
-                    }  else addedNote = "Заметка отсутствует"
-                }
+        lifecycleScope.launch(Dispatchers.IO) {
+            addedNote = appDao.getNoteLiner(linerFav.uniqueNumber)
+            withContext(Dispatchers.Main) {
+                if (addedNote != "-") {
+                    binding.noteTxtView.text =
+                        addedNote // устанавливаем значение в поле noteTxtView
+                } else addedNote = "Заметка отсутствует"
             }
+        }
+
+
+        binding.toolbar.toWrappersBtn.setOnClickListener {
+            appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
+        }
 
 
 
@@ -89,21 +105,38 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
     }
 
     private fun initIcons() {
-        if (linerFav.video == "-") binding.linkVideo.visibility = View.GONE
-        if (linerFav.vkArticle == "-") binding.linkVk.visibility = View.GONE
-        if (linerFav.wikiArticle == "-") binding.linkWiki.visibility = View.GONE
-        if (linerFav.imageUrlLiner.isEmpty()) {
-            binding.imageView.setImageResource(R.drawable.placeholder2)
-        } else {
-            Picasso.get().load(linerFav.imageUrlLiner).into(binding.imageView)
+        with(binding) {
+
+            toolbar.toFavouriteBtn.visibility = View.GONE
+
+            if (linerFav.video == "-") {
+                linkVideo.visibility = View.GONE
+            }
+            if (linerFav.vkArticle == "-") {
+                linkVk.visibility = View.GONE
+            }
+            if (linerFav.wikiArticle == "-") {
+                linkWiki.visibility = View.GONE
+            }
+
+//            if (liner.websiteSociete == "-") {
+//                websiteSociete.visibility = View.GONE
+//            }
+
+            if (linerFav.imageUrlLiner.isEmpty()) {
+                binding.imageView.setImageResource(R.drawable.placeholder2)
+            } else {
+                Picasso.get().load(linerFav.imageUrlLiner).into(binding.imageView)
+            }
         }
     }
 
     private fun initTextViews() {
         with(binding) {
-            indexTxtView.text = linerFav.index
-            seriesTxtView.text = linerFav.series
-            numberLinerTxtView.text = linerFav.numberLiner
+            linerIndex.text = linerFav.index
+            linerNumber.text = linerFav.numberLiner
+            linerBrand.text = linerFav.brand
+            linerModel.text = linerFav.model
         }
     }
 
@@ -116,6 +149,12 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
         super.onViewStateRestored(savedInstanceState)
         val noteText = savedInstanceState?.getString("noteText")
         binding.noteTxtView.text = noteText
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        appNavigator =
+            (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
     }
 
 

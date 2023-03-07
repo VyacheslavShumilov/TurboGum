@@ -8,13 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.vshum.turbogum.App
 import com.vshum.turbogum.databinding.FragmentWrappersListBinding
+import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.AppNavigatorParamWrapper
+import com.vshum.turbogum.navigator.Screen
 import com.vshum.turbogum.navigator.ScreenParamWrapper
 
 
 class WrappersListFragment : Fragment() {
 
     private lateinit var binding: FragmentWrappersListBinding
+    private lateinit var appNavigator: AppNavigator
     private lateinit var appNavigatorParamWrapper: AppNavigatorParamWrapper
 
     override fun onCreateView(
@@ -27,6 +30,9 @@ class WrappersListFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        appNavigator =
+            (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
+
         appNavigatorParamWrapper =
             (context.applicationContext as App).servicesLocator.providerNavigatorParamWrapper(requireActivity())
     }
@@ -34,6 +40,15 @@ class WrappersListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
+
+            toolbar.toFavouriteBtn.setOnClickListener {
+                appNavigator.navigateTo(Screen.FAVOURITE)
+            }
+
+            toolbar.toWrappersBtn.setOnClickListener {
+                appNavigator.navigateTo(Screen.START_SCREEN)
+            }
+
 
             imageBtnSeries1.setOnClickListener {
                 appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Серия 1")
@@ -84,6 +99,7 @@ class WrappersListFragment : Fragment() {
 //            imageBtnPower.setOnClickListener {
 //                appNavigatorParamWrapper.navigateToParamWrapper(ScreenParamWrapper.SERIES_1, "Power")
 //            }
+
         }
     }
 }

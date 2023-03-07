@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vshum.turbogum.App
 import com.vshum.turbogum.databinding.FragmentLinersListBinding
 import com.vshum.turbogum.model.Liner
+import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.AppNavigatorParamLiner
+import com.vshum.turbogum.navigator.Screen
 import com.vshum.turbogum.navigator.ScreenParamLiner
 import com.vshum.turbogum.ui.liners_lists.adapter.AdapterLinersList
 import com.vshum.turbogum.ui.liners_lists.impl.LinersListContract
@@ -23,6 +25,7 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
 
     private lateinit var binding: FragmentLinersListBinding
     private lateinit var presenter: LinersListPresenterImpl
+    private lateinit var appNavigator: AppNavigator
     private lateinit var appNavigatorParamLiner: AppNavigatorParamLiner
     private lateinit var viewModel: LinersListViewModel
 
@@ -39,6 +42,14 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.toolbar.toFavouriteBtn.setOnClickListener {
+            appNavigator.navigateTo(Screen.FAVOURITE)
+        }
+
+        binding.toolbar.toWrappersBtn.setOnClickListener {
+            appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
+        }
 
         viewModel =
             ViewModelProvider(requireActivity()).get(LinersListViewModel::class.java)
@@ -199,10 +210,12 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
+        appNavigator =
+            (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
+
         appNavigatorParamLiner =
-            (context.applicationContext as App).servicesLocator.providerNavigatorParamLiners(
-                requireActivity()
-            )
+            (context.applicationContext as App).servicesLocator.providerNavigatorParamLiners(requireActivity())
     }
 
     //авто подсчет количества элементов по ширине в списке

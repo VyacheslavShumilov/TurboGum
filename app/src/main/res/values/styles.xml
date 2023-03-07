@@ -10,4 +10,17 @@
 <!--        <item name="android:tint">@color/btn_fav_selected</item>-->
 <!--        <item name="android:stateListAnimator">@null</item>-->
 <!--    </style>-->
+
+    <style name="TurboTextInputLayoutStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/btn_fav_unselected</item>
+        <item name="boxStrokeErrorColor">@color/secondaryDarkColor</item>
+    </style>
+
+    <style name="TurboMaterialCard" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">3dp</item>
+        <item name="cardElevation">3dp</item>
+        <item name="strokeColor">@color/transparent</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
 </resources>

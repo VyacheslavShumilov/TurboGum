@@ -1,574 +1,667 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/app_background_color"
     android:orientation="vertical"
-    android:background="@drawable/gradient_background"
     tools:context=".ui.wrappers_list.WrappersListFragment">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
         android:layout_gravity="center"
-        android:transitionGroup="true"
-        >
+        android:layout_margin="3dp"
+        android:transitionGroup="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/image_btn_series_1"
-                android:layout_width="@dimen/btn_img_width"
-                android:layout_height="@dimen/btn_img_height"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/t1"
-                app:layout_constraintEnd_toStartOf="@+id/image_btn_series_2"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_series_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="@dimen/wrapper_card_radius"
+                app:cardElevation="@dimen/wrapper_card_elevation"
+                app:layout_constraintBottom_toTopOf="@+id/card_series_5"
+                app:layout_constraintEnd_toStartOf="@+id/card_series_2"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5">
 
-            <TextView
-                android:id="@+id/index_series_1"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/image_btn_series_1"
+                        android:layout_width="@dimen/btn_img_width"
+                        android:layout_height="@dimen/btn_img_height"
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/t1" />
+
+                    <TextView
+                        android:id="@+id/index_series_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
+                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
+                        android:text="T1# (1-50)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_series_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="T1#"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_1"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_1" />
-
-            <TextView
-                android:id="@+id/numbers_series_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1-50"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_1"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_1" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/image_btn_series_2"
-                android:layout_width="@dimen/btn_img_width"
-                android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/t2"
-                app:layout_constraintBottom_toBottomOf="@+id/image_btn_series_1"
-                app:layout_constraintEnd_toStartOf="@+id/image_btn_series_3"
+                app:cardCornerRadius="@dimen/wrapper_card_radius"
+                app:cardElevation="@dimen/wrapper_card_elevation"
+                app:layout_constraintBottom_toBottomOf="@+id/card_series_1"
+                app:layout_constraintEnd_toStartOf="@+id/card_series_3"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/image_btn_series_1"
-                app:layout_constraintTop_toTopOf="@+id/image_btn_series_1" />
+                app:layout_constraintStart_toEndOf="@+id/card_series_1"
+                app:layout_constraintTop_toTopOf="@+id/card_series_1">
 
-            <TextView
-                android:id="@+id/index_series_2"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/image_btn_series_2"
+                        android:layout_width="@dimen/btn_img_width"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/t2" />
+
+                    <TextView
+                        android:id="@+id/index_series_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
+                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
+                        android:text="T2# (51-120)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_series_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="T2#"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_2"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_2" />
-
-            <TextView
-                android:id="@+id/numbers_series_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="51-120"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_2"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_2" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/image_btn_series_3"
-                android:layout_width="@dimen/btn_img_width"
-                android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/t3"
-                app:layout_constraintBottom_toBottomOf="@+id/image_btn_series_2"
-                app:layout_constraintEnd_toStartOf="@+id/image_btn_series_4"
+                app:cardCornerRadius="@dimen/wrapper_card_radius"
+                app:cardElevation="@dimen/wrapper_card_elevation"
+                app:layout_constraintBottom_toBottomOf="@+id/card_series_2"
+                app:layout_constraintEnd_toStartOf="@+id/card_series_4"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/image_btn_series_2"
-                app:layout_constraintTop_toTopOf="@+id/image_btn_series_2" />
+                app:layout_constraintStart_toEndOf="@+id/card_series_2"
+                app:layout_constraintTop_toTopOf="@+id/card_series_2">
 
-            <TextView
-                android:id="@+id/index_series_3"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/image_btn_series_3"
+                        android:layout_width="@dimen/btn_img_width"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/t3" />
+
+                    <TextView
+                        android:id="@+id/index_series_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
+                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
+                        android:text="T3# (121-190)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_series_4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="T3#"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_3"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_3" />
-
-            <TextView
-                android:id="@+id/numbers_series_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="121-190"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_3"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_3" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/image_btn_series_4"
-                android:layout_width="@dimen/btn_img_width"
                 android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/t4"
-                app:layout_constraintBottom_toBottomOf="@+id/image_btn_series_3"
+                app:cardCornerRadius="@dimen/wrapper_card_radius"
+                app:cardElevation="@dimen/wrapper_card_elevation"
+                app:layout_constraintBottom_toBottomOf="@+id/card_series_3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/image_btn_series_3"
-                app:layout_constraintTop_toTopOf="@+id/image_btn_series_3" />
+                app:layout_constraintStart_toEndOf="@+id/card_series_3"
+                app:layout_constraintTop_toTopOf="@+id/card_series_3">
 
-            <TextView
-                android:id="@+id/index_series_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="T4#"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/image_btn_series_3"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_4"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_4" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/numbers_series_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="191-260"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_4"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_4" />
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/image_btn_series_4"
+                        android:layout_width="@dimen/btn_img_width"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/t4" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/image_btn_series_5"
+                    <TextView
+                        android:id="@+id/index_series_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
+                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
+                        android:text="T4# (191-260)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_series_5"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/btn_img_height"
-                android:layout_marginTop="8dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/t5"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_1"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_1"
-                app:layout_constraintTop_toBottomOf="@+id/index_series_1" />
-
-            <TextView
-                android:id="@+id/index_series_5"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:text="T5#"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_5"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_5" />
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="@dimen/wrapper_card_radius"
+                app:cardElevation="@dimen/wrapper_card_elevation"
+                app:layout_constraintBottom_toTopOf="@+id/card_sport_1"
+                app:layout_constraintEnd_toEndOf="@+id/card_series_1"
+                app:layout_constraintStart_toStartOf="@+id/card_series_1"
+                app:layout_constraintTop_toBottomOf="@+id/card_series_1"
+                app:layout_constraintVertical_bias="0.5">
 
-            <TextView
-                android:id="@+id/numbers_series_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="261-330"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_5"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_series_5" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/image_btn_series_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_img_height"
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/t5" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/image_btn_super_1"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/t6"
-                app:layout_constraintBottom_toBottomOf="@+id/image_btn_series_5"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_2"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_2"
-                app:layout_constraintTop_toTopOf="@+id/image_btn_series_5" />
+                    <TextView
+                        android:id="@+id/index_series_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
+                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
+                        android:text="T5# (261-330)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/index_super_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:text="T6#"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_super_1"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_super_1" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <TextView
-                android:id="@+id/numbers_super_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="331-400"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_super_1"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_super_1" />
+            </androidx.cardview.widget.CardView>
 
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/image_btn_super_2"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_super_1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/t7"
-                app:layout_constraintBottom_toBottomOf="@+id/image_btn_super_1"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_3"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_3"
-                app:layout_constraintTop_toTopOf="@+id/image_btn_super_1" />
+                app:cardCornerRadius="@dimen/wrapper_card_radius"
+                app:cardElevation="@dimen/wrapper_card_elevation"
+                app:layout_constraintBottom_toBottomOf="@+id/card_series_5"
+                app:layout_constraintEnd_toEndOf="@+id/card_series_2"
+                app:layout_constraintStart_toStartOf="@+id/card_series_2"
+                app:layout_constraintTop_toTopOf="@+id/card_series_5">
 
-            <TextView
-                android:id="@+id/index_super_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="T7#"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_super_2"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_super_2" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/numbers_super_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="401-470"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_super_2"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_super_2" />
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/image_btn_super_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_img_height"
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/t6" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/image_btn_super_3"
+                    <TextView
+                        android:id="@+id/index_super_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
+                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
+                        android:text="T6# (331-400)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_super_2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/t8"
-                app:layout_constraintBottom_toBottomOf="@+id/image_btn_super_2"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_4"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_4"
-                app:layout_constraintTop_toTopOf="@+id/image_btn_super_2" />
+                app:cardCornerRadius="@dimen/wrapper_card_radius"
+                app:cardElevation="@dimen/wrapper_card_elevation"
+                app:layout_constraintBottom_toBottomOf="@+id/card_super_1"
+                app:layout_constraintEnd_toEndOf="@+id/card_series_3"
+                app:layout_constraintStart_toStartOf="@+id/card_series_3"
+                app:layout_constraintTop_toTopOf="@+id/card_super_1">
 
-            <TextView
-                android:id="@+id/index_super_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="T8#"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_super_3"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_super_3" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/image_btn_super_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_img_height"
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/t7" />
 
-            <TextView
-                android:id="@+id/numbers_super_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="471-540"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_super_3"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_super_3" />
+                    <TextView
+                        android:id="@+id/index_super_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
+                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
+                        android:text="T7# (401-470)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/image_btn_sport_1"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/btn_img_height"
-                android:layout_marginTop="8dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ts1"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_1"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_1"
-                app:layout_constraintTop_toBottomOf="@+id/index_series_5" />
-
-            <TextView
-                android:id="@+id/index_sport_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:text="TS#"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_1"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_1" />
-
-            <TextView
-                android:id="@+id/numbers_sport_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1-70"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_1"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_1" />
+            </androidx.cardview.widget.CardView>
 
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/image_btn_sport_2"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_super_3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ts2"
-                app:layout_constraintBottom_toBottomOf="@+id/image_btn_sport_1"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_2"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_2"
-                app:layout_constraintTop_toTopOf="@+id/image_btn_sport_1" />
+                app:cardCornerRadius="@dimen/wrapper_card_radius"
+                app:cardElevation="@dimen/wrapper_card_elevation"
+                app:layout_constraintBottom_toBottomOf="@+id/card_super_2"
+                app:layout_constraintEnd_toEndOf="@+id/card_series_4"
+                app:layout_constraintStart_toStartOf="@+id/card_series_4"
+                app:layout_constraintTop_toTopOf="@+id/card_super_2">
 
-            <TextView
-                android:id="@+id/index_sport_2"
-                android:layout_width="wrap_content"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/image_btn_super_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_img_height"
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/t8" />
+
+                    <TextView
+                        android:id="@+id/index_super_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
+                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
+                        android:text="T8# (471-540)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_sport_1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:text="TS#"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_2"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_2" />
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="@dimen/wrapper_card_radius"
+                app:cardElevation="@dimen/wrapper_card_elevation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/card_series_1"
+                app:layout_constraintStart_toStartOf="@+id/card_series_1"
+                app:layout_constraintTop_toBottomOf="@+id/card_series_5"
+                app:layout_constraintVertical_bias="0.5">
 
-            <TextView
-                android:id="@+id/numbers_sport_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="71-140"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_2"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_2" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/image_btn_sport_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_img_height"
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ts1" />
+
+                    <TextView
+                        android:id="@+id/index_sport_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
+                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
+                        android:text="TS# (1-70)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
 
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/image_btn_classic_1"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_sport_2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/tc1"
-                app:layout_constraintBottom_toBottomOf="@+id/image_btn_sport_2"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_3"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_3"
-                app:layout_constraintTop_toTopOf="@+id/image_btn_sport_2" />
+                app:cardCornerRadius="@dimen/wrapper_card_radius"
+                app:cardElevation="@dimen/wrapper_card_elevation"
+                app:layout_constraintBottom_toBottomOf="@+id/card_sport_1"
+                app:layout_constraintEnd_toEndOf="@+id/card_series_2"
+                app:layout_constraintStart_toStartOf="@+id/card_series_2"
+                app:layout_constraintTop_toTopOf="@+id/card_sport_1">
 
-            <TextView
-                android:id="@+id/index_classic_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TC#"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_classic_1"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_classic_1" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/numbers_classic_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1-70"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_classic_1"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_classic_1" />
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/image_btn_sport_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_img_height"
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ts2" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/image_btn_classic_2"
+                    <TextView
+                        android:id="@+id/index_sport_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
+                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
+                        android:text="TS# (71-140)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_classic_1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/tc2"
-                app:layout_constraintBottom_toBottomOf="@+id/image_btn_classic_1"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_4"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_series_4"
-                app:layout_constraintTop_toTopOf="@+id/image_btn_classic_1" />
+                app:cardCornerRadius="@dimen/wrapper_card_radius"
+                app:cardElevation="@dimen/wrapper_card_elevation"
+                app:layout_constraintBottom_toBottomOf="@+id/card_sport_2"
+                app:layout_constraintEnd_toEndOf="@+id/card_series_3"
+                app:layout_constraintStart_toStartOf="@+id/card_series_3"
+                app:layout_constraintTop_toTopOf="@+id/card_sport_2">
 
-            <TextView
-                android:id="@+id/index_classic_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TC#"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/image_btn_classic_2"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_classic_2" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/image_btn_classic_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/btn_img_height"
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/tc1" />
 
-            <TextView
-                android:id="@+id/numbers_classic_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="71-140"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_btn_classic_2"
-                app:layout_constraintTop_toBottomOf="@+id/image_btn_classic_2" />
+                    <TextView
+                        android:id="@+id/index_classic_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
+                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
+                        android:text="TC# (1-70)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-<!--            <androidx.appcompat.widget.AppCompatImageButton-->
-<!--                android:id="@+id/image_btn_power"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="@dimen/btn_img_height"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:background="@color/transparent"-->
-<!--                android:scaleType="fitCenter"-->
-<!--                android:src="@drawable/tp"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_1"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/image_btn_series_1"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/index_sport_1" />-->
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-<!--            <TextView-->
-<!--                android:id="@+id/index_power"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center_vertical|center_horizontal"-->
-<!--                android:text="TP#"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/image_btn_power"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_power" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/numbers_power"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="148-259"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_power"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_power" />-->
-
-<!--            <androidx.appcompat.widget.AppCompatImageButton-->
-<!--                android:id="@+id/image_btn_sport_3"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:background="@color/transparent"-->
-<!--                android:scaleType="fitCenter"-->
-<!--                android:src="@drawable/ts3"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/image_btn_power"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_2"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/image_btn_series_2"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/image_btn_power" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/index_sport_3"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center_vertical|center_horizontal"-->
-<!--                android:text="TS#"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_3"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_3" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/numbers_sport_3"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="141-210"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_3"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_3" />-->
-
-<!--            <androidx.appcompat.widget.AppCompatImageButton-->
-<!--                android:id="@+id/image_btn_sport_4"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:background="@color/transparent"-->
-<!--                android:scaleType="fitCenter"-->
-<!--                android:src="@drawable/ts4"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/image_btn_sport_3"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_3"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/image_btn_series_3"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/image_btn_sport_3" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/index_sport_4"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="TS#"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_4"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_4" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/numbers_sport_4"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="410-470"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_4"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_4" />-->
-
-<!--            <androidx.appcompat.widget.AppCompatImageButton-->
-<!--                android:id="@+id/image_btn_sport_5"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:background="@color/transparent"-->
-<!--                android:scaleType="fitCenter"-->
-<!--                android:src="@drawable/ts5"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/image_btn_sport_4"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_4"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/image_btn_series_4"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/image_btn_sport_4" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/index_sport_5"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="TSTS#"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_5"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_5" />-->
+            </androidx.cardview.widget.CardView>
 
 
-<!--            <TextView-->
-<!--                android:id="@+id/numbers_sport_5"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="471-540"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_5"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_5" />-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_classic_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:cardCornerRadius="@dimen/wrapper_card_radius"
+                app:cardElevation="@dimen/wrapper_card_elevation"
+                app:layout_constraintBottom_toBottomOf="@+id/card_classic_1"
+                app:layout_constraintEnd_toEndOf="@+id/card_series_4"
+                app:layout_constraintStart_toStartOf="@+id/card_series_4"
+                app:layout_constraintTop_toTopOf="@+id/card_classic_1">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/image_btn_classic_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btn_img_height"
+                        android:adjustViewBounds="true"
+                        android:background="@color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/tc2" />
+
+                    <TextView
+                        android:id="@+id/index_classic_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
+                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
+                        android:text="TC# (71-140)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!--            <androidx.appcompat.widget.AppCompatImageButton-->
+            <!--                android:id="@+id/image_btn_power"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="@dimen/btn_img_height"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:adjustViewBounds="true"-->
+            <!--                android:background="@color/transparent"-->
+            <!--                android:scaleType="fitCenter"-->
+            <!--                android:src="@drawable/tp"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_1"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_series_1"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/index_sport_1" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/index_power"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center_vertical|center_horizontal"-->
+            <!--                android:text="TP#"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_power"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_power" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/numbers_power"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="148-259"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_power"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_power" />-->
+
+            <!--            <androidx.appcompat.widget.AppCompatImageButton-->
+            <!--                android:id="@+id/image_btn_sport_3"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="0dp"-->
+            <!--                android:adjustViewBounds="true"-->
+            <!--                android:background="@color/transparent"-->
+            <!--                android:scaleType="fitCenter"-->
+            <!--                android:src="@drawable/ts3"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/image_btn_power"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_2"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_series_2"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/image_btn_power" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/index_sport_3"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center_vertical|center_horizontal"-->
+            <!--                android:text="TS#"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_3"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_3" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/numbers_sport_3"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="141-210"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_3"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_3" />-->
+
+            <!--            <androidx.appcompat.widget.AppCompatImageButton-->
+            <!--                android:id="@+id/image_btn_sport_4"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="0dp"-->
+            <!--                android:adjustViewBounds="true"-->
+            <!--                android:background="@color/transparent"-->
+            <!--                android:scaleType="fitCenter"-->
+            <!--                android:src="@drawable/ts4"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/image_btn_sport_3"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_3"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_series_3"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/image_btn_sport_3" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/index_sport_4"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="TS#"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_4"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_4" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/numbers_sport_4"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="410-470"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_4"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_4" />-->
+
+            <!--            <androidx.appcompat.widget.AppCompatImageButton-->
+            <!--                android:id="@+id/image_btn_sport_5"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="0dp"-->
+            <!--                android:adjustViewBounds="true"-->
+            <!--                android:background="@color/transparent"-->
+            <!--                android:scaleType="fitCenter"-->
+            <!--                android:src="@drawable/ts5"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/image_btn_sport_4"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_4"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_series_4"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/image_btn_sport_4" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/index_sport_5"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="TSTS#"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_5"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_5" />-->
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/numbers_sport_5"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="471-540"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_5"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_5" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

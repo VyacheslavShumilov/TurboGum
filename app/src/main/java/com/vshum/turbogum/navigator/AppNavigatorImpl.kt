@@ -12,6 +12,7 @@ import com.vshum.turbogum.ui.favorite_liner.FavoriteLinerFragment
 import com.vshum.turbogum.ui.favourite_list.FavouriteListFragment
 import com.vshum.turbogum.ui.liner.*
 import com.vshum.turbogum.ui.liners_lists.LinersListFragment
+import com.vshum.turbogum.ui.DevelopersFragment
 
 class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavigator,
     AppNavigatorParamWrapper, AppNavigatorParamLiner, AppNavigatorParamLinerFav {
@@ -23,6 +24,7 @@ class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) : AppNavi
             Screen.HELP_SCREEN -> HelpScreenFragment()
             Screen.WRAPPERS_LIST_SCREEN -> WrappersListFragment()
             Screen.FAVOURITE -> FavouriteListFragment()
+            Screen.DEVELOPERS_SCREEN -> DevelopersFragment()
         }
 
         fragmentActivity.supportFragmentManager.beginTransaction()

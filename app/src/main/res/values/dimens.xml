@@ -2,4 +2,11 @@
 <resources>
     <dimen name="btn_img_width">140dp</dimen>
     <dimen name="btn_img_height">150dp</dimen>
+    <dimen name="developers_txt_size">16sp</dimen>
+    <dimen name="developers_txt_padding">3dp</dimen>
+    <dimen name="wrapper_card_radius">10dp</dimen>
+    <dimen name="wrapper_card_elevation">3dp</dimen>
+    <dimen name="wrapper_card_txt_paddingTop">5dp</dimen>
+    <dimen name="wrapper_card_txt_paddingBottom">5dp</dimen>
+    <dimen name="linerTxtSize">26sp</dimen>
 </resources>

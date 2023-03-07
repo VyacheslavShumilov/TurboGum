@@ -5,61 +5,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
-
+    android:background="@color/app_background_color"
     tools:context=".ui.StartScreenFragment">
 
-<!--    <com.airbnb.lottie.LottieAnimationView-->
-<!--        android:id="@+id/car"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:lottie_autoPlay="true"-->
-<!--        app:lottie_loop="true"-->
-<!--        app:lottie_rawRes="@raw/start_logo_2" />-->
-
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logoImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="centerCrop"
         android:src="@drawable/start_screen_image"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/logoContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/startScreenImage"
+            android:layout_width="300dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/start_screen_text" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/startScreenText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="КАТАЛОГ ВКЛАДЫШЕЙ"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/startBtn"
-        style="@style/Widget.Material3.Button"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        app:strokeWidth="3dp"
-        android:layout_marginBottom="10dp"
-        android:text="Старт"
-        android:textSize="18sp"
-        android:textStyle="bold"
+    <ImageButton
+        android:id="@+id/developersBtn"
+        android:background="@color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_developers"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
-        app:layout_constraintStart_toStartOf="parent" />
-
-<!--    <ImageButton-->
-<!--        android:id="@+id/helpBtn"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@color/transparent"-->
-<!--        android:src="@drawable/ic_baseline_self_improvement_24"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.04"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.05" />-->
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

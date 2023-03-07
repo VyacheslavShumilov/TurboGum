@@ -8,7 +8,8 @@ enum class Screen {
     REGISTRATION_SCREEN,
     WRAPPERS_LIST_SCREEN,
     HELP_SCREEN,
-    FAVOURITE
+    FAVOURITE,
+    DEVELOPERS_SCREEN
 }
 
 interface AppNavigator {

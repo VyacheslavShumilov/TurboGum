@@ -13,6 +13,7 @@ data class LinersFavourite(
     @ColumnInfo(name ="brand") val brand: String,
     @ColumnInfo(name ="model") val model: String,
     @ColumnInfo(name ="wikiArticle") val wikiArticle: String,
+//    @ColumnInfo(name ="websiteSociete") val websiteSociete: String,
     @ColumnInfo(name ="video") val video: String,
     @ColumnInfo(name ="vkArticle") val vkArticle: String,
     @ColumnInfo(name ="imageUrlLiner") val imageUrlLiner: String,

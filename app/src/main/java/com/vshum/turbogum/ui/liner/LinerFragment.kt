@@ -38,48 +38,82 @@ class LinerFragment(var liner: Liner) : Fragment() {
 
         binding = FragmentLinerBinding.inflate(inflater, container, false)
 
-        if (liner.video == "-") binding.linkVideo.visibility = View.GONE
-        if (liner.vkArticle == "-") binding.linkVk.visibility = View.GONE
-        if (liner.wikiArticle == "-") binding.linkWiki.visibility = View.GONE
-
-        if (liner.imageUrlLiner.isEmpty()) {
-            binding.imageView.setImageResource(R.drawable.placeholder2)
-        } else {
-            Picasso.get().load(liner.imageUrlLiner).into(binding.imageView)
-        }
-
-        binding.linkVideo.setOnClickListener {
-            if (liner.video != "-") {
-                val uri: Uri = Uri.parse(liner.video)
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(intent)
+        with(binding) {
+            if (liner.video == "-") {
+                linkVideo.visibility = View.GONE
+                linkVideoTxt.visibility = View.GONE
             }
-        }
-
-        binding.linkVk.setOnClickListener {
-            if (liner.vkArticle != "-") {
-                val uri: Uri = Uri.parse(liner.vkArticle)
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(intent)
+            if (liner.vkArticle == "-") {
+                linkVk.visibility = View.GONE
+                linkVkTxt.visibility = View.GONE
             }
-        }
-
-        binding.linkWiki.setOnClickListener {
-            if (liner.wikiArticle != "-") {
-                val uri: Uri = Uri.parse(liner.wikiArticle)
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(intent)
+            if (liner.wikiArticle == "-") {
+                linkWiki.visibility = View.GONE
+                linkWikiTxt.visibility = View.GONE
             }
-        }
 
-        binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_outlined))
+//            if (liner.websiteSociete == "-") {
+//                websiteSociete.visibility = View.GONE
+//                websiteSocieteTxt.visibility = View.GONE
+//            }
+
+            if (liner.imageUrlLiner.isEmpty()) {
+                binding.imageView.setImageResource(R.drawable.placeholder2)
+            } else {
+                Picasso.get().load(liner.imageUrlLiner).into(binding.imageView)
+            }
+
+            linerIndex.text = liner.index
+            linerNumber.text = liner.numberLiner
+            linerBrand.text = liner.brand
+            linerModel.text = liner.model
+
+            binding.toolbar.toWrappersBtn.setOnClickListener {
+                appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
+            }
+
+            linkVideo.setOnClickListener {
+                if (liner.video != "-") {
+                    val uri: Uri = Uri.parse(liner.video)
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    startActivity(intent)
+                }
+            }
+
+            linkVk.setOnClickListener {
+                if (liner.vkArticle != "-") {
+                    val uri: Uri = Uri.parse(liner.vkArticle)
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    startActivity(intent)
+                }
+            }
+
+            linkWiki.setOnClickListener {
+                if (liner.wikiArticle != "-") {
+                    val uri: Uri = Uri.parse(liner.wikiArticle)
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    startActivity(intent)
+                }
+            }
+
+//            websiteSociete.setOnClickListener {
+//                if (liner.websiteSociete != "-") {
+//                    val uri: Uri = Uri.parse(liner.websiteSociete)
+//                    val intent = Intent(Intent.ACTION_VIEW, uri)
+//                    startActivity(intent)
+//                }
+//            }
+
+            btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_outlined))
+
+        }
 
 
         val fadeOut = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_out)
-        binding.btnToFavourite.setOnClickListener {
+        binding.toolbar.toFavouriteBtn.setOnClickListener {
 
             //Запуск анимации кнопки
-            binding.btnToFavourite.startAnimation(fadeOut)
+            binding.toolbar.toFavouriteBtn.startAnimation(fadeOut)
 
             /***
              * Handler - это класс, который позволяет отправлять и обрабатывать сообщения и задачи из очереди в потоке, к которому он привязан.
@@ -103,6 +137,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
                     liner.brand,
                     liner.model,
                     liner.wikiArticle,
+//                    liner.websiteSociete,
                     liner.video,
                     liner.vkArticle,
                     liner.imageUrlLiner,

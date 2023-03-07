@@ -22,5 +22,11 @@
     <color name="end_gradient_color">#B25D48</color>
     <color name="btn_fav_unselected">#FFD600</color>
     <color name="btn_fav_selected">#FFD600</color>
+    <color name="developers_background_color">#66000000</color>
+    <color name="developers_screen_background_color">#B358356D</color>
+    <color name="app_background_color">#F5F5F6</color>
+    <color name="toolbar_color">#625B71</color>
+    <color name="liner_txt_color">#FFF98C</color>
+    <color name="divider_liner_color">#492532</color>
 
 </resources>

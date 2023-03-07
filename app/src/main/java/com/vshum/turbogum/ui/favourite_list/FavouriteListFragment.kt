@@ -15,7 +15,9 @@ import com.vshum.turbogum.App
 import com.vshum.turbogum.dao.LinersDao
 import com.vshum.turbogum.databinding.FragmentFavouriteBinding
 import com.vshum.turbogum.model.LinersFavourite
+import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.AppNavigatorParamLinerFav
+import com.vshum.turbogum.navigator.Screen
 import com.vshum.turbogum.navigator.ScreenParamLinerFav
 import com.vshum.turbogum.ui.favourite_list.adapter.AdapterLinersFavList
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +30,9 @@ class FavouriteListFragment : Fragment(), AdapterLinersFavList.OnClickListener {
     private lateinit var binding: FragmentFavouriteBinding
     private lateinit var appDao: LinersDao
     private lateinit var adapterLinersFav: AdapterLinersFavList
-    private lateinit var appNavigator: AppNavigatorParamLinerFav
+    private lateinit var appNavigatorParam: AppNavigatorParamLinerFav
+    private lateinit var appNavigator: AppNavigator
+
     private var favorite: ArrayList<LinersFavourite> = arrayListOf()
 
     //для проверки ошибки index bound of exception
@@ -47,7 +51,15 @@ class FavouriteListFragment : Fragment(), AdapterLinersFavList.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        appNavigator = (context?.applicationContext as App).servicesLocator.providerNavigatorParamLinerFav(requireActivity())
+
+        appNavigator = (context?.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
+        appNavigatorParam = (context?.applicationContext as App).servicesLocator.providerNavigatorParamLinerFav(requireActivity())
+
+        binding.toolbar.toWrappersBtn.setOnClickListener {
+            appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
+        }
+
+        binding.toolbar.toFavouriteBtn.visibility = View.GONE
 
         showProgress(true)
         appDao = (context?.applicationContext as App).getDatabase().linersDao()
@@ -110,7 +122,7 @@ class FavouriteListFragment : Fragment(), AdapterLinersFavList.OnClickListener {
 
 
     override fun onClickLinerFavorite(linersFav: LinersFavourite) {
-        appNavigator.navigateToParamLinerFav(ScreenParamLinerFav.FAVORITE_LINER, linersFav)
+        appNavigatorParam.navigateToParamLinerFav(ScreenParamLinerFav.FAVORITE_LINER, linersFav)
     }
 
     override fun onResume() {
