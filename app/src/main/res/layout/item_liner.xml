@@ -3,20 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
     style="@style/TurboMaterialCard"
-
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/transparent">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/liner_imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/t001_" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/liner_imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/t001_" />
+
+        <ImageView
+            android:id="@+id/addedToCollection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:visibility="gone"
+            app:srcCompat="@drawable/added_to_collection"
+            android:paddingEnd="3dp"
+            android:paddingTop="3dp"/>
+
+    </FrameLayout>
 
 </com.google.android.material.card.MaterialCardView>

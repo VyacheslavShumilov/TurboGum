@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vshum.turbogum.App
+import com.vshum.turbogum.dao.LinersDao
 import com.vshum.turbogum.databinding.FragmentLinersListBinding
 import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.navigator.AppNavigator
@@ -28,6 +29,8 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
     private lateinit var appNavigator: AppNavigator
     private lateinit var appNavigatorParamLiner: AppNavigatorParamLiner
     private lateinit var viewModel: LinersListViewModel
+    private lateinit var appDao: LinersDao
+
 
     private val linersListLocal: ArrayList<Liner> by lazy { viewModel.linersListLocal }
 
@@ -42,6 +45,8 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        appDao = (context?.applicationContext as App).getDatabase().linersDao()
 
         binding.toolbar.toFavouriteBtn.setOnClickListener {
             appNavigator.navigateTo(Screen.FAVOURITE)
@@ -180,7 +185,7 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
     }
 
     private fun initRecyclerView(linersList: ArrayList<Liner>) {
-        val adapterLiners = AdapterLinersList(linersList, this)
+        val adapterLiners = AdapterLinersList(linersList, this, appDao)
         binding.recyclerView.adapter = adapterLiners
         setRecyclerViewAutoFit(binding.recyclerView)
     }
