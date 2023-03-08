@@ -39,23 +39,10 @@ class LinerFragment(var liner: Liner) : Fragment() {
         binding = FragmentLinerBinding.inflate(inflater, container, false)
 
         with(binding) {
-            if (liner.video == "-") {
-                linkVideo.visibility = View.GONE
-                linkVideoTxt.visibility = View.GONE
-            }
-            if (liner.vkArticle == "-") {
-                linkVk.visibility = View.GONE
-                linkVkTxt.visibility = View.GONE
-            }
-            if (liner.wikiArticle == "-") {
-                linkWiki.visibility = View.GONE
-                linkWikiTxt.visibility = View.GONE
-            }
-
-//            if (liner.websiteSociete == "-") {
-//                websiteSociete.visibility = View.GONE
-//                websiteSocieteTxt.visibility = View.GONE
-//            }
+            if (liner.video == "-") containerVideo.visibility = View.GONE
+            if (liner.vkArticle == "-") containerVk.visibility = View.GONE
+            if (liner.wikiArticle == "-") containerWiki.visibility = View.GONE
+//            if (liner.websiteSociete == "-") containerSociete.visibility = View.GONE
 
             if (liner.imageUrlLiner.isEmpty()) {
                 binding.imageView.setImageResource(R.drawable.placeholder2)
@@ -72,7 +59,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
             }
 
-            linkVideo.setOnClickListener {
+            containerVideo.setOnClickListener {
                 if (liner.video != "-") {
                     val uri: Uri = Uri.parse(liner.video)
                     val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -80,7 +67,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 }
             }
 
-            linkVk.setOnClickListener {
+            containerVk.setOnClickListener {
                 if (liner.vkArticle != "-") {
                     val uri: Uri = Uri.parse(liner.vkArticle)
                     val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -88,7 +75,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 }
             }
 
-            linkWiki.setOnClickListener {
+            containerWiki.setOnClickListener {
                 if (liner.wikiArticle != "-") {
                     val uri: Uri = Uri.parse(liner.wikiArticle)
                     val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -96,7 +83,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 }
             }
 
-//            websiteSociete.setOnClickListener {
+//            containerSociete.setOnClickListener {
 //                if (liner.websiteSociete != "-") {
 //                    val uri: Uri = Uri.parse(liner.websiteSociete)
 //                    val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -127,7 +114,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
             }, 400)
         }
 
-        binding.btnAddFavourite.setOnClickListener {
+        binding.containerFav.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 val linerFavourite = LinersFavourite(
                     0,
@@ -153,7 +140,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
             binding.btnAddFavourite.startAnimation(scaleAnim)
 
             binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav))
-            binding.btnAddFavourite.isClickable = false
+            binding.containerFav.isClickable = false
         }
 
         lifecycleScope.launch(Dispatchers.IO) {
@@ -161,8 +148,8 @@ class LinerFragment(var liner: Liner) : Fragment() {
             linerFav.let { data ->
                 withContext(Dispatchers.Main) {
                     @Suppress("SENSELESS_COMPARISON")
-                    binding.btnAddFavourite.isClickable = data == null
-                    if (binding.btnAddFavourite.isClickable) {
+                    binding.containerFav.isClickable = data == null
+                    if (binding.containerFav.isClickable) {
                         binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_outlined))
                     } else {
                         binding.btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav))

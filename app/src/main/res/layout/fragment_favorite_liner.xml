@@ -13,7 +13,7 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView"
-        android:layout_width="350dp"
+        android:layout_width="345dp"
         android:layout_height="250dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
@@ -29,11 +29,11 @@
         android:layout_height="0dp"
         android:autoLink="all"
         android:src="@drawable/video"
-        app:layout_constraintBottom_toBottomOf="@+id/website_societe"
+        app:layout_constraintBottom_toBottomOf="@+id/divider1"
         app:layout_constraintEnd_toStartOf="@+id/linkWiki"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/website_societe"
-        app:layout_constraintTop_toTopOf="@+id/website_societe"
+        app:layout_constraintTop_toTopOf="@+id/divider1"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -42,11 +42,11 @@
         android:layout_height="50dp"
         android:autoLink="all"
         android:src="@drawable/vk"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/divider1"
         app:layout_constraintEnd_toStartOf="@+id/website_societe"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/divider1" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/website_societe"
@@ -57,11 +57,11 @@
         android:background="@color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/societe"
-        app:layout_constraintBottom_toBottomOf="@+id/linkVk"
+        app:layout_constraintBottom_toBottomOf="@+id/divider1"
         app:layout_constraintEnd_toStartOf="@+id/linkVideo"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/linkVk"
-        app:layout_constraintTop_toTopOf="@+id/linkVk"
+        app:layout_constraintTop_toTopOf="@+id/divider1"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -70,12 +70,12 @@
         android:layout_height="0dp"
         android:autoLink="all"
         android:src="@drawable/wiki"
-        app:layout_constraintBottom_toBottomOf="@+id/linkVideo"
+        app:layout_constraintBottom_toBottomOf="@+id/divider1"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintEnd_toStartOf="@+id/scrollView3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/linkVideo"
-        app:layout_constraintTop_toTopOf="@+id/linkVideo" />
+        app:layout_constraintTop_toTopOf="@+id/divider1" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/linerIndex"
@@ -143,6 +143,7 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
         android:background="@color/divider_liner_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -215,5 +216,16 @@
             android:textSize="14sp"
             android:textStyle="bold" />
     </ScrollView>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider1"
+        android:layout_width="3dp"
+        android:layout_height="50dp"
+        app:dividerColor="@color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
