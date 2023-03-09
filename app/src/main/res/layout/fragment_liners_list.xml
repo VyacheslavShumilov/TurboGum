@@ -48,7 +48,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Проверьте подключение к интернету\nи повторите запрос"
+            android:text="@string/check_internet_connection"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -67,7 +67,7 @@
             android:textColor="@color/white"
             app:strokeWidth="3dp"
             android:textSize="18sp"
-            android:text="Повторный запрос"
+            android:text="@string/repeat_request"
             app:layout_constraintEnd_toEndOf="@+id/textView"
             app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/textView" />

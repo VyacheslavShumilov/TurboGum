@@ -124,7 +124,7 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
 //            }
 
             if (linerFav.imageUrlLiner.isEmpty()) {
-                binding.imageView.setImageResource(R.drawable.placeholder2)
+                binding.imageView.setImageResource(R.drawable.placeholder)
             } else {
                 Picasso.get().load(linerFav.imageUrlLiner).into(binding.imageView)
             }

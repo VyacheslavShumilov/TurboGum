@@ -29,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/wrapper_card_radius"
                 app:cardElevation="@dimen/wrapper_card_elevation"
                 app:layout_constraintBottom_toTopOf="@+id/card_series_5"
@@ -59,7 +60,7 @@
                         android:layout_gravity="center"
                         android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
                         android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="T1# (1-50)"
+                        android:text="@string/t1_1_50"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -72,6 +73,7 @@
                 android:id="@+id/card_series_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/wrapper_card_radius"
                 app:cardElevation="@dimen/wrapper_card_elevation"
                 app:layout_constraintBottom_toBottomOf="@+id/card_series_1"
@@ -101,7 +103,7 @@
                         android:layout_gravity="center"
                         android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
                         android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="T2# (51-120)"
+                        android:text="@string/t2_51_120"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -114,6 +116,7 @@
                 android:id="@+id/card_series_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/wrapper_card_radius"
                 app:cardElevation="@dimen/wrapper_card_elevation"
                 app:layout_constraintBottom_toBottomOf="@+id/card_series_2"
@@ -143,7 +146,7 @@
                         android:layout_gravity="center"
                         android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
                         android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="T3# (121-190)"
+                        android:text="@string/t3_121_190"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -156,6 +159,7 @@
                 android:id="@+id/card_series_4"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/wrapper_card_radius"
                 app:cardElevation="@dimen/wrapper_card_elevation"
                 app:layout_constraintBottom_toBottomOf="@+id/card_series_3"
@@ -185,7 +189,7 @@
                         android:layout_gravity="center"
                         android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
                         android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="T4# (191-260)"
+                        android:text="@string/t4_191_260"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -199,6 +203,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/wrapper_card_radius"
                 app:cardElevation="@dimen/wrapper_card_elevation"
                 app:layout_constraintBottom_toTopOf="@+id/card_sport_1"
@@ -228,7 +233,7 @@
                         android:layout_gravity="center"
                         android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
                         android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="T5# (261-330)"
+                        android:text="@string/t5_261_330"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -241,6 +246,7 @@
                 android:id="@+id/card_super_1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/wrapper_card_radius"
                 app:cardElevation="@dimen/wrapper_card_elevation"
                 app:layout_constraintBottom_toBottomOf="@+id/card_series_5"
@@ -269,7 +275,7 @@
                         android:layout_gravity="center"
                         android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
                         android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="T6# (331-400)"
+                        android:text="@string/t6_331_400"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -282,6 +288,7 @@
                 android:id="@+id/card_super_2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/wrapper_card_radius"
                 app:cardElevation="@dimen/wrapper_card_elevation"
                 app:layout_constraintBottom_toBottomOf="@+id/card_super_1"
@@ -310,7 +317,7 @@
                         android:layout_gravity="center"
                         android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
                         android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="T7# (401-470)"
+                        android:text="@string/t7_401_470"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -323,6 +330,7 @@
                 android:id="@+id/card_super_3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/wrapper_card_radius"
                 app:cardElevation="@dimen/wrapper_card_elevation"
                 app:layout_constraintBottom_toBottomOf="@+id/card_super_2"
@@ -351,7 +359,7 @@
                         android:layout_gravity="center"
                         android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
                         android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="T8# (471-540)"
+                        android:text="@string/t8_471_540"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -366,6 +374,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="5dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/wrapper_card_radius"
                 app:cardElevation="@dimen/wrapper_card_elevation"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -395,7 +404,7 @@
                         android:layout_gravity="center"
                         android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
                         android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="TS# (1-70)"
+                        android:text="@string/ts_1_70"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -408,6 +417,7 @@
                 android:id="@+id/card_sport_2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/wrapper_card_radius"
                 app:cardElevation="@dimen/wrapper_card_elevation"
                 app:layout_constraintBottom_toBottomOf="@+id/card_sport_1"
@@ -436,7 +446,7 @@
                         android:layout_gravity="center"
                         android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
                         android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="TS# (71-140)"
+                        android:text="@string/ts_71_140"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -449,6 +459,7 @@
                 android:id="@+id/card_classic_1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/wrapper_card_radius"
                 app:cardElevation="@dimen/wrapper_card_elevation"
                 app:layout_constraintBottom_toBottomOf="@+id/card_sport_2"
@@ -477,7 +488,7 @@
                         android:layout_gravity="center"
                         android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
                         android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="TC# (1-70)"
+                        android:text="@string/tc_1_70"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -490,6 +501,7 @@
                 android:id="@+id/card_classic_2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/wrapper_card_radius"
                 app:cardElevation="@dimen/wrapper_card_elevation"
                 app:layout_constraintBottom_toBottomOf="@+id/card_classic_1"
@@ -519,150 +531,13 @@
                         android:layout_gravity="center"
                         android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
                         android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="TC# (71-140)"
+                        android:text="@string/tc_71_140"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.cardview.widget.CardView>
-
-
-            <!--            <androidx.appcompat.widget.AppCompatImageButton-->
-            <!--                android:id="@+id/image_btn_power"-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="@dimen/btn_img_height"-->
-            <!--                android:layout_marginTop="8dp"-->
-            <!--                android:adjustViewBounds="true"-->
-            <!--                android:background="@color/transparent"-->
-            <!--                android:scaleType="fitCenter"-->
-            <!--                android:src="@drawable/tp"-->
-            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_1"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_series_1"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/index_sport_1" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/index_power"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_gravity="center_vertical|center_horizontal"-->
-            <!--                android:text="TP#"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_power"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_power" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/numbers_power"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="148-259"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_power"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_power" />-->
-
-            <!--            <androidx.appcompat.widget.AppCompatImageButton-->
-            <!--                android:id="@+id/image_btn_sport_3"-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="0dp"-->
-            <!--                android:adjustViewBounds="true"-->
-            <!--                android:background="@color/transparent"-->
-            <!--                android:scaleType="fitCenter"-->
-            <!--                android:src="@drawable/ts3"-->
-            <!--                app:layout_constraintBottom_toBottomOf="@+id/image_btn_power"-->
-            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_2"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_series_2"-->
-            <!--                app:layout_constraintTop_toTopOf="@+id/image_btn_power" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/index_sport_3"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_gravity="center_vertical|center_horizontal"-->
-            <!--                android:text="TS#"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_3"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_3" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/numbers_sport_3"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="141-210"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_3"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_3" />-->
-
-            <!--            <androidx.appcompat.widget.AppCompatImageButton-->
-            <!--                android:id="@+id/image_btn_sport_4"-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="0dp"-->
-            <!--                android:adjustViewBounds="true"-->
-            <!--                android:background="@color/transparent"-->
-            <!--                android:scaleType="fitCenter"-->
-            <!--                android:src="@drawable/ts4"-->
-            <!--                app:layout_constraintBottom_toBottomOf="@+id/image_btn_sport_3"-->
-            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_3"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_series_3"-->
-            <!--                app:layout_constraintTop_toTopOf="@+id/image_btn_sport_3" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/index_sport_4"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="TS#"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_4"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_4" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/numbers_sport_4"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="410-470"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_4"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_4" />-->
-
-            <!--            <androidx.appcompat.widget.AppCompatImageButton-->
-            <!--                android:id="@+id/image_btn_sport_5"-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="0dp"-->
-            <!--                android:adjustViewBounds="true"-->
-            <!--                android:background="@color/transparent"-->
-            <!--                android:scaleType="fitCenter"-->
-            <!--                android:src="@drawable/ts5"-->
-            <!--                app:layout_constraintBottom_toBottomOf="@+id/image_btn_sport_4"-->
-            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_series_4"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_series_4"-->
-            <!--                app:layout_constraintTop_toTopOf="@+id/image_btn_sport_4" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/index_sport_5"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="TSTS#"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/image_btn_sport_5"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_5" />-->
-
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/numbers_sport_5"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="471-540"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintEnd_toEndOf="@+id/image_btn_sport_5"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/image_btn_sport_5" />-->
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.appcompat.widget.LinearLayoutCompat>

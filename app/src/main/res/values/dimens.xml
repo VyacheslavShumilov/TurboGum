@@ -8,5 +8,10 @@
     <dimen name="wrapper_card_elevation">3dp</dimen>
     <dimen name="wrapper_card_txt_paddingTop">5dp</dimen>
     <dimen name="wrapper_card_txt_paddingBottom">5dp</dimen>
-    <dimen name="linerTxtSize">26sp</dimen>
+    <dimen name="frag_fav_liner_index_number">26sp</dimen>
+    <dimen name="frag_liner_btn_txt">14sp</dimen>
+    <dimen name="frag_liner_brand_txt">14sp</dimen>
+    <dimen name="frag_liner_model_txt">12sp</dimen>
+    <dimen name="frag_fav_liner_brand_txt">14sp</dimen>
+    <dimen name="frag_fav_liner_model_txt">12sp</dimen>
 </resources>

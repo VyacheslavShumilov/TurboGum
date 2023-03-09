@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="КАТАЛОГ ВКЛАДЫШЕЙ"
+            android:text="@string/start_logo"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold"
@@ -61,6 +61,7 @@
         app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.05"
+        android:contentDescription="@string/developers_info" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

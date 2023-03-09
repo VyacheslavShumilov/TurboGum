@@ -45,7 +45,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
 //            if (liner.websiteSociete == "-") containerSociete.visibility = View.GONE
 
             if (liner.imageUrlLiner.isEmpty()) {
-                binding.imageView.setImageResource(R.drawable.placeholder2)
+                binding.imageView.setImageResource(R.drawable.placeholder)
             } else {
                 Picasso.get().load(liner.imageUrlLiner).into(binding.imageView)
             }

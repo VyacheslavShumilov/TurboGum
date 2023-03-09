@@ -11,7 +11,7 @@
         android:id="@+id/login_main_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Вход"
+        android:text="@string/entrance"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="28sp"
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="E-mail"
+            android:hint="@string/e_mail"
             android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Пароль"
+            android:hint="@string/password"
             android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -108,7 +108,7 @@
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:text="Забыли пароль?"
+        android:text="@string/forgot_password"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -125,7 +125,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Политика конфиденциальности"
+        android:text="@string/private_policy"
         android:textColor="@color/black"
         android:textIsSelectable="true"
         app:layout_constraintBottom_toBottomOf="parent"

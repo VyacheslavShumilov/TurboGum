@@ -1,6 +1,71 @@
 <resources>
     <string name="app_name">Вкладыши Turbo</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="check_internet_connection">Проверьте подключение к интернету\nи повторите запрос</string>
+    <string name="repeat_request">Повторный запрос</string>
+    <!-- Fragment developers.xml -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start_logo">КАТАЛОГ ВКЛАДЫШЕЙ</string>
+    <string name="android_developer">Разработка приложения:</string>
+    <string name="me">Вячеслав Шумилов</string>
+    <string name="ui_design">UI Design:</string>
+    <string name="ui_name">Василий Волков</string>
+    <string name="search">Исследования:</string>
+    <string name="search_name_1">Александр Мышкин</string>
+    <string name="search_name_2">Виталий Артамонов</string>
+    <string name="search_name_3">Дмитрий Филин</string>
+    <string name="search_name_4">Ольга Мироненко</string>
+    <string name="search_name_5">Александр Горохов</string>
+    <string name="search_name_6">Дмитрий Лузгин</string>
+    <string name="search_name_7">Энди Бэнистер</string>
+    <string name="collection">Коллекция:</string>
+    <string name="collection_name">Алексей Селиванов</string>
+    <string name="foto">Подготовка фото:</string>
+    <string name="foto_name">Роман Фролов</string>
+    <string name="hd">Турбо HD:</string>
+    <string name="hd_name">Евгений Саввин</string>
+    <string name="group_vk">Группа “Вкладыши Турбо”:</string>
+    <string name="group_vk_societe">...а также вся группа “Турбо Товарищи”</string>
+    <string name="group_vk_name">Гамлет Ортиков</string>
+    <!-- Fragment_start_screen.xml -->
+    <string name="developers_info">developersInfo</string>
+    <!-- Fragment_registration.xml -->
+    <string name="entrance">Вход</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Пароль</string>
     <string name="login_button_text">Продолжить</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="private_policy">Политика конфиденциальности</string>
+    <!-- Fragment_help_screen.xml -->
+    <string name="how_to_know_password">Чтобы узнать пароль,\nобратитесь к разработчику приложения:</string>
+    <string name="send_message">Отправить сообщение</string>
+    <!-- Fragment_wrappers_list.xml -->
+    <string name="t1_1_50">T1# (1–50)</string>
+    <string name="t2_51_120">T2# (51–120)</string>
+    <string name="t3_121_190">T3# (121–190)</string>
+    <string name="t4_191_260">T4# (191–260)</string>
+    <string name="t5_261_330">T5# (261–330)</string>
+    <string name="t6_331_400">T6# (331–400)</string>
+    <string name="t7_401_470">T7# (401–470)</string>
+    <string name="t8_471_540">T8# (471–540)</string>
+    <string name="ts_1_70">TS# (1–70)</string>
+    <string name="ts_71_140">TS# (71–140)</string>
+    <string name="tc_1_70">TC# (1–70)</string>
+    <string name="tc_71_140">TC# (71–140)</string>
+    <!-- Fragment_liner.xml -->
+    <string name="add_favorite">Добавить в избранное</string>
+    <string name="vk_societe">Группа \"Турбо Товарищи\"</string>
+    <string name="societeturbo_com">Cайт societeturbo.com</string>
+    <string name="video">Видео</string>
+    <string name="article">Статья</string>
+    <string name="hint_collection">Т2#</string>
+    <string name="hint_brand">Mitsubihi</string>
+    <string name="hint_model">Outlander</string>
+    <string name="hint_number_liner">14</string>
+    <string name="liner_full_size">liner_full_size</string>
+    <!-- Fragment_favorite_liner.xml -->
+    <string name="save_note_btn">Сохранить заметку</string>
+    <string name="hint_note">Вкладыши жвачек</string>
+    <string name="note">Заметка</string>
+
+
 </resources>

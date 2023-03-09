@@ -39,9 +39,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="5dp"
-            android:text="Добавить в избранное"
+            android:text="@string/add_favorite"
             android:textColor="@color/black"
-            android:textSize="14dp" />
+            android:textSize="@dimen/frag_liner_btn_txt" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -72,9 +72,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="5dp"
-            android:text="Группа &quot;Турбо Товарищи&quot;"
+            android:text="@string/vk_societe"
             android:textColor="@color/black"
-            android:textSize="14dp" />
+            android:textSize="@dimen/frag_liner_btn_txt" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -107,9 +107,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="5dp"
-            android:text="Cайт societeturbo.com"
+            android:text="@string/societeturbo_com"
             android:textColor="@color/black"
-            android:textSize="14dp" />
+            android:textSize="@dimen/frag_liner_btn_txt" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -140,9 +140,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="5dp"
-            android:text="Видео"
+            android:text="@string/video"
             android:textColor="@color/black"
-            android:textSize="14dp" />
+            android:textSize="@dimen/frag_liner_btn_txt" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -172,9 +172,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="5dp"
-            android:text="Статья"
+            android:text="@string/article"
             android:textColor="@color/black"
-            android:textSize="14dp" />
+            android:textSize="@dimen/frag_liner_btn_txt" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -192,7 +192,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.5"
+        android:contentDescription="@string/liner_full_size" />
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -204,12 +205,13 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:text="Т2# "
+        android:text="@string/hint_collection"
         android:textColor="@color/black"
-        android:textSize="@dimen/linerTxtSize"
+        android:textSize="@dimen/frag_fav_liner_index_number"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        tools:ignore="RtlSymmetry" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/linerNumber"
@@ -219,22 +221,23 @@
         android:paddingTop="5dp"
         android:paddingEnd="10dp"
         android:paddingBottom="5dp"
-        android:text="14"
+        android:text="@string/hint_number_liner"
         android:textColor="@color/black"
-        android:textSize="@dimen/linerTxtSize"
+        android:textSize="@dimen/frag_fav_liner_index_number"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/linerIndex"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        tools:ignore="RtlSymmetry" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/linerBrand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="Mitsubihi"
+        android:text="@string/hint_brand"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:textSize="14dp"
+        android:textSize="@dimen/frag_liner_brand_txt"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -246,10 +249,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="Outlander"
+        android:text="@string/hint_model"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:textSize="12dp"
+        android:textSize="@dimen/frag_liner_model_txt"
         app:layout_constraintBottom_toBottomOf="@+id/linerNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

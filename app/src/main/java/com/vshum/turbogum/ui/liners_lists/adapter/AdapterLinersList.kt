@@ -23,8 +23,6 @@ class AdapterLinersList(
     private val appDao: LinersDao
 ) : RecyclerView.Adapter<AdapterLinersList.ViewHolder>() {
 
-    private lateinit var favLiner: LinersFavourite
-
     inner class ViewHolder(var binding: ItemLinerBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindView(liner: Liner) {
             itemView.setOnClickListener {
@@ -51,7 +49,7 @@ class AdapterLinersList(
 
             /***
              * Запрос к базе данных getLinerFavorite выполняется асинхронно с помощью CoroutineScope(Dispatchers.IO).launch,
-             * а значит, foundInDb устанавливается на значение по умолчанию, которое равно false, до того, как запрос будет выполнен.
+             * значит, foundInDb устанавливается на значение по умолчанию, которое равно false, до того, как запрос будет выполнен.
              * Для исправления этой ошибки вам необходимо использовать сопрограммы и suspend функции для получения результата запроса перед установкой значения foundInDb
              */
 
@@ -61,7 +59,8 @@ class AdapterLinersList(
                 withContext(Dispatchers.Main) {
                     if (foundInDb) {
                         addedToCollection.visibility = View.VISIBLE
-                        card.strokeColor = ContextCompat.getColor(holder.itemView.context, R.color.card_stroke_color)
+                        //выделяются рамкой не выбранные вкладыши
+                        //card.strokeColor = ContextCompat.getColor(holder.itemView.context, R.color.card_stroke_color)
                     } else {
                         addedToCollection.visibility = View.GONE
                     }
