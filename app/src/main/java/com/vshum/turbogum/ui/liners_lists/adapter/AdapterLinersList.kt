@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+//import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import com.vshum.turbogum.R
 import com.vshum.turbogum.dao.LinersDao
@@ -45,6 +46,9 @@ class AdapterLinersList(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val liner = linersList[position]
         with(holder.binding) {
+//            Glide.with(holder.itemView.context)
+//                .load(liner.imageUrlLiner)
+//                .into(linerImageView)
             Picasso.get().load(liner.imageUrlLiner).into(linerImageView)
 
             /***

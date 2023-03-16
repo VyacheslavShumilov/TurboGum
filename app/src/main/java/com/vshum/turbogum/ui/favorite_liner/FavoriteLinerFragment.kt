@@ -9,7 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
+//import com.squareup.picasso.Picasso
 import com.vshum.turbogum.App
 import com.vshum.turbogum.R
 import com.vshum.turbogum.dao.LinersDao
@@ -126,7 +127,10 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
             if (linerFav.imageUrlLiner.isEmpty()) {
                 binding.imageView.setImageResource(R.drawable.placeholder)
             } else {
-                Picasso.get().load(linerFav.imageUrlLiner).into(binding.imageView)
+                Glide.with(this@FavoriteLinerFragment)
+                    .load(linerFav.imageUrlLiner)
+                    .into(binding.imageView)
+//                Picasso.get().load(linerFav.imageUrlLiner).into(binding.imageView)
             }
         }
     }

@@ -74,7 +74,8 @@ class FavouriteListFragment : Fragment(), AdapterLinersFavList.OnClickListener {
 
             withContext(Dispatchers.Main) {
                 binding.recyclerView.adapter = adapterLinersFav
-                setRecyclerViewAutoFit(binding.recyclerView)
+//                setRecyclerViewAutoFit(binding.recyclerView)
+                binding.recyclerView.layoutManager = GridLayoutManager(context, 4)
 
                 if (favorite.size == 0) {
                     Toast.makeText(requireActivity(), "Список пуст", Toast.LENGTH_SHORT).show()

@@ -187,7 +187,8 @@ class LinersListFragment(var series: String) : Fragment(), LinersListContract.Vi
     private fun initRecyclerView(linersList: ArrayList<Liner>) {
         val adapterLiners = AdapterLinersList(linersList, this, appDao)
         binding.recyclerView.adapter = adapterLiners
-        setRecyclerViewAutoFit(binding.recyclerView)
+//        setRecyclerViewAutoFit(binding.recyclerView)
+        binding.recyclerView.layoutManager = GridLayoutManager(context, 4)
     }
 
 
