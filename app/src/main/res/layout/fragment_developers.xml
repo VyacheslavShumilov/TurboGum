@@ -11,14 +11,15 @@
         android:id="@+id/logoImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:alpha="0.4"
         android:scaleType="centerCrop"
         android:src="@drawable/start_screen_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        android:alpha="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider"
@@ -30,16 +31,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/materialDivider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:dividerColor="@color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/materialDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/logoContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="30dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/appCompatTextView13"
+        app:layout_constraintEnd_toStartOf="@+id/materialDivider"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/startScreenImage"
@@ -66,14 +78,14 @@
         android:id="@+id/appCompatTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="100dp"
         android:background="@color/developers_background_color"
         android:padding="@dimen/developers_txt_padding"
         android:text="@string/android_developer"
         android:textColor="@color/white"
         android:textSize="@dimen/developers_txt_size"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/logoContainer"
+        app:layout_constraintBottom_toTopOf="@+id/materialDivider2"
         app:layout_constraintEnd_toStartOf="@+id/materialDivider"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -226,7 +238,7 @@
         android:id="@+id/appCompatTextView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="35dp"
         android:background="@color/developers_background_color"
         android:padding="@dimen/developers_txt_padding"
         android:text="@string/collection"
@@ -234,7 +246,7 @@
         android:textSize="@dimen/developers_txt_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/logoContainer" />
+        app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView14"
@@ -279,14 +291,12 @@
         android:id="@+id/appCompatTextView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:background="@color/developers_background_color"
         android:padding="@dimen/developers_txt_padding"
         android:text="@string/group_vk_societe"
         android:textColor="@color/white"
         android:textSize="@dimen/developers_txt_size"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView16" />

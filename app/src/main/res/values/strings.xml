@@ -36,7 +36,7 @@
     <string name="forgot_password">Забыли пароль?</string>
     <string name="private_policy">Политика конфиденциальности</string>
     <!-- Fragment_help_screen.xml -->
-    <string name="how_to_know_password">Чтобы узнать пароль,\nобратитесь к разработчику приложения:</string>
+    <string name="how_to_know_password">Чтобы узнать пароль,\nобратитесь к разработчику приложения</string>
     <string name="send_message">Отправить сообщение</string>
     <!-- Fragment_wrappers_list.xml -->
     <string name="t1_1_50">T1# (1–50)</string>

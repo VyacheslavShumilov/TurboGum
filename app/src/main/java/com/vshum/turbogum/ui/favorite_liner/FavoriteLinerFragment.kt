@@ -47,15 +47,12 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
 
 
 
-
-
         // Извлекаем заметку из базы данных
         lifecycleScope.launch(Dispatchers.IO) {
             addedNote = appDao.getNoteLiner(linerFav.uniqueNumber)
             withContext(Dispatchers.Main) {
                 if (addedNote != "-") {
-                    binding.noteTxtView.text =
-                        addedNote // устанавливаем значение в поле noteTxtView
+                    binding.noteTxtView.text = addedNote // устанавливаем значение в поле noteTxtView
                 } else addedNote = "Заметка отсутствует"
             }
         }
@@ -64,8 +61,6 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
         binding.toolbar.toWrappersBtn.setOnClickListener {
             appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
         }
-
-
 
 
         binding.linkVideo.setOnClickListener {
@@ -87,6 +82,14 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
         binding.linkWiki.setOnClickListener {
             if (linerFav.wikiArticle != "-") {
                 val uri: Uri = Uri.parse(linerFav.wikiArticle)
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
+        }
+
+        binding.websiteSociete.setOnClickListener {
+            if (linerFav.websiteSociete != "-") {
+                val uri: Uri = Uri.parse(linerFav.websiteSociete)
                 val intent = Intent(Intent.ACTION_VIEW, uri)
                 startActivity(intent)
             }
@@ -120,9 +123,9 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
                 linkWiki.visibility = View.GONE
             }
 
-//            if (liner.websiteSociete == "-") {
-//                websiteSociete.visibility = View.GONE
-//            }
+            if (linerFav.websiteSociete == "-") {
+                websiteSociete.visibility = View.GONE
+            }
 
             if (linerFav.imageUrlLiner.isEmpty()) {
                 binding.imageView.setImageResource(R.drawable.placeholder)
@@ -130,7 +133,6 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
                 Glide.with(this@FavoriteLinerFragment)
                     .load(linerFav.imageUrlLiner)
                     .into(binding.imageView)
-//                Picasso.get().load(linerFav.imageUrlLiner).into(binding.imageView)
             }
         }
     }

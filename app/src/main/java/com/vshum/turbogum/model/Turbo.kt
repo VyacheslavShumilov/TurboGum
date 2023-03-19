@@ -10,7 +10,7 @@ data class Liner(
     @SerializedName("Brand") val brand: String,
     @SerializedName("Model") val model: String,
     @SerializedName("WikiArticle") val wikiArticle: String,
-//    @SerializedName("WebsiteSociete") val websiteSociete: String,
+    @SerializedName("WebsiteSociete") val websiteSociete: String,
     @SerializedName("Video") val video: String,
     @SerializedName("VkArticle") val vkArticle: String,
     @SerializedName("ImageUrlLiner") val imageUrlLiner: String,

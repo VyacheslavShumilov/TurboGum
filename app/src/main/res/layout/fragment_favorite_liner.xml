@@ -32,7 +32,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/divider1"
         app:layout_constraintEnd_toStartOf="@+id/linkWiki"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/linkVk"
+        app:layout_constraintStart_toEndOf="@+id/website_societe"
         app:layout_constraintTop_toTopOf="@+id/divider1"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -43,26 +43,26 @@
         android:autoLink="all"
         android:src="@drawable/vk"
         app:layout_constraintBottom_toBottomOf="@+id/divider1"
-        app:layout_constraintEnd_toStartOf="@+id/linkVideo"
+        app:layout_constraintEnd_toStartOf="@+id/website_societe"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/divider1" />
 
-<!--    <androidx.appcompat.widget.AppCompatImageButton-->
-<!--        android:id="@+id/website_societe"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:adjustViewBounds="true"-->
-<!--        android:background="@color/transparent"-->
-<!--        android:scaleType="fitCenter"-->
-<!--        android:src="@drawable/societe"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/divider1"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/linkVideo"-->
-<!--        app:layout_constraintHorizontal_bias="0.5"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/linkVk"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/divider1"-->
-<!--        app:layout_constraintVertical_bias="0.0" />-->
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/website_societe"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/societe"
+        app:layout_constraintBottom_toBottomOf="@+id/divider1"
+        app:layout_constraintEnd_toStartOf="@+id/linkVideo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/linkVk"
+        app:layout_constraintTop_toTopOf="@+id/divider1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/linkWiki"
@@ -110,34 +110,45 @@
         app:layout_constraintTop_toTopOf="@+id/imageView"
         tools:ignore="RtlSymmetry" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/linerBrand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/containerBrandModel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="5dp"
-        android:text="@string/hint_brand"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/frag_fav_liner_brand_txt"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/linerNumber"
+        app:layout_constraintEnd_toEndOf="@+id/materialDivider2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/linerNumber"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/linerNumber">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/linerModel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="@string/hint_model"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/frag_fav_liner_model_txt"
-        app:layout_constraintBottom_toBottomOf="@+id/linerNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/linerNumber" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/linerBrand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="7dp"
+            android:text="@string/hint_brand"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/frag_fav_liner_brand_txt"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/linerModel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hint_model"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/frag_fav_liner_model_txt"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
     <com.google.android.material.divider.MaterialDivider
@@ -187,7 +198,7 @@
         android:id="@+id/saveNoteBtn"
         style="@style/Widget.Material3.Button.IconButton.Filled"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="5dp"
         android:text="@string/save_note_btn"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -201,7 +212,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
-        android:background="#809C9CA6"
+        android:background="@color/fav_liner_note_background"
         app:layout_constraintBaseline_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/saveNoteBtn"
         app:layout_constraintEnd_toEndOf="@+id/saveNoteBtn"

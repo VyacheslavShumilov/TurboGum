@@ -43,7 +43,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
             if (liner.video == "-") containerVideo.visibility = View.GONE
             if (liner.vkArticle == "-") containerVk.visibility = View.GONE
             if (liner.wikiArticle == "-") containerWiki.visibility = View.GONE
-//            if (liner.websiteSociete == "-") containerSociete.visibility = View.GONE
+            if (liner.websiteSociete == "-") containerSociete.visibility = View.GONE
 
             if (liner.imageUrlLiner.isEmpty()) {
                 binding.imageView.setImageResource(R.drawable.placeholder)
@@ -87,13 +87,13 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 }
             }
 
-//            containerSociete.setOnClickListener {
-//                if (liner.websiteSociete != "-") {
-//                    val uri: Uri = Uri.parse(liner.websiteSociete)
-//                    val intent = Intent(Intent.ACTION_VIEW, uri)
-//                    startActivity(intent)
-//                }
-//            }
+            containerSociete.setOnClickListener {
+                if (liner.websiteSociete != "-") {
+                    val uri: Uri = Uri.parse(liner.websiteSociete)
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    startActivity(intent)
+                }
+            }
 
             btnAddFavourite.setImageDrawable(resources.getDrawable(R.drawable.btn_fav_outlined))
 
@@ -128,7 +128,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
                     liner.brand,
                     liner.model,
                     liner.wikiArticle,
-//                    liner.websiteSociete,
+                    liner.websiteSociete,
                     liner.video,
                     liner.vkArticle,
                     liner.imageUrlLiner,
