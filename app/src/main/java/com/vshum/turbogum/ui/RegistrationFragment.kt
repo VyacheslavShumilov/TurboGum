@@ -172,8 +172,17 @@ class RegistrationFragment : Fragment() {
             }
 
 
-            helpButton.setOnClickListener {
-                appNavigator.navigateTo(Screen.HELP_SCREEN)
+            registrationButton.setOnClickListener {
+//                appNavigator.navigateTo(Screen.HELP_SCREEN)
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.type = "text/plain"
+                intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("vvshumilov@mail.ru"))
+                intent.putExtra(Intent.EXTRA_SUBJECT, "О приложении Вкладыши Turbo")
+                intent.putExtra(
+                    Intent.EXTRA_TEXT,
+                    "Хотел бы получить пароль к приложению, что для этого нужно?"
+                )
+                startActivity(Intent.createChooser(intent, "Отправить сообщение"))
             }
 
             policyTxt.setOnClickListener {

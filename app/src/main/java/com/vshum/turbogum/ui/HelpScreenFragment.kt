@@ -29,10 +29,10 @@ class HelpScreenFragment : Fragment() {
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
             intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("vvshumilov@mail.ru"))
-            intent.putExtra(Intent.EXTRA_SUBJECT, "О приложении TurboGum")
+            intent.putExtra(Intent.EXTRA_SUBJECT, "О приложении Вкладыши Turbo")
             intent.putExtra(
                 Intent.EXTRA_TEXT,
-                "Добрый день, я хотел бы получить пароль к приложению, что для этого нужно?"
+                "Добрый день, хотел бы получить пароль к приложению, что для этого нужно?"
             )
             startActivity(Intent.createChooser(intent, "Отправить сообщение"))
         }

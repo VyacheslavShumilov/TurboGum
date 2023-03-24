@@ -33,7 +33,7 @@
     <string name="e_mail">E-mail</string>
     <string name="password">Пароль</string>
     <string name="login_button_text">Продолжить</string>
-    <string name="forgot_password">Забыли пароль?</string>
+    <string name="registration">Регистрация</string>
     <string name="private_policy">Политика конфиденциальности</string>
     <!-- Fragment_help_screen.xml -->
     <string name="how_to_know_password">Чтобы узнать пароль,\nобратитесь к разработчику приложения</string>
