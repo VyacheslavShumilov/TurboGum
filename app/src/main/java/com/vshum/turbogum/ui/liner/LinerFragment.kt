@@ -172,7 +172,6 @@ class LinerFragment(var liner: Liner) : Fragment() {
         appNavigator =
             (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
     }
-
 }
 
 

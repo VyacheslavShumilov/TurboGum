@@ -51,7 +51,8 @@ class StartScreenFragment : Fragment() {
         with(binding) {
             logoImage.setOnClickListener {
                 if (password.isNullOrBlank() || password != Constants.PASSWORD) {
-                    appNavigator.navigateTo(Screen.REGISTRATION_SCREEN)
+                    //appNavigator.navigateTo(Screen.REGISTRATION_SCREEN) //убрал регистрацию в приложении
+                    appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
                 } else {
                     appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
                 }

@@ -14,8 +14,8 @@ android {
         applicationId "com.vshum.turbogum"
         minSdk 21
         targetSdk 33
-        versionCode 17
-        versionName "11.5"
+        versionCode 19
+        versionName "11.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -111,6 +111,5 @@ dependencies {
     //	Play Integrity API Terms of Service без этой библиотеки н
     implementation 'com.google.android.play:integrity:1.1.0'
     implementation 'com.google.android.gms:play-services-safetynet:17.0.'
-
 
 }
