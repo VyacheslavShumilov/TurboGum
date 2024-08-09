@@ -13,9 +13,9 @@ android {
     defaultConfig {
         applicationId "com.vshum.turbogum"
         minSdk 21
-        targetSdk 33
-        versionCode 21
-        versionName "11.9"
+        targetSdk 34
+        versionCode 22
+        versionName "11.10"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
