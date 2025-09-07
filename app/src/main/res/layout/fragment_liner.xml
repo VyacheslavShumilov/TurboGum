@@ -281,7 +281,6 @@
         android:text="@string/hint_collection"
         android:textColor="@color/black"
         android:textSize="@dimen/frag_fav_liner_index_number"
-        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView"/>
 
@@ -296,7 +295,6 @@
         android:text="@string/hint_number_liner"
         android:textColor="@color/black"
         android:textSize="@dimen/frag_fav_liner_index_number"
-        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/linerIndex"
         app:layout_constraintTop_toTopOf="@+id/imageView"/>
 
