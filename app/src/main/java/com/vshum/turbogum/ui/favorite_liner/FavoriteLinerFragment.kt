@@ -1,5 +1,6 @@
 package com.vshum.turbogum.ui.favorite_liner
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 //import com.squareup.picasso.Picasso
@@ -24,11 +26,11 @@ import kotlinx.coroutines.withContext
 
 
 class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
+
     private lateinit var binding: FragmentFavoriteLinerBinding
     private lateinit var appDao: LinersDao
-    private var addedNote: String = ""
     private lateinit var appNavigator: AppNavigator
-
+    private var addedNote: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,103 +38,30 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
     ): View {
         binding = FragmentFavoriteLinerBinding.inflate(inflater, container, false)
 
-        /***
-         * Нужно инициализировать свойство "linersDao" перед его использованием. Одним из способов сделать это является инициализация свойства в методе "onCreateView" до того, как вы вызываете метод "launch" в блоке "lifecycleScope"
-         */
-
         appDao = (context?.applicationContext as App).getDatabase().linersDao()
-
         initIcons()
         initTextViews()
-
-
-
-        // Извлекаем заметку из базы данных
-        lifecycleScope.launch(Dispatchers.IO) {
-            addedNote = appDao.getNoteLiner(linerFav.uniqueNumber)
-            withContext(Dispatchers.Main) {
-                if (addedNote != "-") {
-                    binding.noteTxtView.text = addedNote // устанавливаем значение в поле noteTxtView
-                } else addedNote = "Заметка отсутствует"
-            }
-        }
-
-
-        binding.toolbar.toWrappersBtn.setOnClickListener {
-            appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
-        }
-
-
-        binding.linkVideo.setOnClickListener {
-            if (linerFav.video != "-") {
-                val uri: Uri = Uri.parse(linerFav.video)
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(intent)
-            }
-        }
-
-        binding.linkVk.setOnClickListener {
-            if (linerFav.vkArticle != "-") {
-                val uri: Uri = Uri.parse(linerFav.vkArticle)
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(intent)
-            }
-        }
-
-        binding.linkWiki.setOnClickListener {
-            if (linerFav.wikiArticle != "-") {
-                val uri: Uri = Uri.parse(linerFav.wikiArticle)
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(intent)
-            }
-        }
-
-        binding.websiteSociete.setOnClickListener {
-            if (linerFav.websiteSociete != "-") {
-                val uri: Uri = Uri.parse(linerFav.websiteSociete)
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(intent)
-            }
-        }
-
-        binding.saveNoteBtn.setOnClickListener {
-            val note = binding.noteInput.text.toString()
-            lifecycleScope.launch(Dispatchers.IO) {
-                appDao.editNoteLiner(linerFav.uniqueNumber, note)
-                withContext(Dispatchers.Main) {
-                    binding.noteTxtView.text = note
-                }
-            }
-        }
+        initListeners()
+        loadNoteFromDatabase()
 
         return binding.root
     }
 
     private fun initIcons() {
         with(binding) {
-
             toolbar.toFavouriteBtn.visibility = View.GONE
 
-            if (linerFav.video == "-") {
-                linkVideo.visibility = View.GONE
-            }
-            if (linerFav.vkArticle == "-") {
-                linkVk.visibility = View.GONE
-            }
-            if (linerFav.wikiArticle == "-") {
-                linkWiki.visibility = View.GONE
-            }
-
-            if (linerFav.websiteSociete == "-") {
-                websiteSociete.visibility = View.GONE
-            }
+            if (linerFav.video == "-") linkVideo.visibility = View.GONE
+            if (linerFav.vkArticle == "-") linkVk.visibility = View.GONE
+            if (linerFav.wikiArticle == "-") linkWiki.visibility = View.GONE
+            if (linerFav.websiteSociete == "-") websiteSociete.visibility = View.GONE
 
             if (linerFav.imageUrlLiner.isEmpty()) {
-                binding.imageView.setImageResource(R.drawable.placeholder)
+                imageView.setImageResource(R.drawable.placeholder)
             } else {
                 Glide.with(this@FavoriteLinerFragment)
                     .load(linerFav.imageUrlLiner)
-                    .into(binding.imageView)
+                    .into(imageView)
             }
         }
     }
@@ -144,6 +73,75 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
             linerBrand.text = linerFav.brand
             linerModel.text = linerFav.model
         }
+    }
+
+    private fun initListeners() {
+        // Навигация
+        binding.toolbar.toWrappersBtn.setOnClickListener {
+            appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
+        }
+
+        // Ссылки
+        binding.linkVideo.setOnClickListener { openLink(linerFav.video) }
+        binding.linkVk.setOnClickListener { openLink(linerFav.vkArticle) }
+        binding.linkWiki.setOnClickListener { openLink(linerFav.wikiArticle) }
+        binding.websiteSociete.setOnClickListener { openLink(linerFav.websiteSociete) }
+
+        // Сохранение заметки
+        binding.saveNoteBtn.setOnClickListener {
+            val note = binding.noteInput.text.toString()
+            lifecycleScope.launch(Dispatchers.IO) {
+                appDao.editNoteLiner(linerFav.uniqueNumber, note)
+                withContext(Dispatchers.Main) {
+                    binding.noteTxtView.text = note
+                }
+            }
+        }
+
+        // Увеличение изображения по центру экрана с затемнением фона
+        binding.imageView.setOnClickListener {
+            if (linerFav.imageUrlLiner.isNotEmpty()) {
+                showZoomedImage(linerFav.imageUrlLiner)
+            }
+        }
+    }
+
+    private fun openLink(url: String) {
+        if (url != "-") {
+            val uri = Uri.parse(url)
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        }
+    }
+
+    private fun loadNoteFromDatabase() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            addedNote = appDao.getNoteLiner(linerFav.uniqueNumber)
+            withContext(Dispatchers.Main) {
+                if (addedNote != "-") {
+                    binding.noteTxtView.text = addedNote
+                } else addedNote = "Заметка отсутствует"
+            }
+        }
+    }
+
+    private fun showZoomedImage(imageUrl: String) {
+        val dialog = Dialog(requireContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen)
+        val view = layoutInflater.inflate(R.layout.dialog_zoom_image, null)
+        val imageView = view.findViewById<ImageView>(R.id.zoomImageView)
+
+        Glide.with(this)
+            .load(imageUrl)
+            .into(imageView)
+
+        dialog.setContentView(view)
+        dialog.setCancelable(true)
+
+        // Закрытие по клику на фон или на картинку
+        view.setOnClickListener { dialog.dismiss() }
+        imageView.setOnClickListener { dialog.dismiss() }
+
+        dialog.show()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -162,6 +160,4 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
         appNavigator =
             (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
     }
-
-
 }

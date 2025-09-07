@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             appNavigator.navigateTo(Screen.START_SCREEN)
         }
     }
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()

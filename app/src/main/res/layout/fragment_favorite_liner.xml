@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:background="@color/liner_txt_color"
+        android:background="@drawable/rounded_liner_index"
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
@@ -197,15 +197,17 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveNoteBtn"
         style="@style/Widget.Material3.Button.IconButton.Filled"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/white"
         android:text="@string/save_note_btn"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/note_input_container"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/note_input_container"
-        app:strokeColor="@color/black"
-        app:strokeWidth="3dp" />
+        app:strokeWidth="1dp" />
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -215,7 +217,7 @@
         android:background="@color/fav_liner_note_background"
         app:layout_constraintBaseline_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/saveNoteBtn"
-        app:layout_constraintEnd_toEndOf="@+id/saveNoteBtn"
+        app:layout_constraintEnd_toEndOf="@+id/note_input_container"
         app:layout_constraintStart_toStartOf="@+id/note_input_container"
         app:layout_constraintTop_toBottomOf="@+id/note_input_container">
 
@@ -226,8 +228,7 @@
             android:layout_margin="5dp"
             android:text="@string/hint_note"
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textSize="14sp" />
     </ScrollView>
 
     <com.google.android.material.divider.MaterialDivider

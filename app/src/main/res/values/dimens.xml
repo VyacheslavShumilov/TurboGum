@@ -14,4 +14,5 @@
     <dimen name="frag_liner_model_txt">12sp</dimen>
     <dimen name="frag_fav_liner_brand_txt">14sp</dimen>
     <dimen name="frag_fav_liner_model_txt">12sp</dimen>
+    <dimen name="btn_liner_height">40dp</dimen>
 </resources>
