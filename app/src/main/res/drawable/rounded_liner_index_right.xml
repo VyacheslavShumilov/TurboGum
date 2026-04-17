@@ -5,8 +5,8 @@
     <solid android:color="@color/liner_txt_color" /> <!-- фон TextView -->
 
     <corners
-        android:topLeftRadius="15dp"
-        android:topRightRadius="0dp"
-        android:bottomLeftRadius="15dp"
-        android:bottomRightRadius="0dp" />
+        android:topLeftRadius="0dp"
+        android:topRightRadius="20dp"
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="20dp" />
 </shape>

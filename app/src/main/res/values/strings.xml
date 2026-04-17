@@ -52,11 +52,11 @@
     <string name="tc_1_70">TC# (1–70)</string>
     <string name="tc_71_140">TC# (71–140)</string>
     <!-- Fragment_liner.xml -->
-    <string name="add_favorite">Добавить в избранное</string>
-    <string name="vk_societe">Группа \"Турбо Товарищи\"</string>
-    <string name="societeturbo_com">Cайт societeturbo.com</string>
-    <string name="video">Видео</string>
-    <string name="article">Статья</string>
+    <string name="add_favorite">ADD TO COLLECTION</string>
+    <string name="vk_societe">"VK COMMUNITY"</string>
+    <string name="societeturbo_com">SOCIETE TURBO</string>
+    <string name="video">VIDEO</string>
+    <string name="article">WIKIPEDIA HISTORY</string>
     <string name="hint_collection">Т2#</string>
     <string name="hint_brand">Mitsubihi</string>
     <string name="hint_model">Outlander</string>

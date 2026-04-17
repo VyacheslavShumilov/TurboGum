@@ -32,7 +32,10 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/btn_wrap_green_line"/>
+                android:src="@drawable/btn_wrap_green_line"
+                android:background="@drawable/main_logo_lines"
+                android:layout_marginEnd="3dp"
+                android:clipToOutline="true"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_gravity="start"
@@ -40,19 +43,27 @@
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:layout_height="wrap_content"
-                android:src="@drawable/btn_wrap_yellow_line"/>
+                android:src="@drawable/btn_wrap_yellow_line"
+                android:background="@drawable/main_logo_lines"
+                android:layout_marginEnd="3dp"
+                android:clipToOutline="true"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/btn_wrap_blue_line"/>
+                android:src="@drawable/btn_wrap_blue_line"
+                android:background="@drawable/main_logo_lines"
+                android:layout_marginEnd="3dp"
+                android:clipToOutline="true"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:adjustViewBounds="true"
                 android:layout_height="match_parent"
+                android:background="@drawable/main_logo_lines"
+                android:clipToOutline="true"
                 android:src="@drawable/btn_wrap_red_line"/>
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -80,24 +91,28 @@
     </androidx.appcompat.widget.Toolbar>
 
     <!-- Контейнеры кнопок -->
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/containerFav"
         android:layout_width="0dp"
         android:layout_height="@dimen/btn_liner_height"
-        android:background="@drawable/rounded_container_btn"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/materialDivider3"
-        app:layout_constraintStart_toStartOf="@+id/materialDivider3"
+
+        android:background="@drawable/rounded_fav_container_btn"
+        app:layout_constraintBottom_toTopOf="@+id/containerVk"
         app:layout_constraintEnd_toEndOf="@+id/materialDivider3"
-        app:layout_constraintBottom_toTopOf="@+id/containerVk">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/materialDivider3"
+        app:layout_constraintTop_toBottomOf="@+id/materialDivider3">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btn_add_favourite"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_gravity="center"
             android:adjustViewBounds="true"
-            android:layout_marginStart="5dp"
             android:background="@color/transparent"
             android:scaleType="fitCenter"
             android:src="@drawable/btn_fav" />
@@ -108,11 +123,13 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="5dp"
-            android:text="@string/add_favorite"
-            android:textColor="@color/black"
-            android:maxLines="2"
             android:ellipsize="end"
             android:gravity="start|center"
+            android:maxLines="2"
+            android:text="@string/add_favorite"
+            android:textColor="@color/white"
+            android:fontFamily="@font/font"
+            android:textStyle="bold"
             android:textSize="@dimen/frag_liner_btn_txt" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -130,9 +147,10 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/linkVk"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_gravity="center"
             android:autoLink="all"
             android:src="@drawable/vk" />
 
@@ -146,6 +164,8 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:gravity="start|center"
+            android:fontFamily="@font/font"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="@dimen/frag_liner_btn_txt" />
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -164,9 +184,9 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/website_societe"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
             android:layout_gravity="center"
             android:adjustViewBounds="true"
             android:background="@color/transparent"
@@ -183,6 +203,8 @@
             android:gravity="start|center"
             android:ellipsize="end"
             android:maxLines="2"
+            android:fontFamily="@font/font"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="@dimen/frag_liner_btn_txt" />
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -201,10 +223,11 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/linkVideo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:autoLink="all"
-            android:layout_marginStart="5dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
             android:src="@drawable/video" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -216,6 +239,8 @@
             android:text="@string/video"
             android:gravity="start|center"
             android:textColor="@color/black"
+            android:fontFamily="@font/font"
+            android:textStyle="bold"
             android:ellipsize="end"
             android:textSize="@dimen/frag_liner_btn_txt" />
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -233,10 +258,11 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/linkWiki"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:autoLink="all"
-            android:layout_marginStart="5dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
             android:src="@drawable/wiki" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -248,6 +274,8 @@
             android:text="@string/article"
             android:gravity="start|center"
             android:ellipsize="end"
+            android:fontFamily="@font/font"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="@dimen/frag_liner_btn_txt" />
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -275,11 +303,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:paddingStart="10dp"
-        android:background="@drawable/rounded_liner_index"
+        android:background="@drawable/rounded_liner_index_left"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:text="@string/hint_collection"
         android:textColor="@color/black"
+        android:fontFamily="@font/font"
+        android:textStyle="bold"
         android:textSize="@dimen/frag_fav_liner_index_number"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView"/>
@@ -288,11 +318,13 @@
         android:id="@+id/linerNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/liner_txt_color"
+        android:background="@drawable/rounded_liner_index_right"
         android:paddingTop="5dp"
         android:paddingEnd="10dp"
         android:paddingBottom="5dp"
         android:text="@string/hint_number_liner"
+        android:fontFamily="@font/font"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="@dimen/frag_fav_liner_index_number"
         app:layout_constraintStart_toEndOf="@+id/linerIndex"
@@ -314,12 +346,13 @@
             android:id="@+id/linerBrand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="7dp"
+android:gravity="center"
             android:maxLines="1"
             android:text="@string/hint_brand"
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/frag_liner_brand_txt"
+            android:fontFamily="@font/font"
             android:textStyle="bold"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -327,11 +360,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:gravity="center"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/hint_model"
             android:textAllCaps="true"
-            android:textColor="@color/black"
+            android:fontFamily="@font/font"
             android:textSize="@dimen/frag_liner_model_txt"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 

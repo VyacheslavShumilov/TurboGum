@@ -25,11 +25,14 @@
     <color name="developers_background_color">#66000000</color>
     <color name="developers_screen_background_color">#B358356D</color>
     <color name="app_background_color">#F5F5F6</color>
-    <color name="toolbar_color">#625B71</color>
-    <color name="liner_txt_color">#15AD16</color>
+    <color name="toolbar_color">#FD7E44</color>
+    <color name="container_btn_color">#F1F5F9</color>
+    <color name="container_stroke_btn_color">#D8D9E0</color>
+    <color name="container_fav_btn_color">#2563EB</color>
+    <color name="liner_txt_color">#F4734D</color>
     <color name="card_stroke_color">#40B144</color>
 
     <color name="divider_liner_color">#492532</color>
-    <color name="fav_liner_note_background">#809C9CA6</color>
+    <color name="fav_liner_note_background">#80E5E5EB</color>
 
 </resources>

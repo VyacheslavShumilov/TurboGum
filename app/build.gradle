@@ -14,8 +14,8 @@ android {
         applicationId "com.vshum.turbogum"
         minSdk 23
         targetSdk 35
-        versionCode 27
-        versionName "12.2"
+        versionCode 29
+        versionName "13.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
