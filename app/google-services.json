@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "407632197012",
+    "project_id": "turbo-users-db",
+    "storage_bucket": "turbo-users-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407632197012:android:70cad0e4bfc9530ba10b81",
+        "android_client_info": {
+          "package_name": "com.vshum.turbogum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407632197012-g8tg3a7955oij9eua8h1hh6decsra7fh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwvmkkCY1vZfLMUm5P2ZFABk4F2BNpESk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407632197012-g8tg3a7955oij9eua8h1hh6decsra7fh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

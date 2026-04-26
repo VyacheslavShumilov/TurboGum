@@ -194,7 +194,7 @@
             android:id="@+id/note_input"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="50dp"
             android:inputType="text"
             android:fontFamily="@font/font"
             android:textColorHint="@color/black" />
@@ -204,13 +204,14 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveNoteBtn"
         style="@style/Widget.Material3.Button.IconButton.Filled"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="5dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/container_fav_btn_color"
         android:text="@string/save_note_btn"
-        android:textColor="@color/black"
-        android:fontFamily="@font/font"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sanserif_bold_italic"
+
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/note_input_container"
