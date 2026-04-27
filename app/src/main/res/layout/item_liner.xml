@@ -4,10 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
+    android:layout_margin="6dp"
     app:cardBackgroundColor="@color/surface_card"
-    app:cardCornerRadius="14dp"
+    app:shapeAppearanceOverlay="@style/ShapeAppearance.TurboCard"
     app:cardElevation="0dp"
+    app:cardPreventCornerOverlap="true"
     app:strokeColor="@color/border_default"
     app:strokeWidth="0.5dp"
     app:rippleColor="#221E2235">
@@ -16,45 +17,73 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/linerImageView"
+        <!-- Image area -->
+        <FrameLayout
+            android:id="@+id/imageContainer"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/placeholder"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Series badge top-left -->
-        <TextView
-            android:id="@+id/seriesBadge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/badge_purple_bg"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:textSize="10sp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/font"
-            android:layout_margin="8dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <!-- Shimmer placeholder -->
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                app:shimmer_base_color="#1E2235"
+                app:shimmer_highlight_color="#2A2D45"
+                app:shimmer_auto_start="true"
+                app:shimmer_duration="1000">
 
-        <!-- Favourite button top-right -->
-        <ImageButton
-            android:id="@+id/btnFavourite"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:background="@drawable/btn_fav_item_bg"
-            android:src="@drawable/ic_favorite_border"
-            android:contentDescription="Favourite"
-            android:layout_margin="6dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@color/surface_input" />
 
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <!-- Real image -->
+            <ImageView
+                android:id="@+id/linerImageView"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:clipToOutline="true"
+                android:visibility="gone" />
+
+            <!-- Series badge top-left -->
+            <TextView
+                android:id="@+id/seriesBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="8dp"
+                android:background="@drawable/badge_purple_bg"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/font" />
+
+            <!-- Favourite button top-right -->
+            <ImageButton
+                android:id="@+id/btnFavourite"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="top|end"
+                android:layout_margin="6dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_favorite_border"
+                android:contentDescription="Favourite"
+                android:padding="4dp" />
+
+        </FrameLayout>
+
+        <!-- Card body text -->
         <LinearLayout
             android:id="@+id/cardBody"
             android:layout_width="match_parent"
@@ -64,7 +93,7 @@
             android:paddingEnd="10dp"
             android:paddingTop="8dp"
             android:paddingBottom="10dp"
-            app:layout_constraintTop_toBottomOf="@id/linerImageView">
+            app:layout_constraintTop_toBottomOf="@id/imageContainer">
 
             <TextView
                 android:id="@+id/linerBrand"
@@ -97,18 +126,9 @@
                     android:textSize="11sp"
                     android:textColor="@color/brand_orange"
                     android:fontFamily="@font/font" />
+
             </LinearLayout>
 
-            <ProgressBar
-                android:id="@+id/collectionProgress"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="6dp"
-                android:progressTint="@color/brand_purple"
-                android:progressBackgroundTint="@color/border_default"
-                android:max="100"
-                android:progress="0" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

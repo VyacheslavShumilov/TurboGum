@@ -9,6 +9,7 @@ import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.card.MaterialCardView
 import com.vshum.turbogum.App
 import com.vshum.turbogum.R
@@ -86,8 +87,16 @@ class WrappersListFragment : Fragment() {
             }
             cardView.layoutParams = spec
 
-            // Устанавливаем данные в карточку
-            cardView.findViewById<ImageView>(R.id.seriesImage)?.setImageResource(entry.imageRes)
+            // ── Shimmer → Image ──────────────────────────────────────────
+            val imageView = cardView.findViewById<ImageView>(R.id.seriesImage)
+            val shimmer = cardView.findViewById<ShimmerFrameLayout>(R.id.shimmerLayout)
+
+            imageView?.setImageResource(entry.imageRes)
+            shimmer?.stopShimmer()
+            shimmer?.visibility = View.GONE
+            imageView?.visibility = View.VISIBLE
+            // ─────────────────────────────────────────────────────────────
+
             cardView.findViewById<TextView>(R.id.seriesLabel)?.text = entry.label
             cardView.findViewById<TextView>(R.id.seriesCount)?.text = entry.range
             cardView.findViewById<TextView>(R.id.seriesChip)?.text = entry.label

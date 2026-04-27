@@ -24,7 +24,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="14dp"
             android:gravity="bottom"
             android:orientation="horizontal">
 
@@ -46,22 +46,23 @@
                 android:background="@color/brand_blue" />
         </LinearLayout>
 
-        <TextView
+        <!-- Логотип — занимает свободное место, не растягивается -->
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="24dp"
             android:layout_weight="1"
-            android:fontFamily="@font/font"
-            android:text="@string/app_name"
-            android:textColor="@color/text_primary"
-            android:textSize="20sp"
-            android:textStyle="normal" />
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:src="@drawable/btn_wrap_txt" />
 
-
-        <!-- Favourites / profile avatar -->
+        <!-- Кнопка прижата к правому краю -->
         <ImageButton
             android:id="@+id/toFavouriteBtn"
             android:layout_width="36dp"
             android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
             android:background="@drawable/btn_icon_bg"
             android:contentDescription="Favourites"
             android:src="@drawable/ic_list_favourite" />

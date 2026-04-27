@@ -24,34 +24,34 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/btn_wrap_green_line"
-                android:background="@drawable/main_logo_lines"
                 android:layout_marginEnd="3dp"
-                android:clipToOutline="true"/>
+                android:adjustViewBounds="true"
+                android:background="@drawable/main_logo_lines"
+                android:clipToOutline="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/btn_wrap_green_line" />
 
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginEnd="3dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/main_logo_lines"
                 android:clipToOutline="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/btn_wrap_yellow_line"
-                android:layout_marginEnd="3dp"/>
+                android:src="@drawable/btn_wrap_yellow_line" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/btn_wrap_blue_line"
                 android:background="@drawable/main_logo_lines"
                 android:clipToOutline="true"
-                android:layout_marginEnd="3dp"/>
+                android:scaleType="fitXY"
+                android:src="@drawable/btn_wrap_blue_line" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"

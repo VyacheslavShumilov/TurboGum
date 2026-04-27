@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.ImageView
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -31,6 +31,14 @@ class LinerFragment(var liner: Liner) : Fragment() {
     private lateinit var appNavigator: AppNavigator
     private var isImageExpanded = false
 
+    // Overlay views живут на уровне Activity — поверх всего экрана
+    private val imageOverlay: View by lazy {
+        requireActivity().findViewById(R.id.imageOverlay)
+    }
+    private val expandedImage: ImageView by lazy {
+        requireActivity().findViewById(R.id.expandedImage)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +46,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
         binding = FragmentLinerBinding.inflate(inflater, container, false)
 
         with(binding) {
+
             // ── Скрываем кнопки если данных нет ───────────────────────
             if (liner.video == "-")          containerVideo.visibility   = View.GONE
             if (liner.vkArticle == "-")      containerVk.visibility      = View.GONE
@@ -56,7 +65,6 @@ class LinerFragment(var liner: Liner) : Fragment() {
             }
 
             // ── Текстовые поля ─────────────────────────────────────────
-            linerIndex.text  = liner.index
             linerNumber.text = liner.numberLiner
             linerBrand.text  = liner.brand
             linerModel.text  = liner.model
@@ -80,40 +88,50 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 withContext(Dispatchers.Main) {
                     val isFav = linerFav != null
                     containerFav.isClickable = !isFav
-                    btnAddFavourite.setImageResource(
-                        if (isFav) R.drawable.btn_fav else R.drawable.btn_fav_outlined
-                    )
+                    containerFav.alpha = if (isFav) 0.5f else 1f
                 }
             }
 
             containerFav.setOnClickListener { addToFavourite() }
 
-            // ── Увеличение изображения ─────────────────────────────────
+            // ── Клик на картинку — открыть на весь экран ──────────────
             imageView.setOnClickListener {
                 if (!isImageExpanded) expandImage() else collapseImage()
             }
-            expandedImage.setOnClickListener { collapseImage() }
         }
 
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Убираем оверлей при уходе с экрана
+        if (isImageExpanded) {
+            imageOverlay.visibility = View.GONE
+            expandedImage.visibility = View.GONE
+            binding.imageView.visibility = View.VISIBLE
+            isImageExpanded = false
+        }
+    }
+
+    // ── Добавить в избранное ───────────────────────────────────────────────
+
     private fun addToFavourite() {
         val linerFavourite = LinersFavourite(
-            key = 0,
-            uniqueNumber = liner.uniqueNumber,
-            id = liner.id,
-            numberLiner = liner.numberLiner,
-            brand = liner.brand,
-            model = liner.model,
-            wikiArticle = liner.wikiArticle,
+            key           = 0,
+            uniqueNumber  = liner.uniqueNumber,
+            id            = liner.id,
+            numberLiner   = liner.numberLiner,
+            brand         = liner.brand,
+            model         = liner.model,
+            wikiArticle   = liner.wikiArticle,
             websiteSociete = liner.websiteSociete,
-            video = liner.video,
-            vkArticle = liner.vkArticle,
+            video         = liner.video,
+            vkArticle     = liner.vkArticle,
             imageUrlLiner = liner.imageUrlLiner,
-            index = liner.index,
-            series = liner.series,
-            note = liner.note
+            index         = liner.index,
+            series        = liner.series,
+            note          = liner.note
         )
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -121,11 +139,14 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 .linersDao().insertLiner(linerFavourite)
         }
 
-        val scaleAnim = AnimationUtils.loadAnimation(requireContext(), R.anim.btn_scale_anim)
-        binding.btnAddFavourite.startAnimation(scaleAnim)
-        binding.btnAddFavourite.setImageResource(R.drawable.btn_fav)
+        binding.containerFav.animate()
+            .alpha(0.5f)
+            .setDuration(200)
+            .start()
         binding.containerFav.isClickable = false
     }
+
+    // ── Открыть внешнюю ссылку ────────────────────────────────────────────
 
     private fun openUrl(url: String) {
         if (url.isNotBlank() && url != "-") {
@@ -133,31 +154,69 @@ class LinerFragment(var liner: Liner) : Fragment() {
         }
     }
 
+    // ── Анимация: открыть изображение поверх экрана ───────────────────────
+
     private fun expandImage() {
         binding.imageView.visibility = View.INVISIBLE
-        binding.expandedImage.apply {
+
+        // Затемнение фона
+        imageOverlay.apply {
             visibility = View.VISIBLE
             alpha = 0f
+            animate()
+                .alpha(1f)
+                .setDuration(250)
+                .setInterpolator(AccelerateDecelerateInterpolator())
+                .start()
+        }
+
+        // Изображение появляется с масштабированием
+        expandedImage.apply {
             setImageDrawable(binding.imageView.drawable)
+            visibility = View.VISIBLE
+            alpha = 0f
+            scaleX = 0.75f
+            scaleY = 0.75f
         }
-        binding.imageOverlay.visibility = View.VISIBLE
-        binding.expandedImage.doOnPreDraw {
-            binding.expandedImage.animate()
-                .alpha(1f).setDuration(280)
-                .setInterpolator(AccelerateDecelerateInterpolator()).start()
+
+        expandedImage.doOnPreDraw {
+            expandedImage.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f)
+                .setDuration(300)
+                .setInterpolator(AccelerateDecelerateInterpolator())
+                .start()
         }
+
+        // Клик на оверлей или картинку — закрыть
+        imageOverlay.setOnClickListener { collapseImage() }
+        expandedImage.setOnClickListener { collapseImage() }
+
         isImageExpanded = true
     }
 
+    // ── Анимация: закрыть изображение ────────────────────────────────────
+
     private fun collapseImage() {
-        binding.expandedImage.animate()
-            .alpha(0f).setDuration(250)
+        imageOverlay.animate()
+            .alpha(0f)
+            .setDuration(200)
+            .start()
+
+        expandedImage.animate()
+            .alpha(0f)
+            .scaleX(0.75f)
+            .scaleY(0.75f)
+            .setDuration(250)
             .setInterpolator(AccelerateDecelerateInterpolator())
             .withEndAction {
-                binding.imageOverlay.visibility = View.GONE
-                binding.expandedImage.visibility = View.GONE
+                imageOverlay.visibility = View.GONE
+                expandedImage.visibility = View.GONE
                 binding.imageView.visibility = View.VISIBLE
-            }.start()
+            }
+            .start()
+
         isImageExpanded = false
     }
 

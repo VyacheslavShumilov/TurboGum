@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-//import com.bumptech.glide.Glide
-//import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.squareup.picasso.Picasso
 import com.vshum.turbogum.databinding.ItemLinerFavouriteBinding
 import com.vshum.turbogum.model.LinersFavourite
@@ -17,47 +15,51 @@ class AdapterLinersFavList(
 
     inner class ViewHolder(private val binding: ItemLinerFavouriteBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        @SuppressLint("NotifyDataSetChanged")
-        fun bindView(linersFavourite: LinersFavourite) {
-            with(binding) {
-//                Glide.with(itemView.context)
-//                    .load(linersFavourite.imageUrlLiner)
-//                    .into(linerImageView)
-                Picasso.get().load(linersFavourite.imageUrlLiner).into(linerImageView)
-                indexSeries.text = linersFavourite.index
 
+        @SuppressLint("NotifyDataSetChanged")
+        fun bindView(item: LinersFavourite) {
+            with(binding) {
+                // Загружаем изображение
+                if (item.imageUrlLiner.isNotEmpty()) {
+                    Picasso.get()
+                        .load(item.imageUrlLiner)
+                        .into(linerImageView)
+                }
+
+                // Бейдж серии
+                indexSeries.text = item.index
+
+                // Кнопка удаления
                 imageBtnDelete.setOnClickListener {
-                    listener.onDeleteFavorite(linersFavourite)
-                    //notifyDataSetChanged()
-                    deleteItem(linersFavourite)
+                    listener.onDeleteFavorite(item)
+                    deleteItem(item)
                     notifyDataSetChanged()
                 }
 
-                itemView.setOnClickListener {
-                    listener.onClickLinerFavorite(linersFavourite)
+                // Клик по карточке
+                root.setOnClickListener {
+                    listener.onClickLinerFavorite(item)
                 }
             }
         }
 
-        private fun deleteItem(linersFav: LinersFavourite) {
-            linersFavourite.remove(linersFav)
-            if (linersFavourite.size == 0) {
+        private fun deleteItem(item: LinersFavourite) {
+            linersFavourite.remove(item)
+            if (linersFavourite.isEmpty()) {
                 listener.notFavorite()
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            ItemLinerFavouriteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+        ViewHolder(
+            ItemLinerFavouriteBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
         )
-    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.bindView(linersFavourite[position])
-        linersFavourite?.let {
-            holder.bindView(it[position])
-        }
+        holder.bindView(linersFavourite[position])
     }
 
     override fun getItemCount(): Int = linersFavourite.size

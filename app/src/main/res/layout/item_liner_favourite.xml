@@ -1,42 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
-    style="@style/TurboMaterialCard"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/white"
-    android:layout_margin="8dp">
+    android:layout_margin="6dp"
+    app:cardBackgroundColor="@color/surface_card"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/border_default"
+    app:strokeWidth="0.5dp"
+    app:rippleColor="#221E2235">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/liner_imageView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:contentDescription="Описание"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/t031" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageBtn_delete"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="7dp"
-        android:foregroundGravity="right"
-        android:src="@drawable/btn_delete" />
+        android:orientation="vertical">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/index_series"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/white"
-        android:text="T1#"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <!-- Изображение вкладыша -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/linerImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@color/surface_secondary"
+                android:contentDescription="Liner image" />
+
+            <!-- Series badge — top left -->
+            <TextView
+                android:id="@+id/indexSeries"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="8dp"
+                android:background="@drawable/badge_purple_bg"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/font"
+                android:text="T1#" />
+
+            <!-- Delete button — top right -->
+            <ImageView
+                android:id="@+id/imageBtnDelete"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="top|end"
+                android:layout_margin="6dp"
+                android:background="@drawable/btn_fav_item_bg"
+                android:src="@drawable/ic_baseline_delete"
+                android:contentDescription="Delete"
+                android:padding="4dp" />
+
+        </FrameLayout>
+
+    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

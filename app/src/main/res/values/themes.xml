@@ -24,9 +24,10 @@
         <item name="itemIconTint">@color/nav_selector</item>
         <item name="itemTextColor">@color/nav_selector</item>
         <item name="backgroundTint">@color/surface_card</item>
+        <item name="itemActiveIndicatorStyle">@style/TurboNavIndicator</item>
         <item name="elevation">8dp</item>
-        <item name="itemPaddingTop">8dp</item>
-        <item name="itemPaddingBottom">8dp</item>
+        <item name="itemPaddingTop">10dp</item>
+        <item name="itemPaddingBottom">6dp</item>
     </style>
 
     <style name="TurboToolbar" parent="Widget.AppCompat.Toolbar">
@@ -52,5 +53,20 @@
     <style name="circleImageView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="TurboNavIndicator" parent="@style/Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@android:color/transparent</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Full</item>
+        <item name="android:height">0dp</item>
+        <item name="android:width">0dp</item>
+    </style>
+
+    <style name="ShapeAppearance.TurboCard" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomLeft">14dp</item>
+        <item name="cornerSizeBottomRight">14dp</item>
     </style>
 </resources>

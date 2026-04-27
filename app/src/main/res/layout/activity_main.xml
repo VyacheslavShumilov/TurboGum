@@ -26,4 +26,25 @@
         app:labelVisibilityMode="labeled"
         app:itemIconSize="22dp" />
 
+    <!-- Затемнение — поверх всего -->
+    <View
+        android:id="@+id/imageOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CC000000"
+        android:visibility="gone"
+        android:clickable="true"
+        android:elevation="10dp" />
+
+    <!-- Увеличенное изображение — поверх всего -->
+    <ImageView
+        android:id="@+id/expandedImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:padding="24dp"
+        android:visibility="gone"
+        android:elevation="11dp"
+        android:contentDescription="Full size" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
