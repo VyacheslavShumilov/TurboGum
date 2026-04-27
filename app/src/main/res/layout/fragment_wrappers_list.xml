@@ -1,556 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_background_color"
-    android:orientation="vertical"
+    android:background="@color/surface_page"
     tools:context=".ui.wrappers_list.WrappersListFragment">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
-
-    <ScrollView
+    <!-- ── Top header bar ─────────────────────────────────────────────────── -->
+    <LinearLayout
+        android:id="@+id/headerBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="3dp"
-        android:transitionGroup="true">
+        android:layout_height="56dp"
+        android:background="@color/surface_card"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="12dp"
+        app:layout_anchor="@id/headerBar">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_main"
+        <!-- Logo bars -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="2dp"
+                android:background="@color/brand_purple" />
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="14dp"
+                android:layout_marginEnd="2dp"
+                android:background="@color/brand_orange" />
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="8dp"
+                android:background="@color/brand_blue" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/font"
+            android:text="@string/app_name"
+            android:textColor="@color/text_primary"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+
+        <!-- Favourites / profile avatar -->
+        <ImageButton
+            android:id="@+id/toFavouriteBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/btn_icon_bg"
+            android:contentDescription="Favourites"
+            android:src="@drawable/ic_list_favourite" />
+    </LinearLayout>
+
+    <!-- ── Scrollable content ─────────────────────────────────────────────── -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:fillViewport="true">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_series_1"
-                android:layout_width="wrap_content"
+            <!-- Hero section -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/wrapper_card_radius"
-                app:cardElevation="@dimen/wrapper_card_elevation"
-                app:layout_constraintBottom_toTopOf="@+id/card_series_5"
-                app:layout_constraintEnd_toStartOf="@+id/card_series_2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5">
+                android:background="@color/surface_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_btn_series_1"
-                        android:layout_width="@dimen/btn_img_width"
-                        android:layout_height="@dimen/btn_img_height"
-                        android:adjustViewBounds="true"
-                        android:background="@color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/t1" />
+
 
                     <TextView
-                        android:id="@+id/index_series_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:fontFamily="@font/font"
-                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
-                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="@string/t1_1_50"
-                        android:textStyle="bold" />
+                        android:text="@string/collection"
+                        android:textColor="@color/brand_purple"
+                        android:textSize="28sp"
+                        android:textStyle="normal" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/collect_explore_drive"
+                        android:textColor="@color/text_hint"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+                <!-- Stat chip -->
+                <LinearLayout
+                    android:id="@+id/statChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chip_purple_bg"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
+                    <TextView
+                        android:id="@+id/statCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/brand_purple_dark"
+                        android:textSize="22sp"
+                        android:textStyle="normal" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_series_2"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cards_collected"
+                        android:textColor="@color/brand_purple"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Section label -->
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/wrapper_card_radius"
-                app:cardElevation="@dimen/wrapper_card_elevation"
-                app:layout_constraintBottom_toBottomOf="@+id/card_series_1"
-                app:layout_constraintEnd_toStartOf="@+id/card_series_3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/card_series_1"
-                app:layout_constraintTop_toTopOf="@+id/card_series_1">
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="6dp"
+                android:letterSpacing="0.06"
+                android:text="@string/wrapper_series"
+                android:textAllCaps="true"
+                android:textColor="@color/text_hint"
+                android:textSize="11sp" />
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_btn_series_2"
-                        android:layout_width="@dimen/btn_img_width"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:background="@color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/t2" />
-
-                    <TextView
-                        android:id="@+id/index_series_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
-                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="@string/t2_51_120"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_series_3"
-                android:layout_width="wrap_content"
+            <!-- 2-column grid of series cards -->
+            <GridLayout
+                android:id="@+id/seriesGrid"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/wrapper_card_radius"
-                app:cardElevation="@dimen/wrapper_card_elevation"
-                app:layout_constraintBottom_toBottomOf="@+id/card_series_2"
-                app:layout_constraintEnd_toStartOf="@+id/card_series_4"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/card_series_2"
-                app:layout_constraintTop_toTopOf="@+id/card_series_2">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_btn_series_3"
-                        android:layout_width="@dimen/btn_img_width"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:background="@color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/t3" />
-
-                    <TextView
-                        android:id="@+id/index_series_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
-                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="@string/t3_121_190"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_series_4"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/wrapper_card_radius"
-                app:cardElevation="@dimen/wrapper_card_elevation"
-                app:layout_constraintBottom_toBottomOf="@+id/card_series_3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/card_series_3"
-                app:layout_constraintTop_toTopOf="@+id/card_series_3">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_btn_series_4"
-                        android:layout_width="@dimen/btn_img_width"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:background="@color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/t4" />
-
-                    <TextView
-                        android:id="@+id/index_series_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
-                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="@string/t4_191_260"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_series_5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/wrapper_card_radius"
-                app:cardElevation="@dimen/wrapper_card_elevation"
-                app:layout_constraintBottom_toTopOf="@+id/card_sport_1"
-                app:layout_constraintEnd_toEndOf="@+id/card_series_1"
-                app:layout_constraintStart_toStartOf="@+id/card_series_1"
-                app:layout_constraintTop_toBottomOf="@+id/card_series_1"
-                app:layout_constraintVertical_bias="0.5">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_btn_series_5"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/btn_img_height"
-                        android:adjustViewBounds="true"
-                        android:background="@color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/t5" />
-
-                    <TextView
-                        android:id="@+id/index_series_5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
-                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="@string/t5_261_330"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_super_1"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/wrapper_card_radius"
-                app:cardElevation="@dimen/wrapper_card_elevation"
-                app:layout_constraintBottom_toBottomOf="@+id/card_series_5"
-                app:layout_constraintEnd_toEndOf="@+id/card_series_2"
-                app:layout_constraintStart_toStartOf="@+id/card_series_2"
-                app:layout_constraintTop_toTopOf="@+id/card_series_5">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_btn_super_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/btn_img_height"
-                        android:adjustViewBounds="true"
-                        android:background="@color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/t6" />
-
-                    <TextView
-                        android:id="@+id/index_super_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
-                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="@string/t6_331_400"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_super_2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/wrapper_card_radius"
-                app:cardElevation="@dimen/wrapper_card_elevation"
-                app:layout_constraintBottom_toBottomOf="@+id/card_super_1"
-                app:layout_constraintEnd_toEndOf="@+id/card_series_3"
-                app:layout_constraintStart_toStartOf="@+id/card_series_3"
-                app:layout_constraintTop_toTopOf="@+id/card_super_1">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_btn_super_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/btn_img_height"
-                        android:adjustViewBounds="true"
-                        android:background="@color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/t7" />
-
-                    <TextView
-                        android:id="@+id/index_super_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
-                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="@string/t7_401_470"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_super_3"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/wrapper_card_radius"
-                app:cardElevation="@dimen/wrapper_card_elevation"
-                app:layout_constraintBottom_toBottomOf="@+id/card_super_2"
-                app:layout_constraintEnd_toEndOf="@+id/card_series_4"
-                app:layout_constraintStart_toStartOf="@+id/card_series_4"
-                app:layout_constraintTop_toTopOf="@+id/card_super_2">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_btn_super_3"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/btn_img_height"
-                        android:adjustViewBounds="true"
-                        android:background="@color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/t8" />
-
-                    <TextView
-                        android:id="@+id/index_super_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
-                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="@string/t8_471_540"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_sport_1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="5dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/wrapper_card_radius"
-                app:cardElevation="@dimen/wrapper_card_elevation"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/card_series_1"
-                app:layout_constraintStart_toStartOf="@+id/card_series_1"
-                app:layout_constraintTop_toBottomOf="@+id/card_series_5"
-                app:layout_constraintVertical_bias="0.5">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_btn_sport_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/btn_img_height"
-                        android:adjustViewBounds="true"
-                        android:background="@color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ts1" />
-
-                    <TextView
-                        android:id="@+id/index_sport_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
-                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="@string/ts_1_70"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_sport_2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/wrapper_card_radius"
-                app:cardElevation="@dimen/wrapper_card_elevation"
-                app:layout_constraintBottom_toBottomOf="@+id/card_sport_1"
-                app:layout_constraintEnd_toEndOf="@+id/card_series_2"
-                app:layout_constraintStart_toStartOf="@+id/card_series_2"
-                app:layout_constraintTop_toTopOf="@+id/card_sport_1">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_btn_sport_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/btn_img_height"
-                        android:adjustViewBounds="true"
-                        android:background="@color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ts2" />
-
-                    <TextView
-                        android:id="@+id/index_sport_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
-                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="@string/ts_71_140"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_classic_1"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/wrapper_card_radius"
-                app:cardElevation="@dimen/wrapper_card_elevation"
-                app:layout_constraintBottom_toBottomOf="@+id/card_sport_2"
-                app:layout_constraintEnd_toEndOf="@+id/card_series_3"
-                app:layout_constraintStart_toStartOf="@+id/card_series_3"
-                app:layout_constraintTop_toTopOf="@+id/card_sport_2">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_btn_classic_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/btn_img_height"
-                        android:adjustViewBounds="true"
-                        android:background="@color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/tc1" />
-
-                    <TextView
-                        android:id="@+id/index_classic_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
-                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="@string/tc_1_70"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_classic_2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/wrapper_card_radius"
-                app:cardElevation="@dimen/wrapper_card_elevation"
-                app:layout_constraintBottom_toBottomOf="@+id/card_classic_1"
-                app:layout_constraintEnd_toEndOf="@+id/card_series_4"
-                app:layout_constraintStart_toStartOf="@+id/card_series_4"
-                app:layout_constraintTop_toTopOf="@+id/card_classic_1">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/image_btn_classic_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/btn_img_height"
-                        android:adjustViewBounds="true"
-                        android:background="@color/transparent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/tc2" />
-
-                    <TextView
-                        android:id="@+id/index_classic_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingTop="@dimen/wrapper_card_txt_paddingTop"
-                        android:paddingBottom="@dimen/wrapper_card_txt_paddingBottom"
-                        android:text="@string/tc_71_140"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.cardview.widget.CardView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-</androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
-
-
-
-
-
-
-
-
-
-
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:columnCount="2"
+                android:useDefaultMargins="true" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

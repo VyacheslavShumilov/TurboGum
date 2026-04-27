@@ -67,5 +67,58 @@
     <string name="hint_note">Вкладыши жвачек</string>
     <string name="note">Note</string>
 
+    <!-- ── Навигация (bottom nav) ──────────────────────────────────────── -->
+    <string name="nav_home">Home</string>
+    <string name="nav_collection">Collection</string>
+    <string name="nav_scan">Scan</string>
+    <string name="nav_community">Community</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- ── Home / wrappers screen ─────────────────────────────────────── -->
+    <string name="your_turbo">Your Turbo</string>
+    <string name="collect_explore_drive">Collect. Explore. Drive.</string>
+    <string name="cards_collected">cards collected</string>
+    <string name="all_series">All series</string>
+    <string name="wrapper_series">Wrapper series</string>
+    <string name="search_hint">Search wrappers, cars…</string>
+
+    <!-- ── Filters (liners list) ──────────────────────────────────────── -->
+    <string name="filter_all">All</string>
+    <string name="filter_owned">Owned</string>
+    <string name="filter_favourites">Favourites</string>
+
+    <!-- ── Card detail (fragment_liner) ──────────────────────────────── -->
+    <string name="societe_turbo">Societe Turbo</string>
+    <string name="wiki">Wikipedia</string>
+    <string name="add_note">Add a note…</string>
+    <string name="spec_engine">Engine</string>
+    <string name="spec_power">Power</string>
+    <string name="spec_speed">Top speed</string>
+    <string name="spec_number">Card no.</string>
+
+    <!-- ── Scan screen ────────────────────────────────────────────────── -->
+    <string name="scan_card">Scan card</string>
+    <string name="scan_instruction_title">Point at your Turbo card</string>
+    <string name="scan_instruction_body">Hold the card flat and steady — the scanner identifies the vehicle and series automatically.</string>
+    <string name="tip_lighting">Good lighting</string>
+    <string name="tip_frame">Fill the frame</string>
+    <string name="tip_flat">Flat surface</string>
+    <string name="enter_manually">Enter card number manually</string>
+
+    <!-- ── Community screen ───────────────────────────────────────────── -->
+    <string name="community_title">Turbo Community</string>
+    <string name="community_subtitle">Connect with collectors worldwide</string>
+    <string name="open_vk_community">Open VK · Турбо Товарищи</string>
+    <string name="open_societe">Open societeturbo.com</string>
+
+    <!-- ── Profile screen ────────────────────────────────────────────── -->
+    <string name="series_progress">Series progress</string>
+    <string name="account">Account</string>
+    <string name="settings">Settings</string>
+    <string name="notifications">Notifications</string>
+    <string name="developers">About developers</string>
+    <string name="stat_collected">Collected</string>
+    <string name="stat_favourites">Favourites</string>
+    <string name="stat_trades">Trades</string>
 
 </resources>

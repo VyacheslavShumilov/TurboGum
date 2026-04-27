@@ -1,77 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_background_color"
+    android:background="@color/surface_page"
     tools:context=".ui.liners_lists.LinersListFragment">
 
-    <include
+    <!-- ── Toolbar ─────────────────────────────────────────────────────────── -->
+    <LinearLayout
         android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/surface_card"
+        android:elevation="2dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="12dp">
 
+        <ImageButton
+            android:id="@+id/toWrappersBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/btn_icon_bg"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Back"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="17sp"
+            android:textColor="@color/text_primary"
+            android:fontFamily="@font/font"
+            tools:text="Series T2 · 51–120" />
+
+        <ImageButton
+            android:id="@+id/toFavouriteBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/btn_icon_bg"
+            android:src="@drawable/ic_list_favourite"
+            android:contentDescription="Favourites" />
+    </LinearLayout>
+
+    <!-- ── Filter chips row ─────────────────────────────────────────────── -->
+    <HorizontalScrollView
+        android:id="@+id/filterRow"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:scrollbars="none"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@color/surface_card"
+        android:layout_marginTop="56dp"
+        android:elevation="1dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipFilterAll"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filter_all"
+                android:checked="true"
+                android:layout_marginEnd="6dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipFilterOwned"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filter_owned"
+                android:layout_marginEnd="6dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipFilterFavourites"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filter_favourites"
+                android:layout_marginEnd="6dp" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- ── Main content ─────────────────────────────────────────────────── -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        tools:listitem="@layout/item_liner"
-        android:paddingBottom="60dp"
-        />
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"
+        tools:listitem="@layout/item_liner" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        android:visibility="gone" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- No internet layout -->
+    <LinearLayout
         android:id="@+id/noInternetLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/check_internet_connection"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="center" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRepeat"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginTop="24dp"
-            style="@style/Widget.Material3.Button"
-            app:strokeColor="@color/black"
-            android:textColor="@color/white"
-            app:strokeWidth="3dp"
-            android:textSize="18sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="@string/repeat_request"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:backgroundTint="@color/brand_purple" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

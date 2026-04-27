@@ -9,7 +9,10 @@ enum class Screen {
     WRAPPERS_LIST_SCREEN,
     HELP_SCREEN,
     FAVOURITE,
-    DEVELOPERS_SCREEN
+    DEVELOPERS_SCREEN,
+    SCAN_SCREEN,
+    COMMUNITY_SCREEN,
+    PROFILE_SCREEN
 }
 
 interface AppNavigator {
@@ -27,29 +30,20 @@ enum class ScreenParamWrapper {
     SUPER_3,
     SPORT_1,
     SPORT_2,
-//    SPORT_3,
-//    SPORT_4,
-//    SPORT_5,
     CLASSIC_1,
     CLASSIC_2,
-//    POWER,
-//    T_2000_A,
-//    T_2000_B,
-//    SPORT_2003,
-//    SUPER_2003,
-//    SUPER_2007
-
 }
 
-interface AppNavigatorParamWrapper { fun navigateToParamWrapper(screen: ScreenParamWrapper, series: String) }
-
+interface AppNavigatorParamWrapper {
+    fun navigateToParamWrapper(screen: ScreenParamWrapper, series: String)
+}
 
 enum class ScreenParamLiner { TURBO }
-interface AppNavigatorParamLiner { fun navigateToParamLiner(screen: ScreenParamLiner, liner: Liner) }
+interface AppNavigatorParamLiner {
+    fun navigateToParamLiner(screen: ScreenParamLiner, liner: Liner)
+}
 
-
-/***
- * Для Favorite Liner Fragment
- */
 enum class ScreenParamLinerFav { FAVORITE_LINER }
-interface AppNavigatorParamLinerFav { fun navigateToParamLinerFav(screen: ScreenParamLinerFav, linerFav: LinersFavourite) }
+interface AppNavigatorParamLinerFav {
+    fun navigateToParamLinerFav(screen: ScreenParamLinerFav, linerFav: LinersFavourite)
+}

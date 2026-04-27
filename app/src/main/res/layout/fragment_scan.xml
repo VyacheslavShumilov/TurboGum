@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_page"
+    android:orientation="vertical"
+    tools:context=".ui.scan.ScanFragment">
+
+    <!-- ── Toolbar ─────────────────────────────────────────────────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/surface_card"
+        android:elevation="2dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/btn_icon_bg"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/scan_card"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:fontFamily="@font/font" />
+
+        <ImageButton
+            android:id="@+id/btnFlash"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/btn_icon_bg"
+            android:src="@drawable/ic_flash"
+            android:contentDescription="Flash" />
+    </LinearLayout>
+
+    <!-- ── Camera viewfinder ───────────────────────────────────────────── -->
+    <FrameLayout
+        android:id="@+id/cameraContainer"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/rounded_dark_bg"
+        android:clipToOutline="true">
+
+        <!-- Camera preview surface (CameraX PreviewView) -->
+        <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Viewfinder corners overlay -->
+        <View
+            android:id="@+id/viewfinderOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Animated scan line -->
+        <View
+            android:id="@+id/scanLine"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_margin="4dp"
+            android:background="@color/brand_purple_border"
+            android:layout_gravity="center_vertical" />
+
+        <!-- Match preview strip (peeks from bottom) -->
+        <LinearLayout
+            android:id="@+id/matchPreview"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom"
+            android:background="@color/surface_card"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/matchThumb"
+                android:layout_width="44dp"
+                android:layout_height="34dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/rounded_sm_bg"
+                android:clipToOutline="true"
+                android:src="@drawable/placeholder"
+                android:layout_marginEnd="10dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/matchName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="@font/font"
+                    tools:text="Suzuki GSX-R1100" />
+
+                <TextView
+                    android:id="@+id/matchSeries"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="@color/brand_purple"
+                    tools:text="T2# · No. 107" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/matchPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/badge_green_bg"
+                android:textSize="10sp"
+                android:textColor="@color/brand_teal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                tools:text="97% match" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- ── Instructions ────────────────────────────────────────────────── -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scan_instruction_title"
+        android:textSize="14sp"
+        android:textColor="@color/text_primary"
+        android:fontFamily="@font/font"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scan_instruction_body"
+        android:textSize="12sp"
+        android:textColor="@color/text_hint"
+        android:lineSpacingMultiplier="1.5"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="10dp" />
+
+    <!-- ── Tips 3-column row ────────────────────────────────────────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:layout_marginBottom="10dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginEnd="4dp"
+            app:cardBackgroundColor="@color/surface_card" app:cardCornerRadius="10dp"
+            app:strokeColor="@color/border_default" app:strokeWidth="0.5dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:gravity="center"
+                android:padding="10dp">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp"
+                    android:src="@drawable/ic_light_tip"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/tip_lighting" android:textSize="10sp"
+                    android:textColor="@color/text_hint" android:gravity="center"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginEnd="4dp"
+            app:cardBackgroundColor="@color/surface_card" app:cardCornerRadius="10dp"
+            app:strokeColor="@color/border_default" app:strokeWidth="0.5dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:gravity="center"
+                android:padding="10dp">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp"
+                    android:src="@drawable/ic_frame_tip"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/tip_frame" android:textSize="10sp"
+                    android:textColor="@color/text_hint" android:gravity="center"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/surface_card" app:cardCornerRadius="10dp"
+            app:strokeColor="@color/border_default" app:strokeWidth="0.5dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:gravity="center"
+                android:padding="10dp">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp"
+                    android:src="@drawable/ic_flat_tip"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/tip_flat" android:textSize="10sp"
+                    android:textColor="@color/text_hint" android:gravity="center"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- ── Manual entry fallback ────────────────────────────────────────── -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnManualEntry"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:text="@string/enter_manually"
+        android:textSize="13sp"
+        android:textColor="@color/brand_purple"
+        app:backgroundTint="@color/surface_input"
+        app:strokeColor="@color/border_subtle"
+        app:strokeWidth="0.5dp"
+        app:cornerRadius="12dp" />
+
+</LinearLayout>

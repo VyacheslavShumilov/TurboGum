@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_page"
+    android:orientation="vertical">
+
+    <!-- Toolbar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/surface_card"
+        android:elevation="2dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/btn_icon_bg"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/nav_community"
+            android:textSize="17sp"
+            android:textColor="@color/text_primary"
+            android:fontFamily="@font/font" />
+
+        <View android:layout_width="36dp" android:layout_height="36dp" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Community logo / hero -->
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/main_logo_lines"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/community_title"
+                android:textSize="20sp"
+                android:textColor="@color/text_primary"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/community_subtitle"
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp" />
+
+            <!-- VK button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenVk"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/open_vk_community"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/brand_purple"
+                app:cornerRadius="12dp"
+                app:icon="@drawable/vk"
+                app:iconTint="@color/white" />
+
+            <!-- Societe Turbo button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenSociete"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="@string/open_societe"
+                android:textSize="14sp"
+                android:textColor="@color/brand_purple"
+                app:backgroundTint="@color/brand_purple_light"
+                app:strokeColor="@color/brand_purple_border"
+                app:strokeWidth="0.5dp"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

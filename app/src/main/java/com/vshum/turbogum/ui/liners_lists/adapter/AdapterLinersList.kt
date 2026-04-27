@@ -1,87 +1,82 @@
 package com.vshum.turbogum.ui.liners_lists.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-//import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import com.vshum.turbogum.R
 import com.vshum.turbogum.dao.LinersDao
 import com.vshum.turbogum.databinding.ItemLinerBinding
 import com.vshum.turbogum.model.Liner
-import com.vshum.turbogum.model.LinersFavourite
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class AdapterLinersList(
-    private var linersList: ArrayList<Liner>,
+    private val linersList: ArrayList<Liner>,
     private val listener: SetOnClickListener,
     private val appDao: LinersDao
 ) : RecyclerView.Adapter<AdapterLinersList.ViewHolder>() {
 
-    inner class ViewHolder(var binding: ItemLinerBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindView(liner: Liner) {
-            itemView.setOnClickListener {
-                listener.onClickLiner(liner)
+    interface SetOnClickListener {
+        fun onClickLiner(liner: Liner)
+    }
+
+    inner class ViewHolder(val binding: ItemLinerBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(liner: Liner) {
+            // ── Image ────────────────────────────────────────────────
+            if (liner.imageUrlLiner.isNotEmpty()) {
+                Picasso.get()
+                    .load(liner.imageUrlLiner)
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.placeholder)
+                    .into(binding.linerImageView)
+            } else {
+                binding.linerImageView.setImageResource(R.drawable.placeholder)
             }
+
+            // ── Text ─────────────────────────────────────────────────
+            binding.linerBrand.text   = liner.brand
+            binding.linerModel.text   = liner.model
+            binding.linerNumber.text  = "#${liner.numberLiner}"
+            binding.seriesBadge.text  = liner.index
+
+            // ── Favourite icon: async DB check ────────────────────────
+            CoroutineScope(Dispatchers.IO).launch {
+                val isFav = appDao.getLinerFavorite(liner.uniqueNumber) != null
+                withContext(Dispatchers.Main) {
+                    binding.btnFavourite.setImageResource(
+                        if (isFav) R.drawable.btn_fav else R.drawable.ic_favorite_border
+                    )
+                    val tintColor = if (isFav) R.color.brand_purple else R.color.text_hint
+                    binding.btnFavourite.setColorFilter(
+                        ContextCompat.getColor(binding.root.context, tintColor)
+                    )
+                }
+            }
+
+            // ── Progress bar (placeholder at 0 until real stats ready) ─
+            binding.collectionProgress.progress = 0
+
+            // ── Click ─────────────────────────────────────────────────
+            binding.root.setOnClickListener { listener.onClickLiner(liner) }
         }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemLinerBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+            ItemLinerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val liner = linersList[position]
-        with(holder.binding) {
-//            Glide.with(holder.itemView.context)
-//                .load(liner.imageUrlLiner)
-//                .into(linerImageView)
-            Picasso.get().load(liner.imageUrlLiner).into(linerImageView)
-
-            /***
-             * Запрос к базе данных getLinerFavorite выполняется асинхронно с помощью CoroutineScope(Dispatchers.IO).launch,
-             * значит, foundInDb устанавливается на значение по умолчанию, которое равно false, до того, как запрос будет выполнен.
-             * Для исправления этой ошибки вам необходимо использовать сопрограммы и suspend функции для получения результата запроса перед установкой значения foundInDb
-             */
-
-            CoroutineScope(Dispatchers.IO).launch {
-                val favLiner = appDao.getLinerFavorite(liner.uniqueNumber)
-                val foundInDb = favLiner != null
-                withContext(Dispatchers.Main) {
-                    if (foundInDb) {
-                        addedToCollection.visibility = View.VISIBLE
-                        //выделяются рамкой не выбранные вкладыши
-                        //card.strokeColor = ContextCompat.getColor(holder.itemView.context, R.color.card_stroke_color)
-                    } else {
-                        addedToCollection.visibility = View.GONE
-                    }
-                }
-            }
-
-            holder.bindView(liner)
-        }
+        holder.bind(linersList[position])
     }
-
 
     override fun getItemCount(): Int = linersList.size
-
-    interface SetOnClickListener {
-        fun onClickLiner(liner: Liner)
-    }
 }
-
-
-

@@ -1,38 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <!-- Brand Purple -->
+    <color name="brand_purple">#A78BFA</color>
+    <color name="brand_purple_active">#7C3AED</color>
+    <color name="brand_purple_light">#1E1B30</color>
+    <color name="brand_purple_dark">#C4B5FD</color>
+    <color name="brand_purple_border">#4C3A8A</color>
+
+    <!-- Brand Orange -->
+    <color name="brand_orange">#F97316</color>
+    <color name="brand_orange_light">#2A1A0A</color>
+
+    <!-- Brand Teal -->
+    <color name="brand_teal">#10B981</color>
+    <color name="brand_teal_light">#0D2620</color>
+
+    <!-- Brand Blue -->
+    <color name="brand_blue">#38BDF8</color>
+    <color name="brand_blue_light">#0A1F2E</color>
+
+    <!-- Surfaces -->
+    <color name="surface_page">#0F1120</color>
+    <color name="surface_card">#1A1D2E</color>
+    <color name="surface_input">#1E2235</color>
+    <color name="surface_secondary">#252840</color>
+    <color name="surface_elevated">#252A3D</color>
+
+    <!-- Borders -->
+    <color name="border_default">#2A2D45</color>
+    <color name="border_subtle">#222540</color>
+
+    <!-- Text -->
+    <color name="text_primary">#E2E8F0</color>
+    <color name="text_secondary">#CBD5E1</color>
+    <color name="text_hint">#6B7280</color>
+    <color name="text_disabled">#4B5563</color>
+
+    <!-- Toolbar -->
+    <color name="toolbar_color">#0F1120</color>
+    <color name="toolbar_text">#E2E8F0</color>
+
+    <!-- Gradient -->
+    <color name="start_gradient_color">#C084FC</color>
+    <color name="end_gradient_color">#F97316</color>
+
+    <!-- Legacy Material tokens -->
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="btn_fav_unselected">#A78BFA</color>
+    <color name="btn_fav_selected">#F43F5E</color>
 
-    <color name="primaryColor">#D77903</color>
-    <color name="primaryLightColor">#E17F02</color>
-    <color name="primaryDarkColor">#c05d00</color>
-    <color name="secondaryColor">#f4511e</color>
-    <color name="secondaryLightColor">#ff844c</color>
-    <color name="secondaryDarkColor">#b91400</color>
-    <color name="primaryTextColor">#000000</color>
-    <color name="secondaryTextColor">#000000</color>
-    <color name="transparent">#00FFFFFF</color>
-
-    <color name="start_gradient_color">#C9AE1F</color>
-    <color name="end_gradient_color">#B25D48</color>
-    <color name="btn_fav_unselected">#FFD600</color>
-    <color name="btn_fav_selected">#FFD600</color>
-    <color name="developers_background_color">#66000000</color>
-    <color name="developers_screen_background_color">#B358356D</color>
-    <color name="app_background_color">#F5F5F6</color>
-    <color name="toolbar_color">#FD7E44</color>
-    <color name="container_btn_color">#F1F5F9</color>
-    <color name="container_stroke_btn_color">#D8D9E0</color>
-    <color name="container_fav_btn_color">#2563EB</color>
-    <color name="liner_txt_color">#F4734D</color>
-    <color name="card_stroke_color">#40B144</color>
-
-    <color name="divider_liner_color">#492532</color>
-    <color name="fav_liner_note_background">#80E5E5EB</color>
-
+    <!-- Backward compat aliases -->
+    <color name="primaryColor">#A78BFA</color>
+    <color name="primaryLightColor">#C4B5FD</color>
+    <color name="primaryDarkColor">#7C3AED</color>
+    <color name="secondaryColor">#F97316</color>
+    <color name="secondaryLightColor">#FB923C</color>
+    <color name="secondaryDarkColor">#EA580C</color>
+    <color name="primaryTextColor">#E2E8F0</color>
+    <color name="secondaryTextColor">#CBD5E1</color>
+    <color name="app_background_color">#0F1120</color>
+    <color name="container_btn_color">#1E2235</color>
+    <color name="container_stroke_btn_color">#2A2D45</color>
+    <color name="container_fav_btn_color">#A78BFA</color>
+    <color name="liner_txt_color">#F97316</color>
+    <color name="card_stroke_color">#10B981</color>
+    <color name="divider_liner_color">#2A2D45</color>
+    <color name="fav_liner_note_background">#1E2235</color>
+    <color name="developers_background_color">#AA000000</color>
+    <color name="developers_screen_background_color">#0F1120</color>
+    <color name="nav_active">#A78BFA</color>
+    <color name="nav_inactive">#6B7280</color>
+    <color name="nav_fab_bg">#7C3AED</color>
 </resources>
