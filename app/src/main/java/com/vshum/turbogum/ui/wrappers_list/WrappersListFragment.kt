@@ -36,18 +36,18 @@ class WrappersListFragment : Fragment() {
 
     private val seriesEntries by lazy {
         listOf(
-            SeriesEntry("Серия 1",  "Nos. 1–50",    R.drawable.t1,  ScreenParamWrapper.SERIES_1,  "Серия 1"),
-            SeriesEntry("Серия 2",  "Nos. 51–120",  R.drawable.t2,  ScreenParamWrapper.SERIES_2,  "Серия 2"),
-            SeriesEntry("Серия 3",  "Nos. 121–190", R.drawable.t3,  ScreenParamWrapper.SERIES_3,  "Серия 3"),
-            SeriesEntry("Серия 4",  "Nos. 191–260", R.drawable.t4,  ScreenParamWrapper.SERIES_4,  "Серия 4"),
-            SeriesEntry("Серия 5",  "Nos. 261–330", R.drawable.t5,  ScreenParamWrapper.SERIES_5,  "Серия 5"),
-            SeriesEntry("Super 1",  "Nos. 1–70",    R.drawable.t6,  ScreenParamWrapper.SUPER_1,   "Super 1"),
-            SeriesEntry("Super 2",  "Nos. 71–140",  R.drawable.t7,  ScreenParamWrapper.SUPER_2,   "Super 2"),
-            SeriesEntry("Super 3",  "Nos. 141–210", R.drawable.t8,  ScreenParamWrapper.SUPER_3,   "Super 3"),
-            SeriesEntry("Sport 1",  "Nos. 1–70",    R.drawable.ts1, ScreenParamWrapper.SPORT_1,   "Sport 1"),
-            SeriesEntry("Sport 2",  "Nos. 71–140",  R.drawable.ts2, ScreenParamWrapper.SPORT_2,   "Sport 2"),
-            SeriesEntry("Classic 1","Nos. 1–70",    R.drawable.tc1, ScreenParamWrapper.CLASSIC_1, "Classic 1"),
-            SeriesEntry("Classic 2","Nos. 71–140",  R.drawable.tc2, ScreenParamWrapper.CLASSIC_2, "Classic 2")
+            SeriesEntry("Серия 1",  "1–50",    R.drawable.t1,  ScreenParamWrapper.SERIES_1,  "Серия 1"),
+            SeriesEntry("Серия 2",  "51–120",  R.drawable.t2,  ScreenParamWrapper.SERIES_2,  "Серия 2"),
+            SeriesEntry("Серия 3",  "121–190", R.drawable.t3,  ScreenParamWrapper.SERIES_3,  "Серия 3"),
+            SeriesEntry("Серия 4",  "191–260", R.drawable.t4,  ScreenParamWrapper.SERIES_4,  "Серия 4"),
+            SeriesEntry("Серия 5",  "261–330", R.drawable.t5,  ScreenParamWrapper.SERIES_5,  "Серия 5"),
+            SeriesEntry("Super 1",  "1–70",    R.drawable.t6,  ScreenParamWrapper.SUPER_1,   "Super 1"),
+            SeriesEntry("Super 2",  "71–140",  R.drawable.t7,  ScreenParamWrapper.SUPER_2,   "Super 2"),
+            SeriesEntry("Super 3",  "141–210", R.drawable.t8,  ScreenParamWrapper.SUPER_3,   "Super 3"),
+            SeriesEntry("Sport 1",  "1–70",    R.drawable.ts1, ScreenParamWrapper.SPORT_1,   "Sport 1"),
+            SeriesEntry("Sport 2",  "71–140",  R.drawable.ts2, ScreenParamWrapper.SPORT_2,   "Sport 2"),
+            SeriesEntry("Classic 1","1–70",    R.drawable.tc1, ScreenParamWrapper.CLASSIC_1, "Classic 1"),
+            SeriesEntry("Classic 2","71–140",  R.drawable.tc2, ScreenParamWrapper.CLASSIC_2, "Classic 2")
         )
     }
 
@@ -61,11 +61,6 @@ class WrappersListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.toFavouriteBtn.setOnClickListener {
-            appNavigator.navigateTo(Screen.FAVOURITE)
-        }
-
 
         buildSeriesGrid()
     }
@@ -83,7 +78,7 @@ class WrappersListFragment : Fragment() {
             val spec = GridLayout.LayoutParams().apply {
                 columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
                 width = 0
-                setMargins(4, 4, 4, 4)
+                setMargins(10, 10, 10, 10)
             }
             cardView.layoutParams = spec
 
@@ -97,7 +92,6 @@ class WrappersListFragment : Fragment() {
             imageView?.visibility = View.VISIBLE
             // ─────────────────────────────────────────────────────────────
 
-            cardView.findViewById<TextView>(R.id.seriesLabel)?.text = entry.label
             cardView.findViewById<TextView>(R.id.seriesCount)?.text = entry.range
             cardView.findViewById<TextView>(R.id.seriesChip)?.text = entry.label
 

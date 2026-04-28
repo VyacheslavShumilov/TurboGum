@@ -42,14 +42,14 @@ class MainActivity : AppCompatActivity() {
                     appNavigator.navigateTo(Screen.FAVOURITE)
                     true
                 }
-                R.id.nav_scan -> {
-                    appNavigator.navigateTo(Screen.SCAN_SCREEN)
-                    true
-                }
-                R.id.nav_community -> {
-                    appNavigator.navigateTo(Screen.COMMUNITY_SCREEN)
-                    true
-                }
+//                R.id.nav_scan -> {
+//                    appNavigator.navigateTo(Screen.SCAN_SCREEN)
+//                    true
+//                }
+//                R.id.nav_community -> {
+//                    appNavigator.navigateTo(Screen.COMMUNITY_SCREEN)
+//                    true
+//                }
                 R.id.nav_profile -> {
                     appNavigator.navigateTo(Screen.PROFILE_SCREEN)
                     true

@@ -56,16 +56,6 @@
             android:adjustViewBounds="true"
             android:src="@drawable/btn_wrap_txt" />
 
-        <!-- Кнопка прижата к правому краю -->
-        <ImageButton
-            android:id="@+id/toFavouriteBtn"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/btn_icon_bg"
-            android:contentDescription="Favourites"
-            android:src="@drawable/ic_list_favourite" />
     </LinearLayout>
 
     <!-- ── Scrollable content ─────────────────────────────────────────────── -->
@@ -73,6 +63,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="56dp"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false"
         android:fillViewport="true">
 
         <LinearLayout
@@ -80,82 +72,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Hero section -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/surface_card"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
 
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font"
-                        android:text="@string/collection"
-                        android:textColor="@color/brand_purple"
-                        android:textSize="28sp"
-                        android:textStyle="normal" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:text="@string/collect_explore_drive"
-                        android:textColor="@color/text_hint"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <!-- Stat chip -->
-                <LinearLayout
-                    android:id="@+id/statChip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/chip_purple_bg"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:id="@+id/statCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/brand_purple_dark"
-                        android:textSize="22sp"
-                        android:textStyle="normal" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cards_collected"
-                        android:textColor="@color/brand_purple"
-                        android:textSize="10sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Section label -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="6dp"
-                android:letterSpacing="0.06"
-                android:text="@string/wrapper_series"
-                android:textAllCaps="true"
-                android:textColor="@color/text_hint"
-                android:textSize="11sp" />
 
             <!-- 2-column grid of series cards -->
             <GridLayout
