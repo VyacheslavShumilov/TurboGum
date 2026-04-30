@@ -12,9 +12,9 @@ class ServicesLocator {
         return AppNavigatorImpl(fragmentActivity)
     }
 
-    fun providerNavigatorParamLiners(fragmentActivity: FragmentActivity): AppNavigatorParamLiner {
-        return AppNavigatorImpl(fragmentActivity)
-    }
+//    fun providerNavigatorParamLiners(fragmentActivity: FragmentActivity): AppNavigatorParamLiner {
+//        return AppNavigatorImpl(fragmentActivity)
+//    }
 
     fun providerNavigatorParamLinerFav(fragmentActivity: FragmentActivity): AppNavigatorParamLinerFav {
         return AppNavigatorImpl(fragmentActivity)

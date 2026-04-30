@@ -51,13 +51,12 @@
                 android:layout_gravity="top|start"
                 android:layout_margin="4dp"
                 android:background="@drawable/badge_violet_bg"
-                android:fontFamily="@font/space_grotesk"
+                android:fontFamily="@font/space_grotesk_semibold"
                 android:paddingStart="6dp"
                 android:paddingEnd="6dp"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:textColor="@color/white"
-                android:textFontWeight="600"
                 android:textSize="9sp"
                 tools:text="S1" />
         </FrameLayout>

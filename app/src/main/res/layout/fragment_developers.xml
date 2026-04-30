@@ -42,316 +42,316 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/logoContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/appCompatTextView13"
-        app:layout_constraintEnd_toStartOf="@+id/materialDivider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3">
+<!--    <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--        android:id="@+id/logoContainer"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/appCompatTextView13"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/materialDivider"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3">-->
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/startScreenImage"
-            android:layout_width="250dp"
-            android:layout_height="71dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/start_screen_text" />
+<!--        <androidx.appcompat.widget.AppCompatImageView-->
+<!--            android:id="@+id/startScreenImage"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="71dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/start_screen_text" />-->
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/startScreenText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:text="@string/start_logo"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/startScreenText"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:text="@string/start_logo"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="17sp"-->
+<!--            android:textStyle="bold" />-->
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+<!--    </androidx.appcompat.widget.LinearLayoutCompat>-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/android_developer"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/materialDivider2"
-        app:layout_constraintEnd_toStartOf="@+id/materialDivider"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="100dp"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/android_developer"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/materialDivider2"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/me"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/materialDivider"
-        app:layout_constraintTop_toTopOf="@+id/appCompatTextView" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView4"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/me"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/appCompatTextView" />-->
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/ui_design"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/ui_design"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/ui_name"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView4" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView5"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/ui_name"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView4" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/search"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/search"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/search_name_1"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/materialDivider"
-        app:layout_constraintTop_toTopOf="@+id/appCompatTextView3" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView6"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/search_name_1"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/appCompatTextView3" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/search_name_2"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/appCompatTextView6"
-        app:layout_constraintTop_toTopOf="@+id/appCompatTextView6" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView9"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="5dp"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/search_name_2"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/appCompatTextView6"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/appCompatTextView6" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/search_name_3"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView6" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView7"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/search_name_3"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView6" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/search_name_4"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/appCompatTextView9"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView9" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView10"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/search_name_4"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/appCompatTextView9"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView9" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/search_name_5"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView7" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView8"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/search_name_5"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView7" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/search_name_6"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/appCompatTextView10"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView10" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView11"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/search_name_6"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/appCompatTextView10"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView10" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/search_name_7"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView8" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView12"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/search_name_7"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView8" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/collection"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView13"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="35dp"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/collection"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/foto"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView13" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView14"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/foto"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView13" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/hd"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView14" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView15"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/hd"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView14" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/group_vk"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView15" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView16"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/group_vk"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView15" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/group_vk_societe"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView16" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView17"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/group_vk_societe"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView16" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/collection_name"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/materialDivider"
-        app:layout_constraintTop_toTopOf="@+id/appCompatTextView13" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView18"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/collection_name"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/appCompatTextView13" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/foto_name"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView18" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView19"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/foto_name"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView18" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/hd_name"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView19" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView20"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/hd_name"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView19" />-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/developers_background_color"
-        android:padding="@dimen/developers_txt_padding"
-        android:text="@string/group_vk_name"
-        android:textColor="@color/white"
-        android:textSize="@dimen/developers_txt_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/materialDivider"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView20" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/appCompatTextView21"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/developers_background_color"-->
+<!--        android:padding="@dimen/developers_txt_padding"-->
+<!--        android:text="@string/group_vk_name"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="@dimen/developers_txt_size"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/materialDivider"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView20" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

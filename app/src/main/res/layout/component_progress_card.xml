@@ -1,23 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Background track -->
-    <item android:id="@android:id/background">
-        <shape android:shape="rectangle">
-            <corners android:radius="3dp" />
-            <solid android:color="@color/border_2" />
-        </shape>
-    </item>
-    <!-- Progress fill -->
-    <item android:id="@android:id/progress">
-        <clip>
-            <shape android:shape="rectangle">
-                <corners android:radius="3dp" />
-                <gradient
-                    android:startColor="@color/gradient_progress_start"
-                    android:endColor="@color/gradient_progress_end"
-                    android:angle="0"
-                    android:type="linear" />
-            </shape>
-        </clip>
-    </item>
-</layer-list>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/surface_card_bg"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/spacing_lg"
+    android:paddingEnd="@dimen/spacing_lg"
+    android:paddingTop="@dimen/spacing_md"
+    android:paddingBottom="@dimen/spacing_md">
+
+    <!-- Title row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/space_grotesk_semibold"
+            android:text="Прогресс"
+            android:textColor="@color/text_2"
+            android:textSize="@dimen/text_label_lg" />
+
+        <TextView
+            android:id="@+id/progressCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/barlow_condensed"
+            android:textColor="@color/brand_gold"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="0/50"
+            xmlns:tools="http://schemas.android.com/tools" />
+    </LinearLayout>
+
+    <!-- Progress bar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/progress_bar_height"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:layout_marginBottom="@dimen/spacing_md"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/progress_bar_gradient" />
+
+    <!-- Legend -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Owned -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_marginEnd="6dp"
+                android:background="@color/rarity_uncommon" />
+            <TextView
+                android:id="@+id/legendOwned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_grotesk"
+                android:textColor="@color/text_3"
+                android:textSize="9sp"
+                tools:text="Есть (0)"
+                xmlns:tools="http://schemas.android.com/tools" />
+        </LinearLayout>
+
+        <!-- Missing -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_marginEnd="6dp"
+                android:background="@color/text_4" />
+            <TextView
+                android:id="@+id/legendMissing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_grotesk"
+                android:text="Нет"
+                android:textColor="@color/text_3"
+                android:textSize="9sp" />
+        </LinearLayout>
+
+        <!-- Duplicates -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_marginEnd="6dp"
+                android:background="@color/brand_gold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_grotesk"
+                android:text="Дубликаты"
+                android:textColor="@color/text_3"
+                android:textSize="9sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

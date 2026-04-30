@@ -42,18 +42,18 @@ class StartScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding) {
-            logoImage.setOnClickListener {
-                playIntroVideo {
-                    // После окончания видео → переход
-                    appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
-                }
-            }
-
-            developersBtn.setOnClickListener {
-                appNavigator.navigateTo(Screen.DEVELOPERS_SCREEN)
-            }
-        }
+//        with(binding) {
+//            logoImage.setOnClickListener {
+//                playIntroVideo {
+//                    // После окончания видео → переход
+//                    appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
+//                }
+//            }
+//
+//            developersBtn.setOnClickListener {
+//                appNavigator.navigateTo(Screen.DEVELOPERS_SCREEN)
+//            }
+//        }
     }
 
     private fun Float.dpToPx(): Float {

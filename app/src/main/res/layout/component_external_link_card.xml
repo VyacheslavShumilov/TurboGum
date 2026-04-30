@@ -32,8 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/space_grotesk"
+        android:fontFamily="@font/space_grotesk_semibold"
         android:textColor="#D1F0EEF8"
-        android:textFontWeight="600"
         android:textSize="11sp" />
 </LinearLayout>

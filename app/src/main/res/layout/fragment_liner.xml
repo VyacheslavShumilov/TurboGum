@@ -63,14 +63,13 @@
                         android:layout_gravity="top|start"
                         android:layout_margin="@dimen/spacing_md"
                         android:background="@drawable/badge_rarity_common"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:paddingStart="@dimen/spacing_sm"
                         android:paddingEnd="@dimen/spacing_sm"
                         android:paddingTop="3dp"
                         android:paddingBottom="3dp"
                         android:textAllCaps="true"
                         android:textColor="@color/text_1"
-                        android:textFontWeight="600"
                         android:textSize="10sp"
                         android:letterSpacing="0.06"
                         tools:text="Common" />
@@ -149,13 +148,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/surface_input_bg"
-                    android:fontFamily="@font/space_grotesk"
+                    android:fontFamily="@font/space_grotesk_medium"
                     android:paddingStart="@dimen/spacing_md"
                     android:paddingEnd="@dimen/spacing_md"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
                     android:textColor="@color/text_2"
-                    android:textFontWeight="500"
                     android:textSize="11sp"
                     tools:text="Серия 1" />
             </LinearLayout>
@@ -169,13 +167,12 @@
                 android:background="@drawable/btn_cta_gradient"
                 android:clickable="true"
                 android:focusable="true"
-                android:fontFamily="@font/space_grotesk"
+                android:fontFamily="@font/space_grotesk_semibold"
                 android:gravity="center"
                 android:letterSpacing="0.04"
                 android:text="@string/detail_add_to_collection"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textFontWeight="600"
                 android:textSize="@dimen/text_body_lg" />
 
             <!-- ── Section: Specs ─────────────────────────────────── -->
@@ -184,12 +181,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_xxl"
                 android:layout_marginBottom="@dimen/spacing_md"
-                android:fontFamily="@font/space_grotesk"
+                android:fontFamily="@font/space_grotesk_semibold"
                 android:letterSpacing="0.12"
                 android:text="@string/detail_specs"
                 android:textAllCaps="true"
                 android:textColor="@color/text_3"
-                android:textFontWeight="600"
                 android:textSize="@dimen/text_label_md" />
 
             <!-- Specs 2x2 grid -->
@@ -212,12 +208,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:letterSpacing="0.08"
                         android:text="@string/detail_spec_engine"
                         android:textAllCaps="true"
                         android:textColor="@color/text_3"
-                        android:textFontWeight="600"
                         android:textSize="9sp" />
                     <TextView
                         android:id="@+id/specEngine"
@@ -242,12 +237,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:letterSpacing="0.08"
                         android:text="@string/detail_spec_power"
                         android:textAllCaps="true"
                         android:textColor="@color/text_3"
-                        android:textFontWeight="600"
                         android:textSize="9sp" />
                     <TextView
                         android:id="@+id/specPower"
@@ -272,12 +266,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:letterSpacing="0.08"
                         android:text="@string/detail_spec_top_speed"
                         android:textAllCaps="true"
                         android:textColor="@color/text_3"
-                        android:textFontWeight="600"
                         android:textSize="9sp" />
                     <TextView
                         android:id="@+id/specTopSpeed"
@@ -302,12 +295,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:letterSpacing="0.08"
                         android:text="@string/detail_spec_year"
                         android:textAllCaps="true"
                         android:textColor="@color/text_3"
-                        android:textFontWeight="600"
                         android:textSize="9sp" />
                     <TextView
                         android:id="@+id/specYear"
@@ -328,12 +320,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_xxl"
                 android:layout_marginBottom="@dimen/spacing_md"
-                android:fontFamily="@font/space_grotesk"
+                android:fontFamily="@font/space_grotesk_semibold"
                 android:letterSpacing="0.12"
                 android:text="@string/detail_links"
                 android:textAllCaps="true"
                 android:textColor="@color/text_3"
-                android:textFontWeight="600"
                 android:textSize="@dimen/text_label_md" />
 
             <!-- Links 2x2 grid -->
@@ -367,10 +358,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:text="@string/detail_link_vk"
                         android:textColor="@color/text_1"
-                        android:textFontWeight="600"
                         android:textSize="11sp" />
                 </LinearLayout>
 
@@ -397,10 +387,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:text="@string/detail_link_societe"
                         android:textColor="@color/text_1"
-                        android:textFontWeight="600"
                         android:textSize="11sp" />
                 </LinearLayout>
 
@@ -427,10 +416,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:text="@string/detail_link_video"
                         android:textColor="@color/text_1"
-                        android:textFontWeight="600"
                         android:textSize="11sp" />
                 </LinearLayout>
 
@@ -457,10 +445,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:text="@string/detail_link_wiki"
                         android:textColor="@color/text_1"
-                        android:textFontWeight="600"
                         android:textSize="11sp" />
                 </LinearLayout>
             </GridLayout>
@@ -478,12 +465,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/space_grotesk"
+                    android:fontFamily="@font/space_grotesk_semibold"
                     android:letterSpacing="0.12"
                     android:text="@string/detail_note_section"
                     android:textAllCaps="true"
                     android:textColor="@color/text_3"
-                    android:textFontWeight="600"
                     android:textSize="@dimen/text_label_md" />
 
                 <ImageButton
@@ -547,13 +533,12 @@
                         android:background="@drawable/surface_input_bg"
                         android:clickable="true"
                         android:focusable="true"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_medium"
                         android:gravity="center"
                         android:paddingStart="@dimen/spacing_md"
                         android:paddingEnd="@dimen/spacing_md"
                         android:text="@string/detail_note_cancel"
                         android:textColor="@color/text_2"
-                        android:textFontWeight="500"
                         android:textSize="@dimen/text_body_md" />
 
                     <TextView
@@ -564,13 +549,12 @@
                         android:background="@drawable/btn_violet_gradient"
                         android:clickable="true"
                         android:focusable="true"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:gravity="center"
                         android:paddingStart="@dimen/spacing_md"
                         android:paddingEnd="@dimen/spacing_md"
                         android:text="@string/detail_note_save"
                         android:textColor="@color/white"
-                        android:textFontWeight="600"
                         android:textSize="@dimen/text_body_md" />
                 </LinearLayout>
             </LinearLayout>

@@ -2,49 +2,53 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootCoordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/surface_page">
+    android:background="@color/bg_background"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
 
-    <!-- Fragment container fills the space above bottom nav -->
+    <!-- Fragment host — fills available space above bottom nav -->
     <FrameLayout
-        android:id="@+id/mainContainer"
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:paddingBottom="60dp" />
+        android:layout_marginBottom="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <!-- Bottom navigation bar -->
+    <!-- Bottom navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_gravity="bottom"
-        android:background="@color/surface_card"
-        app:menu="@menu/bottom_nav_menu"
         style="@style/TurboBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_nav_height"
+        android:layout_gravity="bottom"
+        app:itemIconTint="@color/nav_selector"
+        app:itemTextColor="@color/nav_selector"
         app:labelVisibilityMode="labeled"
-        app:itemIconSize="22dp" />
+        app:menu="@menu/bottom_nav_menu" />
 
-    <!-- Затемнение — поверх всего -->
+    <!-- ── Image expand overlay (used by LinerFragment) ──────────── -->
+    <!-- Lives at activity level so it can cover bottom nav too -->
     <View
         android:id="@+id/imageOverlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#CC000000"
-        android:visibility="gone"
         android:clickable="true"
-        android:elevation="10dp" />
+        android:elevation="10dp"
+        android:visibility="gone" />
 
-    <!-- Увеличенное изображение — поверх всего -->
     <ImageView
         android:id="@+id/expandedImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"
-        android:padding="24dp"
-        android:visibility="gone"
+        android:contentDescription="Full size"
         android:elevation="11dp"
-        android:contentDescription="Full size" />
+        android:padding="@dimen/spacing_xxxl"
+        android:scaleType="fitCenter"
+        android:visibility="gone" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

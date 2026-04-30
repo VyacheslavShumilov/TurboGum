@@ -126,12 +126,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_xxl"
                 android:layout_marginBottom="@dimen/spacing_md"
-                android:fontFamily="@font/space_grotesk"
+                android:fontFamily="@font/space_grotesk_semibold"
                 android:letterSpacing="0.12"
                 android:text="@string/home_section_series"
                 android:textAllCaps="true"
                 android:textColor="@color/text_3"
-                android:textFontWeight="600"
                 android:textSize="@dimen/text_label_md" />
 
             <!-- 2-column grid -->

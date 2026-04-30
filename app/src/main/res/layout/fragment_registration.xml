@@ -7,132 +7,132 @@
     android:background="@color/app_background_color"
     tools:context=".ui.RegistrationFragment">
 
-    <TextView
-        android:id="@+id/login_main_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/entrance"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/inputEmailContainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+<!--    <TextView-->
+<!--        android:id="@+id/login_main_text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/entrance"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="28sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/inputEmailContainer"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.5" />-->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputEmailContainer"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        app:boxStrokeWidth="2dp"
-        app:boxStrokeColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/inputPasswordContainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_main_text"
-        app:layout_constraintVertical_bias="0.5">
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/inputEmailContainer"-->
+<!--        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:boxStrokeWidth="2dp"-->
+<!--        app:boxStrokeColor="@color/black"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/inputPasswordContainer"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/login_main_text"-->
+<!--        app:layout_constraintVertical_bias="0.5">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputEmail"
-            style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/e_mail"
-            android:inputType="textEmailAddress" />
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/inputEmail"-->
+<!--            style="@style/Widget.Material3.TextInputEditText.OutlinedBox"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:ems="10"-->
+<!--            android:hint="@string/e_mail"-->
+<!--            android:inputType="textEmailAddress" />-->
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputPasswordContainer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        app:boxStrokeWidth="2dp"
-        app:boxStrokeColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/login_button_container"
-        app:layout_constraintEnd_toEndOf="@+id/inputEmailContainer"
-        app:layout_constraintStart_toStartOf="@+id/inputEmailContainer"
-        app:layout_constraintTop_toBottomOf="@+id/inputEmailContainer"
-        app:layout_constraintVertical_bias="0.5">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputPassword"
-            style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/password"
-            android:inputType="textEmailAddress" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <FrameLayout
-        android:id="@+id/login_button_container"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/registration_button"
-        app:layout_constraintEnd_toEndOf="@+id/inputPasswordContainer"
-        app:layout_constraintStart_toStartOf="@+id/inputPasswordContainer"
-        app:layout_constraintTop_toBottomOf="@+id/inputPasswordContainer"
-        app:layout_constraintVertical_bias="0.5">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/login_button"
-            style="@style/Widget.Material3.Button"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/login_button_text"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="50dp"
-            app:strokeColor="@color/black"
-            app:strokeWidth="3dp" />
-
-        <ProgressBar
-            android:id="@+id/login_button_progress"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:visibility="gone" />
-
-    </FrameLayout>
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
 
-    <Button
-        android:id="@+id/registration_button"
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:text="@string/registration"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/policy_txt"
-        app:layout_constraintEnd_toEndOf="@+id/login_button_container"
-        app:layout_constraintStart_toStartOf="@+id/login_button_container"
-        app:layout_constraintTop_toBottomOf="@+id/login_button_container"
-        app:layout_constraintVertical_bias="0.5"
-        app:strokeColor="@color/black"
-        app:strokeWidth="3dp" />
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/inputPasswordContainer"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:ems="10"-->
+<!--        app:boxStrokeWidth="2dp"-->
+<!--        app:boxStrokeColor="@color/black"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/login_button_container"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/inputEmailContainer"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/inputEmailContainer"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/inputEmailContainer"-->
+<!--        app:layout_constraintVertical_bias="0.5">-->
 
-    <TextView
-        android:id="@+id/policy_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="@string/private_policy"
-        android:textColor="@color/black"
-        android:textIsSelectable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registration_button"
-        app:layout_constraintVertical_bias="0.5" />
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/inputPassword"-->
+<!--            style="@style/Widget.Material3.TextInputEditText.OutlinedBox"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:ems="10"-->
+<!--            android:hint="@string/password"-->
+<!--            android:inputType="textEmailAddress" />-->
+
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/login_button_container"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/registration_button"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/inputPasswordContainer"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/inputPasswordContainer"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/inputPasswordContainer"-->
+<!--        app:layout_constraintVertical_bias="0.5">-->
+
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/login_button"-->
+<!--            style="@style/Widget.Material3.Button"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:text="@string/login_button_text"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:cornerRadius="50dp"-->
+<!--            app:strokeColor="@color/black"-->
+<!--            app:strokeWidth="3dp" />-->
+
+<!--        <ProgressBar-->
+<!--            android:id="@+id/login_button_progress"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:visibility="gone" />-->
+
+<!--    </FrameLayout>-->
+
+
+<!--    <Button-->
+<!--        android:id="@+id/registration_button"-->
+<!--        style="@style/Widget.Material3.Button.OutlinedButton"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:text="@string/registration"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/policy_txt"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/login_button_container"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/login_button_container"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/login_button_container"-->
+<!--        app:layout_constraintVertical_bias="0.5"-->
+<!--        app:strokeColor="@color/black"-->
+<!--        app:strokeWidth="3dp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/policy_txt"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:text="@string/private_policy"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textIsSelectable="true"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/registration_button"-->
+<!--        app:layout_constraintVertical_bias="0.5" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

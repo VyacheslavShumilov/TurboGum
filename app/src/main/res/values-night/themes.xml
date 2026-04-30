@@ -12,7 +12,6 @@
 
         <!-- Surfaces -->
         <item name="colorSurface">@color/bg_surface_2</item>
-        <item name="colorBackground">@color/bg_background</item>
         <item name="android:colorBackground">@color/bg_background</item>
         <item name="android:windowBackground">@color/bg_background</item>
 

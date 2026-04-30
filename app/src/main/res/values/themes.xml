@@ -1,18 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Theme.TurboGum" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="colorPrimary">@color/brand_purple</item>
-        <item name="colorPrimaryVariant">@color/brand_purple_active</item>
+        <!-- Brand colors -->
+        <item name="colorPrimary">@color/brand_violet</item>
+        <item name="colorPrimaryVariant">@color/brand_violet_dark</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/brand_orange</item>
-        <item name="colorSecondaryVariant">@color/brand_teal</item>
-        <item name="colorOnSecondary">@color/white</item>
-        <item name="android:statusBarColor">@color/surface_page</item>
-        <item name="android:navigationBarColor">@color/surface_page</item>
+        <item name="colorSecondary">@color/brand_gold</item>
+        <item name="colorSecondaryVariant">@color/brand_gold_light</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Surfaces -->
+        <item name="colorSurface">@color/bg_surface_2</item>
+        <item name="android:colorBackground">@color/bg_background</item>
+        <item name="android:windowBackground">@color/bg_background</item>
+
+        <!-- System bars -->
+        <item name="android:statusBarColor">@color/bg_background</item>
+        <item name="android:navigationBarColor">@color/bg_bottom_nav</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
         <item name="android:windowFullscreen">false</item>
-        <item name="android:fontFamily">@font/font</item>
-        <item name="android:windowBackground">@color/surface_page</item>
+
+        <!-- Default font -->
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="fontFamily">@font/space_grotesk</item>
+
+        <!-- Edge-to-edge per spec -->
         <item name="android:fitsSystemWindows">true</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
     </style>
 
     <style name="Theme.TurboGum.NoActionBar">
@@ -20,53 +36,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="TurboBottomNav" parent="Widget.Material3.BottomNavigationView">
-        <item name="itemIconTint">@color/nav_selector</item>
-        <item name="itemTextColor">@color/nav_selector</item>
-        <item name="backgroundTint">@color/surface_card</item>
-        <item name="itemActiveIndicatorStyle">@style/TurboNavIndicator</item>
-        <item name="elevation">8dp</item>
-        <item name="itemPaddingTop">10dp</item>
-        <item name="itemPaddingBottom">6dp</item>
-    </style>
-
-    <style name="TurboToolbar" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">@color/surface_page</item>
-        <item name="android:elevation">2dp</item>
-        <item name="contentInsetStart">0dp</item>
-        <item name="contentInsetLeft">0dp</item>
-    </style>
-
-    <style name="TurboBadge">
-        <item name="android:textSize">11sp</item>
-        <item name="android:textColor">@color/brand_purple_dark</item>
-        <item name="android:background">@drawable/badge_purple_bg</item>
-        <item name="android:paddingStart">8dp</item>
-        <item name="android:paddingEnd">8dp</item>
-        <item name="android:paddingTop">3dp</item>
-        <item name="android:paddingBottom">3dp</item>
-    </style>
-
     <style name="Theme.TurboGum.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.TurboGum.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="circleImageView" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">50%</item>
-    </style>
-
-    <style name="TurboNavIndicator" parent="@style/Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@android:color/transparent</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Full</item>
-        <item name="android:height">0dp</item>
-        <item name="android:width">0dp</item>
-    </style>
-
-    <style name="ShapeAppearance.TurboCard" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">0dp</item>
-        <item name="cornerSizeTopRight">0dp</item>
-        <item name="cornerSizeBottomLeft">14dp</item>
-        <item name="cornerSizeBottomRight">14dp</item>
+    <!-- Splash theme — dark background, no action bar -->
+    <style name="Theme.TurboGum.Splash" parent="Theme.TurboGum">
+        <item name="android:windowBackground">@color/bg_background</item>
+        <item name="android:statusBarColor">@color/bg_background</item>
     </style>
 </resources>

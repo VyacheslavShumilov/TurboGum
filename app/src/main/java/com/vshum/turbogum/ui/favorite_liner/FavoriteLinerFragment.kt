@@ -1,18 +1,20 @@
 package com.vshum.turbogum.ui.favorite_liner
 
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.view.doOnPreDraw
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
-//import com.squareup.picasso.Picasso
+import com.squareup.picasso.Picasso
 import com.vshum.turbogum.App
 import com.vshum.turbogum.R
 import com.vshum.turbogum.dao.LinersDao
@@ -24,135 +26,235 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-
+/**
+ * Detail screen for a sticker that's already in the user's favourites.
+ * Differs from LinerFragment in that the CTA is "Remove from collection"
+ * (the sticker is already saved) and the heart badge is filled by default.
+ *
+ * Sections: hero with badges → brand/model/number → links 2x2 → note (read+edit)
+ * → remove button.
+ */
 class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
 
-    private lateinit var binding: FragmentFavoriteLinerBinding
+    private var _binding: FragmentFavoriteLinerBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var appDao: LinersDao
     private lateinit var appNavigator: AppNavigator
-    private var addedNote: String = ""
+    private var isImageExpanded = false
+
+    private val imageOverlay: View?
+        get() = activity?.findViewById(R.id.imageOverlay)
+    private val expandedImage: ImageView?
+        get() = activity?.findViewById(R.id.expandedImage)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFavoriteLinerBinding.inflate(inflater, container, false)
-
-        appDao = (context?.applicationContext as App).getDatabase().linersDao()
-        initIcons()
-        initTextViews()
-        initListeners()
-        loadNoteFromDatabase()
-
+        _binding = FragmentFavoriteLinerBinding.inflate(inflater, container, false)
+        appDao = (requireContext().applicationContext as App).getDatabase().linersDao()
         return binding.root
     }
 
-    private fun initIcons() {
-        with(binding) {
-            toolbar.toFavouriteBtn.visibility = View.GONE
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        setupHeader()
+        setupHero()
+        setupTextFields()
+        setupLinks()
+        setupNote()
+        setupImageExpand()
+        setupRemoveButton()
+    }
+
+    // ── Header ────────────────────────────────────────────────────────
+
+    private fun setupHeader() {
+        val header = binding.headerInclude.root
+        header.findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
+            appNavigator.navigateTo(Screen.FAVOURITE)
+        }
+        header.findViewById<TextView>(R.id.headerTitle).text = ""
+    }
+
+    // ── Hero image ────────────────────────────────────────────────────
+
+    private fun setupHero() {
+        if (linerFav.imageUrlLiner.isNotEmpty()) {
+            Picasso.get().load(linerFav.imageUrlLiner).into(binding.imageView)
+        }
+        binding.linerIndex.text = linerFav.index
+        binding.yearTag.text = yearForSeries(linerFav.series)
+    }
+
+    // ── Text fields ───────────────────────────────────────────────────
+
+    private fun setupTextFields() {
+        binding.linerBrand.text = linerFav.brand
+        binding.linerModel.text = linerFav.model
+        binding.linerNumber.text = "#${linerFav.numberLiner}"
+    }
+
+    // ── Links ─────────────────────────────────────────────────────────
+
+    private fun setupLinks() {
+        with(binding) {
             if (linerFav.video == "-") linkVideo.visibility = View.GONE
             if (linerFav.vkArticle == "-") linkVk.visibility = View.GONE
             if (linerFav.wikiArticle == "-") linkWiki.visibility = View.GONE
             if (linerFav.websiteSociete == "-") websiteSociete.visibility = View.GONE
 
-            if (linerFav.imageUrlLiner.isEmpty()) {
-                imageView.setImageResource(R.drawable.placeholder)
-            } else {
-                Glide.with(this@FavoriteLinerFragment)
-                    .load(linerFav.imageUrlLiner)
-                    .into(imageView)
-            }
-        }
-    }
-
-    private fun initTextViews() {
-        with(binding) {
-            linerIndex.text = linerFav.index
-            linerNumber.text = linerFav.numberLiner
-            linerBrand.text = linerFav.brand
-            linerModel.text = linerFav.model
-        }
-    }
-
-    private fun initListeners() {
-        // Навигация
-        binding.toolbar.toWrappersBtn.setOnClickListener {
-            appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
-        }
-
-        // Ссылки
-        binding.linkVideo.setOnClickListener { openLink(linerFav.video) }
-        binding.linkVk.setOnClickListener { openLink(linerFav.vkArticle) }
-        binding.linkWiki.setOnClickListener { openLink(linerFav.wikiArticle) }
-        binding.websiteSociete.setOnClickListener { openLink(linerFav.websiteSociete) }
-
-        // Сохранение заметки
-        binding.saveNoteBtn.setOnClickListener {
-            val note = binding.noteInput.text.toString()
-            lifecycleScope.launch(Dispatchers.IO) {
-                appDao.editNoteLiner(linerFav.uniqueNumber, note)
-                withContext(Dispatchers.Main) {
-                    binding.noteTxtView.text = note
-                }
-            }
-        }
-
-        // Увеличение изображения по центру экрана с затемнением фона
-        binding.imageView.setOnClickListener {
-            if (linerFav.imageUrlLiner.isNotEmpty()) {
-                showZoomedImage(linerFav.imageUrlLiner)
-            }
+            linkVideo.setOnClickListener { openLink(linerFav.video) }
+            linkVk.setOnClickListener { openLink(linerFav.vkArticle) }
+            linkWiki.setOnClickListener { openLink(linerFav.wikiArticle) }
+            websiteSociete.setOnClickListener { openLink(linerFav.websiteSociete) }
         }
     }
 
     private fun openLink(url: String) {
-        if (url != "-") {
-            val uri = Uri.parse(url)
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+        if (url.isNotBlank() && url != "-") {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
         }
     }
 
-    private fun loadNoteFromDatabase() {
+    // ── Note (read / edit) ────────────────────────────────────────────
+
+    private fun setupNote() {
+        // Load saved note from DB
         lifecycleScope.launch(Dispatchers.IO) {
-            addedNote = appDao.getNoteLiner(linerFav.uniqueNumber)
+            val saved = try {
+                appDao.getNoteLiner(linerFav.uniqueNumber)
+            } catch (e: Exception) {
+                null
+            }
             withContext(Dispatchers.Main) {
-                if (addedNote != "-") {
-                    binding.noteTxtView.text = addedNote
-                } else addedNote = "Заметка отсутствует"
+                val text = if (saved.isNullOrBlank() || saved == "-") "" else saved
+                showNoteRead(text)
+            }
+        }
+
+        binding.btnEditNote.setOnClickListener { switchToEditMode() }
+        binding.btnNoteCancel.setOnClickListener {
+            showNoteRead(binding.noteTxtView.text.toString())
+        }
+        binding.saveNoteBtn.setOnClickListener { saveNote() }
+    }
+
+    private fun showNoteRead(text: String) {
+        binding.noteTxtView.text = text
+        binding.noteTxtView.visibility = View.VISIBLE
+        binding.noteEditContainer.visibility = View.GONE
+    }
+
+    private fun switchToEditMode() {
+        binding.noteInput.setText(binding.noteTxtView.text)
+        binding.noteTxtView.visibility = View.GONE
+        binding.noteEditContainer.visibility = View.VISIBLE
+    }
+
+    private fun saveNote() {
+        val text = binding.noteInput.text.toString().trim()
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                appDao.editNoteLiner(linerFav.uniqueNumber, text)
+            } catch (e: Exception) {
+                // ignore
+            }
+            withContext(Dispatchers.Main) {
+                showNoteRead(text)
             }
         }
     }
 
-    private fun showZoomedImage(imageUrl: String) {
-        val dialog = Dialog(requireContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen)
-        val view = layoutInflater.inflate(R.layout.dialog_zoom_image, null)
-        val imageView = view.findViewById<ImageView>(R.id.zoomImageView)
+    // ── Remove from collection ────────────────────────────────────────
 
-        Glide.with(this)
-            .load(imageUrl)
-            .into(imageView)
-
-        dialog.setContentView(view)
-        dialog.setCancelable(true)
-
-        // Закрытие по клику на фон или на картинку
-        view.setOnClickListener { dialog.dismiss() }
-        imageView.setOnClickListener { dialog.dismiss() }
-
-        dialog.show()
+    private fun setupRemoveButton() {
+        binding.btnRemoveFromCollection.setOnClickListener {
+            lifecycleScope.launch(Dispatchers.IO) {
+                try {
+                    appDao.deleteFavoriteLiner(linerFav)
+                } catch (e: Exception) {
+                    // ignore
+                }
+                withContext(Dispatchers.Main) {
+                    appNavigator.navigateTo(Screen.FAVOURITE)
+                }
+            }
+        }
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString("noteText", binding.noteTxtView.text.toString())
-        super.onSaveInstanceState(outState)
+    // ── Image expand / collapse ───────────────────────────────────────
+
+    private fun setupImageExpand() {
+        binding.imageView.setOnClickListener {
+            if (!isImageExpanded) expandImage() else collapseImage()
+        }
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-        val noteText = savedInstanceState?.getString("noteText")
-        binding.noteTxtView.text = noteText
+    private fun expandImage() {
+        val overlay = imageOverlay ?: return
+        val expanded = expandedImage ?: return
+
+        binding.imageView.visibility = View.INVISIBLE
+        overlay.apply {
+            visibility = View.VISIBLE
+            alpha = 0f
+            animate().alpha(1f).setDuration(250)
+                .setInterpolator(AccelerateDecelerateInterpolator()).start()
+            setOnClickListener { collapseImage() }
+        }
+        expanded.apply {
+            setImageDrawable(binding.imageView.drawable)
+            visibility = View.VISIBLE
+            alpha = 0f
+            scaleX = 0.75f
+            scaleY = 0.75f
+            setOnClickListener { collapseImage() }
+        }
+        expanded.doOnPreDraw {
+            expanded.animate().alpha(1f).scaleX(1f).scaleY(1f)
+                .setDuration(300)
+                .setInterpolator(AccelerateDecelerateInterpolator()).start()
+        }
+        isImageExpanded = true
+    }
+
+    private fun collapseImage() {
+        val overlay = imageOverlay ?: return
+        val expanded = expandedImage ?: return
+
+        overlay.animate().alpha(0f).setDuration(200).start()
+        expanded.animate().alpha(0f).scaleX(0.75f).scaleY(0.75f)
+            .setDuration(250)
+            .setInterpolator(AccelerateDecelerateInterpolator())
+            .withEndAction {
+                overlay.visibility = View.GONE
+                expanded.visibility = View.GONE
+                binding.imageView.visibility = View.VISIBLE
+            }.start()
+        isImageExpanded = false
+    }
+
+    private fun yearForSeries(series: String): String = when {
+        series.contains("1") -> "1989"
+        series.contains("2") -> "1990"
+        series.contains("3") -> "1991"
+        series.contains("4") -> "1992"
+        series.contains("5") -> "1993"
+        else -> "—"
+    }
+
+    // ── Lifecycle ─────────────────────────────────────────────────────
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        if (isImageExpanded) {
+            imageOverlay?.visibility = View.GONE
+            expandedImage?.visibility = View.GONE
+        }
+        _binding = null
     }
 
     override fun onAttach(context: Context) {

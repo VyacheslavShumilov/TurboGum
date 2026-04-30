@@ -11,10 +11,10 @@
         android:icon="@drawable/ic_nav_collection"
         android:title="@string/nav_collection" />
 
-    <item
-        android:id="@+id/nav_favorites"
-        android:icon="@drawable/ic_nav_favorites"
-        android:title="@string/nav_favorites" />
+<!--    <item-->
+<!--        android:id="@+id/nav_favorites"-->
+<!--        android:icon="@drawable/ic_nav_favorites"-->
+<!--        android:title="@string/nav_favorites" />-->
 
     <item
         android:id="@+id/nav_profile"

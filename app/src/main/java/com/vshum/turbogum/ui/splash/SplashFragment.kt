@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.vshum.turbogum.App
+import com.vshum.turbogum.MainActivity
 import com.vshum.turbogum.R
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
@@ -43,5 +44,15 @@ class SplashFragment : Fragment() {
         super.onAttach(context)
         appNavigator =
             (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as? MainActivity)?.setBottomNavVisible(false)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        (activity as? MainActivity)?.setBottomNavVisible(true)
     }
 }

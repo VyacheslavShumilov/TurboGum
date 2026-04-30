@@ -61,10 +61,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_xs"
-            android:fontFamily="@font/space_grotesk"
+            android:fontFamily="@font/space_grotesk_medium"
             android:text="@string/splash_subtitle"
             android:textColor="@color/text_3"
-            android:textFontWeight="500"
             android:textSize="@dimen/text_body_md" />
     </LinearLayout>
 

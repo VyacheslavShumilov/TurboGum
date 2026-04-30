@@ -127,12 +127,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:letterSpacing="0.06"
                         android:text="@string/profile_stats_collected"
                         android:textAllCaps="true"
                         android:textColor="@color/text_3"
-                        android:textFontWeight="600"
                         android:textSize="9sp" />
                 </LinearLayout>
 
@@ -160,12 +159,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:letterSpacing="0.06"
                         android:text="@string/profile_stats_favorites"
                         android:textAllCaps="true"
                         android:textColor="@color/text_3"
-                        android:textFontWeight="600"
                         android:textSize="9sp" />
                 </LinearLayout>
 
@@ -192,12 +190,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/space_grotesk"
+                        android:fontFamily="@font/space_grotesk_semibold"
                         android:letterSpacing="0.06"
                         android:text="@string/profile_stats_completion"
                         android:textAllCaps="true"
                         android:textColor="@color/text_3"
-                        android:textFontWeight="600"
                         android:textSize="9sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -208,12 +205,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_xxl"
                 android:layout_marginBottom="@dimen/spacing_md"
-                android:fontFamily="@font/space_grotesk"
+                android:fontFamily="@font/space_grotesk_semibold"
                 android:letterSpacing="0.12"
                 android:text="@string/home_section_series"
                 android:textAllCaps="true"
                 android:textColor="@color/text_3"
-                android:textFontWeight="600"
                 android:textSize="@dimen/text_label_md" />
 
             <LinearLayout
@@ -228,12 +224,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_xxl"
                 android:layout_marginBottom="@dimen/spacing_md"
-                android:fontFamily="@font/space_grotesk"
+                android:fontFamily="@font/space_grotesk_semibold"
                 android:letterSpacing="0.12"
                 android:text="@string/profile_settings"
                 android:textAllCaps="true"
                 android:textColor="@color/text_3"
-                android:textFontWeight="600"
                 android:textSize="@dimen/text_label_md" />
 
             <!-- Settings -->
@@ -261,10 +256,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/space_grotesk"
+                    android:fontFamily="@font/space_grotesk_medium"
                     android:text="@string/profile_settings"
                     android:textColor="@color/text_1"
-                    android:textFontWeight="500"
                     android:textSize="@dimen/text_body_lg" />
 
                 <ImageView
@@ -299,10 +293,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/space_grotesk"
+                    android:fontFamily="@font/space_grotesk_medium"
                     android:text="@string/profile_notifications"
                     android:textColor="@color/text_1"
-                    android:textFontWeight="500"
                     android:textSize="@dimen/text_body_lg" />
 
                 <ImageView
@@ -337,10 +330,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/space_grotesk"
+                    android:fontFamily="@font/space_grotesk_medium"
                     android:text="@string/profile_developers"
                     android:textColor="@color/text_1"
-                    android:textFontWeight="500"
                     android:textSize="@dimen/text_body_lg" />
 
                 <ImageView

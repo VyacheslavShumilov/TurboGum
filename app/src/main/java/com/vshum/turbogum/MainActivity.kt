@@ -1,17 +1,21 @@
 package com.vshum.turbogum
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vshum.turbogum.databinding.ActivityMainBinding
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
-import com.vshum.turbogum.ui.scan.ScanFragment
-import com.vshum.turbogum.ui.community.CommunityFragment
-import com.vshum.turbogum.ui.profile.ProfileFragment
-import com.vshum.turbogum.ui.wrappers_list.WrappersListFragment
-import com.vshum.turbogum.ui.favourite_list.FavouriteListFragment
 
+/**
+ * Hosts all fragments and the bottom navigation.
+ * - Starts with SplashFragment which auto-navigates to Home after a short delay.
+ * - Bottom nav has 4 tabs (Home / Collection / Favorites / Profile);
+ *   Collection re-opens the wrappers list (acts as a synonym for Home for now).
+ * - Provides activity-level imageOverlay/expandedImage views for fullscreen
+ *   image preview in LinerFragment.
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -24,11 +28,12 @@ class MainActivity : AppCompatActivity() {
 
         appNavigator = (applicationContext as App).servicesLocator.providerNavigator(this)
 
-        if (savedInstanceState == null) {
-            appNavigator.navigateTo(Screen.START_SCREEN)
-        }
-
         setupBottomNav()
+
+        if (savedInstanceState == null) {
+            // First launch — go through splash
+            appNavigator.navigateTo(Screen.SPLASH_SCREEN)
+        }
     }
 
     private fun setupBottomNav() {
@@ -39,23 +44,15 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_collection -> {
-                    appNavigator.navigateTo(Screen.FAVOURITE)
+                    appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
                     true
                 }
-//                R.id.nav_scan -> {
-//                    appNavigator.navigateTo(Screen.SCAN_SCREEN)
-//                    true
-//                }
-//                R.id.nav_community -> {
-//                    appNavigator.navigateTo(Screen.COMMUNITY_SCREEN)
+//                R.id.nav_favorites -> {
+//                    appNavigator.navigateTo(Screen.FAVOURITE)
 //                    true
 //                }
                 R.id.nav_profile -> {
                     appNavigator.navigateTo(Screen.PROFILE_SCREEN)
-                    true
-                }
-                R.id.nav_favorites -> {
-                    appNavigator.navigateTo(Screen.FAVOURITE)
                     true
                 }
                 else -> false
@@ -63,16 +60,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun setActiveNavItem(itemId: Int) {
-        binding.bottomNav.selectedItemId = itemId
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount > 0) {
-            supportFragmentManager.popBackStack()
-        } else {
-            super.onBackPressed()
-        }
+    /**
+     * Show / hide the bottom nav. Splash screen hides it,
+     * regular screens show it.
+     */
+    fun setBottomNavVisible(visible: Boolean) {
+        binding.bottomNav.visibility = if (visible) View.VISIBLE else View.GONE
     }
 }

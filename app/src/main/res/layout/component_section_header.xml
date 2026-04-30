@@ -12,20 +12,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/space_grotesk"
+        android:fontFamily="@font/space_grotesk_semibold"
         android:letterSpacing="0.12"
         android:textAllCaps="true"
         android:textColor="@color/text_3"
-        android:textFontWeight="600"
         android:textSize="@dimen/text_label_md" />
 
     <TextView
         android:id="@+id/sectionAction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/space_grotesk"
+        android:fontFamily="@font/space_grotesk_semibold"
         android:textColor="@color/brand_violet_light"
-        android:textFontWeight="600"
         android:textSize="11sp"
         android:visibility="gone" />
 </LinearLayout>
