@@ -1,26 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    <style name="ButtonFavStyle">-->
-<!--        <item name="android:background">@drawable/btn_fav_border</item>-->
-<!--        <item name="android:tint">@color/btn_fav_unselected</item>-->
-<!--        <item name="android:stateListAnimator">@null</item>-->
-<!--    </style>-->
-<!--    <style name="ButtonFavStyle.Selected">-->
-<!--        <item name="android:background">@drawable/btn_fav_filled</item>-->
-<!--        <item name="android:tint">@color/btn_fav_selected</item>-->
-<!--        <item name="android:stateListAnimator">@null</item>-->
-<!--    </style>-->
 
-    <style name="TurboTextInputLayoutStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">@color/btn_fav_unselected</item>
-        <item name="boxStrokeErrorColor">@color/secondaryDarkColor</item>
+    <!-- ═══════════════════ DISPLAY (Barlow Condensed Italic) ═══════════════════ -->
+    <style name="Text.Display.Large">
+        <item name="android:fontFamily">@font/barlow_condensed</item>
+        <item name="android:textStyle">italic|bold</item>
+        <item name="android:textSize">@dimen/text_display_lg</item>
+        <item name="android:textColor">@color/text_1</item>
+        <item name="android:letterSpacing">-0.02</item>
     </style>
 
-    <style name="TurboMaterialCard" parent="Widget.Material3.CardView.Elevated">
-        <item name="cardCornerRadius">0dp</item>
-        <item name="cardElevation">3dp</item>
-        <item name="strokeColor">@color/transparent</item>
-        <item name="strokeWidth">1dp</item>
+    <style name="Text.Display.Medium">
+        <item name="android:fontFamily">@font/barlow_condensed</item>
+        <item name="android:textStyle">italic|bold</item>
+        <item name="android:textSize">@dimen/text_display_md</item>
+        <item name="android:textColor">@color/text_1</item>
     </style>
 
+    <!-- ═══════════════════ HEADLINE ═══════════════════ -->
+    <style name="Text.Headline.Large">
+        <item name="android:fontFamily">@font/barlow_condensed</item>
+        <item name="android:textStyle">italic|bold</item>
+        <item name="android:textSize">@dimen/text_headline_lg</item>
+        <item name="android:textColor">@color/text_1</item>
+    </style>
+
+    <style name="Text.Headline.Medium">
+        <item name="android:fontFamily">@font/barlow_condensed</item>
+        <item name="android:textStyle">italic|bold</item>
+        <item name="android:textSize">@dimen/text_headline_md</item>
+        <item name="android:textColor">@color/text_1</item>
+    </style>
+
+    <style name="Text.Headline.Small">
+        <item name="android:fontFamily">@font/barlow_condensed</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_headline_sm</item>
+        <item name="android:textColor">@color/text_1</item>
+    </style>
+
+    <!-- ═══════════════════ TITLE ═══════════════════ -->
+    <style name="Text.Title.Large">
+        <item name="android:fontFamily">@font/barlow_condensed</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_title_lg</item>
+        <item name="android:textColor">@color/text_1</item>
+    </style>
+
+    <!-- ═══════════════════ BODY (Space Grotesk) ═══════════════════ -->
+    <style name="Text.Body.Large">
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textSize">@dimen/text_body_lg</item>
+        <item name="android:textColor">@color/text_1</item>
+    </style>
+
+    <style name="Text.Body.Medium">
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textSize">@dimen/text_body_md</item>
+        <item name="android:textColor">@color/text_2</item>
+    </style>
+
+    <style name="Text.Body.Small">
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textSize">@dimen/text_body_sm</item>
+        <item name="android:textColor">@color/text_3</item>
+    </style>
+
+    <!-- ═══════════════════ LABEL ═══════════════════ -->
+    <style name="Text.Label.Large">
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textSize">@dimen/text_label_lg</item>
+        <item name="android:textColor">@color/text_1</item>
+        <item name="android:letterSpacing">0.04</item>
+    </style>
+
+    <style name="Text.Label.Medium">
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textSize">@dimen/text_label_md</item>
+        <item name="android:textColor">@color/text_3</item>
+        <item name="android:letterSpacing">0.12</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="Text.Label.Small">
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textSize">@dimen/text_label_sm</item>
+        <item name="android:textColor">@color/text_3</item>
+        <item name="android:letterSpacing">0.10</item>
+    </style>
+
+    <!-- ═══════════════════ SPECIALIZED ═══════════════════ -->
+    <!-- Card number "#001" — Barlow Condensed Bold Gold -->
+    <style name="Text.CardNumber">
+        <item name="android:fontFamily">@font/barlow_condensed</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/brand_gold</item>
+    </style>
+
+    <!-- Series number "Серия 1" — Barlow Condensed ExtraBold Gold -->
+    <style name="Text.SeriesNumber">
+        <item name="android:fontFamily">@font/barlow_condensed</item>
+        <item name="android:textStyle">italic|bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/brand_gold</item>
+    </style>
+
+    <!-- Stat value "8" "390" -->
+    <style name="Text.StatValue">
+        <item name="android:fontFamily">@font/barlow_condensed</item>
+        <item name="android:textStyle">italic|bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/text_1</item>
+    </style>
+
+    <!-- Section label "СЕРИИ" -->
+    <style name="Text.SectionLabel" parent="Text.Label.Medium">
+        <item name="android:textColor">@color/text_3</item>
+    </style>
+
+    <!-- ═══════════════════ COMPONENT STYLES ═══════════════════ -->
+    <style name="TurboBottomNav" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">@color/nav_selector</item>
+        <item name="itemTextColor">@color/nav_selector</item>
+        <item name="backgroundTint">@color/bg_bottom_nav</item>
+        <item name="elevation">8dp</item>
+        <item name="itemPaddingTop">10dp</item>
+        <item name="itemPaddingBottom">8dp</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+
+    <style name="TurboToolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/bg_background</item>
+        <item name="android:elevation">2dp</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetLeft">0dp</item>
+    </style>
+
+    <!-- Card shape with bottom-only rounding -->
+    <style name="ShapeAppearance.TurboCard" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomLeft">@dimen/radius_lg</item>
+        <item name="cornerSizeBottomRight">@dimen/radius_lg</item>
+    </style>
+
+    <!-- All-corners rounded card -->
+    <style name="ShapeAppearance.TurboCard.Full" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radius_lg</item>
+    </style>
+
+    <style name="circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

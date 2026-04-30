@@ -1,90 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/surface_page"
+    android:background="@color/bg_background"
     tools:context=".ui.wrappers_list.WrappersListFragment">
 
-    <!-- ── Top header bar ─────────────────────────────────────────────────── -->
-    <LinearLayout
-        android:id="@+id/headerBar"
+    <!-- Top header -->
+    <include
+        android:id="@+id/headerInclude"
+        layout="@layout/component_app_header"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/surface_card"
-        android:elevation="2dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingEnd="12dp"
-        app:layout_anchor="@id/headerBar">
+        android:layout_height="@dimen/header_height" />
 
-        <!-- Logo bars -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="14dp"
-            android:gravity="bottom"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="4dp"
-                android:layout_height="10dp"
-                android:layout_marginEnd="2dp"
-                android:background="@color/brand_purple" />
-
-            <View
-                android:layout_width="4dp"
-                android:layout_height="14dp"
-                android:layout_marginEnd="2dp"
-                android:background="@color/brand_orange" />
-
-            <View
-                android:layout_width="4dp"
-                android:layout_height="8dp"
-                android:background="@color/brand_blue" />
-        </LinearLayout>
-
-        <!-- Логотип — занимает свободное место, не растягивается -->
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:scaleType="fitStart"
-            android:adjustViewBounds="true"
-            android:src="@drawable/btn_wrap_txt" />
-
-    </LinearLayout>
-
-    <!-- ── Scrollable content ─────────────────────────────────────────────── -->
+    <!-- Scrollable content -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="56dp"
-        android:paddingBottom="80dp"
+        android:layout_marginTop="@dimen/header_height"
         android:clipToPadding="false"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:paddingBottom="@dimen/bottom_nav_height">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_xl"
+            android:paddingEnd="@dimen/spacing_xl">
 
+            <!-- ── Hero block ─────────────────────────────────────── -->
+            <TextView
+                android:id="@+id/heroTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:fontFamily="@font/barlow_condensed"
+                android:text="Коллекция"
+                android:textColor="@color/text_1"
+                android:textSize="36sp"
+                android:textStyle="italic|bold"
+                android:letterSpacing="-0.02" />
 
+            <TextView
+                android:id="@+id/heroTagline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_grotesk"
+                android:text="@string/home_tagline"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/text_body_md" />
 
+            <!-- ── Stats card ─────────────────────────────────────── -->
+            <LinearLayout
+                android:id="@+id/statsCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xl"
+                android:background="@drawable/surface_card_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/spacing_lg"
+                android:paddingEnd="@dimen/spacing_lg"
+                android:paddingTop="@dimen/spacing_md"
+                android:paddingBottom="@dimen/spacing_md">
 
+                <!-- Big count -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-            <!-- 2-column grid of series cards -->
+                    <TextView
+                        android:id="@+id/statCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/barlow_condensed"
+                        android:text="0"
+                        android:textColor="@color/brand_gold"
+                        android:textSize="36sp"
+                        android:textStyle="italic|bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/space_grotesk"
+                        android:text="@string/home_total_cards"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/text_body_sm" />
+                </LinearLayout>
+
+                <!-- Progress mini -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/statProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/barlow_condensed"
+                        android:text="0%"
+                        android:textColor="@color/brand_violet_light"
+                        android:textSize="20sp"
+                        android:textStyle="italic|bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/space_grotesk"
+                        android:text="@string/profile_stats_completion"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/text_body_sm" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ── Section: Series ────────────────────────────────── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xxl"
+                android:layout_marginBottom="@dimen/spacing_md"
+                android:fontFamily="@font/space_grotesk"
+                android:letterSpacing="0.12"
+                android:text="@string/home_section_series"
+                android:textAllCaps="true"
+                android:textColor="@color/text_3"
+                android:textFontWeight="600"
+                android:textSize="@dimen/text_label_md" />
+
+            <!-- 2-column grid -->
             <GridLayout
                 android:id="@+id/seriesGrid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
                 android:columnCount="2"
-                android:useDefaultMargins="true" />
+                android:layout_marginBottom="@dimen/spacing_xl" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

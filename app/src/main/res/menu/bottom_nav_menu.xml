@@ -11,15 +11,10 @@
         android:icon="@drawable/ic_nav_collection"
         android:title="@string/nav_collection" />
 
-<!--    <item-->
-<!--        android:id="@+id/nav_scan"-->
-<!--        android:icon="@drawable/ic_nav_scan"-->
-<!--        android:title="@string/nav_scan" />-->
-
-<!--    <item-->
-<!--        android:id="@+id/nav_community"-->
-<!--        android:icon="@drawable/ic_nav_community"-->
-<!--        android:title="@string/nav_community" />-->
+    <item
+        android:id="@+id/nav_favorites"
+        android:icon="@drawable/ic_nav_favorites"
+        android:title="@string/nav_favorites" />
 
     <item
         android:id="@+id/nav_profile"

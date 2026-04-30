@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/headerBar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/header_height"
+    android:background="@color/bg_background"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/spacing_xl"
+    android:paddingEnd="@dimen/spacing_md">
+
+    <!-- BarsLogo -->
+    <include
+        android:id="@+id/barsLogo"
+        layout="@layout/component_bars_logo"
+        android:layout_marginEnd="@dimen/spacing_md" />
+
+    <!-- Turbo wordmark -->
+    <TextView
+        android:id="@+id/headerTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/barlow_condensed"
+        android:text="Turbo"
+        android:textColor="@color/text_1"
+        android:textSize="28sp"
+        android:textStyle="italic|bold"
+        android:letterSpacing="-0.01" />
+
+    <!-- Search icon button -->
+    <ImageButton
+        android:id="@+id/btnSearch"
+        android:layout_width="@dimen/icon_button_size"
+        android:layout_height="@dimen/icon_button_size"
+        android:background="@drawable/btn_icon_round"
+        android:contentDescription="Search"
+        android:padding="8dp"
+        android:src="@drawable/ic_search" />
+</LinearLayout>

@@ -54,6 +54,10 @@ class MainActivity : AppCompatActivity() {
                     appNavigator.navigateTo(Screen.PROFILE_SCREEN)
                     true
                 }
+                R.id.nav_favorites -> {
+                    appNavigator.navigateTo(Screen.FAVOURITE)
+                    true
+                }
                 else -> false
             }
         }

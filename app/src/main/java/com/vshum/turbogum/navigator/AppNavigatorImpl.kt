@@ -15,6 +15,7 @@ import com.vshum.turbogum.ui.liner.LinerFragment
 import com.vshum.turbogum.ui.liners_lists.LinersListFragment
 import com.vshum.turbogum.ui.profile.ProfileFragment
 import com.vshum.turbogum.ui.scan.ScanFragment
+import com.vshum.turbogum.ui.splash.SplashFragment
 import com.vshum.turbogum.ui.wrappers_list.WrappersListFragment
 
 class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) :
@@ -34,6 +35,7 @@ class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) :
             Screen.SCAN_SCREEN          -> ScanFragment()
             Screen.COMMUNITY_SCREEN     -> CommunityFragment()
             Screen.PROFILE_SCREEN       -> ProfileFragment()
+            Screen.SPLASH_SCREEN       -> SplashFragment()
         }
         fragmentActivity.supportFragmentManager.beginTransaction()
             .replace(R.id.mainContainer, fragment)

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_background"
+    tools:context=".ui.splash.SplashFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- Big bars logo (scaled up) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="6dp"
+                android:background="@color/rarity_uncommon" />
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="54dp"
+                android:layout_marginEnd="6dp"
+                android:background="@color/rarity_rare" />
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="6dp"
+                android:background="@color/brand_gold" />
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="66dp"
+                android:background="@color/brand_red" />
+        </LinearLayout>
+
+        <!-- Turbo wordmark -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xxl"
+            android:fontFamily="@font/barlow_condensed"
+            android:text="Turbo"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/text_display_md"
+            android:textStyle="italic|bold"
+            android:letterSpacing="-0.02" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xs"
+            android:fontFamily="@font/space_grotesk"
+            android:text="@string/splash_subtitle"
+            android:textColor="@color/text_3"
+            android:textFontWeight="500"
+            android:textSize="@dimen/text_body_md" />
+    </LinearLayout>
+
+    <!-- Version at bottom -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/spacing_xxxl"
+        android:fontFamily="@font/space_grotesk"
+        android:text="@string/splash_version"
+        android:textColor="@color/text_3"
+        android:textSize="@dimen/text_body_sm" />
+</FrameLayout>

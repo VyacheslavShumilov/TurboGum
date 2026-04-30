@@ -4,14 +4,15 @@ import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.model.LinersFavourite
 
 enum class Screen {
-    START_SCREEN,
-    REGISTRATION_SCREEN,
+    SPLASH_SCREEN,
     WRAPPERS_LIST_SCREEN,
-    HELP_SCREEN,
+    LINERS_LIST_SCREEN,
+    LINER_SCREEN,
     FAVOURITE,
+    FAVOURITE_LINER_SCREEN,
     DEVELOPERS_SCREEN,
-    SCAN_SCREEN,
-    COMMUNITY_SCREEN,
+    REGISTRATION,
+    HELP,
     PROFILE_SCREEN
 }
 

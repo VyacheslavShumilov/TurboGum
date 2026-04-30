@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="bottom">
+
+    <!-- 12dp green -->
+    <View
+        android:layout_width="@dimen/bars_logo_width"
+        android:layout_height="@dimen/bars_logo_h1"
+        android:layout_marginEnd="@dimen/bars_logo_gap"
+        android:background="@color/rarity_uncommon" />
+
+    <!-- 18dp blue -->
+    <View
+        android:layout_width="@dimen/bars_logo_width"
+        android:layout_height="@dimen/bars_logo_h2"
+        android:layout_marginEnd="@dimen/bars_logo_gap"
+        android:background="@color/rarity_rare" />
+
+    <!-- 14dp amber -->
+    <View
+        android:layout_width="@dimen/bars_logo_width"
+        android:layout_height="@dimen/bars_logo_h3"
+        android:layout_marginEnd="@dimen/bars_logo_gap"
+        android:background="@color/brand_gold" />
+
+    <!-- 22dp red -->
+    <View
+        android:layout_width="@dimen/bars_logo_width"
+        android:layout_height="@dimen/bars_logo_h4"
+        android:background="@color/brand_red" />
+</LinearLayout>
