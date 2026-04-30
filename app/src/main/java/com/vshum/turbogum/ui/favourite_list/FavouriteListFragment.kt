@@ -2,15 +2,12 @@ package com.vshum.turbogum.ui.favourite_list
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.vshum.turbogum.App
 import com.vshum.turbogum.dao.LinersDao
 import com.vshum.turbogum.databinding.FragmentFavouriteBinding
@@ -18,130 +15,140 @@ import com.vshum.turbogum.model.LinersFavourite
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.AppNavigatorParamLinerFav
 import com.vshum.turbogum.navigator.Screen
-import com.vshum.turbogum.navigator.ScreenParamLinerFav
 import com.vshum.turbogum.ui.favourite_list.adapter.AdapterLinersFavList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * Favourites screen.
+ * Shows: app header, count subtitle, list of favourite stickers,
+ * or empty state with CTA when nothing collected yet.
+ */
+class FavouriteListFragment :
+    Fragment(),
+    AdapterLinersFavList.OnClickListener {
 
-class FavouriteListFragment : Fragment(), AdapterLinersFavList.OnClickListener {
+    private var _binding: FragmentFavouriteBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var binding: FragmentFavouriteBinding
-    private lateinit var appDao: LinersDao
-    private lateinit var adapterLinersFav: AdapterLinersFavList
-    private lateinit var appNavigatorParam: AppNavigatorParamLinerFav
     private lateinit var appNavigator: AppNavigator
+    private lateinit var appNavigatorParamLinerFav: AppNavigatorParamLinerFav
+    private lateinit var appDao: LinersDao
 
-    private var favorite: ArrayList<LinersFavourite> = arrayListOf()
-
-    //для проверки ошибки index bound of exception
-    private val TAG = "FavouriteListFragment"
-
-
+    private val data = ArrayList<LinersFavourite>()
+    private lateinit var adapter: AdapterLinersFavList
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFavouriteBinding.inflate(inflater, container, false)
+        _binding = FragmentFavouriteBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        appNavigator = (context?.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
-        appNavigatorParam = (context?.applicationContext as App).servicesLocator.providerNavigatorParamLinerFav(requireActivity())
+        setupRecycler()
+        setupEmptyCta()
+        loadData()
+    }
 
-        binding.toolbar.toWrappersBtn.setOnClickListener {
+    private fun setupRecycler() {
+        adapter = AdapterLinersFavList(data, this)
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            this.adapter = this@FavouriteListFragment.adapter
+        }
+    }
+
+    private fun setupEmptyCta() {
+        binding.btnEmptyCta.setOnClickListener {
             appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
         }
+    }
 
-        binding.toolbar.toFavouriteBtn.visibility = View.GONE
-
-        showProgress(true)
-        appDao = (context?.applicationContext as App).getDatabase().linersDao()
+    private fun loadData() {
         lifecycleScope.launch(Dispatchers.IO) {
-            favorite.addAll(appDao.getAllFavouriteLiners())
-
-            withContext(Dispatchers.Main) {
-                showProgress(false)
+            val items = try {
+                appDao.getAllFavouriteLiners()
+            } catch (e: Exception) {
+                emptyList()
             }
-            adapterLinersFav = AdapterLinersFavList(favorite, this@FavouriteListFragment)
-
-
             withContext(Dispatchers.Main) {
-                binding.recyclerView.adapter = adapterLinersFav
-//                setRecyclerViewAutoFit(binding.recyclerView)
-                binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
-
-                if (favorite.size == 0) {
-                    Toast.makeText(requireActivity(), "Список пуст", Toast.LENGTH_SHORT).show()
-                }
+                data.clear()
+                data.addAll(items)
+                adapter.notifyDataSetChanged()
+                showState(items.isEmpty())
             }
         }
-
     }
+
+    private fun showState(isEmpty: Boolean) {
+        binding.emptyState.visibility = if (isEmpty) View.VISIBLE else View.GONE
+        binding.listContainer.visibility = if (isEmpty) View.GONE else View.VISIBLE
+        if (!isEmpty) {
+            binding.favCount.text = countText(data.size)
+        }
+    }
+
+    private fun countText(count: Int): String {
+        // Simple Russian pluralisation: 1 карточка / 2-4 карточки / 5+ карточек
+        val mod10 = count % 10
+        val mod100 = count % 100
+        val word = when {
+            mod100 in 11..14 -> "карточек"
+            mod10 == 1 -> "карточка"
+            mod10 in 2..4 -> "карточки"
+            else -> "карточек"
+        }
+        return "$count $word"
+    }
+
+    // ── Adapter callbacks ─────────────────────────────────────────────
 
     override fun onDeleteFavorite(linersFav: LinersFavourite) {
         lifecycleScope.launch(Dispatchers.IO) {
-            appDao.deleteFavoriteLiner(linersFav)
+            try {
+                appDao.deleteFavoriteLiner(linersFav)
+            } catch (e: Exception) {
+                // ignore
+            }
+            withContext(Dispatchers.Main) {
+                binding.favCount.text = countText(data.size)
+            }
         }
     }
 
     override fun notFavorite() {
-        Toast.makeText(requireActivity(), "Нет сохраненных", Toast.LENGTH_SHORT).show()
+        showState(true)
     }
-
-    //авто подсчет количества элементов по ширине в списке
-    private fun setRecyclerViewAutoFit(recyclerView: RecyclerView) {
-        val layoutManager = recyclerView.layoutManager as GridLayoutManager
-        layoutManager.spanCount = calculateNoOfColumns(recyclerView.context)
-        recyclerView.layoutManager = layoutManager
-    }
-
-    private fun calculateNoOfColumns(context: Context): Int {
-        val displayMetrics = context.resources.displayMetrics
-        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
-        val noOfColumns = (screenWidthDp / 180 + 0.5).toInt()
-
-        Log.d(TAG, "Screen width: ${displayMetrics.widthPixels}, density: ${displayMetrics.density}, dp: $screenWidthDp, noOfColumns: $noOfColumns")
-        return noOfColumns
-        //Приведенный выше код будет регистрировать значения ширины экрана, плотности, dp и noOfColumns каждый раз, когда вызывается функция calculateNoOfColumns. Затем Можно проверить журналы в logcat, чтобы увидеть возвращаемые значения.
-
-    }
-
-    private fun showProgress(show: Boolean) {
-        if (show) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
-        }
-    }
-
 
     override fun onClickLinerFavorite(linersFav: LinersFavourite) {
-        appNavigatorParam.navigateToParamLinerFav(ScreenParamLinerFav.FAVORITE_LINER, linersFav)
+        appNavigatorParamLinerFav.navigateToParamLinerFav(
+            Screen.FAVOURITE_LINER_SCREEN, linersFav
+        )
     }
+
+    // ── Lifecycle ─────────────────────────────────────────────────────
 
     override fun onResume() {
         super.onResume()
+        loadData()
+    }
 
-        /*** Удаление дубликатов из списка при возврате из FavoriteLinerFragment
-         * Чтобы исправить проблему, можно пересоздать адаптер в методе onResume, чтобы он обновился с новыми данными, а затем присвоить его списку. Также можно добавить проверку, чтобы адаптер не создавался заново, если он уже создан.
-         * сли адаптер уже инициализирован, мы вызываем метод updateData с новым списком данных для обновления адаптера. Если адаптер не инициализирован, мы создаем новый адаптер с новым списком данных и присваиваем его списку.
-         */
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
-        val uniqueList = (favorite.distinctBy { it.numberLiner}) as ArrayList
-
-        if (::adapterLinersFav.isInitialized) {
-            favorite.clear()
-            adapterLinersFav.updateData(uniqueList)
-        } else {
-            adapterLinersFav = AdapterLinersFavList(uniqueList, this@FavouriteListFragment)
-            binding.recyclerView.adapter = adapterLinersFav
-        }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val app = context.applicationContext as App
+        appNavigator = app.servicesLocator.providerNavigator(requireActivity())
+        appNavigatorParamLinerFav =
+            app.servicesLocator.providerNavigatorParamLinerFav(requireActivity())
+        appDao = app.getDatabase().linersDao()
     }
 }

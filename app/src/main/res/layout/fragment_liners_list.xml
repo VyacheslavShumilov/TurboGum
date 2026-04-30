@@ -5,138 +5,162 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/surface_page"
+    android:background="@color/bg_background"
     tools:context=".ui.liners_lists.LinersListFragment">
 
-    <!-- ── Toolbar ─────────────────────────────────────────────────────────── -->
-    <LinearLayout
-        android:id="@+id/toolbar"
+    <!-- Detail header with back/title/more -->
+    <include
+        android:id="@+id/headerInclude"
+        layout="@layout/component_detail_header"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/surface_card"
-        android:elevation="2dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="8dp"
-        android:paddingEnd="12dp">
+        android:layout_height="@dimen/header_height" />
 
-        <ImageButton
-            android:id="@+id/toWrappersBtn"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:background="@drawable/btn_icon_bg"
-            android:src="@drawable/ic_back"
-            android:contentDescription="Back"
-            android:layout_marginEnd="8dp" />
-
-        <TextView
-            android:id="@+id/toolbarTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="17sp"
-            android:textColor="@color/text_primary"
-            android:fontFamily="@font/font"
-            tools:text="Series T2 · 51–120" />
-
-        <ImageButton
-            android:id="@+id/toFavouriteBtn"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:background="@drawable/btn_icon_bg"
-            android:src="@drawable/ic_list_favourite"
-            android:contentDescription="Favourites" />
-    </LinearLayout>
-
-    <!-- ── Filter chips row ─────────────────────────────────────────────── -->
-    <HorizontalScrollView
-        android:id="@+id/filterRow"
+    <!-- Scrollable content -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:scrollbars="none"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:background="@color/surface_card"
-        android:layout_marginTop="56dp"
-        android:elevation="1dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/header_height"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="@dimen/bottom_nav_height">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_xl"
+            android:paddingEnd="@dimen/spacing_xl">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipFilterAll"
-                style="@style/Widget.Material3.Chip.Filter"
+            <!-- Series number/title -->
+            <TextView
+                android:id="@+id/seriesTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/filter_all"
-                android:checked="true"
-                android:layout_marginEnd="6dp" />
+                android:layout_marginTop="@dimen/spacing_md"
+                android:fontFamily="@font/barlow_condensed"
+                android:textColor="@color/brand_gold"
+                android:textSize="36sp"
+                android:textStyle="italic|bold"
+                android:letterSpacing="-0.02"
+                tools:text="Серия 1" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipFilterOwned"
-                style="@style/Widget.Material3.Chip.Filter"
+            <TextView
+                android:id="@+id/seriesSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/filter_owned"
-                android:layout_marginEnd="6dp" />
+                android:fontFamily="@font/space_grotesk"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/text_body_md"
+                tools:text="№ 1–50 · 1989" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipFilterFavourites"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
+            <!-- ── Progress card ────────────────────────────────── -->
+            <FrameLayout
+                android:id="@+id/progressCardContainer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/filter_favourites"
-                android:layout_marginEnd="6dp" />
+                android:layout_marginTop="@dimen/spacing_lg">
+
+                <include
+                    android:id="@+id/progressCard"
+                    layout="@layout/component_progress_card" />
+            </FrameLayout>
+
+            <!-- ── Search field ─────────────────────────────────── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/search_field_height"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:background="@drawable/surface_input_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/spacing_md"
+                android:paddingEnd="@dimen/spacing_md">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_sm"
+                    android:layout_height="@dimen/icon_sm"
+                    android:layout_marginEnd="@dimen/spacing_sm"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/text_3" />
+
+                <EditText
+                    android:id="@+id/searchInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/space_grotesk"
+                    android:hint="@string/series_search_hint"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@color/text_1"
+                    android:textColorHint="@color/text_3"
+                    android:textSize="@dimen/text_body_lg" />
+            </LinearLayout>
+
+            <!-- ── Filter chips ─────────────────────────────────── -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/filterChipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_md"
+                app:chipSpacingHorizontal="@dimen/spacing_sm"
+                app:singleLine="true"
+                app:singleSelection="true"
+                app:selectionRequired="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/chip_height"
+                    android:checkable="true"
+                    android:checked="true"
+                    android:fontFamily="@font/space_grotesk"
+                    android:text="@string/series_filter_all"
+                    android:textSize="@dimen/text_body_md"
+                    app:chipBackgroundColor="@color/bg_surface_1"
+                    app:chipStrokeColor="@color/border_1"
+                    app:chipStrokeWidth="0.5dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipOwned"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/chip_height"
+                    android:checkable="true"
+                    android:fontFamily="@font/space_grotesk"
+                    android:text="@string/series_filter_owned"
+                    android:textSize="@dimen/text_body_md"
+                    app:chipBackgroundColor="@color/bg_surface_1"
+                    app:chipStrokeColor="@color/border_1"
+                    app:chipStrokeWidth="0.5dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMissing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/chip_height"
+                    android:checkable="true"
+                    android:fontFamily="@font/space_grotesk"
+                    android:text="@string/series_filter_missing"
+                    android:textSize="@dimen/text_body_md"
+                    app:chipBackgroundColor="@color/bg_surface_1"
+                    app:chipStrokeColor="@color/border_1"
+                    app:chipStrokeWidth="0.5dp" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- ── Sticker grid ─────────────────────────────────── -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:layout_marginBottom="@dimen/spacing_xl"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
 
         </LinearLayout>
-    </HorizontalScrollView>
-
-    <!-- ── Main content ─────────────────────────────────────────────────── -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="16dp"
-        android:clipToPadding="false"
-        tools:listitem="@layout/item_liner" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone" />
-
-    <!-- No internet layout -->
-    <LinearLayout
-        android:id="@+id/noInternetLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/check_internet_connection"
-            android:textSize="16sp"
-            android:textColor="@color/text_secondary"
-            android:gravity="center" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnRepeat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/repeat_request"
-            app:backgroundTint="@color/brand_purple" />
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

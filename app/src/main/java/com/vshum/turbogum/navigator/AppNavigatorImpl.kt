@@ -7,70 +7,81 @@ import com.vshum.turbogum.model.LinersFavourite
 import com.vshum.turbogum.ui.DevelopersFragment
 import com.vshum.turbogum.ui.HelpScreenFragment
 import com.vshum.turbogum.ui.RegistrationFragment
-import com.vshum.turbogum.ui.StartScreenFragment
-import com.vshum.turbogum.ui.community.CommunityFragment
 import com.vshum.turbogum.ui.favorite_liner.FavoriteLinerFragment
 import com.vshum.turbogum.ui.favourite_list.FavouriteListFragment
 import com.vshum.turbogum.ui.liner.LinerFragment
 import com.vshum.turbogum.ui.liners_lists.LinersListFragment
 import com.vshum.turbogum.ui.profile.ProfileFragment
-import com.vshum.turbogum.ui.scan.ScanFragment
 import com.vshum.turbogum.ui.splash.SplashFragment
 import com.vshum.turbogum.ui.wrappers_list.WrappersListFragment
 
-class AppNavigatorImpl(private var fragmentActivity: FragmentActivity) :
+/**
+ * Single concrete navigator handling parameterless and parameterised
+ * navigation calls. Uses FragmentManager#replace into the host
+ * fragmentContainer (R.id.fragmentContainer in activity_main.xml).
+ */
+class AppNavigatorImpl(private val activity: FragmentActivity) :
     AppNavigator,
     AppNavigatorParamWrapper,
-    AppNavigatorParamLiner,
+    AppNavigatorParamLiners,
     AppNavigatorParamLinerFav {
+
+    private val fm = activity.supportFragmentManager
+
+    // ── Plain navigation ──────────────────────────────────────────────
 
     override fun navigateTo(screen: Screen) {
         val fragment = when (screen) {
-            Screen.START_SCREEN         -> StartScreenFragment()
-            Screen.REGISTRATION_SCREEN  -> RegistrationFragment()
-            Screen.HELP_SCREEN          -> HelpScreenFragment()
+            Screen.SPLASH_SCREEN -> SplashFragment()
             Screen.WRAPPERS_LIST_SCREEN -> WrappersListFragment()
-            Screen.FAVOURITE            -> FavouriteListFragment()
-            Screen.DEVELOPERS_SCREEN    -> DevelopersFragment()
-            Screen.SCAN_SCREEN          -> ScanFragment()
-            Screen.COMMUNITY_SCREEN     -> CommunityFragment()
-            Screen.PROFILE_SCREEN       -> ProfileFragment()
-            Screen.SPLASH_SCREEN       -> SplashFragment()
+            Screen.LINERS_LIST_SCREEN -> LinersListFragment("series1") // default
+            Screen.FAVOURITE -> FavouriteListFragment()
+            Screen.PROFILE_SCREEN -> ProfileFragment()
+            Screen.DEVELOPERS_SCREEN -> DevelopersFragment()
+            Screen.REGISTRATION -> RegistrationFragment()
+            Screen.HELP -> HelpScreenFragment()
+            // Param-required screens fall back to home if called without params
+            Screen.LINER_SCREEN, Screen.FAVOURITE_LINER_SCREEN ->
+                WrappersListFragment()
         }
-        fragmentActivity.supportFragmentManager.beginTransaction()
-            .replace(R.id.mainContainer, fragment)
-            .addToBackStack(fragment::class.java.canonicalName)
+        fm.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
             .commit()
     }
 
-    override fun navigateToParamWrapper(screen: ScreenParamWrapper, series: String) {
-        val fragment = LinersListFragment(series)
-        fragmentActivity.supportFragmentManager.beginTransaction()
-            .replace(R.id.mainContainer, fragment)
-            .addToBackStack(fragment::class.java.canonicalName)
-            .commit()
-    }
+    // ── Wrapper / series key parameter ────────────────────────────────
 
-    override fun navigateToParamLiner(screen: ScreenParamLiner, liner: Liner) {
+    override fun navigateToParamWrapper(screen: Screen, seriesKey: String) {
         val fragment = when (screen) {
-            ScreenParamLiner.TURBO -> LinerFragment(liner)
+            Screen.LINERS_LIST_SCREEN -> LinersListFragment(seriesKey)
+            else -> WrappersListFragment()
         }
-        fragmentActivity.supportFragmentManager.beginTransaction()
-            .replace(R.id.mainContainer, fragment)
-            .addToBackStack(fragment::class.java.canonicalName)
+        fm.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
             .commit()
     }
 
-    override fun navigateToParamLinerFav(
-        screen: ScreenParamLinerFav,
-        linerFav: LinersFavourite
-    ) {
+    // ── Liner parameter ───────────────────────────────────────────────
+
+    override fun navigateToParamLiner(screen: Screen, liner: Liner) {
         val fragment = when (screen) {
-            ScreenParamLinerFav.FAVORITE_LINER -> FavoriteLinerFragment(linerFav)
+            Screen.LINER_SCREEN -> LinerFragment(liner)
+            else -> WrappersListFragment()
         }
-        fragmentActivity.supportFragmentManager.beginTransaction()
-            .replace(R.id.mainContainer, fragment)
-            .addToBackStack(fragment::class.java.canonicalName)
+        fm.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
+    }
+
+    // ── Favourite-liner parameter ─────────────────────────────────────
+
+    override fun navigateToParamLinerFav(screen: Screen, linerFav: LinersFavourite) {
+        val fragment = when (screen) {
+            Screen.FAVOURITE_LINER_SCREEN -> FavoriteLinerFragment(linerFav)
+            else -> FavouriteListFragment()
+        }
+        fm.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
             .commit()
     }
 }

@@ -3,6 +3,9 @@ package com.vshum.turbogum.navigator
 import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.model.LinersFavourite
 
+/**
+ * Screen catalog. All destinations the app can navigate to.
+ */
 enum class Screen {
     SPLASH_SCREEN,
     WRAPPERS_LIST_SCREEN,
@@ -10,41 +13,28 @@ enum class Screen {
     LINER_SCREEN,
     FAVOURITE,
     FAVOURITE_LINER_SCREEN,
+    PROFILE_SCREEN,
     DEVELOPERS_SCREEN,
     REGISTRATION,
-    HELP,
-    PROFILE_SCREEN
+    HELP
 }
 
+/** Navigate to a screen with no parameters. */
 interface AppNavigator {
     fun navigateTo(screen: Screen)
 }
 
-enum class ScreenParamWrapper {
-    SERIES_1,
-    SERIES_2,
-    SERIES_3,
-    SERIES_4,
-    SERIES_5,
-    SUPER_1,
-    SUPER_2,
-    SUPER_3,
-    SPORT_1,
-    SPORT_2,
-    CLASSIC_1,
-    CLASSIC_2,
-}
-
+/** Navigate to a screen with a wrapper/series key parameter (e.g. "series1"). */
 interface AppNavigatorParamWrapper {
-    fun navigateToParamWrapper(screen: ScreenParamWrapper, series: String)
+    fun navigateToParamWrapper(screen: Screen, seriesKey: String)
 }
 
-enum class ScreenParamLiner { TURBO }
-interface AppNavigatorParamLiner {
-    fun navigateToParamLiner(screen: ScreenParamLiner, liner: Liner)
+/** Navigate to a screen with a Liner model parameter. */
+interface AppNavigatorParamLiners {
+    fun navigateToParamLiner(screen: Screen, liner: Liner)
 }
 
-enum class ScreenParamLinerFav { FAVORITE_LINER }
+/** Navigate to a screen with a favourite-liner model parameter. */
 interface AppNavigatorParamLinerFav {
-    fun navigateToParamLinerFav(screen: ScreenParamLinerFav, linerFav: LinersFavourite)
+    fun navigateToParamLinerFav(screen: Screen, linerFav: LinersFavourite)
 }

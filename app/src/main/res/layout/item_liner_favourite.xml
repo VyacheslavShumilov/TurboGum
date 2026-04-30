@@ -2,66 +2,196 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="6dp"
-    app:cardBackgroundColor="@color/surface_card"
-    app:cardCornerRadius="14dp"
+    android:layout_marginBottom="@dimen/spacing_md"
+    app:cardBackgroundColor="@color/bg_surface_2"
+    app:cardCornerRadius="@dimen/radius_md"
     app:cardElevation="0dp"
-    app:strokeColor="@color/border_default"
-    app:strokeWidth="0.5dp"
+    app:strokeColor="@color/border_1"
+    app:strokeWidth="@dimen/stroke_default"
     app:rippleColor="#221E2235">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_md">
 
-        <!-- Изображение вкладыша -->
+        <!-- Thumbnail (88×88 with shimmer) -->
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_marginEnd="@dimen/spacing_md">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/linerImageView"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:background="@color/surface_secondary"
-                android:contentDescription="Liner image" />
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="@color/bg_surface_1"
+                app:cardCornerRadius="@dimen/radius_sm"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
 
-            <!-- Series badge — top left -->
+                <ImageView
+                    android:id="@+id/linerImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Rarity badge top-left -->
             <TextView
                 android:id="@+id/indexSeries"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|start"
-                android:layout_margin="8dp"
-                android:background="@drawable/badge_purple_bg"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:paddingTop="3dp"
-                android:paddingBottom="3dp"
-                android:textSize="10sp"
+                android:layout_margin="4dp"
+                android:background="@drawable/badge_violet_bg"
+                android:fontFamily="@font/space_grotesk"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/font"
-                android:text="T1#" />
-
-            <!-- Delete button — top right -->
-            <ImageView
-                android:id="@+id/imageBtnDelete"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_gravity="top|end"
-                android:layout_margin="6dp"
-                android:background="@drawable/btn_fav_item_bg"
-                android:src="@drawable/ic_baseline_delete"
-                android:contentDescription="Delete"
-                android:padding="4dp" />
-
+                android:textFontWeight="600"
+                android:textSize="9sp"
+                tools:text="S1" />
         </FrameLayout>
 
+        <!-- Info -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/favBrand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_grotesk"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/text_body_sm"
+                tools:text="Opel" />
+
+            <TextView
+                android:id="@+id/favModel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/barlow_condensed"
+                android:maxLines="1"
+                android:textColor="@color/text_1"
+                android:textSize="20sp"
+                android:textStyle="italic|bold"
+                tools:text="Ascona CD" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/favSeries"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/space_grotesk"
+                    android:textColor="@color/text_2"
+                    android:textSize="11sp"
+                    tools:text="Серия 1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:text="·"
+                    android:textColor="@color/text_3"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/favNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/barlow_condensed"
+                    android:textColor="@color/brand_gold"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    tools:text="#001" />
+            </LinearLayout>
+
+            <!-- Quick links row -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/quickVk"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/surface_input_bg"
+                    android:clickable="true"
+                    android:contentDescription="VK"
+                    android:focusable="true"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_link_vk" />
+
+                <ImageView
+                    android:id="@+id/quickVideo"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/surface_input_bg"
+                    android:clickable="true"
+                    android:contentDescription="Video"
+                    android:focusable="true"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_link_youtube" />
+
+                <ImageView
+                    android:id="@+id/quickWiki"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/surface_input_bg"
+                    android:clickable="true"
+                    android:contentDescription="Wiki"
+                    android:focusable="true"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_link_wiki" />
+
+                <ImageView
+                    android:id="@+id/quickSociete"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/surface_input_bg"
+                    android:clickable="true"
+                    android:contentDescription="Société"
+                    android:focusable="true"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_link_societe" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Delete button -->
+        <ImageButton
+            android:id="@+id/imageBtnDelete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/btn_icon_round"
+            android:contentDescription="Delete"
+            android:padding="6dp"
+            android:src="@drawable/ic_baseline_delete"
+            app:tint="@color/text_3" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
