@@ -3,17 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg_background"
     tools:context=".ui.splash.SplashFragment">
 
+    <!-- Center column: rounded bars, big Turbo, subtitle, 3 stickers -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <!-- Big bars logo (scaled up) -->
+        <!-- Big rounded bars logo (scaled up) -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,60 +23,159 @@
             android:orientation="horizontal">
 
             <View
-                android:layout_width="12dp"
+                android:layout_width="8dp"
+                android:layout_height="26dp"
+                android:layout_marginEnd="3dp"
+                android:background="@drawable/bars_logo_green" />
+
+            <View
+                android:layout_width="8dp"
                 android:layout_height="36dp"
-                android:layout_marginEnd="6dp"
-                android:background="@color/rarity_uncommon" />
+                android:layout_marginEnd="3dp"
+                android:background="@drawable/bars_logo_blue" />
 
             <View
-                android:layout_width="12dp"
-                android:layout_height="54dp"
-                android:layout_marginEnd="6dp"
-                android:background="@color/rarity_rare" />
+                android:layout_width="8dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="3dp"
+                android:background="@drawable/bars_logo_gold" />
 
             <View
-                android:layout_width="12dp"
-                android:layout_height="42dp"
-                android:layout_marginEnd="6dp"
-                android:background="@color/brand_gold" />
-
-            <View
-                android:layout_width="12dp"
-                android:layout_height="66dp"
-                android:background="@color/brand_red" />
+                android:layout_width="8dp"
+                android:layout_height="46dp"
+                android:background="@drawable/bars_logo_red" />
         </LinearLayout>
 
-        <!-- Turbo wordmark -->
-        <TextView
+        <!-- Turbo wordmark with violet+gold radial halos behind -->
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xxl"
-            android:fontFamily="@font/barlow_condensed"
-            android:text="Turbo"
-            android:textColor="@color/text_1"
-            android:textSize="@dimen/text_display_md"
-            android:textStyle="italic|bold"
-            android:letterSpacing="-0.02" />
+            android:layout_marginTop="16dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
 
-        <!-- Subtitle -->
+            <!-- Violet halo behind text (top) -->
+            <ImageView
+                android:layout_width="320dp"
+                android:layout_height="320dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/splash_glow"
+
+                android:translationZ="-1dp" />
+
+            <!-- Gold halo (bottom warm layer) -->
+            <ImageView
+                android:layout_width="360dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/splash_glow_gold"
+                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/barlow_condensed_extrabold_italic"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:text="Turbo"
+                android:textColor="@color/brand_gold"
+                android:textSize="80sp"
+                android:textStyle="bold|italic"
+                />
+        </FrameLayout>
+
+        <!-- Subtitle: КОЛЛЕКЦИЯ ВКЛАДЫШЕЙ -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xs"
-            android:fontFamily="@font/space_grotesk_medium"
-            android:text="@string/splash_subtitle"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/space_grotesk_bold"
+            android:letterSpacing="0.25"
+            android:text="КОЛЛЕКЦИЯ ВКЛАДЫШЕЙ"
+            android:textAllCaps="true"
             android:textColor="@color/text_3"
-            android:textSize="@dimen/text_body_md" />
+            android:textSize="11sp" />
+
+        <!-- 3 sticker thumbnails: tilted -3° / 0 / +3° -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="98dp"
+                android:layout_height="74dp"
+                android:layout_marginEnd="10dp"
+                android:rotation="-3"
+                app:cardBackgroundColor="@color/bg_surface_2"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
+                app:strokeColor="#14FFFFFF"
+                app:strokeWidth="1dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/w13" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="98dp"
+                android:layout_height="74dp"
+                android:layout_marginEnd="10dp"
+                app:cardBackgroundColor="@color/bg_surface_2"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp"
+                app:strokeColor="#14FFFFFF"
+                app:strokeWidth="1dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/w51" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="98dp"
+                android:layout_height="74dp"
+                android:rotation="3"
+                app:cardBackgroundColor="@color/bg_surface_2"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp"
+                app:strokeColor="#14FFFFFF"
+                app:strokeWidth="1dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/w329" />
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
     </LinearLayout>
 
-    <!-- Version at bottom -->
+    <!-- Version pinned at the bottom — populated from BuildConfig.VERSION_NAME -->
     <TextView
+        android:id="@+id/versionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="@dimen/spacing_xxxl"
-        android:fontFamily="@font/space_grotesk"
-        android:text="@string/splash_version"
-        android:textColor="@color/text_3"
-        android:textSize="@dimen/text_body_sm" />
+        android:fontFamily="@font/space_grotesk_regular"
+        android:letterSpacing="0.08"
+        android:textColor="@color/text_4"
+        android:textSize="9sp"
+        tools:text="v1.0" />
 </FrameLayout>
