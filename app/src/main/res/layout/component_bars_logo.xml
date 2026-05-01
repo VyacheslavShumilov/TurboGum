@@ -10,25 +10,25 @@
         android:layout_width="@dimen/bars_logo_width"
         android:layout_height="@dimen/bars_logo_h1"
         android:layout_marginEnd="@dimen/bars_logo_gap"
-        android:background="@color/rarity_uncommon" />
+        android:background="@drawable/bars_logo_green" />
 
     <!-- 18dp blue -->
     <View
         android:layout_width="@dimen/bars_logo_width"
         android:layout_height="@dimen/bars_logo_h2"
         android:layout_marginEnd="@dimen/bars_logo_gap"
-        android:background="@color/rarity_rare" />
+        android:background="@drawable/bars_logo_blue" />
 
     <!-- 14dp amber -->
     <View
         android:layout_width="@dimen/bars_logo_width"
         android:layout_height="@dimen/bars_logo_h3"
         android:layout_marginEnd="@dimen/bars_logo_gap"
-        android:background="@color/brand_gold" />
+        android:background="@drawable/bars_logo_gold" />
 
     <!-- 22dp red -->
     <View
         android:layout_width="@dimen/bars_logo_width"
         android:layout_height="@dimen/bars_logo_h4"
-        android:background="@color/brand_red" />
+        android:background="@drawable/bars_logo_red" />
 </LinearLayout>

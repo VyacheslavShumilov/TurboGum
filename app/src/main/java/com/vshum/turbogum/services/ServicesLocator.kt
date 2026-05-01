@@ -1,23 +1,29 @@
-package com.vshum.turbogum.services
+package com.vshum.turbogum
 
 import androidx.fragment.app.FragmentActivity
-import com.vshum.turbogum.navigator.*
+import com.vshum.turbogum.navigator.AppNavigator
+import com.vshum.turbogum.navigator.AppNavigatorImpl
+import com.vshum.turbogum.navigator.AppNavigatorParamLinerFav
+import com.vshum.turbogum.navigator.AppNavigatorParamLiners
+import com.vshum.turbogum.navigator.AppNavigatorParamWrapper
 
+/**
+ * Single-entry factory for the navigation services.
+ * The same [AppNavigatorImpl] instance implements all four navigator
+ * interfaces, so each of the `provider*` methods returns the same
+ * underlying object cast to the requested interface.
+ */
 class ServicesLocator {
-    fun providerNavigator(fragmentActivity: FragmentActivity): AppNavigator {
-        return AppNavigatorImpl(fragmentActivity)
-    }
 
-    fun providerNavigatorParamWrapper(fragmentActivity: FragmentActivity): AppNavigatorParamWrapper {
-        return AppNavigatorImpl(fragmentActivity)
-    }
+    fun providerNavigator(fragmentActivity: FragmentActivity): AppNavigator =
+        AppNavigatorImpl(fragmentActivity)
 
-//    fun providerNavigatorParamLiners(fragmentActivity: FragmentActivity): AppNavigatorParamLiner {
-//        return AppNavigatorImpl(fragmentActivity)
-//    }
+    fun providerNavigatorParamWrapper(fragmentActivity: FragmentActivity): AppNavigatorParamWrapper =
+        AppNavigatorImpl(fragmentActivity)
 
-    fun providerNavigatorParamLinerFav(fragmentActivity: FragmentActivity): AppNavigatorParamLinerFav {
-        return AppNavigatorImpl(fragmentActivity)
-    }
+    fun providerNavigatorParamLiners(fragmentActivity: FragmentActivity): AppNavigatorParamLiners =
+        AppNavigatorImpl(fragmentActivity)
 
+    fun providerNavigatorParamLinerFav(fragmentActivity: FragmentActivity): AppNavigatorParamLinerFav =
+        AppNavigatorImpl(fragmentActivity)
 }

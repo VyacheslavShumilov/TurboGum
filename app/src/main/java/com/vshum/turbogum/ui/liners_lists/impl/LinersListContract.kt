@@ -1,16 +1,24 @@
-package com.vshum.turbogum.ui.liners_lists.impl
+package com.vshum.turbogum.ui.liners_lists.contract
 
 import com.vshum.turbogum.model.Liner
-import com.vshum.turbogum.mvp.BaseContract
 
+/**
+ * Contract between [LinersListFragment] and its presenter.
+ * Fragment renders the data and reacts to navigation events;
+ * presenter loads stickers for the requested series key.
+ */
 interface LinersListContract {
-    interface View: BaseContract.View {
-        fun onSuccessList(linersList: ArrayList<Liner>)
-        fun error(errMessage: String)
-        fun progress(show: Boolean)
+
+    interface View {
+        /** Called when the presenter has loaded stickers for the series. */
+        fun onSuccessList(list: List<Liner>)
     }
 
-    interface Presenter: BaseContract.Presenter<View> {
-        fun responseData()
+    interface Presenter {
+        /**
+         * Start screen — load stickers for [seriesKey].
+         * Examples: "series1", "super1", etc.
+         */
+        fun startScreen(seriesKey: String)
     }
 }

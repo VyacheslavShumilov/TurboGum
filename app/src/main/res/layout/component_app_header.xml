@@ -13,20 +13,21 @@
     <include
         android:id="@+id/barsLogo"
         layout="@layout/component_bars_logo"
-        android:layout_marginEnd="@dimen/spacing_md" />
+        android:layout_marginEnd="@dimen/spacing_sm" />
 
-    <!-- Turbo wordmark -->
+    <!-- Turbo wordmark — Barlow Condensed Bold Italic, slimmer + more slanted -->
     <TextView
         android:id="@+id/headerTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/barlow_condensed"
+        android:fontFamily="@font/barlow_condensed_bold_italic"
         android:text="Turbo"
         android:textColor="@color/text_1"
-        android:textSize="28sp"
-        android:textStyle="italic|bold"
-        android:letterSpacing="-0.01" />
+        android:textSize="32sp"
+        android:textStyle="italic"
+        android:letterSpacing="-0.02"
+        android:includeFontPadding="false" />
 
     <!-- Search icon button -->
     <ImageButton

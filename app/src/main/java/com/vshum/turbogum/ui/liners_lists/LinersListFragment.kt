@@ -21,8 +21,8 @@ import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.AppNavigatorParamLiners
 import com.vshum.turbogum.navigator.Screen
 import com.vshum.turbogum.ui.liners_lists.adapter.AdapterLinersList
-import com.vshum.turbogum.ui.liners_lists.impl.LinersListContract
-import com.vshum.turbogum.ui.liners_lists.impl.LinersListPresenterImpl
+import com.vshum.turbogum.ui.liners_lists.contract.LinersListContract
+import com.vshum.turbogum.ui.liners_lists.contract.LinersListPresenterImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
