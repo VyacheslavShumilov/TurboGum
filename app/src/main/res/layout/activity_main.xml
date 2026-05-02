@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,33 +7,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_background"
-    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <!-- Fragment host — fills available space above bottom nav -->
+    <!-- Fragment host fills everything, fragments handle their own bottom padding -->
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="0dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="match_parent" />
 
-    <!-- Bottom navigation -->
+    <!-- Bottom navigation pinned to bottom via gravity -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bottom_nav_height"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@color/bg_bottom_nav"
+        android:fitsSystemWindows="true"
         app:itemIconTint="@color/nav_selector"
         app:itemTextColor="@color/nav_selector"
-        app:itemIconSize="24dp"
+        app:itemIconSize="28dp"
         app:itemActiveIndicatorStyle="@style/TurboNavIndicator"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
 
-    <!-- ── Image expand overlay (used by LinerFragment) ──────────── -->
-    <!-- Lives at activity level so it can cover bottom nav too -->
+    <!-- Image expand overlay -->
     <View
         android:id="@+id/imageOverlay"
         android:layout_width="match_parent"
@@ -47,10 +44,10 @@
         android:id="@+id/expandedImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="Full size"
+        android:contentDescription="@null"
         android:elevation="11dp"
         android:padding="@dimen/spacing_xxxl"
         android:scaleType="fitCenter"
         android:visibility="gone" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

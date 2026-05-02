@@ -123,16 +123,14 @@
         <item name="backgroundTint">@color/bg_bottom_nav</item>
         <item name="itemActiveIndicatorStyle">@style/TurboNavIndicator</item>
         <item name="elevation">8dp</item>
-        <item name="itemPaddingTop">10dp</item>
-        <item name="itemPaddingBottom">8dp</item>
         <item name="labelVisibilityMode">labeled</item>
+        <item name="itemIconSize">28dp</item>
     </style>
 
     <style name="TurboNavIndicator" parent="@style/Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@android:color/transparent</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Full</item>
-        <item name="android:height">0dp</item>
-        <item name="android:width">0dp</item>
+        <item name="android:height">32dp</item>
+        <item name="android:width">64dp</item>
     </style>
 
     <style name="TurboToolbar" parent="Widget.AppCompat.Toolbar">
