@@ -76,7 +76,7 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
         header.findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
             appNavigator.navigateTo(Screen.FAVOURITE)
         }
-        header.findViewById<TextView>(R.id.headerTitle).text = ""
+        header.findViewById<TextView>(R.id.headerTitle)?.text = ""
     }
 
     // ── Hero image ────────────────────────────────────────────────────

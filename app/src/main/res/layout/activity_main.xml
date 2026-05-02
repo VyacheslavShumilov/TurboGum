@@ -21,12 +21,14 @@
     <!-- Bottom navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
-        style="@style/TurboBottomNav"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_nav_height"
         android:layout_gravity="bottom"
+        android:background="@color/bg_bottom_nav"
         app:itemIconTint="@color/nav_selector"
         app:itemTextColor="@color/nav_selector"
+        app:itemIconSize="24dp"
+        app:itemActiveIndicatorStyle="@style/TurboNavIndicator"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
 

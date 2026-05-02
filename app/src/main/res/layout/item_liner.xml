@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_sm"
     app:cardBackgroundColor="@color/bg_surface_2"
     app:cardCornerRadius="@dimen/radius_md"
     app:cardElevation="0dp"
@@ -17,13 +18,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Image area — fixed 120dp height so ImageView is never 0 -->
+        <!-- Image area — fixed 120dp so shimmer and image occupy same space -->
         <FrameLayout
             android:id="@+id/imageContainer"
             android:layout_width="match_parent"
             android:layout_height="120dp">
 
-            <!-- Shimmer placeholder — same 120dp, shown while loading -->
+            <!-- Shimmer shown while image loads -->
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmerLayout"
                 android:layout_width="match_parent"
@@ -39,33 +40,23 @@
                     android:background="@color/bg_surface_2" />
             </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <!-- Actual sticker image — fixed 120dp, hidden until Picasso delivers -->
+            <!-- Sticker image — hidden until Picasso delivers -->
             <ImageView
                 android:id="@+id/linerImageView"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:scaleType="centerCrop"
                 android:contentDescription="@null"
+                android:scaleType="centerCrop"
                 android:visibility="gone" />
 
-            <!-- Rarity badge top-left -->
-            <TextView
+            <!-- Rarity colour dot (no text label) top-left -->
+            <View
                 android:id="@+id/rarityBadge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
                 android:layout_gravity="top|start"
                 android:layout_margin="@dimen/spacing_sm"
-                android:background="@drawable/badge_rarity_common"
-                android:fontFamily="@font/space_grotesk_semibold"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:textColor="@color/text_1"
-                android:textSize="9sp"
-                android:textAllCaps="true"
-                android:letterSpacing="0.06"
-                tools:text="Rare" />
+                android:background="@drawable/badge_rarity_common" />
 
             <!-- Favourite button top-right -->
             <ImageButton
@@ -91,14 +82,17 @@
             android:paddingTop="@dimen/spacing_sm"
             android:paddingBottom="@dimen/spacing_md">
 
+            <!-- Brand — brighter so it's visible -->
             <TextView
                 android:id="@+id/linerBrand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/space_grotesk"
-                android:textColor="@color/text_3"
+                android:textColor="@color/text_2"
                 android:textSize="@dimen/text_body_sm"
-                tools:text="Opel" />
+                android:textAllCaps="true"
+                android:letterSpacing="0.04"
+                tools:text="OPEL" />
 
             <LinearLayout
                 android:layout_width="match_parent"

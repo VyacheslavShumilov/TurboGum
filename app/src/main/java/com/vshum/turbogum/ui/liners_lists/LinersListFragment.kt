@@ -99,7 +99,6 @@ class LinersListFragment(private val seriesKey: String) :
         header.findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
             appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
         }
-        header.findViewById<TextView>(R.id.headerTitle).text = seriesNameFor(seriesKey)
     }
 
     private fun setupTitle() {

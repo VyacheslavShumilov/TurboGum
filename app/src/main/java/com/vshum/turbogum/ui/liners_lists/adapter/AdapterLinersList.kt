@@ -17,11 +17,9 @@ import kotlinx.coroutines.withContext
 
 /**
  * Adapter for the sticker grid on the SeriesList screen.
- * Each item: image with shimmer + rarity badge + fav button + brand/model/number.
  *
- * Rarity is derived from the sticker's global number:
- *   Серия 1–5 / Super 1–3 use a global numbering 1..540
- *   Sport / Classic restart from 1 — we scale rarity relative to series size
+ * Each item: shimmer placeholder → sticker image + small rarity dot
+ * (no text label) + fav button + brand (uppercase) / model / number.
  */
 class AdapterLinersList(
     private val linersList: ArrayList<Liner>,
@@ -39,23 +37,22 @@ class AdapterLinersList(
         fun bind(liner: Liner) {
 
             // ── Text fields ─────────────────────────────────────────
-            binding.linerBrand.text  = liner.brand
+            binding.linerBrand.text  = liner.brand.uppercase()
             binding.linerModel.text  = liner.model
             binding.linerNumber.text = "#${liner.numberLiner}"
 
-            // ── Rarity badge ────────────────────────────────────────
+            // ── Rarity dot colour ───────────────────────────────────
             applyRarity(liner)
 
-            // ── Image + shimmer ─────────────────────────────────────
+            // ── Shimmer + image ─────────────────────────────────────
             val imageView = binding.linerImageView
             val shimmer   = binding.shimmerLayout
 
             shimmer.startShimmer()
-            shimmer.visibility  = View.VISIBLE
+            shimmer.visibility   = View.VISIBLE
             imageView.visibility = View.GONE
 
             val url = liner.imageUrlLiner.trim()
-
             if (url.isNotEmpty()) {
                 Picasso.get()
                     .load(url)
@@ -64,21 +61,19 @@ class AdapterLinersList(
                     .into(imageView, object : com.squareup.picasso.Callback {
                         override fun onSuccess() {
                             shimmer.stopShimmer()
-                            shimmer.visibility  = View.GONE
+                            shimmer.visibility   = View.GONE
                             imageView.visibility = View.VISIBLE
                         }
-
                         override fun onError(e: Exception?) {
-                            Log.e("Picasso", "Failed to load image: $url", e)
+                            Log.e("Picasso", "Failed: $url", e)
                             shimmer.stopShimmer()
-                            shimmer.visibility  = View.GONE
+                            shimmer.visibility   = View.GONE
                             imageView.visibility = View.VISIBLE
-                            // placeholder already applied by Picasso .error()
                         }
                     })
             } else {
                 shimmer.stopShimmer()
-                shimmer.visibility  = View.GONE
+                shimmer.visibility   = View.GONE
                 imageView.visibility = View.VISIBLE
                 imageView.setImageResource(R.drawable.placeholder)
             }
@@ -87,9 +82,7 @@ class AdapterLinersList(
             CoroutineScope(Dispatchers.IO).launch {
                 val isFav = try {
                     appDao.getLinerFavorite(liner.uniqueNumber) != null
-                } catch (e: Exception) {
-                    false
-                }
+                } catch (e: Exception) { false }
                 withContext(Dispatchers.Main) {
                     binding.btnFavourite.setImageResource(
                         if (isFav) R.drawable.ic_favorite_filled
@@ -98,59 +91,36 @@ class AdapterLinersList(
                 }
             }
 
-            // ── Click ───────────────────────────────────────────────
             binding.root.setOnClickListener { listener.onClickLiner(liner) }
         }
 
         /**
-         * Assign rarity badge based on series type + sticker number.
-         *
-         * "Серия 1–5" and "Super 1–3" have a continuous global numbering:
-         *   Серия 1:  1–50   → common
-         *   Серия 2:  51–120 → uncommon
-         *   Серия 3: 121–190 → rare
-         *   Серия 4: 191–260 → ultra
-         *   Серия 5: 261–330 → ultra
-         *   Super 1–3: 331–540 → ultra
-         *
-         * "Sport" and "Classic" restart from 1. We treat them relative to
-         * quarter boundaries within each 70-card series:
-         *   1–18  common  (≈25 %)
-         *  19–35  uncommon (≈25 %)
-         *  36–52  rare     (≈25 %)
-         *  53–70  ultra    (≈25 %)
+         * rarityBadge is now a plain View (coloured dot) — we only set background.
+         * Colour rules:
+         *   Серия 1–5 / Super 1–3: global numbering 1..540
+         *   Sport / Classic: relative to 70-card series
          */
         private fun applyRarity(liner: Liner) {
             val num    = liner.numberLiner.toIntOrNull() ?: 0
             val series = liner.series.trim()
 
-            val (bg, label) = when {
-                series.startsWith("Sport") || series.startsWith("Classic") -> {
-                    // relative quartile within 70-card series
-                    when {
-                        num <= 18 -> R.drawable.badge_rarity_common   to "Common"
-                        num <= 35 -> R.drawable.badge_rarity_uncommon to "Uncommon"
-                        num <= 52 -> R.drawable.badge_rarity_rare     to "Rare"
-                        else      -> R.drawable.badge_rarity_ultra    to "Ultra"
-                    }
+            val bg = when {
+                series.startsWith("Sport") || series.startsWith("Classic") -> when {
+                    num <= 18 -> R.drawable.badge_rarity_common
+                    num <= 35 -> R.drawable.badge_rarity_uncommon
+                    num <= 52 -> R.drawable.badge_rarity_rare
+                    else      -> R.drawable.badge_rarity_ultra
                 }
-                else -> {
-                    // global numbering 1..540
-                    when {
-                        num <= 50  -> R.drawable.badge_rarity_common   to "Common"
-                        num <= 120 -> R.drawable.badge_rarity_uncommon to "Uncommon"
-                        num <= 190 -> R.drawable.badge_rarity_rare     to "Rare"
-                        else       -> R.drawable.badge_rarity_ultra    to "Ultra"
-                    }
+                else -> when {
+                    num <= 50  -> R.drawable.badge_rarity_common
+                    num <= 120 -> R.drawable.badge_rarity_uncommon
+                    num <= 190 -> R.drawable.badge_rarity_rare
+                    else       -> R.drawable.badge_rarity_ultra
                 }
             }
-
             binding.rarityBadge.setBackgroundResource(bg)
-            binding.rarityBadge.text = label
         }
     }
-
-    // ── RecyclerView.Adapter ──────────────────────────────────────────
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         ItemLinerBinding.inflate(LayoutInflater.from(parent.context), parent, false)

@@ -75,7 +75,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
         header.findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
             appNavigator.navigateTo(Screen.LINERS_LIST_SCREEN)
         }
-        header.findViewById<TextView>(R.id.headerTitle).text = ""
+        header.findViewById<TextView>(R.id.headerTitle)?.text = ""
     }
 
     // ── Hero image ────────────────────────────────────────────────────
