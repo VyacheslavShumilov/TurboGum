@@ -37,11 +37,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_md"
-                android:fontFamily="@font/barlow_condensed"
+                android:fontFamily="@font/barlow_condensed_extrabold_italic"
                 android:textColor="@color/brand_gold"
                 android:textSize="36sp"
-                android:textStyle="italic|bold"
+                android:textStyle="bold|italic"
                 android:letterSpacing="-0.02"
+                android:includeFontPadding="false"
+                android:paddingEnd="8dp"
                 tools:text="Серия 1" />
 
             <TextView

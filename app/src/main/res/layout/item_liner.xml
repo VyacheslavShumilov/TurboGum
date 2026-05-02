@@ -17,12 +17,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Image area -->
+        <!-- Image area — fixed 120dp height so ImageView is never 0 -->
         <FrameLayout
             android:id="@+id/imageContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="120dp">
 
+            <!-- Shimmer placeholder — same 120dp, shown while loading -->
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmerLayout"
                 android:layout_width="match_parent"
@@ -38,12 +39,13 @@
                     android:background="@color/bg_surface_2" />
             </com.facebook.shimmer.ShimmerFrameLayout>
 
+            <!-- Actual sticker image — fixed 120dp, hidden until Picasso delivers -->
             <ImageView
                 android:id="@+id/linerImageView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="@null"
                 android:visibility="gone" />
 
             <!-- Rarity badge top-left -->
@@ -79,7 +81,7 @@
 
         </FrameLayout>
 
-        <!-- Card body -->
+        <!-- Card body: brand / model / number -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
