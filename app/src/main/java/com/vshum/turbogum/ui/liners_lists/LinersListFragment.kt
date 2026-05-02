@@ -200,6 +200,7 @@ class LinersListFragment(private val seriesKey: String) :
             }
 
             withContext(Dispatchers.Main) {
+                if (_binding == null) return@withContext  // ← добавь эту строку
                 displayList.clear()
                 displayList.addAll(filtered)
                 adapter.notifyDataSetChanged()

@@ -7,13 +7,7 @@
     android:background="@color/bg_background"
     tools:context=".ui.splash.SplashFragment">
 
-    <!-- ════════════════════════════════════════════════════════════════
-         GLOW LAYER — root-level absolute halos behind everything else.
-         These are siblings of the content LinearLayout, so they don't
-         influence the layout / positioning of bars, Turbo, stickers.
-         ════════════════════════════════════════════════════════════════ -->
-
-    <!-- Violet halo — large, very soft (sits over Turbo area, slightly above) -->
+    <!-- Violet halo -->
     <ImageView
         android:layout_width="500dp"
         android:layout_height="500dp"
@@ -23,7 +17,7 @@
         android:src="@drawable/splash_glow"
         android:translationY="-30dp" />
 
-    <!-- Gold halo — smaller, warmer (sits below Turbo) -->
+    <!-- Gold halo -->
     <ImageView
         android:layout_width="320dp"
         android:layout_height="240dp"
@@ -33,12 +27,11 @@
         android:src="@drawable/splash_glow_gold"
         android:translationY="40dp" />
 
-    <!-- ════════════════════════════════════════════════════════════════
-         CONTENT — bars logo, Turbo wordmark, subtitle, 3 stickers.
-         User's tuning preserved: 8dp bar widths, custom heights,
-         space_grotesk_bold subtitle, letterSpacing=-0.04 on Turbo.
-         ════════════════════════════════════════════════════════════════ -->
-
+    <!--
+        match_parent here is the key fix — wrap_content clips italic text
+        that extends beyond its measured bounds.
+        gravity="center_horizontal" keeps content centered.
+    -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,7 +39,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <!-- Big rounded bars logo -->
+        <!-- Bars logo -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -77,21 +70,21 @@
                 android:background="@drawable/bars_logo_red" />
         </LinearLayout>
 
-        <!-- Turbo wordmark -->
+        <!-- Turbo wordmark — wrap_content is fine here because parent is match_parent -->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_xxl"
             android:fontFamily="@font/barlow_condensed_extrabold_italic"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.03"
+            android:gravity="center_horizontal"
             android:text="Turbo"
             android:textColor="@color/brand_gold"
             android:textSize="80sp"
-            android:textStyle="bold|italic"
-            android:letterSpacing="-0.04"
-            android:includeFontPadding="false"
-            android:paddingEnd="12dp" />
+            android:textStyle="bold|italic" />
 
-        <!-- Subtitle: КОЛЛЕКЦИЯ ВКЛАДЫШЕЙ (user's space_grotesk_bold) -->
+        <!-- Subtitle -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,7 +96,7 @@
             android:textColor="@color/text_3"
             android:textSize="11sp" />
 
-        <!-- 3 sticker thumbnails: tilted -3° / 0 / +3° -->
+        <!-- 3 sticker thumbnails -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -169,7 +162,7 @@
 
     </LinearLayout>
 
-    <!-- Version pinned at the bottom — populated from BuildConfig.VERSION_NAME -->
+    <!-- Version at bottom -->
     <TextView
         android:id="@+id/versionText"
         android:layout_width="wrap_content"
@@ -181,4 +174,5 @@
         android:textColor="@color/text_4"
         android:textSize="9sp"
         tools:text="v1.0" />
+
 </FrameLayout>
