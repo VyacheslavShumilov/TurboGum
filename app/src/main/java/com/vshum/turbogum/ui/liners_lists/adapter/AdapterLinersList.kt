@@ -16,37 +16,130 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * Adapter for the sticker grid on the SeriesList screen.
+ * Adapter for the sticker grid with pagination.
  *
- * Each item: shimmer placeholder → sticker image + small rarity dot
- * (no text label) + fav button + brand (uppercase) / model / number.
+ * Only [pageSize] items are shown initially; each time the user scrolls
+ * near the bottom, [loadNextPage] adds the next batch. This limits the
+ * number of simultaneous Picasso requests to ~pageSize instead of all 70.
+ *
+ * Two view types:
+ *   VIEW_TYPE_ITEM    — normal sticker card
+ *   VIEW_TYPE_LOADING — invisible footer that triggers next page load
  */
 class AdapterLinersList(
-    private val linersList: ArrayList<Liner>,
+    private val fullList: List<Liner>,       // full filtered list, supplied once
     private val listener: SetOnClickListener,
-    private val appDao: LinersDao
-) : RecyclerView.Adapter<AdapterLinersList.ViewHolder>() {
+    private val appDao: LinersDao,
+    private val pageSize: Int = 20
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface SetOnClickListener {
         fun onClickLiner(liner: Liner)
     }
 
-    inner class ViewHolder(val binding: ItemLinerBinding) :
+    companion object {
+        private const val VIEW_TYPE_ITEM    = 0
+        private const val VIEW_TYPE_LOADING = 1
+    }
+
+    // Visible slice of fullList
+    private val visibleList = ArrayList<Liner>()
+    private var isLoading = false
+
+    init {
+        // Load first page immediately
+        val first = fullList.take(pageSize)
+        visibleList.addAll(first)
+    }
+
+    // ── Public API ────────────────────────────────────────────────────
+
+    /** Call when user scrolls near the bottom. Appends the next page. */
+    fun loadNextPage() {
+        if (isLoading) return
+        val loaded = visibleList.size
+        if (loaded >= fullList.size) return   // nothing more to load
+
+        isLoading = true
+        notifyItemChanged(itemCount - 1)      // refresh loading footer
+
+        val next = fullList.subList(loaded, minOf(loaded + pageSize, fullList.size))
+        val insertStart = visibleList.size
+        visibleList.addAll(next)
+        notifyItemRangeInserted(insertStart, next.size)
+
+        isLoading = false
+        notifyItemChanged(itemCount - 1)
+    }
+
+    val hasMore: Boolean get() = visibleList.size < fullList.size
+
+    // ── RecyclerView.Adapter ──────────────────────────────────────────
+
+    override fun getItemViewType(position: Int): Int =
+        if (position < visibleList.size) VIEW_TYPE_ITEM else VIEW_TYPE_LOADING
+
+    override fun getItemCount(): Int =
+        visibleList.size + if (hasMore) 1 else 0   // +1 for loading footer
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == VIEW_TYPE_ITEM) {
+            ItemViewHolder(
+                ItemLinerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            )
+        } else {
+            // Invisible footer view — just triggers pagination
+            val v = View(parent.context).apply {
+                layoutParams = ViewGroup.LayoutParams(0, 0)
+            }
+            LoadingViewHolder(v)
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is ItemViewHolder) holder.bind(visibleList[position])
+    }
+
+    // ── ViewHolders ───────────────────────────────────────────────────
+
+    inner class ItemViewHolder(val binding: ItemLinerBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(liner: Liner) {
-
-            // ── Text fields ─────────────────────────────────────────
             binding.linerBrand.text  = liner.brand.uppercase()
             binding.linerModel.text  = liner.model
             binding.linerNumber.text = "#${liner.numberLiner}"
 
-            // ── Rarity dot colour ───────────────────────────────────
             applyRarity(liner)
+            loadImage(liner)
+            loadFavState(liner)
 
-            // ── Shimmer + image ─────────────────────────────────────
-            val imageView = binding.linerImageView
+            binding.root.setOnClickListener { listener.onClickLiner(liner) }
+        }
+
+        private fun applyRarity(liner: Liner) {
+            val num    = liner.numberLiner.toIntOrNull() ?: 0
+            val series = liner.series.trim()
+            val bg = when {
+                series.startsWith("Sport") || series.startsWith("Classic") -> when {
+                    num <= 18 -> R.drawable.badge_rarity_common
+                    num <= 35 -> R.drawable.badge_rarity_uncommon
+                    num <= 52 -> R.drawable.badge_rarity_rare
+                    else      -> R.drawable.badge_rarity_ultra
+                }
+                else -> when {
+                    num <= 50  -> R.drawable.badge_rarity_common
+                    num <= 120 -> R.drawable.badge_rarity_uncommon
+                    num <= 190 -> R.drawable.badge_rarity_rare
+                    else       -> R.drawable.badge_rarity_ultra
+                }
+            }
+            binding.rarityBadge.setBackgroundResource(bg)
+        }
+
+        private fun loadImage(liner: Liner) {
             val shimmer   = binding.shimmerLayout
+            val imageView = binding.linerImageView
 
             shimmer.startShimmer()
             shimmer.visibility   = View.VISIBLE
@@ -74,11 +167,12 @@ class AdapterLinersList(
             } else {
                 shimmer.stopShimmer()
                 shimmer.visibility   = View.GONE
-                imageView.visibility = View.VISIBLE
                 imageView.setImageResource(R.drawable.placeholder)
+                imageView.visibility = View.VISIBLE
             }
+        }
 
-            // ── Favourite state ─────────────────────────────────────
+        private fun loadFavState(liner: Liner) {
             CoroutineScope(Dispatchers.IO).launch {
                 val isFav = try {
                     appDao.getLinerFavorite(liner.uniqueNumber) != null
@@ -90,44 +184,8 @@ class AdapterLinersList(
                     )
                 }
             }
-
-            binding.root.setOnClickListener { listener.onClickLiner(liner) }
-        }
-
-        /**
-         * rarityBadge is now a plain View (coloured dot) — we only set background.
-         * Colour rules:
-         *   Серия 1–5 / Super 1–3: global numbering 1..540
-         *   Sport / Classic: relative to 70-card series
-         */
-        private fun applyRarity(liner: Liner) {
-            val num    = liner.numberLiner.toIntOrNull() ?: 0
-            val series = liner.series.trim()
-
-            val bg = when {
-                series.startsWith("Sport") || series.startsWith("Classic") -> when {
-                    num <= 18 -> R.drawable.badge_rarity_common
-                    num <= 35 -> R.drawable.badge_rarity_uncommon
-                    num <= 52 -> R.drawable.badge_rarity_rare
-                    else      -> R.drawable.badge_rarity_ultra
-                }
-                else -> when {
-                    num <= 50  -> R.drawable.badge_rarity_common
-                    num <= 120 -> R.drawable.badge_rarity_uncommon
-                    num <= 190 -> R.drawable.badge_rarity_rare
-                    else       -> R.drawable.badge_rarity_ultra
-                }
-            }
-            binding.rarityBadge.setBackgroundResource(bg)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        ItemLinerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-    )
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(linersList[position])
-
-    override fun getItemCount(): Int = linersList.size
+    class LoadingViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }

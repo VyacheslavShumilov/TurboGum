@@ -29,8 +29,8 @@ import kotlinx.coroutines.withContext
 
 /**
  * Sticker detail screen.
- * Displays: hero image with badges, brand/model/number, CTA "Add to collection",
- * specs grid (engine/power/topSpeed/year), external links, editable note.
+ * Hero image → brand/model/number/series tag → CTA → links → collapsible note.
+ * Specs section removed (data not available in model).
  */
 class LinerFragment(var liner: Liner) : Fragment() {
 
@@ -40,6 +40,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
     private lateinit var appNavigator: AppNavigator
     private var isImageExpanded = false
     private var isInCollection = false
+    private var isNoteExpanded = false
 
     private val imageOverlay: View?
         get() = activity?.findViewById(R.id.imageOverlay)
@@ -57,11 +58,14 @@ class LinerFragment(var liner: Liner) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Fix #1: hide expandedImage overlay when entering screen
+        imageOverlay?.visibility = View.GONE
+        expandedImage?.visibility = View.GONE
+
         setupHeader()
         setupHero()
         setupTextFields()
         setupRarity()
-        setupSpecs()
         setupLinks()
         setupNote()
         setupCta()
@@ -98,45 +102,42 @@ class LinerFragment(var liner: Liner) : Fragment() {
         binding.tagSeries.text = liner.series
     }
 
-    // ── Rarity ────────────────────────────────────────────────────────
+    // ── Rarity badge ──────────────────────────────────────────────────
 
     private fun setupRarity() {
         val num = liner.numberLiner.toIntOrNull() ?: 0
+        val series = liner.series.trim()
         val (bg, label) = when {
-            num <= 50 -> R.drawable.badge_rarity_common to "Common"
-            num <= 120 -> R.drawable.badge_rarity_uncommon to "Uncommon"
-            num <= 190 -> R.drawable.badge_rarity_rare to "Rare"
-            else -> R.drawable.badge_rarity_ultra to "Ultra-Rare"
+            series.startsWith("Sport") || series.startsWith("Classic") -> when {
+                num <= 18 -> R.drawable.badge_rarity_common   to "Common"
+                num <= 35 -> R.drawable.badge_rarity_uncommon to "Uncommon"
+                num <= 52 -> R.drawable.badge_rarity_rare     to "Rare"
+                else      -> R.drawable.badge_rarity_ultra    to "Ultra"
+            }
+            else -> when {
+                num <= 50  -> R.drawable.badge_rarity_common   to "Common"
+                num <= 120 -> R.drawable.badge_rarity_uncommon to "Uncommon"
+                num <= 190 -> R.drawable.badge_rarity_rare     to "Rare"
+                else       -> R.drawable.badge_rarity_ultra    to "Ultra"
+            }
         }
         binding.rarityBadge.setBackgroundResource(bg)
         binding.rarityBadge.text = label
-    }
-
-    // ── Specs grid ────────────────────────────────────────────────────
-
-    private fun setupSpecs() {
-        // Specs are not yet stored on Liner — show placeholder dashes.
-        // Once Liner model is extended with engine/power/topSpeed,
-        // replace these with liner.engine etc.
-        binding.specEngine.text = "—"
-        binding.specPower.text = "—"
-        binding.specTopSpeed.text = "—"
-        binding.specYear.text = yearForSeries(liner.series)
     }
 
     // ── Links ─────────────────────────────────────────────────────────
 
     private fun setupLinks() {
         with(binding) {
-            if (liner.video == "-") containerVideo.visibility = View.GONE
-            if (liner.vkArticle == "-") containerVk.visibility = View.GONE
-            if (liner.wikiArticle == "-") containerWiki.visibility = View.GONE
-            if (liner.websiteSociete == "-") containerSociete.visibility = View.GONE
+            if (liner.vkArticle == "-")       containerVk.visibility      = View.GONE
+            if (liner.websiteSociete == "-")  containerSociete.visibility = View.GONE
+            if (liner.video == "-")            containerVideo.visibility   = View.GONE
+            if (liner.wikiArticle == "-")     containerWiki.visibility    = View.GONE
 
-            containerVideo.setOnClickListener { openUrl(liner.video) }
-            containerVk.setOnClickListener { openUrl(liner.vkArticle) }
-            containerWiki.setOnClickListener { openUrl(liner.wikiArticle) }
+            containerVk.setOnClickListener      { openUrl(liner.vkArticle) }
             containerSociete.setOnClickListener { openUrl(liner.websiteSociete) }
+            containerVideo.setOnClickListener   { openUrl(liner.video) }
+            containerWiki.setOnClickListener    { openUrl(liner.wikiArticle) }
         }
     }
 
@@ -146,96 +147,41 @@ class LinerFragment(var liner: Liner) : Fragment() {
         }
     }
 
-    // ── CTA ───────────────────────────────────────────────────────────
-
-    private fun setupCta() {
-        // Check current state in DB
-        lifecycleScope.launch(Dispatchers.IO) {
-            val existing = (requireContext().applicationContext as App)
-                .getDatabase().linersDao().getLinerFavorite(liner.uniqueNumber)
-            withContext(Dispatchers.Main) {
-                isInCollection = existing != null
-                updateCtaState()
-            }
-        }
-
-        binding.containerFav.setOnClickListener {
-            if (isInCollection) {
-                removeFromCollection()
-            } else {
-                addToCollection()
-            }
-        }
-    }
-
-    private fun updateCtaState() {
-        binding.containerFav.text = if (isInCollection) {
-            getString(R.string.detail_in_collection)
-        } else {
-            getString(R.string.detail_add_to_collection)
-        }
-        binding.containerFav.alpha = if (isInCollection) 0.6f else 1f
-    }
-
-    private fun addToCollection() {
-        val fav = LinersFavourite(
-            key = 0,
-            uniqueNumber = liner.uniqueNumber,
-            id = liner.id,
-            numberLiner = liner.numberLiner,
-            brand = liner.brand,
-            model = liner.model,
-            wikiArticle = liner.wikiArticle,
-            websiteSociete = liner.websiteSociete,
-            video = liner.video,
-            vkArticle = liner.vkArticle,
-            imageUrlLiner = liner.imageUrlLiner,
-            index = liner.index,
-            series = liner.series,
-            note = liner.note
-        )
-        CoroutineScope(Dispatchers.IO).launch {
-            (requireContext().applicationContext as App).getDatabase()
-                .linersDao().insertLiner(fav)
-            withContext(Dispatchers.Main) {
-                isInCollection = true
-                updateCtaState()
-            }
-        }
-    }
-
-    private fun removeFromCollection() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val dao = (requireContext().applicationContext as App)
-                .getDatabase().linersDao()
-            val existing = dao.getLinerFavorite(liner.uniqueNumber)
-            existing?.let { dao.deleteFavoriteLiner(it) }
-            withContext(Dispatchers.Main) {
-                isInCollection = false
-                updateCtaState()
-            }
-        }
-    }
-
-    // ── Note ──────────────────────────────────────────────────────────
+    // ── Note (collapsible) ────────────────────────────────────────────
 
     private fun setupNote() {
-        // Load note from DB
+        // Load saved note from DB
         lifecycleScope.launch(Dispatchers.IO) {
             val saved = try {
                 (requireContext().applicationContext as App).getDatabase()
                     .linersDao().getNoteLiner(liner.uniqueNumber)
-            } catch (e: Exception) {
-                null
-            }
+            } catch (e: Exception) { null }
             withContext(Dispatchers.Main) {
+                if (_binding == null) return@withContext
                 showNoteRead(saved.orEmpty())
             }
         }
 
-        binding.btnEditNote.setOnClickListener { switchToEditMode() }
-        binding.btnNoteCancel.setOnClickListener { showNoteRead(binding.noteText.text.toString()) }
+        // Toggle expand/collapse on header tap
+        binding.noteHeader.setOnClickListener { toggleNote() }
+
+        // Tap on read-mode text → switch to edit
+        binding.noteText.setOnClickListener { switchToEditMode() }
+
+        binding.btnNoteCancel.setOnClickListener {
+            showNoteRead(binding.noteText.text.toString())
+        }
         binding.btnNoteSave.setOnClickListener { saveNote() }
+    }
+
+    private fun toggleNote() {
+        isNoteExpanded = !isNoteExpanded
+        binding.noteBodyContainer.visibility = if (isNoteExpanded) View.VISIBLE else View.GONE
+        // Rotate chevron: 90° = pointing down (expanded), 0° = pointing right (collapsed)
+        binding.noteChevron.animate()
+            .rotation(if (isNoteExpanded) 270f else 90f)
+            .setDuration(200)
+            .start()
     }
 
     private fun showNoteRead(text: String) {
@@ -256,12 +202,87 @@ class LinerFragment(var liner: Liner) : Fragment() {
             try {
                 (requireContext().applicationContext as App).getDatabase()
                     .linersDao().editNoteLiner(liner.uniqueNumber, text)
-            } catch (e: Exception) {
-                // Note: editNoteLiner only works if liner already in favourites.
-                // If not, ignore — note will be saved when user adds to collection.
-            }
+            } catch (e: Exception) { /* only works if liner already in favourites */ }
             withContext(Dispatchers.Main) {
+                if (_binding == null) return@withContext
                 showNoteRead(text)
+            }
+        }
+    }
+
+    // ── CTA ───────────────────────────────────────────────────────────
+
+    private fun setupCta() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val db = (requireContext().applicationContext as App).getDatabase()
+            isInCollection = try {
+                db.linersDao().getLinerFavorite(liner.uniqueNumber) != null
+            } catch (e: Exception) { false }
+            withContext(Dispatchers.Main) {
+                if (_binding == null) return@withContext
+                updateCtaState()
+            }
+        }
+
+        binding.containerFav.setOnClickListener {
+            if (isInCollection) removeFromCollection() else addToCollection()
+        }
+    }
+
+    private fun updateCtaState() {
+        binding.containerFav.apply {
+            text = if (isInCollection)
+                getString(R.string.detail_in_collection)
+            else
+                getString(R.string.detail_add_to_collection)
+            setBackgroundResource(
+                if (isInCollection) R.drawable.btn_violet_gradient
+                else R.drawable.btn_cta_gradient
+            )
+        }
+    }
+
+    private fun addToCollection() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val fav = LinersFavourite(
+                    key          = 0, // autoGenerate — Room assigns the real key
+                    uniqueNumber = liner.uniqueNumber,
+                    id           = liner.id,
+                    numberLiner  = liner.numberLiner,
+                    brand        = liner.brand,
+                    model        = liner.model,
+                    wikiArticle  = liner.wikiArticle,
+                    websiteSociete = liner.websiteSociete,
+                    video        = liner.video,
+                    vkArticle    = liner.vkArticle,
+                    imageUrlLiner = liner.imageUrlLiner,
+                    index        = liner.index,
+                    series       = liner.series,
+                    note         = ""
+                )
+                (requireContext().applicationContext as App)
+                    .getDatabase().linersDao().insertLiner(fav)
+                isInCollection = true
+            } catch (e: Exception) { /* ignore */ }
+            withContext(Dispatchers.Main) {
+                if (_binding == null) return@withContext
+                updateCtaState()
+            }
+        }
+    }
+
+    private fun removeFromCollection() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val db = (requireContext().applicationContext as App).getDatabase()
+                val fav = db.linersDao().getLinerFavorite(liner.uniqueNumber)
+                if (fav != null) db.linersDao().deleteFavoriteLiner(fav)
+                isInCollection = false
+            } catch (e: Exception) { /* ignore */ }
+            withContext(Dispatchers.Main) {
+                if (_binding == null) return@withContext
+                updateCtaState()
             }
         }
     }

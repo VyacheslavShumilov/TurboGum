@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.vshum.turbogum.App
 import com.vshum.turbogum.R
 import com.vshum.turbogum.dao.LinersDao
@@ -28,16 +29,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * SeriesList screen — shows all stickers for a given series.
- * Header → progress card → search → filter chips → sticker grid.
+ * SeriesList screen — sticker grid with pagination.
  *
- * Receives the series key (e.g. "series1") via Fragment constructor.
- * Data is loaded asynchronously by [LinersListPresenterImpl].
+ * Pagination: adapter shows first 20 items; RecyclerView scroll listener
+ * triggers [AdapterLinersList.loadNextPage] when user is within 4 rows
+ * of the bottom. Each page = 20 items = ~20 Picasso requests max.
  */
 class LinersListFragment(private val seriesKey: String) :
     Fragment(),
-    LinersListContract.View,
-    AdapterLinersList.SetOnClickListener {
+    LinersListContract.View {
 
     private var _binding: FragmentLinersListBinding? = null
     private val binding get() = _binding!!
@@ -46,10 +46,11 @@ class LinersListFragment(private val seriesKey: String) :
     private lateinit var appNavigatorParamLiners: AppNavigatorParamLiners
     private lateinit var appDao: LinersDao
     private lateinit var presenter: LinersListContract.Presenter
-    private lateinit var adapter: AdapterLinersList
+    private lateinit var layoutManager: GridLayoutManager
 
-    private val fullList    = ArrayList<Liner>()
-    private val displayList = ArrayList<Liner>()
+    // Full dataset loaded from network; filtered list passed to adapter
+    private val fullList = ArrayList<Liner>()
+    private var adapter: AdapterLinersList? = null
 
     private enum class Filter { ALL, OWNED, MISSING }
     private var activeFilter = Filter.ALL
@@ -70,11 +71,10 @@ class LinersListFragment(private val seriesKey: String) :
 
         setupHeader()
         setupTitle()
-        setupRecycler()   // appDao is safe here — onAttach ran before onViewCreated
+        setupRecycler()
         setupSearch()
         setupChips()
 
-        // Presenter loads on IO thread; delivers via onSuccessList on Main
         presenter = LinersListPresenterImpl(this, requireContext())
         presenter.startScreen(seriesKey)
     }
@@ -87,9 +87,9 @@ class LinersListFragment(private val seriesKey: String) :
     override fun onAttach(context: Context) {
         super.onAttach(context)
         val app = context.applicationContext as App
-        appNavigator           = app.servicesLocator.providerNavigator(requireActivity())
+        appNavigator            = app.servicesLocator.providerNavigator(requireActivity())
         appNavigatorParamLiners = app.servicesLocator.providerNavigatorParamLiners(requireActivity())
-        appDao                 = app.getDatabase().linersDao()
+        appDao                  = app.getDatabase().linersDao()
     }
 
     // ── Header ────────────────────────────────────────────────────────
@@ -99,6 +99,7 @@ class LinersListFragment(private val seriesKey: String) :
         header.findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
             appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
         }
+        header.findViewById<TextView>(R.id.headerTitle)?.text = ""
     }
 
     private fun setupTitle() {
@@ -138,14 +139,44 @@ class LinersListFragment(private val seriesKey: String) :
         else -> ""
     }
 
-    // ── RecyclerView ──────────────────────────────────────────────────
+    // ── RecyclerView + pagination scroll listener ─────────────────────
 
     private fun setupRecycler() {
-        adapter = AdapterLinersList(displayList, this, appDao)
-        binding.recyclerView.apply {
-            layoutManager = GridLayoutManager(requireContext(), 2)
-            this.adapter  = this@LinersListFragment.adapter
-        }
+        layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.recyclerView.layoutManager = layoutManager
+
+        // Scroll listener: load next page when within 4 rows of the bottom
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
+                if (dy <= 0) return   // only trigger on downward scroll
+                val visibleItemCount    = layoutManager.childCount
+                val totalItemCount      = layoutManager.itemCount
+                val firstVisibleItem    = layoutManager.findFirstVisibleItemPosition()
+                val threshold           = 2 * 2   // 2 rows × 2 columns
+                if (visibleItemCount + firstVisibleItem + threshold >= totalItemCount) {
+                    adapter?.loadNextPage()
+                }
+            }
+        })
+    }
+
+    /**
+     * Rebuild adapter with a fresh filtered list.
+     * Called after data loads and after every filter/search change.
+     */
+    private fun rebuildAdapter(filtered: List<Liner>) {
+        val newAdapter = AdapterLinersList(
+            fullList = filtered,
+            listener = object : AdapterLinersList.SetOnClickListener {
+                override fun onClickLiner(liner: Liner) {
+                    appNavigatorParamLiners.navigateToParamLiner(Screen.LINER_SCREEN, liner)
+                }
+            },
+            appDao   = appDao,
+            pageSize = 20
+        )
+        adapter = newAdapter
+        binding.recyclerView.adapter = newAdapter
     }
 
     // ── Search ────────────────────────────────────────────────────────
@@ -200,10 +231,9 @@ class LinersListFragment(private val seriesKey: String) :
             }
 
             withContext(Dispatchers.Main) {
-                if (_binding == null) return@withContext  // ← добавь эту строку
-                displayList.clear()
-                displayList.addAll(filtered)
-                adapter.notifyDataSetChanged()
+                if (_binding == null) return@withContext
+                // Rebuild adapter with new filtered list — resets to page 1
+                rebuildAdapter(filtered)
                 updateProgressCard(ownedSet)
             }
         }
@@ -227,9 +257,5 @@ class LinersListFragment(private val seriesKey: String) :
         fullList.clear()
         fullList.addAll(list)
         applyFilter()
-    }
-
-    override fun onClickLiner(liner: Liner) {
-        appNavigatorParamLiners.navigateToParamLiner(Screen.LINER_SCREEN, liner)
     }
 }
