@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.TurboGum" parent="Theme.Material3.Dark.NoActionBar">
+    <!-- ═══════════════════════════════════════════════════════════
+         LIGHT THEME — Turbo Gum
+         Place in: res/values/themes.xml
+         Move current dark themes.xml to: res/values-night/themes.xml
+         ═══════════════════════════════════════════════════════════ -->
+
+    <style name="Theme.TurboGum" parent="Theme.Material3.Light.NoActionBar">
         <!-- Brand colors -->
         <item name="colorPrimary">@color/brand_violet</item>
         <item name="colorPrimaryVariant">@color/brand_violet_dark</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/brand_gold</item>
         <item name="colorSecondaryVariant">@color/brand_gold_light</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <item name="colorOnSecondaryContainer">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorOnSecondaryContainer">@color/text_1</item>
         <item name="colorSecondaryContainer">@android:color/transparent</item>
 
         <!-- Surfaces -->
@@ -17,18 +23,18 @@
         <item name="android:colorBackground">@color/bg_background</item>
         <item name="android:windowBackground">@color/bg_background</item>
 
-        <!-- System bars -->
+        <!-- System bars — light mode indicators -->
         <item name="android:statusBarColor">@color/bg_background</item>
         <item name="android:navigationBarColor">@color/bg_bottom_nav</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
         <item name="android:windowFullscreen">false</item>
 
         <!-- Default font -->
         <item name="android:fontFamily">@font/space_grotesk</item>
         <item name="fontFamily">@font/space_grotesk</item>
 
-        <!-- Edge-to-edge per spec -->
+        <!-- Edge-to-edge -->
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
     </style>
@@ -38,14 +44,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.TurboGum.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.TurboGum.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
     <style name="Theme.TurboGum.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <!-- Splash theme — dark background, no action bar -->
+    <!-- Splash theme -->
     <style name="Theme.TurboGum.Splash" parent="Theme.TurboGum">
         <item name="android:windowBackground">@color/bg_background</item>
         <item name="android:statusBarColor">@color/bg_background</item>
     </style>
-
 
 </resources>

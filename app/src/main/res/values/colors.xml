@@ -1,89 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- ═══════════════════ BASE ═══════════════════ -->
+     <!-- ═══════════════════ BASE ═══════════════════ -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
 
     <!-- ═══════════════════ BACKGROUNDS ═══════════════════ -->
-    <color name="bg_background">#07070E</color>
-    <color name="bg_surface_1">#0E0F1C</color>
-    <color name="bg_surface_2">#141528</color>
-    <color name="bg_bottom_nav">#04040A</color>
+    <!-- Warm cream page background (not pure white — retro paper feel) -->
+    <color name="bg_background">#F5F0E6</color>
+    <!-- Slightly deeper cream for inputs, secondary surfaces -->
+    <color name="bg_surface_1">#EDE8D5</color>
+    <!-- White for elevated cards -->
+    <color name="bg_surface_2">#FFFFFF</color>
+    <!-- Bottom nav: warm off-white -->
+    <color name="bg_bottom_nav">#FDFAF3</color>
 
     <!-- ═══════════════════ BRAND ═══════════════════ -->
-    <color name="brand_violet">#7C3AED</color>
-    <color name="brand_violet_light">#A78BFA</color>
+    <!-- Violet deepened for light bg contrast -->
+    <color name="brand_violet">#6D28D9</color>
+    <color name="brand_violet_light">#8B5CF6</color>
     <color name="brand_violet_dark">#4C1D95</color>
-    <color name="brand_gold">#F0A800</color>
-    <color name="brand_gold_light">#FFD166</color>
-    <color name="brand_red">#E63030</color>
+    <!-- Gold warmed up for cream context -->
+    <color name="brand_gold">#C88A00</color>
+    <color name="brand_gold_light">#F0A800</color>
+    <color name="brand_red">#C62828</color>
 
     <!-- ═══════════════════ TEXT ═══════════════════ -->
-    <color name="text_1">#F0EEF8</color>
-    <color name="text_2">#8CF0EEF8</color>      <!-- 55% -->
-    <color name="text_3">#47F0EEF8</color>      <!-- 28% -->
-    <color name="text_4">#1FF0EEF8</color>      <!-- 12% -->
+    <!-- Dark navy text on cream — easier on eyes than pure black -->
+    <color name="text_1">#1A1A2E</color>
+    <color name="text_2">#8C1A1A2E</color>         <!-- 55% -->
+    <color name="text_3">#471A1A2E</color>         <!-- 28% -->
+    <color name="text_4">#1F1A1A2E</color>         <!-- 12% -->
 
     <!-- ═══════════════════ BORDERS ═══════════════════ -->
-    <color name="border_1">#12FFFFFF</color>     <!-- 7% -->
-    <color name="border_2">#1FFFFFFF</color>     <!-- 12% -->
-    <color name="border_red">#45E63030</color>        <!-- 27% -->
+    <!-- Warm borders that blend with the cream palette -->
+    <color name="border_1">#1A9B8E7A</color>       <!-- 10% warm -->
+    <color name="border_2">#339B8E7A</color>       <!-- 20% warm -->
+    <color name="border_red">#45C62828</color>
 
     <!-- ═══════════════════ RARITY ═══════════════════ -->
-    <color name="rarity_uncommon">#22C55E</color>
-    <color name="rarity_rare">#3B82F6</color>
+    <color name="rarity_uncommon">#16A34A</color>
+    <color name="rarity_rare">#2563EB</color>
 
     <!-- ═══════════════════ SERIES BACKGROUNDS ═══════════════════ -->
-    <color name="series_1_bg">#A93226</color>
-    <color name="series_1_bg2">#5C1510</color>
-    <color name="series_2_bg">#B7950B</color>
-    <color name="series_2_bg2">#6E5806</color>
-    <color name="series_3_bg">#1E8449</color>
-    <color name="series_3_bg2">#0B3D23</color>
-    <color name="series_4_bg">#117A65</color>
-    <color name="series_4_bg2">#073D33</color>
-    <color name="series_5_bg">#1F618D</color>
-    <color name="series_5_bg2">#0D2C4B</color>
-    <color name="series_super_bg">#C0450A</color>
-    <color name="series_super_bg2">#6B2505</color>
+    <!-- Same vivid series colours — they sit on gradient cards -->
+    <color name="series_1_bg">#C62828</color>
+    <color name="series_1_bg2">#8B1A10</color>
+    <color name="series_2_bg">#F9A825</color>
+    <color name="series_2_bg2">#C17900</color>
+    <color name="series_3_bg">#2E7D32</color>
+    <color name="series_3_bg2">#1B5E20</color>
+    <color name="series_4_bg">#00897B</color>
+    <color name="series_4_bg2">#004D40</color>
+    <color name="series_5_bg">#1565C0</color>
+    <color name="series_5_bg2">#0D47A1</color>
+    <color name="series_super_bg">#E65100</color>
+    <color name="series_super_bg2">#BF360C</color>
 
-    <!-- ═══════════════════ EXTERNAL LINK FOREGROUNDS ═══════════════════ -->
-    <color name="link_vk_fg">#5B8DD9</color>
-    <color name="link_youtube_fg">#FF453A</color>
-    <color name="link_wiki_fg">#8BA4C2</color>
-    <color name="link_societe_fg">#34D399</color>
+    <!-- ═══════════════════ EXTERNAL LINKS ═══════════════════ -->
+    <!-- Pastel tinted chip backgrounds with saturated text -->
+    <color name="link_vk_fg">#2C5EA8</color>
+    <color name="link_youtube_fg">#C62828</color>
+    <color name="link_wiki_fg">#4A5568</color>
+    <color name="link_societe_fg">#1B7A42</color>
 
     <!-- ═══════════════════ GRADIENT STOPS ═══════════════════ -->
-    <color name="gradient_cta_start">#B91C1C</color>
-    <color name="gradient_cta_end">#7C3AED</color>
-    <color name="gradient_progress_start">#7C3AED</color>
-    <color name="gradient_progress_end">#F0A800</color>
+    <color name="gradient_cta_start">#C62828</color>
+    <color name="gradient_cta_end">#6D28D9</color>
+    <color name="gradient_progress_start">#6D28D9</color>
+    <color name="gradient_progress_end">#C88A00</color>
 
     <!-- ═══════════════════ BACKWARD-COMPAT (legacy aliases) ═══════════════════ -->
-    <color name="surface_page">#07070E</color>
-    <color name="surface_card">#141528</color>
-    <color name="surface_input">#0E0F1C</color>
-    <color name="surface_secondary">#1A1B2E</color>
-    <color name="border_default">#1FFFFFFF</color>
-    <color name="border_subtle">#12FFFFFF</color>
-    <color name="text_primary">#F0EEF8</color>
-    <color name="text_secondary">#8CF0EEF8</color>
-    <color name="text_hint">#47F0EEF8</color>
-    <color name="brand_purple">#7C3AED</color>
-    <color name="brand_purple_border">#667C3AED</color>
-    <color name="brand_teal">#22C55E</color>
-    <color name="brand_teal_light">#0D2620</color>
-    <color name="toolbar_color">#07070E</color>
-    <color name="start_gradient_color">#B91C1C</color>
-    <color name="end_gradient_color">#7C3AED</color>
-    <color name="secondaryDarkColor">#B7950B</color>
-    <color name="app_background_color">#07070E</color>
-    <color name="container_btn_color">#0E0F1C</color>
-    <color name="container_stroke_btn_color">#1FFFFFFF</color>
-    <color name="container_fav_btn_color">#7C3AED</color>
-    <color name="liner_txt_color">#F0A800</color>
-    <color name="card_stroke_color">#22C55E</color>
-    <color name="btn_fav_unselected">#A78BFA</color>
-    <color name="btn_fav_selected">#E63030</color>
+    <color name="surface_page">#F5F0E6</color>
+    <color name="surface_card">#FFFFFF</color>
+    <color name="surface_input">#EDE8D5</color>
+    <color name="surface_secondary">#E8E2D2</color>
+    <color name="border_default">#339B8E7A</color>
+    <color name="border_subtle">#1A9B8E7A</color>
+    <color name="text_primary">#1A1A2E</color>
+    <color name="text_secondary">#8C1A1A2E</color>
+    <color name="text_hint">#471A1A2E</color>
+    <color name="brand_purple">#6D28D9</color>
+    <color name="brand_purple_border">#666D28D9</color>
+    <color name="brand_teal">#16A34A</color>
+    <color name="brand_teal_light">#E6F4EC</color>
+    <color name="toolbar_color">#F5F0E6</color>
+    <color name="start_gradient_color">#C62828</color>
+    <color name="end_gradient_color">#6D28D9</color>
+    <color name="secondaryDarkColor">#C17900</color>
+    <color name="app_background_color">#F5F0E6</color>
+    <color name="container_btn_color">#EDE8D5</color>
+    <color name="container_stroke_btn_color">#339B8E7A</color>
+    <color name="container_fav_btn_color">#6D28D9</color>
+    <color name="liner_txt_color">#8B6914</color>
+    <color name="card_stroke_color">#16A34A</color>
+    <color name="btn_fav_unselected">#8B5CF6</color>
+    <color name="btn_fav_selected">#C62828</color>
 </resources>
