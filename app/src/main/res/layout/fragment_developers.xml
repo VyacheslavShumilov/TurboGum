@@ -29,44 +29,36 @@
             android:paddingEnd="@dimen/spacing_xl"
             android:paddingTop="@dimen/spacing_lg">
 
-            <!-- Title -->
+            <!-- Title — без подзаголовка -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_xxl"
                 android:fontFamily="@font/barlow_condensed_extrabold_italic"
-                android:text="Разработчики"
+                android:text="Команда проекта"
                 android:textColor="@color/text_1"
                 android:textSize="36sp"
                 android:textStyle="bold|italic"
                 android:letterSpacing="-0.02"
                 android:includeFontPadding="false" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="@dimen/spacing_xxl"
-                android:fontFamily="@font/space_grotesk"
-                android:text="Команда проекта Société Turbo"
-                android:textColor="@color/text_3"
-                android:textSize="12sp" />
-
-            <!-- ── MOBILE DEVELOPER ───────────────────────────────── -->
+            <!-- ── MOBILE DEVELOPER & UX DESIGN ─────────────────── -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_sm"
                 android:fontFamily="@font/space_grotesk_semibold"
                 android:letterSpacing="0.12"
-                android:text="MOBILE DEVELOPER"
+                android:text="MOBILE DEVELOPER &amp; UX DESIGN"
                 android:textAllCaps="true"
                 android:textColor="@color/text_3"
                 android:textSize="@dimen/text_label_md" />
 
+            <!-- Вячеслав Шумилов -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_xxl"
+                android:layout_marginBottom="@dimen/spacing_sm"
                 android:background="@drawable/surface_card_bg"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -78,32 +70,34 @@
                     android:layout_marginEnd="@dimen/spacing_md"
                     android:background="@drawable/btn_violet_gradient"
                     android:contentDescription="@null"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_developers"
-                    app:tint="@color/white" />
+                    android:padding="6dp"
+                    android:src="@drawable/ic_android_robot" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/barlow_condensed"
-                    android:text="@string/me"
-                    android:textColor="@color/text_1"
-                    android:textSize="20sp"
-                    android:textStyle="italic|bold" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/barlow_condensed"
+                        android:text="@string/me"
+                        android:textColor="@color/text_1"
+                        android:textSize="20sp"
+                        android:textStyle="italic|bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/space_grotesk"
+                        android:text="Mobile Developer"
+                        android:textColor="@color/text_3"
+                        android:textSize="11sp" />
+                </LinearLayout>
             </LinearLayout>
 
-            <!-- ── UI DESIGN ──────────────────────────────────────── -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_sm"
-                android:fontFamily="@font/space_grotesk_semibold"
-                android:letterSpacing="0.12"
-                android:text="UI DESIGN"
-                android:textAllCaps="true"
-                android:textColor="@color/text_3"
-                android:textSize="@dimen/text_label_md" />
-
+            <!-- Василий Волков -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -119,18 +113,32 @@
                     android:layout_marginEnd="@dimen/spacing_md"
                     android:background="@drawable/btn_cta_gradient"
                     android:contentDescription="@null"
-                    android:padding="8dp"
+                    android:padding="7dp"
                     android:src="@drawable/ic_edit"
                     app:tint="@color/white" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/barlow_condensed"
-                    android:text="@string/ui_name"
-                    android:textColor="@color/text_1"
-                    android:textSize="20sp"
-                    android:textStyle="italic|bold" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/barlow_condensed"
+                        android:text="@string/ui_name"
+                        android:textColor="@color/text_1"
+                        android:textSize="20sp"
+                        android:textStyle="italic|bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/space_grotesk"
+                        android:text="UX Design"
+                        android:textColor="@color/text_3"
+                        android:textSize="11sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <!-- ── ИССЛЕДОВАНИЯ ───────────────────────────────────── -->
@@ -154,18 +162,17 @@
                 android:padding="@dimen/spacing_md">
 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_1" android:textColor="@color/text_1" android:textSize="18sp" android:textStyle="italic|bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_2" android:textColor="@color/text_2" android:textSize="16sp" android:textStyle="italic" android:layout_marginTop="4dp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_3" android:textColor="@color/text_2" android:textSize="16sp" android:textStyle="italic" android:layout_marginTop="4dp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_4" android:textColor="@color/text_2" android:textSize="16sp" android:textStyle="italic" android:layout_marginTop="4dp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_5" android:textColor="@color/text_2" android:textSize="16sp" android:textStyle="italic" android:layout_marginTop="4dp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_6" android:textColor="@color/text_2" android:textSize="16sp" android:textStyle="italic" android:layout_marginTop="4dp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_7" android:textColor="@color/text_2" android:textSize="16sp" android:textStyle="italic" android:layout_marginTop="4dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_2" android:textColor="@color/text_2" android:textSize="16sp" android:textStyle="italic" android:layout_marginTop="4dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_3" android:textColor="@color/text_2" android:textSize="16sp" android:textStyle="italic" android:layout_marginTop="4dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_4" android:textColor="@color/text_2" android:textSize="16sp" android:textStyle="italic" android:layout_marginTop="4dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_5" android:textColor="@color/text_2" android:textSize="16sp" android:textStyle="italic" android:layout_marginTop="4dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_6" android:textColor="@color/text_2" android:textSize="16sp" android:textStyle="italic" android:layout_marginTop="4dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_7" android:textColor="@color/text_2" android:textSize="16sp" android:textStyle="italic" android:layout_marginTop="4dp" />
 
-                <!-- Divider -->
-                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/border_1" android:layout_marginTop="@dimen/spacing_md" android:layout_marginBottom="@dimen/spacing_md"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/border_1" android:layout_marginTop="@dimen/spacing_md" android:layout_marginBottom="@dimen/spacing_md" />
 
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_8" android:textColor="@color/brand_gold" android:textSize="16sp" android:textStyle="italic|bold"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/space_grotesk" android:text="@string/search_name_9" android:textColor="@color/text_3" android:textSize="12sp" android:layout_marginTop="2dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/search_name_8" android:textColor="@color/brand_gold" android:textSize="16sp" android:textStyle="italic|bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/space_grotesk" android:text="@string/search_name_9" android:textColor="@color/text_3" android:textSize="12sp" android:layout_marginTop="2dp" />
             </LinearLayout>
 
             <!-- ── КОЛЛЕКЦИЯ И ФОТО ───────────────────────────────── -->
@@ -180,31 +187,27 @@
                 android:textColor="@color/text_3"
                 android:textSize="@dimen/text_label_md" />
 
-            <!-- Коллекция -->
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/spacing_sm" android:background="@drawable/surface_card_bg" android:gravity="center_vertical" android:orientation="horizontal" android:padding="@dimen/spacing_md">
                 <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:fontFamily="@font/space_grotesk" android:text="@string/collection" android:textColor="@color/text_3" android:textSize="12sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/collection_name" android:textColor="@color/text_1" android:textSize="18sp" android:textStyle="italic|bold" />
             </LinearLayout>
 
-            <!-- Подготовка фото -->
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/spacing_sm" android:background="@drawable/surface_card_bg" android:gravity="center_vertical" android:orientation="horizontal" android:padding="@dimen/spacing_md">
                 <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:fontFamily="@font/space_grotesk" android:text="@string/foto" android:textColor="@color/text_3" android:textSize="12sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/foto_name" android:textColor="@color/text_1" android:textSize="18sp" android:textStyle="italic|bold" />
             </LinearLayout>
 
-            <!-- Турбо HD -->
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/spacing_sm" android:background="@drawable/surface_card_bg" android:gravity="center_vertical" android:orientation="horizontal" android:padding="@dimen/spacing_md">
                 <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:fontFamily="@font/space_grotesk" android:text="@string/hd" android:textColor="@color/text_3" android:textSize="12sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/hd_name" android:textColor="@color/text_1" android:textSize="18sp" android:textStyle="italic|bold" />
             </LinearLayout>
 
-            <!-- VK группа -->
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/spacing_xxl" android:background="@drawable/surface_card_bg" android:gravity="center_vertical" android:orientation="horizontal" android:padding="@dimen/spacing_md">
                 <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:fontFamily="@font/space_grotesk" android:text="@string/group_vk" android:textColor="@color/text_3" android:textSize="12sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/barlow_condensed" android:text="@string/group_vk_name" android:textColor="@color/brand_violet_light" android:textSize="18sp" android:textStyle="italic|bold" />
             </LinearLayout>
 
-            <!-- ── Финальная строка ───────────────────────────────── -->
+            <!-- Финальная строка -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -216,9 +219,7 @@
                 android:textSize="13sp"
                 android:textStyle="italic" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_xxl" />
+            <View android:layout_width="match_parent" android:layout_height="@dimen/spacing_xxl" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
