@@ -24,6 +24,16 @@ class AppNavigatorImpl(private val activity: FragmentActivity) :
 
     private val fm = activity.supportFragmentManager
 
+    /** Screens that live "deeper" than root tabs and should be popped with Back. */
+    private val detailScreens = setOf(
+        Screen.LINERS_LIST_SCREEN,
+        Screen.LINER_SCREEN,
+        Screen.FAVOURITE_LINER_SCREEN,
+        Screen.DEVELOPERS_SCREEN,
+        Screen.HELP,
+        Screen.REGISTRATION
+    )
+
     override fun navigateTo(screen: Screen) {
         val fragment = when (screen) {
             Screen.SPLASH_SCREEN         -> SplashFragment()
@@ -40,6 +50,7 @@ class AppNavigatorImpl(private val activity: FragmentActivity) :
         }
         fm.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
+            .apply { if (screen in detailScreens) addToBackStack(null) }
             .commit()
     }
 
@@ -50,6 +61,7 @@ class AppNavigatorImpl(private val activity: FragmentActivity) :
         }
         fm.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
+            .addToBackStack(null)
             .commit()
     }
 
@@ -60,6 +72,7 @@ class AppNavigatorImpl(private val activity: FragmentActivity) :
         }
         fm.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
+            .addToBackStack(null)
             .commit()
     }
 
@@ -70,6 +83,7 @@ class AppNavigatorImpl(private val activity: FragmentActivity) :
         }
         fm.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
+            .addToBackStack(null)
             .commit()
     }
 }

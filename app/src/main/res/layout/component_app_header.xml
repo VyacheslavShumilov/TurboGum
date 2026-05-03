@@ -15,7 +15,7 @@
         layout="@layout/component_bars_logo"
         android:layout_marginEnd="@dimen/spacing_sm" />
 
-    <!-- Turbo wordmark -->
+    <!-- Turbo wordmark — paddingEnd prevents italic glyphs from being clipped -->
     <TextView
         android:id="@+id/headerTitle"
         android:layout_width="0dp"
@@ -27,6 +27,8 @@
         android:textSize="32sp"
         android:textStyle="bold|italic"
         android:letterSpacing="-0.04"
-        android:includeFontPadding="false" />
+        android:includeFontPadding="false"
+        android:paddingEnd="6dp"
+        android:clipToPadding="false" />
 
 </LinearLayout>

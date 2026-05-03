@@ -14,14 +14,10 @@
     <dimen name="radius_sm">8dp</dimen>     <!-- tags, chips -->
     <dimen name="radius_md">12dp</dimen>    <!-- cards -->
     <dimen name="radius_lg">14dp</dimen>    <!-- large cards -->
-    <dimen name="radius_xl">16dp</dimen>    <!-- modals, hero -->
     <dimen name="radius_hero">20dp</dimen>  <!-- detail hero -->
-    <dimen name="radius_sheet">24dp</dimen> <!-- bottom sheet -->
 
     <!-- ═══════════════════ STROKE WIDTH ═══════════════════ -->
-    <dimen name="stroke_thin">0.5dp</dimen>
     <dimen name="stroke_default">1dp</dimen>
-    <dimen name="stroke_thick">1.5dp</dimen>
 
     <!-- ═══════════════════ COMPONENT HEIGHTS ═══════════════════ -->
     <dimen name="header_height">56dp</dimen>
@@ -48,11 +44,8 @@
     <dimen name="text_label_sm">9sp</dimen>
 
     <!-- ═══════════════════ ICON SIZES ═══════════════════ -->
-    <dimen name="icon_xs">12dp</dimen>
     <dimen name="icon_sm">16dp</dimen>
     <dimen name="icon_md">20dp</dimen>
-    <dimen name="icon_lg">24dp</dimen>
-    <dimen name="icon_xl">28dp</dimen>
 
     <!-- ═══════════════════ BARS LOGO ═══════════════════ -->
     <dimen name="bars_logo_width">4dp</dimen>
@@ -61,8 +54,4 @@
     <dimen name="bars_logo_h2">18dp</dimen>
     <dimen name="bars_logo_h3">14dp</dimen>
     <dimen name="bars_logo_h4">22dp</dimen>
-
-    <!-- ═══════════════════ LEGACY ═══════════════════ -->
-    <dimen name="space_developers_screen">12dp</dimen>
-    <dimen name="size_image_developers_screen">120dp</dimen>
 </resources>

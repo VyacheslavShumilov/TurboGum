@@ -3,26 +3,10 @@
 
     <string name="app_name">Вкладыши Турбо</string>
 
-    <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
-    <string name="nav_notes">Заметки</string>
-    <string name="notes_title">Заметки</string>
-    <string name="notes_subtitle">Записи коллекционера</string>
-    <string name="notes_hint">Введите заметку…</string>
-    <string name="notes_empty">Добавьте заметки о состоянии,\nценности или истории вкладыша</string>
-
     <!-- ═══════════════════ HOME ═══════════════════ -->
-    <string name="home_tagline">Collect. Explore. Drive.</string>
-    <string name="home_total_cards">Карточек</string>
-    <string name="home_section_recent">Недавно добавленные</string>
     <string name="home_section_series">Серии</string>
-    <string name="home_action_view_all">Все</string>
-    <string name="home_search_hint">Поиск вкладыша…</string>
 
     <!-- ═══════════════════ SERIES LIST ═══════════════════ -->
-    <string name="series_progress">Прогресс</string>
-    <string name="series_legend_owned">Есть</string>
-    <string name="series_legend_missing">Нет</string>
-    <string name="series_legend_duplicates">Дубликаты</string>
     <string name="series_filter_all">Все</string>
     <string name="series_filter_owned">Есть</string>
     <string name="series_filter_missing">Нет</string>
@@ -31,12 +15,6 @@
     <!-- ═══════════════════ STICKER DETAIL ═══════════════════ -->
     <string name="detail_add_to_collection">Добавить в коллекцию</string>
     <string name="detail_in_collection">В коллекции</string>
-    <string name="detail_specs">Характеристики</string>
-    <string name="detail_spec_engine">Двигатель</string>
-    <string name="detail_spec_power">Мощность</string>
-    <string name="detail_spec_top_speed">Макс. скорость</string>
-    <string name="detail_spec_card_number">Номер</string>
-    <string name="detail_spec_year">Год</string>
     <string name="detail_links">Ссылки</string>
     <string name="detail_link_vk">VK сообщество</string>
     <string name="detail_link_societe">Société Turbo</string>
@@ -46,7 +24,6 @@
     <string name="detail_note_hint">Добавить заметку…</string>
     <string name="detail_note_save">Сохранить</string>
     <string name="detail_note_cancel">Отмена</string>
-    <string name="detail_similar">Похожие</string>
 
     <!-- ═══════════════════ FAVORITES ═══════════════════ -->
     <string name="favorites_title">Избранное</string>
@@ -56,37 +33,37 @@
 
     <!-- ═══════════════════ PROFILE ═══════════════════ -->
     <string name="profile_title">Профиль</string>
-    <string name="profile_stats_collected">Собрано</string>
     <string name="profile_stats_favorites">Избранное</string>
     <string name="profile_stats_completion">Прогресс</string>
-    <string name="profile_settings">Настройки</string>
-    <string name="profile_notifications">Уведомления</string>
     <string name="profile_developers">Разработчики</string>
-    <string name="profile_about">О приложении</string>
-
-    <!-- ═══════════════════ SPLASH ═══════════════════ -->
-    <string name="splash_version">v1.0</string>
-    <string name="splash_subtitle">Société Turbo</string>
 
     <!-- ═══════════════════ COMMON ═══════════════════ -->
-    <string name="action_search">Поиск</string>
-    <string name="action_back">Назад</string>
-    <string name="action_more">Ещё</string>
-    <string name="action_save">Сохранить</string>
-    <string name="action_cancel">Отмена</string>
     <string name="action_delete">Удалить</string>
-    <string name="rarity_common">Обычная</string>
-    <string name="rarity_uncommon">Редкая</string>
-    <string name="rarity_rare">Очень редкая</string>
-    <string name="rarity_ultra_rare">Ультра-редкая</string>
 
-    <!-- ═══════════════════ EMPTY STATES ═══════════════════ -->
-    <string name="empty_collection_title">Начните коллекцию</string>
-    <string name="empty_collection_subtitle">Изучите серии и добавляйте найденные вкладыши</string>
-    <string name="empty_search_title">Ничего не найдено</string>
-    <string name="empty_search_subtitle">Попробуйте изменить запрос</string>
+    <!-- ═══════════════════ REGISTRATION ═══════════════════ -->
+    <string name="registration">Регистрация</string>
+    <string name="entrance">Вход</string>
+    <string name="login_button_text">Войти</string>
+    <string name="password">Пароль</string>
+    <string name="e_mail">E-mail</string>
+    <string name="send_message">Отправить</string>
+    <string name="how_to_know_password">Как узнать пароль?</string>
+    <string name="enter_manually">Ввести вручную</string>
+    <string name="private_policy">Политика конфиденциальности</string>
+
+    <!-- ═══════════════════ SCAN ═══════════════════ -->
+    <string name="scan_card">Сканировать</string>
+    <string name="scan_instruction_title">Инструкция</string>
+    <string name="scan_instruction_body">Наведите камеру на вкладыш</string>
+
+    <!-- ═══════════════════ HELP / TIPS ═══════════════════ -->
+    <string name="start_logo">Турбо</string>
+    <string name="tip_flat">Положите вкладыш на ровную поверхность</string>
+    <string name="tip_frame">Расположите вкладыш в рамке</string>
+    <string name="tip_lighting">Обеспечьте хорошее освещение</string>
 
     <!-- ═══════════════════ DEVELOPERS ═══════════════════ -->
+    <string name="developers_info">Информация о разработчиках</string>
     <string name="me">Вячеслав Шумилов</string>
     <string name="ui_name">Василий Волков</string>
 

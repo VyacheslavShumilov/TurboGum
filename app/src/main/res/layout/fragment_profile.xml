@@ -39,7 +39,8 @@
                 android:textColor="@color/text_1"
                 android:textSize="36sp"
                 android:textStyle="italic|bold"
-                android:letterSpacing="-0.02" />
+                android:letterSpacing="-0.02"
+                android:paddingEnd="15dp" />
 
             <!-- Avatar + name (без подзаголовка Société Turbo) -->
             <LinearLayout

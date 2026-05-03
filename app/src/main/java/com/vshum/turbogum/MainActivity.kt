@@ -19,14 +19,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var appNavigator: AppNavigator
 
-    /** Root screens — back press on these triggers the exit dialog. */
-    private val rootScreenIds = setOf(
-        R.id.nav_home,
-        R.id.nav_favorites,
-        R.id.nav_notes,
-        R.id.nav_profile
-    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -57,17 +49,14 @@ class MainActivity : AppCompatActivity() {
     private fun setupBackPress() {
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                val currentItem = binding.bottomNav.selectedItemId
-
-                if (currentItem in rootScreenIds || binding.bottomNav.visibility == View.GONE) {
-                    // On root screen or splash — show exit dialog
-                    showExitDialog()
-                } else {
-                    // On a detail screen — default back behaviour (pop fragment)
-                    isEnabled = false
-                    onBackPressedDispatcher.onBackPressed()
-                    isEnabled = true
+                // If there are fragments in the back stack, pop (return to previous screen)
+                if (supportFragmentManager.backStackEntryCount > 0) {
+                    supportFragmentManager.popBackStack()
+                    return
                 }
+
+                // On root screen or splash — show exit dialog
+                showExitDialog()
             }
         })
     }
