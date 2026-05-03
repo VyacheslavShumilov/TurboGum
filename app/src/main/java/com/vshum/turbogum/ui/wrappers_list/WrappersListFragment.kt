@@ -42,7 +42,7 @@ class WrappersListFragment : Fragment() {
         val seriesKey: String,
         val seriesName: String,
         val label: String,
-        val year: String,
+//        val year: String,
         val rangeFrom: Int,
         val rangeTo: Int,
         val imageRes: Int,
@@ -51,18 +51,18 @@ class WrappersListFragment : Fragment() {
 
     private val seriesEntries: List<SeriesEntry> by lazy {
         listOf(
-            SeriesEntry("series1",  "Серия 1",   "Серия 1",   "1989",   1,  50, R.drawable.t1,  Screen.LINERS_LIST_SCREEN),
-            SeriesEntry("series2",  "Серия 2",   "Серия 2",   "1990",  51, 120, R.drawable.t2,  Screen.LINERS_LIST_SCREEN),
-            SeriesEntry("series3",  "Серия 3",   "Серия 3",   "1991", 121, 190, R.drawable.t3,  Screen.LINERS_LIST_SCREEN),
-            SeriesEntry("series4",  "Серия 4",   "Серия 4",   "1992", 191, 260, R.drawable.t4,  Screen.LINERS_LIST_SCREEN),
-            SeriesEntry("series5",  "Серия 5",   "Серия 5",   "1993", 261, 330, R.drawable.t5,  Screen.LINERS_LIST_SCREEN),
-            SeriesEntry("super1",   "Super 1",   "Super 1",   "1993", 331, 400, R.drawable.t6,  Screen.LINERS_LIST_SCREEN),
-            SeriesEntry("super2",   "Super 2",   "Super 2",   "1994", 401, 470, R.drawable.t7,  Screen.LINERS_LIST_SCREEN),
-            SeriesEntry("super3",   "Super 3",   "Super 3",   "1995", 471, 540, R.drawable.t8,  Screen.LINERS_LIST_SCREEN),
-            SeriesEntry("sport1",   "Sport 1",   "Sport 1",   "1996",   1,  70, R.drawable.ts1, Screen.LINERS_LIST_SCREEN),
-            SeriesEntry("sport2",   "Sport 2",   "Sport 2",   "1997",  71, 140, R.drawable.ts2, Screen.LINERS_LIST_SCREEN),
-            SeriesEntry("classic1", "Classic 1", "Classic 1", "1998",   1,  70, R.drawable.tc1, Screen.LINERS_LIST_SCREEN),
-            SeriesEntry("classic2", "Classic 2", "Classic 2", "1999",  71, 140, R.drawable.tc2, Screen.LINERS_LIST_SCREEN)
+            SeriesEntry("series1",  "Серия 1",   "Серия 1",      1,  50, R.drawable.t1,  Screen.LINERS_LIST_SCREEN),
+            SeriesEntry("series2",  "Серия 2",   "Серия 2",     51, 120, R.drawable.t2,  Screen.LINERS_LIST_SCREEN),
+            SeriesEntry("series3",  "Серия 3",   "Серия 3",    121, 190, R.drawable.t3,  Screen.LINERS_LIST_SCREEN),
+            SeriesEntry("series4",  "Серия 4",   "Серия 4",    191, 260, R.drawable.t4,  Screen.LINERS_LIST_SCREEN),
+            SeriesEntry("series5",  "Серия 5",   "Серия 5",    261, 330, R.drawable.t5,  Screen.LINERS_LIST_SCREEN),
+            SeriesEntry("super1",   "Super 1",   "Super 1",    331, 400, R.drawable.t6,  Screen.LINERS_LIST_SCREEN),
+            SeriesEntry("super2",   "Super 2",   "Super 2",    401, 470, R.drawable.t7,  Screen.LINERS_LIST_SCREEN),
+            SeriesEntry("super3",   "Super 3",   "Super 3",    471, 540, R.drawable.t8,  Screen.LINERS_LIST_SCREEN),
+            SeriesEntry("sport1",   "Sport 1",   "Sport 1",      1,  70, R.drawable.ts1, Screen.LINERS_LIST_SCREEN),
+            SeriesEntry("sport2",   "Sport 2",   "Sport 2",     71, 140, R.drawable.ts2, Screen.LINERS_LIST_SCREEN),
+            SeriesEntry("classic1", "Classic 1", "Classic 1",    1,  70, R.drawable.tc1, Screen.LINERS_LIST_SCREEN),
+            SeriesEntry("classic2", "Classic 2", "Classic 2",   71, 140, R.drawable.tc2, Screen.LINERS_LIST_SCREEN)
         )
     }
 
@@ -149,7 +149,7 @@ class WrappersListFragment : Fragment() {
 
             cardView.findViewById<ImageView>(R.id.seriesImage)?.setImageResource(entry.imageRes)
             cardView.findViewById<TextView>(R.id.seriesBadge)?.text  = entry.label
-            cardView.findViewById<TextView>(R.id.seriesYear)?.text   = entry.year
+            cardView.findViewById<TextView>(R.id.seriesYear)?.visibility = View.GONE
             // Range label shown immediately
             cardView.findViewById<TextView>(R.id.seriesRange)?.text  =
                 "№ ${entry.rangeFrom}–${entry.rangeTo}"

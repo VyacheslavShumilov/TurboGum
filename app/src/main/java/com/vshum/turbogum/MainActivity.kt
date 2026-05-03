@@ -2,15 +2,30 @@ package com.vshum.turbogum
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.vshum.turbogum.databinding.ActivityMainBinding
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
 
+/**
+ * Hosts all fragments and the bottom navigation.
+ * Back press on root screens (Home / Favorites / Notes / Profile)
+ * shows an exit confirmation dialog.
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var appNavigator: AppNavigator
+
+    /** Root screens — back press on these triggers the exit dialog. */
+    private val rootScreenIds = setOf(
+        R.id.nav_home,
+        R.id.nav_favorites,
+        R.id.nav_notes,
+        R.id.nav_profile
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         appNavigator = (applicationContext as App).servicesLocator.providerNavigator(this)
 
         setupBottomNav()
+        setupBackPress()
 
         if (savedInstanceState == null) {
             appNavigator.navigateTo(Screen.SPLASH_SCREEN)
@@ -36,6 +52,33 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    private fun setupBackPress() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val currentItem = binding.bottomNav.selectedItemId
+
+                if (currentItem in rootScreenIds || binding.bottomNav.visibility == View.GONE) {
+                    // On root screen or splash — show exit dialog
+                    showExitDialog()
+                } else {
+                    // On a detail screen — default back behaviour (pop fragment)
+                    isEnabled = false
+                    onBackPressedDispatcher.onBackPressed()
+                    isEnabled = true
+                }
+            }
+        })
+    }
+
+    private fun showExitDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Выход")
+            .setMessage("Хотите выйти из приложения?")
+            .setPositiveButton("Выйти") { _, _ -> finish() }
+            .setNegativeButton("Отмена", null)
+            .show()
     }
 
     fun setBottomNavVisible(visible: Boolean) {

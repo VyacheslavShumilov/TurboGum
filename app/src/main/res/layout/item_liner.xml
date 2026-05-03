@@ -49,14 +49,7 @@
                 android:scaleType="centerCrop"
                 android:visibility="gone" />
 
-            <!-- Rarity colour dot (no text label) top-left -->
-            <View
-                android:id="@+id/rarityBadge"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:layout_gravity="top|start"
-                android:layout_margin="@dimen/spacing_sm"
-                android:background="@drawable/badge_rarity_common" />
+
 
             <!-- Favourite button top-right -->
             <ImageButton

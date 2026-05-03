@@ -92,17 +92,6 @@ class NotesFragment : Fragment() {
             Picasso.get().load(item.imageUrlLiner).into(binding.editCardImage)
         }
 
-        // Rarity badge
-        val num = item.numberLiner.toIntOrNull() ?: 0
-        val (bg, label) = when {
-            num <= 50  -> R.drawable.badge_rarity_common   to "Common"
-            num <= 120 -> R.drawable.badge_rarity_uncommon to "Uncommon"
-            num <= 190 -> R.drawable.badge_rarity_rare     to "Rare"
-            else       -> R.drawable.badge_rarity_ultra    to "Ultra Rare"
-        }
-        binding.editCardRarity.setBackgroundResource(bg)
-        binding.editCardRarity.text = label
-
         binding.editCard.visibility = View.VISIBLE
         // Scroll to top
         binding.root.post {

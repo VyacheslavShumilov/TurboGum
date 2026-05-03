@@ -134,7 +134,6 @@ class AdapterLinersList(
                     else       -> R.drawable.badge_rarity_ultra
                 }
             }
-            binding.rarityBadge.setBackgroundResource(bg)
         }
 
         private fun loadImage(liner: Liner) {

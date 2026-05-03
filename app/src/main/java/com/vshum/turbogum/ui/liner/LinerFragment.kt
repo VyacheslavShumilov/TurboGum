@@ -90,7 +90,6 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 .load(liner.imageUrlLiner)
                 .into(binding.imageView)
         }
-        binding.yearTag.text = yearForSeries(liner.series)
     }
 
     // ── Text fields ───────────────────────────────────────────────────
@@ -121,8 +120,6 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 else       -> R.drawable.badge_rarity_ultra    to "Ultra"
             }
         }
-        binding.rarityBadge.setBackgroundResource(bg)
-        binding.rarityBadge.text = label
     }
 
     // ── Links ─────────────────────────────────────────────────────────

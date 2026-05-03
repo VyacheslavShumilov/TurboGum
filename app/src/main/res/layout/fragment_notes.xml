@@ -106,20 +106,7 @@
                             tools:text="P400 Miura SV" />
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/editCardRarity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/badge_rarity_ultra"
-                        android:fontFamily="@font/space_grotesk_semibold"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:paddingTop="3dp"
-                        android:paddingBottom="3dp"
-                        android:textAllCaps="true"
-                        android:textColor="@color/text_1"
-                        android:textSize="9sp"
-                        tools:text="Ultra Rare" />
+
                 </LinearLayout>
 
                 <EditText

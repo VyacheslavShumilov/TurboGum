@@ -55,42 +55,18 @@
                         android:contentDescription="@null"
                         android:scaleType="fitCenter" />
 
-                    <!-- Rarity badge top-left -->
+                    <!-- rarityBadge and yearTag hidden — kept for code compatibility -->
                     <TextView
                         android:id="@+id/rarityBadge"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|start"
-                        android:layout_margin="@dimen/spacing_md"
-                        android:background="@drawable/badge_rarity_common"
-                        android:fontFamily="@font/space_grotesk_semibold"
-                        android:paddingStart="@dimen/spacing_sm"
-                        android:paddingEnd="@dimen/spacing_sm"
-                        android:paddingTop="3dp"
-                        android:paddingBottom="3dp"
-                        android:textAllCaps="true"
-                        android:textColor="@color/text_1"
-                        android:textSize="10sp"
-                        android:letterSpacing="0.06"
-                        tools:text="Common" />
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
 
-                    <!-- Year tag top-right -->
                     <TextView
                         android:id="@+id/yearTag"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|end"
-                        android:layout_margin="@dimen/spacing_md"
-                        android:background="@drawable/badge_year_bg"
-                        android:fontFamily="@font/barlow_condensed"
-                        android:paddingStart="@dimen/spacing_sm"
-                        android:paddingEnd="@dimen/spacing_sm"
-                        android:paddingTop="2dp"
-                        android:paddingBottom="2dp"
-                        android:textColor="@color/text_2"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        tools:text="1989" />
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
                 </FrameLayout>
             </com.google.android.material.card.MaterialCardView>
 
