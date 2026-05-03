@@ -7,7 +7,7 @@
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingStart="@dimen/spacing_xl"
-    android:paddingEnd="@dimen/spacing_md">
+    android:paddingEnd="@dimen/spacing_xl">
 
     <!-- BarsLogo -->
     <include
@@ -15,7 +15,7 @@
         layout="@layout/component_bars_logo"
         android:layout_marginEnd="@dimen/spacing_sm" />
 
-    <!-- Turbo wordmark — Barlow Condensed Bold Italic, slimmer + more slanted -->
+    <!-- Turbo wordmark -->
     <TextView
         android:id="@+id/headerTitle"
         android:layout_width="0dp"
@@ -29,13 +29,4 @@
         android:letterSpacing="-0.04"
         android:includeFontPadding="false" />
 
-    <!-- Search icon button -->
-    <ImageButton
-        android:id="@+id/btnSearch"
-        android:layout_width="@dimen/icon_button_size"
-        android:layout_height="@dimen/icon_button_size"
-        android:background="@drawable/btn_icon_round"
-        android:contentDescription="Search"
-        android:padding="8dp"
-        android:src="@drawable/ic_search" />
 </LinearLayout>

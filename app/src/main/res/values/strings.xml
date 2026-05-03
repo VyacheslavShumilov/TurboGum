@@ -2,11 +2,13 @@
 <resources>
 
     <string name="app_name">Вкладыши Турбо</string>
+
     <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
-    <string name="nav_home">Home</string>
-    <string name="nav_collection">Collection</string>
-    <string name="nav_favorites">Favorites</string>
-    <string name="nav_profile">Profile</string>
+    <string name="nav_notes">Заметки</string>
+    <string name="notes_title">Заметки</string>
+    <string name="notes_subtitle">Записи коллекционера</string>
+    <string name="notes_hint">Введите заметку…</string>
+    <string name="notes_empty">Добавьте заметки о состоянии,\nценности или истории вкладыша</string>
 
     <!-- ═══════════════════ HOME ═══════════════════ -->
     <string name="home_tagline">Collect. Explore. Drive.</string>
@@ -83,5 +85,33 @@
     <string name="empty_collection_subtitle">Изучите серии и добавляйте найденные вкладыши</string>
     <string name="empty_search_title">Ничего не найдено</string>
     <string name="empty_search_subtitle">Попробуйте изменить запрос</string>
+
+    <!-- ═══════════════════ DEVELOPERS ═══════════════════ -->
+    <string name="me">Вячеслав Шумилов</string>
+    <string name="ui_name">Василий Волков</string>
+
+    <!-- Исследования -->
+    <string name="search_name_1">Александр Мышкин</string>
+    <string name="search_name_2">Виталий Артамонов</string>
+    <string name="search_name_3">Дмитрий Филин</string>
+    <string name="search_name_4">Ольга Мироненко</string>
+    <string name="search_name_5">Александр Горохов</string>
+    <string name="search_name_6">Дмитрий Лузгин</string>
+    <string name="search_name_7">Энди Бэнистер</string>
+    <string name="search_name_8">Société Turbo</string>
+    <string name="search_name_9">КАТАЛОГ ВКЛАДЫШЕЙ</string>
+
+    <!-- Коллекция и фото -->
+    <string name="collection">Коллекция</string>
+    <string name="collection_name">Алексей Селиванов</string>
+    <string name="foto">Подготовка фото</string>
+    <string name="foto_name">Роман Фролов</string>
+    <string name="hd">Турбо HD</string>
+    <string name="hd_name">Евгений Саввин</string>
+
+    <!-- VK -->
+    <string name="group_vk">Группа «Вкладыши Турбо»</string>
+    <string name="group_vk_name">Гамлет Ортиков</string>
+    <string name="group_vk_societe">…а также вся группа «Турбо Товарищи»</string>
 
 </resources>

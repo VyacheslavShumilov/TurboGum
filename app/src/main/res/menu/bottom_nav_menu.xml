@@ -4,21 +4,21 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_nav_home"
-        android:title="@string/nav_home" />
+        android:title="Главная" />
 
     <item
-        android:id="@+id/nav_collection"
-        android:icon="@drawable/ic_nav_collection"
-        android:title="@string/nav_collection" />
+        android:id="@+id/nav_favorites"
+        android:icon="@drawable/ic_nav_fvorites"
+        android:title="Избранное" />
 
-<!--    <item-->
-<!--        android:id="@+id/nav_favorites"-->
-<!--        android:icon="@drawable/ic_nav_favorites"-->
-<!--        android:title="@string/nav_favorites" />-->
+    <item
+        android:id="@+id/nav_notes"
+        android:icon="@drawable/ic_nav_notes"
+        android:title="Заметки" />
 
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_nav_profile"
-        android:title="@string/nav_profile" />
+        android:title="Профиль" />
 
 </menu>

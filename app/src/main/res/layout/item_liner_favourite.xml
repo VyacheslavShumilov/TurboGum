@@ -21,45 +21,25 @@
         android:orientation="horizontal"
         android:padding="@dimen/spacing_md">
 
-        <!-- Thumbnail (88×88 with shimmer) -->
-        <FrameLayout
+        <!-- Thumbnail 88×88 — fitCenter so full image is visible -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="88dp"
             android:layout_height="88dp"
-            android:layout_marginEnd="@dimen/spacing_md">
+            android:layout_marginEnd="@dimen/spacing_md"
+            app:cardBackgroundColor="@color/bg_surface_1"
+            app:cardCornerRadius="@dimen/radius_sm"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
 
-            <com.google.android.material.card.MaterialCardView
+            <ImageView
+                android:id="@+id/linerImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/bg_surface_1"
-                app:cardCornerRadius="@dimen/radius_sm"
-                app:cardElevation="0dp"
-                app:strokeWidth="0dp">
+                android:contentDescription="@null"
+                android:scaleType="fitCenter"
+                android:padding="4dp" />
 
-                <ImageView
-                    android:id="@+id/linerImageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@null"
-                    android:scaleType="centerCrop" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Rarity badge top-left -->
-            <TextView
-                android:id="@+id/indexSeries"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|start"
-                android:layout_margin="4dp"
-                android:background="@drawable/badge_violet_bg"
-                android:fontFamily="@font/space_grotesk_semibold"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:textColor="@color/white"
-                android:textSize="9sp"
-                tools:text="S1" />
-        </FrameLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- Info -->
         <LinearLayout
@@ -125,7 +105,7 @@
                     tools:text="#001" />
             </LinearLayout>
 
-            <!-- Quick links row -->
+            <!-- Quick links -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

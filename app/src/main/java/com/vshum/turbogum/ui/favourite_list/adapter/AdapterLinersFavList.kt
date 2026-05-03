@@ -37,7 +37,6 @@ class AdapterLinersFavList(
                 favModel.text = item.model
                 favSeries.text = item.series
                 favNumber.text = "#${item.numberLiner}"
-                indexSeries.text = item.index
 
                 // Quick links — open URL in browser
                 quickVk.visibility = if (item.vkArticle == "-") View.GONE else View.VISIBLE

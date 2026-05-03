@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_background"
+    tools:context=".ui.notes.NotesFragment">
+
+    <!-- Top header: BarsLogo + Turbo + search (same as all other screens) -->
+    <include
+        android:id="@+id/headerInclude"
+        layout="@layout/component_app_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height" />
+
+    <!-- Scrollable content pushed below header -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/header_height"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/bottom_nav_height">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_xl"
+            android:paddingEnd="@dimen/spacing_xl"
+            android:paddingTop="@dimen/spacing_lg">
+
+            <!-- ── Title ──────────────────────────────────────────── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/barlow_condensed_extrabold_italic"
+                android:text="Заметки"
+                android:textColor="@color/text_1"
+                android:textSize="36sp"
+                android:textStyle="bold|italic"
+                android:letterSpacing="-0.02"
+                android:includeFontPadding="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/space_grotesk"
+                android:text="Записи коллекционера"
+                android:textColor="@color/text_3"
+                android:textSize="12sp" />
+
+            <!-- ── Active edit card ───────────────────────────────── -->
+            <LinearLayout
+                android:id="@+id/editCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_md"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/spacing_sm">
+
+                    <ImageView
+                        android:id="@+id/editCardImage"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:layout_marginEnd="@dimen/spacing_md"
+                        android:background="@drawable/surface_input_bg"
+                        android:contentDescription="@null"
+                        android:scaleType="fitCenter"
+                        android:padding="2dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/editCardBrand"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/space_grotesk"
+                            android:textColor="@color/text_3"
+                            android:textSize="11sp"
+                            tools:text="Lamborghini" />
+
+                        <TextView
+                            android:id="@+id/editCardModel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/barlow_condensed"
+                            android:textColor="@color/text_1"
+                            android:textSize="18sp"
+                            android:textStyle="italic|bold"
+                            tools:text="P400 Miura SV" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/editCardRarity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/badge_rarity_ultra"
+                        android:fontFamily="@font/space_grotesk_semibold"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_1"
+                        android:textSize="9sp"
+                        tools:text="Ultra Rare" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/editCardInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/surface_input_bg"
+                    android:fontFamily="@font/space_grotesk"
+                    android:hint="Введите заметку…"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:minLines="2"
+                    android:padding="@dimen/spacing_md"
+                    android:textColor="@color/text_1"
+                    android:textColorHint="@color/text_3"
+                    android:textSize="@dimen/text_body_md" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_sm"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnEditCancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:background="@drawable/surface_input_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/space_grotesk_medium"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/spacing_lg"
+                        android:paddingEnd="@dimen/spacing_lg"
+                        android:text="Отмена"
+                        android:textColor="@color/text_2"
+                        android:textSize="@dimen/text_body_md" />
+
+                    <TextView
+                        android:id="@+id/btnEditSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="@dimen/spacing_sm"
+                        android:background="@drawable/btn_violet_gradient"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/space_grotesk_semibold"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/spacing_lg"
+                        android:paddingEnd="@dimen/spacing_lg"
+                        android:text="Сохранить"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_body_md" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ── Section header ─────────────────────────────────── -->
+            <TextView
+                android:id="@+id/notesCountLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xxl"
+                android:layout_marginBottom="@dimen/spacing_md"
+                android:fontFamily="@font/space_grotesk_semibold"
+                android:letterSpacing="0.12"
+                android:textAllCaps="true"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/text_label_md"
+                tools:text="ВСЕ ЗАМЕТКИ (2)" />
+
+            <!-- ── Notes list ─────────────────────────────────────── -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_note" />
+
+            <!-- ── Empty state ────────────────────────────────────── -->
+            <LinearLayout
+                android:id="@+id/emptyState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xl"
+                android:background="@drawable/surface_card_bg"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_xxl"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/space_grotesk"
+                    android:gravity="center"
+                    android:text="Добавьте заметки о состоянии,\nценности или истории вкладыша"
+                    android:textColor="@color/text_3"
+                    android:textSize="@dimen/text_body_md" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
