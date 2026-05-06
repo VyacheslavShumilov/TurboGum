@@ -16,19 +16,25 @@
         android:layout_height="match_parent" />
 
     <!-- Bottom navigation pinned to bottom via gravity -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottomNav"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:background="@color/bg_bottom_nav"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        app:itemIconTint="@color/nav_selector"-->
+<!--        app:itemTextColor="@color/nav_selector"-->
+<!--        app:itemIconSize="28dp"-->
+<!--        app:itemActiveIndicatorStyle="@style/TurboNavIndicator"-->
+<!--        app:labelVisibilityMode="labeled"-->
+<!--        app:menu="@menu/bottom_nav_menu" />-->
+    <include
+        android:id="@+id/proNavBar"
+        layout="@layout/view_pro_nav_bar"
         android:layout_gravity="bottom"
-        android:background="@color/bg_bottom_nav"
-        android:fitsSystemWindows="true"
-        app:itemIconTint="@color/nav_selector"
-        app:itemTextColor="@color/nav_selector"
-        app:itemIconSize="28dp"
-        app:itemActiveIndicatorStyle="@style/TurboNavIndicator"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav_menu" />
+        android:layout_width="match_parent"
+     android:layout_height="72dp"/>
 
     <!-- Image expand overlay -->
     <View
