@@ -6,6 +6,7 @@ import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var appNavigator: AppNavigator
     private lateinit var navBinding: ViewProNavBarBinding
+    private lateinit var texts: List<TextView>
 
     private lateinit var items: List<View>
     private lateinit var icons: List<ImageView>
@@ -78,6 +80,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        texts = listOf(
+            navBinding.textHome,
+            navBinding.textFavorites,
+            navBinding.textNotes,
+            navBinding.textProfile
+        )
+
         navBinding.root.doOnLayout {
             selectTab(0, animate = false)
         }
@@ -132,6 +141,32 @@ class MainActivity : AppCompatActivity() {
             } else {
                 icon.setColorFilter(getColor(R.color.text_3))
                 icon.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .setDuration(200)
+                    .start()
+            }
+        }
+
+        texts.forEachIndexed { i, text ->
+
+            if (i == index) {
+
+                // 🎯 активный текст = как иконка (белый)
+                text.setTextColor(getColor(R.color.white))
+
+                text.animate()
+                    .scaleX(1.05f)
+                    .scaleY(1.05f)
+                    .setDuration(200)
+                    .start()
+
+            } else {
+
+                // 🎯 неактивный текст = как раньше (адаптивный под тему)
+                text.setTextColor(getColor(R.color.text_3))
+
+                text.animate()
                     .scaleX(1f)
                     .scaleY(1f)
                     .setDuration(200)
