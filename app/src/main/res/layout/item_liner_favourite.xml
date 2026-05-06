@@ -26,10 +26,11 @@
             android:layout_width="88dp"
             android:layout_height="88dp"
             android:layout_marginEnd="@dimen/spacing_md"
-            app:cardBackgroundColor="@color/bg_surface_1"
+            app:cardBackgroundColor="@color/transparent"
+            app:strokeColor="@color/bg_surface_1"
             app:cardCornerRadius="@dimen/radius_sm"
             app:cardElevation="0dp"
-            app:strokeWidth="0dp">
+            app:strokeWidth="0.5dp">
 
             <ImageView
                 android:id="@+id/linerImageView"
