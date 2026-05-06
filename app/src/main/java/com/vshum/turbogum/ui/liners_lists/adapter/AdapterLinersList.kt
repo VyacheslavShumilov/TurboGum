@@ -57,6 +57,15 @@ class AdapterLinersList(
 
         fun bind(liner: Liner) {
 
+            // 🔥 RESET shimmer state (ВАЖНО)
+            binding.shimmerLayout.apply {
+                stopShimmer()
+                visibility = View.VISIBLE
+                startShimmer()
+            }
+
+            binding.linerImageView.visibility = View.GONE
+
             binding.linerBrand.text = liner.brand.uppercase()
             binding.linerModel.text = liner.model
             binding.linerNumber.text = "#${liner.numberLiner}"
@@ -70,18 +79,16 @@ class AdapterLinersList(
         }
 
         private fun loadImage(liner: Liner) {
+
             val shimmer = binding.shimmerLayout
             val image = binding.linerImageView
-
-            shimmer.startShimmer()
-            shimmer.visibility = View.VISIBLE
-            image.visibility = View.GONE
 
             Picasso.get()
                 .load(liner.imageUrlLiner)
                 .placeholder(android.R.color.transparent)
                 .error(R.drawable.placeholder)
                 .into(image, object : com.squareup.picasso.Callback {
+
                     override fun onSuccess() {
                         shimmer.stopShimmer()
                         shimmer.visibility = View.GONE
