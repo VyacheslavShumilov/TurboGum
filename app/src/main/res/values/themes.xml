@@ -4,7 +4,7 @@
     <!-- ═══════════════════════════════════════════════════════════
          LIGHT THEME — Turbo Gum
          Place in: res/values/themes.xml
-         Move current dark themes.xml to: res/values-night/themes.xml
+        
          ═══════════════════════════════════════════════════════════ -->
 
     <style name="Theme.TurboGum" parent="Theme.Material3.Light.NoActionBar">
@@ -37,6 +37,7 @@
         <!-- Edge-to-edge -->
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
+
     </style>
 
     <style name="Theme.TurboGum.NoActionBar">
@@ -52,5 +53,7 @@
         <item name="android:windowBackground">@color/bg_background</item>
         <item name="android:statusBarColor">@color/bg_background</item>
     </style>
+
+
 
 </resources>

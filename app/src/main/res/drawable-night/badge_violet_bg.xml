@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Light theme: warm dark pill for series name over wrapper photos -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="#CC1A1A2E" />
+    <gradient
+        android:startColor="@color/brand_violet_dark"
+        android:endColor="@color/brand_violet"
+        android:angle="0"
+        android:type="linear" />
     <corners android:radius="@dimen/radius_lg" />
 </shape>

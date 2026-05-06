@@ -37,7 +37,7 @@
             android:paddingEnd="@dimen/spacing_sm"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
-            android:textColor="@color/text_2"
+            android:textColor="#D9FFFFFF"
             android:textSize="11sp"
             tools:text="1989" />
 

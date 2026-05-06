@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Light theme: dark pill for count/range over wrapper photos -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="#A0FFFFFF" />
+    <solid android:color="#991A1A2E" />
     <corners android:radius="@dimen/radius_xs" />
 </shape>
