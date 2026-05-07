@@ -15,6 +15,7 @@ import com.vshum.turbogum.databinding.ActivityMainBinding
 import com.vshum.turbogum.databinding.ViewProNavBarBinding
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
+import com.vshum.turbogum.utils.UpdateManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var items: List<View>
     private lateinit var icons: List<ImageView>
+
+    private lateinit var updateManager: UpdateManager
 
     private val colors by lazy {
         listOf(
@@ -44,6 +47,11 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Инициализация проверки обновлений
+        updateManager = UpdateManager(this)
+        updateManager.checkForUpdates()
+
 
         appNavigator =
             (applicationContext as App).servicesLocator.providerNavigator(this)
@@ -231,5 +239,10 @@ class MainActivity : AppCompatActivity() {
     fun setBottomNavVisible(visible: Boolean) {
         binding.proNavBar.root.visibility =
             if (visible) View.VISIBLE else View.GONE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        updateManager.unregisterListener()
     }
 }

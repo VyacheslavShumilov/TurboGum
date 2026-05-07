@@ -192,6 +192,21 @@ class LinersListFragment(private val seriesKey: String) :
     }
 
     // ── helpers ──
-    private fun seriesNameFor(key: String) = key
+    private fun seriesNameFor(key: String) = when (key) {
+        "series1"  -> "Серия 1"
+        "series2"  -> "Серия 2"
+        "series3"  -> "Серия 3"
+        "series4"  -> "Серия 4"
+        "series5"  -> "Серия 5"
+        "super1"   -> "Super 1"
+        "super2"   -> "Super 2"
+        "super3"   -> "Super 3"
+        "sport1"   -> "Sport 1"
+        "sport2"   -> "Sport 2"
+        "classic1" -> "Classic 1"
+        "classic2" -> "Classic 2"
+        else       -> key
+    }
+
     private fun seriesSubtitleFor(key: String) = ""
 }
