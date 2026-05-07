@@ -56,17 +56,13 @@
                         android:scaleType="fitCenter" />
 
                     <!-- rarityBadge and yearTag hidden — kept for code compatibility -->
-                    <TextView
-                        android:id="@+id/rarityBadge"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:visibility="gone" />
+                   /
 
-                    <TextView
-                        android:id="@+id/yearTag"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:visibility="gone" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/yearTag"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="0dp"-->
+<!--                        android:visibility="gone" />-->
                 </FrameLayout>
             </com.google.android.material.card.MaterialCardView>
 

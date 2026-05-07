@@ -28,7 +28,7 @@
     <!-- ═══════════════════ FAVORITES ═══════════════════ -->
     <string name="favorites_title">Избранное</string>
     <string name="favorites_empty_title">Пока пусто</string>
-    <string name="favorites_empty_subtitle">Добавляйте карточки, чтобы быстро возвращаться к ним позже.</string>
+    <string name="favorites_empty_subtitle">Добавляйте карточки, чтобы быстро возвращаться к ним позже</string>
     <string name="favorites_empty_cta">Перейти в коллекцию</string>
 
     <!-- ═══════════════════ PROFILE ═══════════════════ -->

@@ -31,7 +31,7 @@
 
             <!-- Title -->
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_md"
                 android:fontFamily="@font/barlow_condensed"
@@ -69,7 +69,7 @@
 
                 <TextView
                     android:id="@+id/userName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/barlow_condensed"
                     android:text="Коллекционер"
@@ -98,13 +98,15 @@
 
                     <TextView
                         android:id="@+id/statFavourites"
-                        android:layout_width="wrap_content"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/barlow_condensed"
                         android:text="0"
                         android:textColor="@color/brand_red"
                         android:textSize="28sp"
-                        android:textStyle="italic|bold" />
+                        android:textStyle="italic|bold"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -114,7 +116,8 @@
                         android:text="@string/profile_stats_favorites"
                         android:textAllCaps="true"
                         android:textColor="@color/text_3"
-                        android:textSize="9sp" />
+                        android:textSize="9sp"
+                        android:layout_gravity="center"/>
                 </LinearLayout>
 
                 <!-- Completion -->
@@ -129,13 +132,15 @@
 
                     <TextView
                         android:id="@+id/statCompletion"
-                        android:layout_width="wrap_content"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/barlow_condensed"
                         android:text="0%"
                         android:textColor="@color/brand_violet_light"
                         android:textSize="28sp"
-                        android:textStyle="italic|bold" />
+                        android:textStyle="italic|bold"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -145,7 +150,8 @@
                         android:text="@string/profile_stats_completion"
                         android:textAllCaps="true"
                         android:textColor="@color/text_3"
-                        android:textSize="9sp" />
+                        android:textSize="9sp"
+                        android:layout_gravity="center"/>
                 </LinearLayout>
             </LinearLayout>
 

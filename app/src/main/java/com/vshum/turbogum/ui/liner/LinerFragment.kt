@@ -77,7 +77,7 @@ class LinerFragment(var liner: Liner) : Fragment() {
     private fun setupHeader() {
         val header = binding.headerInclude.root
         header.findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
-            appNavigator.navigateTo(Screen.LINERS_LIST_SCREEN)
+            parentFragmentManager.popBackStack()
         }
         header.findViewById<TextView>(R.id.headerTitle)?.text = ""
     }
