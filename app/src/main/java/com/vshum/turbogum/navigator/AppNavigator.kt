@@ -14,7 +14,10 @@ enum class Screen {
     NOTES_SCREEN,
     DEVELOPERS_SCREEN,
     REGISTRATION,
-    HELP
+    HELP,
+    LOGIN_SCREEN,
+    NICKNAME_SCREEN,
+    LEADERBOARD_SCREEN
 }
 
 interface AppNavigator {

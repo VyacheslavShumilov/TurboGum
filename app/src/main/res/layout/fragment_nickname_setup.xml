@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_background"
+    tools:context=".ui.nickname.NicknameSetupFragment">
+
+    <include
+        android:id="@+id/headerInclude"
+        layout="@layout/component_app_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/header_height"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/spacing_xl"
+        android:paddingEnd="@dimen/spacing_xl">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xxl"
+            android:fontFamily="@font/barlow_condensed"
+            android:text="@string/nickname_title"
+            android:textColor="@color/text_1"
+            android:textSize="36sp"
+            android:textStyle="italic|bold"
+            android:letterSpacing="-0.02" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xs"
+            android:fontFamily="@font/space_grotesk"
+            android:text="@string/nickname_subtitle"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/text_body_md" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_field_height"
+            android:layout_marginTop="@dimen/spacing_xxl"
+            android:background="@drawable/surface_input_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/spacing_md"
+            android:paddingEnd="@dimen/spacing_md">
+
+            <EditText
+                android:id="@+id/inputNickname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/space_grotesk"
+                android:hint="@string/nickname_hint"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="@color/text_1"
+                android:textColorHint="@color/text_3"
+                android:textSize="@dimen/text_body_lg" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/errorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:fontFamily="@font/space_grotesk"
+            android:textColor="@color/brand_red"
+            android:textSize="@dimen/text_body_md"
+            android:visibility="gone"
+            tools:text="Ошибка"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/btnContinue"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cta_button_height"
+            android:layout_marginTop="@dimen/spacing_xxl"
+            android:background="@drawable/btn_cta_gradient"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/space_grotesk_semibold"
+            android:gravity="center"
+            android:letterSpacing="0.04"
+            android:text="@string/nickname_btn_continue"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_body_lg" />
+
+        <ProgressBar
+            android:id="@+id/loadingProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/spacing_xxl"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

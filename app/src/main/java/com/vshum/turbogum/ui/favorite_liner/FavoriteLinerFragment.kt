@@ -18,6 +18,8 @@ import com.squareup.picasso.Picasso
 import com.vshum.turbogum.App
 import com.vshum.turbogum.R
 import com.vshum.turbogum.dao.LinersDao
+import com.vshum.turbogum.data.AuthRepository
+import com.vshum.turbogum.data.UserRepository
 import com.vshum.turbogum.databinding.FragmentFavoriteLinerBinding
 import com.vshum.turbogum.model.LinersFavourite
 import com.vshum.turbogum.navigator.AppNavigator
@@ -41,6 +43,8 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
 
     private lateinit var appDao: LinersDao
     private lateinit var appNavigator: AppNavigator
+    private lateinit var authRepository: AuthRepository
+    private lateinit var userRepository: UserRepository
     private var isImageExpanded = false
 
     private val imageOverlay: View?
@@ -175,6 +179,8 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
             lifecycleScope.launch(Dispatchers.IO) {
                 try {
                     appDao.deleteFavoriteLiner(linerFav)
+                    val uid = authRepository.currentUser?.uid
+                    if (uid != null) userRepository.syncStats(uid, appDao.getAllFavouriteLiners())
                 } catch (e: Exception) {
                     // ignore
                 }
@@ -259,7 +265,9 @@ class FavoriteLinerFragment(var linerFav: LinersFavourite) : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        appNavigator =
-            (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
+        val servicesLocator = (context.applicationContext as App).servicesLocator
+        appNavigator = servicesLocator.providerNavigator(requireActivity())
+        authRepository = servicesLocator.providerAuthRepository()
+        userRepository = servicesLocator.providerUserRepository()
     }
 }

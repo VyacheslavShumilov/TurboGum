@@ -10,6 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vshum.turbogum.App
 import com.vshum.turbogum.dao.LinersDao
+import com.vshum.turbogum.data.AuthRepository
+import com.vshum.turbogum.data.UserRepository
 import com.vshum.turbogum.databinding.FragmentFavouriteBinding
 import com.vshum.turbogum.model.LinersFavourite
 import com.vshum.turbogum.navigator.AppNavigator
@@ -35,6 +37,8 @@ class FavouriteListFragment :
     private lateinit var appNavigator: AppNavigator
     private lateinit var appNavigatorParamLinerFav: AppNavigatorParamLinerFav
     private lateinit var appDao: LinersDao
+    private lateinit var authRepository: AuthRepository
+    private lateinit var userRepository: UserRepository
 
     private val data = ArrayList<LinersFavourite>()
     private lateinit var adapter: AdapterLinersFavList
@@ -112,6 +116,8 @@ class FavouriteListFragment :
         lifecycleScope.launch(Dispatchers.IO) {
             try {
                 appDao.deleteFavoriteLiner(linersFav)
+                val uid = authRepository.currentUser?.uid
+                if (uid != null) userRepository.syncStats(uid, appDao.getAllFavouriteLiners())
             } catch (e: Exception) {
                 // ignore
             }
@@ -150,5 +156,7 @@ class FavouriteListFragment :
         appNavigatorParamLinerFav =
             app.servicesLocator.providerNavigatorParamLinerFav(requireActivity())
         appDao = app.getDatabase().linersDao()
+        authRepository = app.servicesLocator.providerAuthRepository()
+        userRepository = app.servicesLocator.providerUserRepository()
     }
 }

@@ -11,6 +11,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnLayout
+import com.google.firebase.auth.FirebaseAuth
 import com.vshum.turbogum.databinding.ActivityMainBinding
 import com.vshum.turbogum.databinding.ViewProNavBarBinding
 import com.vshum.turbogum.navigator.AppNavigator
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         listOf(
             getColor(R.color.series_3_bg),
             getColor(R.color.series_5_bg),
+            getColor(R.color.series_4_bg),
             getColor(R.color.series_2_bg),
             getColor(R.color.series_1_bg)
         )
@@ -60,7 +62,8 @@ class MainActivity : AppCompatActivity() {
         setupBackPress()
 
         if (savedInstanceState == null) {
-            appNavigator.navigateTo(Screen.SPLASH_SCREEN)
+            val isLoggedIn = FirebaseAuth.getInstance().currentUser != null
+            appNavigator.navigateTo(if (isLoggedIn) Screen.SPLASH_SCREEN else Screen.LOGIN_SCREEN)
         }
     }
 
@@ -70,6 +73,7 @@ class MainActivity : AppCompatActivity() {
         items = listOf(
             navBinding.navHome,
             navBinding.navFavorites,
+            navBinding.navRating,
             navBinding.navNotes,
             navBinding.navProfile
         )
@@ -77,6 +81,7 @@ class MainActivity : AppCompatActivity() {
         icons = listOf(
             navBinding.iconHome,
             navBinding.iconFavorites,
+            navBinding.iconRating,
             navBinding.iconNotes,
             navBinding.iconProfile
         )
@@ -91,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         texts = listOf(
             navBinding.textHome,
             navBinding.textFavorites,
+            navBinding.textRating,
             navBinding.textNotes,
             navBinding.textProfile
         )
@@ -104,8 +110,9 @@ class MainActivity : AppCompatActivity() {
         when (index) {
             0 -> appNavigator.navigateTo(Screen.WRAPPERS_LIST_SCREEN)
             1 -> appNavigator.navigateTo(Screen.FAVOURITE)
-            2 -> appNavigator.navigateTo(Screen.NOTES_SCREEN)
-            3 -> appNavigator.navigateTo(Screen.PROFILE_SCREEN)
+            2 -> appNavigator.navigateTo(Screen.LEADERBOARD_SCREEN)
+            3 -> appNavigator.navigateTo(Screen.NOTES_SCREEN)
+            4 -> appNavigator.navigateTo(Screen.PROFILE_SCREEN)
         }
     }
 

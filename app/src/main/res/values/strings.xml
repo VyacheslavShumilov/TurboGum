@@ -36,6 +36,33 @@
     <string name="profile_stats_favorites">Избранное</string>
     <string name="profile_stats_completion">Прогресс</string>
     <string name="profile_developers">Разработчики</string>
+    <string name="profile_logout">Выйти из аккаунта</string>
+    <string name="profile_nickname_edit_title">Никнейм</string>
+    <string name="profile_nickname_hint">Введите никнейм</string>
+    <string name="profile_nickname_default">Коллекционер</string>
+
+    <!-- ═══════════════════ LOGIN ═══════════════════ -->
+    <string name="login_title">Вход</string>
+    <string name="login_subtitle">Войдите, чтобы синхронизировать коллекцию и участвовать в рейтинге</string>
+    <string name="login_email_hint">E-mail</string>
+    <string name="login_password_hint">Пароль</string>
+    <string name="login_btn_signin">Войти</string>
+    <string name="login_btn_register">Зарегистрироваться</string>
+    <string name="login_divider_or">или</string>
+    <string name="login_btn_google">Войти через Google</string>
+    <string name="login_error_empty_fields">Введите e-mail и пароль</string>
+
+    <!-- ═══════════════════ NICKNAME SETUP ═══════════════════ -->
+    <string name="nickname_title">Как вас называть?</string>
+    <string name="nickname_subtitle">Этот никнейм увидят другие коллекционеры в рейтинге</string>
+    <string name="nickname_hint">Никнейм</string>
+    <string name="nickname_btn_continue">Продолжить</string>
+    <string name="nickname_error_empty">Введите никнейм</string>
+
+    <!-- ═══════════════════ LEADERBOARD ═══════════════════ -->
+    <string name="leaderboard_title">Рейтинг</string>
+    <string name="leaderboard_your_position">Ваша позиция</string>
+    <string name="leaderboard_empty">Пока никто не собирает вкладыши</string>
 
     <!-- ═══════════════════ COMMON ═══════════════════ -->
     <string name="action_delete">Удалить</string>

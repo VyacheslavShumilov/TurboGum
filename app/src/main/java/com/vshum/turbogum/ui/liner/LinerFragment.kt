@@ -17,6 +17,9 @@ import androidx.lifecycle.lifecycleScope
 import com.squareup.picasso.Picasso
 import com.vshum.turbogum.App
 import com.vshum.turbogum.R
+import com.vshum.turbogum.dao.LinersDao
+import com.vshum.turbogum.data.AuthRepository
+import com.vshum.turbogum.data.UserRepository
 import com.vshum.turbogum.databinding.FragmentLinerBinding
 import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.model.LinersFavourite
@@ -38,6 +41,8 @@ class LinerFragment(var liner: Liner) : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var appNavigator: AppNavigator
+    private lateinit var authRepository: AuthRepository
+    private lateinit var userRepository: UserRepository
     private var isImageExpanded = false
     private var isInCollection = false
     private var isNoteExpanded = false
@@ -258,9 +263,10 @@ class LinerFragment(var liner: Liner) : Fragment() {
                     series       = liner.series,
                     note         = ""
                 )
-                (requireContext().applicationContext as App)
-                    .getDatabase().linersDao().insertLiner(fav)
+                val dao = (requireContext().applicationContext as App).getDatabase().linersDao()
+                dao.insertLiner(fav)
                 isInCollection = true
+                syncStats(dao)
             } catch (e: Exception) { /* ignore */ }
             withContext(Dispatchers.Main) {
                 if (_binding == null) return@withContext
@@ -276,12 +282,19 @@ class LinerFragment(var liner: Liner) : Fragment() {
                 val fav = db.linersDao().getLinerFavorite(liner.uniqueNumber)
                 if (fav != null) db.linersDao().deleteFavoriteLiner(fav)
                 isInCollection = false
+                syncStats(db.linersDao())
             } catch (e: Exception) { /* ignore */ }
             withContext(Dispatchers.Main) {
                 if (_binding == null) return@withContext
                 updateCtaState()
             }
         }
+    }
+
+    /** Pushes updated series/total percentages to Firestore. No-op if not signed in. */
+    private fun syncStats(dao: LinersDao) {
+        val uid = authRepository.currentUser?.uid ?: return
+        userRepository.syncStats(uid, dao.getAllFavouriteLiners())
     }
 
     // ── Image expand/collapse ─────────────────────────────────────────
@@ -358,7 +371,9 @@ class LinerFragment(var liner: Liner) : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        appNavigator =
-            (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
+        val servicesLocator = (context.applicationContext as App).servicesLocator
+        appNavigator = servicesLocator.providerNavigator(requireActivity())
+        authRepository = servicesLocator.providerAuthRepository()
+        userRepository = servicesLocator.providerUserRepository()
     }
 }

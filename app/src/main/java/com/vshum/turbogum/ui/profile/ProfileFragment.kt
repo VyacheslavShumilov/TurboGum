@@ -5,13 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.vshum.turbogum.App
 import com.vshum.turbogum.R
+import com.vshum.turbogum.data.AuthRepository
+import com.vshum.turbogum.data.UserRepository
 import com.vshum.turbogum.databinding.FragmentProfileBinding
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
@@ -30,6 +36,8 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var appNavigator: AppNavigator
+    private lateinit var authRepository: AuthRepository
+    private lateinit var userRepository: UserRepository
 
     /** All series with their total counts, used for progress aggregation. */
     private data class SeriesProgressEntry(
@@ -62,6 +70,7 @@ class ProfileFragment : Fragment() {
 
         setupMenuClicks()
         loadStats()
+        loadNickname()
     }
 
     private fun setupMenuClicks() {
@@ -74,6 +83,53 @@ class ProfileFragment : Fragment() {
         binding.menuDevelopers.setOnClickListener {
             appNavigator.navigateTo(Screen.DEVELOPERS_SCREEN)
         }
+        binding.btnEditNickname.setOnClickListener {
+            showEditNicknameDialog()
+        }
+        binding.menuLogout.setOnClickListener {
+            logout()
+        }
+    }
+
+    private fun loadNickname() {
+        val uid = authRepository.currentUser?.uid ?: return
+        userRepository.getUser(
+            uid,
+            onResult = { profile ->
+                val nickname = profile?.nickname?.takeIf { it.isNotBlank() }
+                    ?: authRepository.currentUser?.displayName?.takeIf { it.isNotBlank() }
+                    ?: getString(R.string.profile_nickname_default)
+                binding.userName.text = nickname
+            },
+            onError = { }
+        )
+    }
+
+    private fun showEditNicknameDialog() {
+        val uid = authRepository.currentUser?.uid ?: return
+        val input = EditText(requireContext()).apply {
+            setText(binding.userName.text)
+            hint = getString(R.string.profile_nickname_hint)
+        }
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.profile_nickname_edit_title)
+            .setView(input)
+            .setPositiveButton(R.string.detail_note_save) { _, _ ->
+                val nickname = input.text.toString().trim()
+                if (nickname.isNotEmpty()) {
+                    binding.userName.text = nickname
+                    userRepository.updateNickname(uid, nickname, onComplete = {}, onError = {})
+                }
+            }
+            .setNegativeButton(R.string.detail_note_cancel, null)
+            .show()
+    }
+
+    private fun logout() {
+        authRepository.signOut()
+        val options = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+        GoogleSignIn.getClient(requireActivity(), options).signOut()
+        appNavigator.navigateTo(Screen.LOGIN_SCREEN)
     }
 
     private fun loadStats() {
@@ -127,7 +183,9 @@ class ProfileFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        appNavigator =
-            (context.applicationContext as App).servicesLocator.providerNavigator(requireActivity())
+        val servicesLocator = (context.applicationContext as App).servicesLocator
+        appNavigator = servicesLocator.providerNavigator(requireActivity())
+        authRepository = servicesLocator.providerAuthRepository()
+        userRepository = servicesLocator.providerUserRepository()
     }
 }

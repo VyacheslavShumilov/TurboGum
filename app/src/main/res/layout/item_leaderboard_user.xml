@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_sm"
+    android:background="@drawable/surface_card_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/spacing_md">
+
+    <TextView
+        android:id="@+id/rankText"
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/barlow_condensed"
+        android:gravity="center"
+        android:textColor="@color/text_2"
+        android:textSize="18sp"
+        android:textStyle="italic|bold"
+        tools:text="#1" />
+
+    <FrameLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/spacing_sm"
+        android:layout_marginEnd="@dimen/spacing_md">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_violet_gradient"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_self_improvement_24"
+            app:shapeAppearanceOverlay="@style/circleImageView"
+            app:tint="@color/white" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/nicknameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:fontFamily="@font/space_grotesk_medium"
+        android:maxLines="1"
+        android:textColor="@color/text_1"
+        android:textSize="@dimen/text_body_lg"
+        tools:text="Коллекционер" />
+
+    <TextView
+        android:id="@+id/percentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_sm"
+        android:fontFamily="@font/barlow_condensed"
+        android:textColor="@color/brand_violet_light"
+        android:textSize="18sp"
+        android:textStyle="italic|bold"
+        tools:text="42%" />
+
+</LinearLayout>

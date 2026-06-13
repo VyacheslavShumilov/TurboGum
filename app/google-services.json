@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "407632197012",
+    "firebase_url": "https://turbo-users-db-default-rtdb.firebaseio.com",
     "project_id": "turbo-users-db",
     "storage_bucket": "turbo-users-db.appspot.com"
   },
@@ -14,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "407632197012-g8tg3a7955oij9eua8h1hh6decsra7fh.apps.googleusercontent.com",
+          "client_id": "407632197012-ci9u9s89ub7vs6na54neamd7j86calos.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vshum.turbogum",
+            "certificate_hash": "8947262f8169fcb67a36ad4b389960bfeddb37c1"
+          }
+        },
+        {
+          "client_id": "407632197012-kbkrr65teh62f1gs5k9vqjkj4svtn63q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +36,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "407632197012-g8tg3a7955oij9eua8h1hh6decsra7fh.apps.googleusercontent.com",
+              "client_id": "407632197012-kbkrr65teh62f1gs5k9vqjkj4svtn63q.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,6 +1,7 @@
 package com.vshum.turbogum.navigator
 
 import androidx.fragment.app.FragmentActivity
+import com.vshum.turbogum.MainActivity
 import com.vshum.turbogum.R
 import com.vshum.turbogum.model.Liner
 import com.vshum.turbogum.model.LinersFavourite
@@ -9,8 +10,11 @@ import com.vshum.turbogum.ui.HelpScreenFragment
 import com.vshum.turbogum.ui.RegistrationFragment
 import com.vshum.turbogum.ui.favorite_liner.FavoriteLinerFragment
 import com.vshum.turbogum.ui.favourite_list.FavouriteListFragment
+import com.vshum.turbogum.ui.leaderboard.LeaderboardFragment
 import com.vshum.turbogum.ui.liner.LinerFragment
 import com.vshum.turbogum.ui.liners_lists.LinersListFragment
+import com.vshum.turbogum.ui.login.LoginFragment
+import com.vshum.turbogum.ui.nickname.NicknameSetupFragment
 import com.vshum.turbogum.ui.notes.NotesFragment
 import com.vshum.turbogum.ui.profile.ProfileFragment
 import com.vshum.turbogum.ui.splash.SplashFragment
@@ -34,6 +38,12 @@ class AppNavigatorImpl(private val activity: FragmentActivity) :
         Screen.REGISTRATION
     )
 
+    /** Screens without the bottom navigation bar (auth flow). */
+    private val noBottomNavScreens = setOf(
+        Screen.LOGIN_SCREEN,
+        Screen.NICKNAME_SCREEN
+    )
+
     override fun navigateTo(screen: Screen) {
         val fragment = when (screen) {
             Screen.SPLASH_SCREEN         -> SplashFragment()
@@ -45,9 +55,19 @@ class AppNavigatorImpl(private val activity: FragmentActivity) :
             Screen.DEVELOPERS_SCREEN     -> DevelopersFragment()
             Screen.REGISTRATION          -> RegistrationFragment()
             Screen.HELP                  -> HelpScreenFragment()
+            Screen.LOGIN_SCREEN          -> LoginFragment()
+            Screen.NICKNAME_SCREEN       -> NicknameSetupFragment()
+            Screen.LEADERBOARD_SCREEN    -> LeaderboardFragment()
             Screen.LINER_SCREEN,
             Screen.FAVOURITE_LINER_SCREEN -> WrappersListFragment()
         }
+
+        if (screen == Screen.LOGIN_SCREEN) {
+            fm.popBackStack(null, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        }
+
+        (activity as? MainActivity)?.setBottomNavVisible(screen !in noBottomNavScreens)
+
         fm.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
             .apply { if (screen in detailScreens) addToBackStack(null) }

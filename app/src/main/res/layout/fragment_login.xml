@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_background"
+    tools:context=".ui.login.LoginFragment">
+
+    <include
+        android:id="@+id/headerInclude"
+        layout="@layout/component_app_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/header_height"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_xl"
+            android:paddingEnd="@dimen/spacing_xl">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:fontFamily="@font/barlow_condensed"
+                android:text="@string/login_title"
+                android:textColor="@color/text_1"
+                android:textSize="36sp"
+                android:textStyle="italic|bold"
+                android:letterSpacing="-0.02" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:fontFamily="@font/space_grotesk"
+                android:text="@string/login_subtitle"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/text_body_md" />
+
+            <!-- Email -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/search_field_height"
+                android:layout_marginTop="@dimen/spacing_xxl"
+                android:background="@drawable/surface_input_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/spacing_md"
+                android:paddingEnd="@dimen/spacing_md">
+
+                <EditText
+                    android:id="@+id/inputEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/space_grotesk"
+                    android:hint="@string/login_email_hint"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textColor="@color/text_1"
+                    android:textColorHint="@color/text_3"
+                    android:textSize="@dimen/text_body_lg" />
+            </LinearLayout>
+
+            <!-- Password -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/search_field_height"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:background="@drawable/surface_input_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/spacing_md"
+                android:paddingEnd="@dimen/spacing_md">
+
+                <EditText
+                    android:id="@+id/inputPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/space_grotesk"
+                    android:hint="@string/login_password_hint"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="@color/text_1"
+                    android:textColorHint="@color/text_3"
+                    android:textSize="@dimen/text_body_lg" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/errorText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:fontFamily="@font/space_grotesk"
+                android:textColor="@color/brand_red"
+                android:textSize="@dimen/text_body_md"
+                android:visibility="gone"
+                tools:text="Ошибка"
+                tools:visibility="visible" />
+
+            <!-- Sign in -->
+            <TextView
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/cta_button_height"
+                android:layout_marginTop="@dimen/spacing_xxl"
+                android:background="@drawable/btn_cta_gradient"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/space_grotesk_semibold"
+                android:gravity="center"
+                android:letterSpacing="0.04"
+                android:text="@string/login_btn_signin"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_body_lg" />
+
+            <!-- Register -->
+            <TextView
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/cta_button_height"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:background="@drawable/btn_outline"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/space_grotesk_semibold"
+                android:gravity="center"
+                android:letterSpacing="0.04"
+                android:text="@string/login_btn_register"
+                android:textAllCaps="true"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/text_body_lg" />
+
+            <!-- Divider -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xxl"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/border_1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_md"
+                    android:layout_marginEnd="@dimen/spacing_md"
+                    android:fontFamily="@font/space_grotesk"
+                    android:text="@string/login_divider_or"
+                    android:textColor="@color/text_3"
+                    android:textSize="@dimen/text_body_md" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/border_1" />
+            </LinearLayout>
+
+            <!-- Google sign in -->
+            <LinearLayout
+                android:id="@+id/btnGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/cta_button_height"
+                android:layout_marginTop="@dimen/spacing_xxl"
+                android:background="@drawable/btn_outline"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_md"
+                    android:layout_height="@dimen/icon_md"
+                    android:layout_marginEnd="@dimen/spacing_sm"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_google" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/space_grotesk_semibold"
+                    android:text="@string/login_btn_google"
+                    android:textColor="@color/text_1"
+                    android:textSize="@dimen/text_body_lg" />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/loadingProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/spacing_xxl"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_xxl" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
