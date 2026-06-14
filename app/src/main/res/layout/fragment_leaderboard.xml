@@ -39,6 +39,24 @@
                 android:letterSpacing="-0.02"
                 android:paddingEnd="6dp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:fontFamily="@font/space_grotesk_medium"
+                android:text="@string/leaderboard_subtitle"
+                android:textColor="@color/text_2"
+                android:textSize="@dimen/text_body_md" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:fontFamily="@font/space_grotesk"
+                android:text="@string/leaderboard_subtitle_hint"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/text_label_sm" />
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

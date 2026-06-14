@@ -21,6 +21,7 @@ import com.vshum.turbogum.data.UserRepository
 import com.vshum.turbogum.databinding.FragmentProfileBinding
 import com.vshum.turbogum.navigator.AppNavigator
 import com.vshum.turbogum.navigator.Screen
+import com.vshum.turbogum.util.AvatarUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -100,6 +101,7 @@ class ProfileFragment : Fragment() {
                     ?: authRepository.currentUser?.displayName?.takeIf { it.isNotBlank() }
                     ?: getString(R.string.profile_nickname_default)
                 binding.userName.text = nickname
+                binding.avatarInitials.text = AvatarUtil.initialsFor(nickname)
             },
             onError = { }
         )
@@ -118,6 +120,7 @@ class ProfileFragment : Fragment() {
                 val nickname = input.text.toString().trim()
                 if (nickname.isNotEmpty()) {
                     binding.userName.text = nickname
+                    binding.avatarInitials.text = AvatarUtil.initialsFor(nickname)
                     userRepository.updateNickname(uid, nickname, onComplete = {}, onError = {})
                 }
             }

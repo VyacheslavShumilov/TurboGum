@@ -3,7 +3,9 @@ package com.vshum.turbogum.dao
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.vshum.turbogum.model.LinerCatalog
 import com.vshum.turbogum.model.LinersFavourite
 
 @Dao
@@ -11,6 +13,12 @@ interface LinersDao {
 
     @Insert
     fun insertLiner(liner: LinersFavourite)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAllCatalog(liners: List<LinerCatalog>)
+
+    @Query("SELECT * FROM linerCatalog")
+    fun getAllLiners(): List<LinerCatalog>
 
     @Delete
     fun deleteFavoriteLiner(liner: LinersFavourite)

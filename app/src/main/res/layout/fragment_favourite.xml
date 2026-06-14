@@ -50,14 +50,22 @@
                     android:letterSpacing="-0.02"
                     android:paddingEnd="6dp" />
 
-                <TextView
-                    android:id="@+id/favCount"
-                    android:layout_width="wrap_content"
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/space_grotesk"
-                    android:textColor="@color/text_3"
-                    android:textSize="@dimen/text_body_md"
-                    tools:text="3 карточки" />
+                    android:layout_marginTop="@dimen/spacing_md"
+                    android:scrollbars="none">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/filterChipGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/chip_height"
+                        android:gravity="center_vertical"
+                        app:chipSpacingHorizontal="@dimen/spacing_sm"
+                        app:singleLine="true"
+                        app:singleSelection="true"
+                        app:selectionRequired="true" />
+                </HorizontalScrollView>
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

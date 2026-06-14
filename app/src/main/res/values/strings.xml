@@ -26,7 +26,7 @@
     <string name="detail_note_cancel">Отмена</string>
 
     <!-- ═══════════════════ FAVORITES ═══════════════════ -->
-    <string name="favorites_title">Избранное</string>
+    <string name="favorites_title">Моя коллекция</string>
     <string name="favorites_empty_title">Пока пусто</string>
     <string name="favorites_empty_subtitle">Добавляйте карточки, чтобы быстро возвращаться к ним позже</string>
     <string name="favorites_empty_cta">Перейти в коллекцию</string>
@@ -61,6 +61,8 @@
 
     <!-- ═══════════════════ LEADERBOARD ═══════════════════ -->
     <string name="leaderboard_title">Рейтинг</string>
+    <string name="leaderboard_subtitle">Рейтинг коллекционеров вкладышей Turbo</string>
+    <string name="leaderboard_subtitle_hint">Процент собранных вкладышей из 820 шт.</string>
     <string name="leaderboard_your_position">Ваша позиция</string>
     <string name="leaderboard_empty">Пока никто не собирает вкладыши</string>
 

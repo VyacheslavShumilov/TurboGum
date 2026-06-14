@@ -32,6 +32,9 @@
     <color name="text_3">#471A1A2E</color>         <!-- 28% -->
     <color name="text_4">#1F1A1A2E</color>         <!-- 12% -->
 
+    <!-- ═══════════════════ PLACEHOLDERS ═══════════════════ -->
+    <color name="bg_placeholder_gray">#E0DDD4</color>
+
     <!-- ═══════════════════ BORDERS ═══════════════════ -->
     <!-- Warm borders that blend with the cream palette -->
     <color name="border_1">#1A9B8E7A</color>       <!-- 10% warm -->

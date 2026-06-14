@@ -52,20 +52,18 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/spacing_lg">
 
-                <FrameLayout
+                <TextView
+                    android:id="@+id/avatarInitials"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:layout_marginEnd="@dimen/spacing_md">
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/btn_violet_gradient"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_baseline_self_improvement_24"
-                        app:shapeAppearanceOverlay="@style/circleImageView"
-                        app:tint="@color/white" />
-                </FrameLayout>
+                    android:layout_marginEnd="@dimen/spacing_md"
+                    android:background="@drawable/bg_avatar_initials"
+                    android:fontFamily="@font/barlow_condensed"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    tools:text="К" />
 
                 <TextView
                     android:id="@+id/userName"

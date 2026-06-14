@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vshum.turbogum.databinding.ItemLeaderboardUserBinding
 import com.vshum.turbogum.model.UserProfile
+import com.vshum.turbogum.util.AvatarUtil
 import kotlin.math.roundToInt
 
 /** Adapter for the leaderboard list. Highlights the row belonging to [currentUid]. */
@@ -22,6 +23,7 @@ class AdapterLeaderboard(
                 rankText.text = "#${position + 1}"
                 nicknameText.text = user.nickname.ifBlank { "Коллекционер" }
                 percentText.text = "${user.percentFor(field).roundToInt()}%"
+                avatarInitials.text = AvatarUtil.initialsFor(nicknameText.text.toString())
                 root.setBackgroundResource(
                     if (user.uid == currentUid) com.vshum.turbogum.R.drawable.bg_leaderboard_highlight
                     else com.vshum.turbogum.R.drawable.surface_card_bg

@@ -15,6 +15,7 @@ import com.vshum.turbogum.model.UserProfile
 import com.vshum.turbogum.ui.leaderboard.adapter.AdapterLeaderboard
 import com.vshum.turbogum.ui.leaderboard.impl.LeaderboardContract
 import com.vshum.turbogum.ui.leaderboard.impl.LeaderboardPresenterImpl
+import com.vshum.turbogum.util.AvatarUtil
 import kotlin.math.roundToInt
 
 /** Leaderboard screen: chip filters per series + realtime ranked list, current user pinned at bottom. */
@@ -102,6 +103,8 @@ class LeaderboardFragment : Fragment(), LeaderboardContract.View {
             binding.currentUserRow.nicknameText.text = user.nickname.ifBlank { "Коллекционер" }
             binding.currentUserRow.percentText.text = "${user.percentFor(field).roundToInt()}%"
             binding.currentUserRow.root.setBackgroundResource(com.vshum.turbogum.R.drawable.bg_leaderboard_highlight)
+            binding.currentUserRow.avatarInitials.text =
+                AvatarUtil.initialsFor(binding.currentUserRow.nicknameText.text.toString())
         } else {
             binding.currentUserContainer.visibility = View.GONE
         }
