@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:paddingBottom="0dp">
+
+    <!-- Фон серый для не-owned, прозрачный для owned -->
+    <View
+        android:id="@+id/placeholderBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CCCCCC" />
+
+    <!-- Картинка для owned -->
+    <ImageView
+        android:id="@+id/linerImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:visibility="gone" />
+
+    <!-- Номер: поверх в левом верхнем углу для owned, по центру для not-owned -->
+    <TextView
+        android:id="@+id/numberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="4dp"
+        android:textColor="#666666"
+        android:textSize="11sp"
+        android:fontFamily="@font/space_grotesk" />
+
+</FrameLayout>
