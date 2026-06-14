@@ -70,9 +70,9 @@ class StartScreenFragment : Fragment() {
         dialog.setContentView(R.layout.dialog_video)
 
         val videoView = dialog.findViewById<VideoView>(R.id.videoView)
-        val videoPath = "android.resource://${requireContext().packageName}/${R.raw.intro}"
-        val uri = Uri.parse(videoPath)
-        videoView.setVideoURI(uri)
+//        val videoPath = "android.resource://${requireContext().packageName}/${R.raw.intro}"
+//        val uri = Uri.parse(videoPath)
+//        videoView.setVideoURI(uri)
 
         videoView.setOnPreparedListener { mp ->
             // Уменьшаем громкость до 30%
