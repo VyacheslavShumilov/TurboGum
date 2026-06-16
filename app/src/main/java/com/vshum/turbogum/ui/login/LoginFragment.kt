@@ -35,7 +35,7 @@ class LoginFragment : Fragment(), LoginContract.View {
             val account = task.getResult(ApiException::class.java)
             presenter.onGoogleAccount(account)
         } catch (e: ApiException) {
-            onAuthError(e.localizedMessage ?: e.toString())
+            onAuthError("Ошибка входа через Google (код: ${(e as? com.google.android.gms.common.api.ApiException)?.statusCode ?: "?"}). Проверьте настройки приложения.")
         }
     }
 

@@ -12,10 +12,14 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.appupdate.AppUpdateOptions
+import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.vshum.turbogum.App
 import com.vshum.turbogum.MainActivity
@@ -31,6 +35,8 @@ import com.vshum.turbogum.navigator.Screen
  *   2a. Update available → launch FLEXIBLE in-app update dialog.
  *      User can accept or dismiss — either way we navigate to Home after.
  *   2b. No update / error → navigate to Home after 1.5 s as before.
+ *   2c. Download completes (DOWNLOADED) → show AlertDialog to restart.
+ *   2d. onResume with already-DOWNLOADED update → show the same dialog immediately.
  *
  * We use FLEXIBLE (not IMMEDIATE) so the user is never forced to wait —
  * the download happens in the background while they use the app.
@@ -45,6 +51,14 @@ class SplashFragment : Fragment() {
 
     /** Guard: navigate to Home only once. */
     private var navigatedToHome = false
+
+    private var appUpdateManager: AppUpdateManager? = null
+
+    private val installStateUpdatedListener = InstallStateUpdatedListener { state ->
+        if (state.installStatus() == InstallStatus.DOWNLOADED) {
+            showUpdateReadyDialog()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,30 +91,42 @@ class SplashFragment : Fragment() {
 
     private fun checkForUpdate() {
         val activity = activity ?: run { scheduleNavigateHome(); return }
-        val appUpdateManager = AppUpdateManagerFactory.create(activity)
 
-        appUpdateManager.appUpdateInfo
+        appUpdateManager = AppUpdateManagerFactory.create(activity).also { manager ->
+            manager.registerListener(installStateUpdatedListener)
+        }
+
+        appUpdateManager!!.appUpdateInfo
             .addOnSuccessListener { info ->
                 if (!isAdded) return@addOnSuccessListener
 
-                if (info.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                    && info.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)
-                ) {
-                    Log.d(TAG, "Update available — launching flexible update dialog")
-                    try {
-                        appUpdateManager.startUpdateFlowForResult(
-                            info,
-                            updateLauncher,
-                            AppUpdateOptions.newBuilder(AppUpdateType.FLEXIBLE).build()
-                        )
-                        // navigateHome() will be called from updateLauncher result
-                    } catch (e: Exception) {
-                        Log.e(TAG, "Failed to start update flow", e)
+                when {
+                    info.installStatus() == InstallStatus.DOWNLOADED -> {
+                        // Update was downloaded in a previous session and user postponed restart
+                        Log.d(TAG, "Update already downloaded — showing restart dialog")
+                        showUpdateReadyDialog()
                         scheduleNavigateHome()
                     }
-                } else {
-                    Log.d(TAG, "No update available or not allowed — proceeding normally")
-                    scheduleNavigateHome()
+                    info.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                            && info.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE) -> {
+                        Log.d(TAG, "Update available — launching flexible update dialog")
+                        try {
+                            appUpdateManager!!.startUpdateFlowForResult(
+                                info,
+                                updateLauncher,
+                                AppUpdateOptions.newBuilder(AppUpdateType.FLEXIBLE).build()
+                            )
+                            // Download runs in background; installStateUpdatedListener fires on DOWNLOADED
+                            // navigateHome() will be called from updateLauncher result
+                        } catch (e: Exception) {
+                            Log.e(TAG, "Failed to start update flow", e)
+                            scheduleNavigateHome()
+                        }
+                    }
+                    else -> {
+                        Log.d(TAG, "No update available or not allowed — proceeding normally")
+                        scheduleNavigateHome()
+                    }
                 }
             }
             .addOnFailureListener { e ->
@@ -108,6 +134,23 @@ class SplashFragment : Fragment() {
                 Log.w(TAG, "Update check failed: ${e.message}")
                 if (isAdded) scheduleNavigateHome()
             }
+    }
+
+    private fun showUpdateReadyDialog() {
+        if (!isAdded) return
+        // Unregister first so we don't show the dialog twice if the listener fires again
+        appUpdateManager?.unregisterListener(installStateUpdatedListener)
+        AlertDialog.Builder(requireContext())
+            .setTitle("Обновление готово")
+            .setMessage("Обновление загружено. Перезапустить приложение?")
+            .setPositiveButton("Перезапустить") { _, _ ->
+                appUpdateManager?.completeUpdate()
+            }
+            .setNegativeButton("Позже") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .show()
     }
 
     // ── Navigation ────────────────────────────────────────────────────
@@ -133,11 +176,18 @@ class SplashFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         handler.removeCallbacksAndMessages(null)
+        appUpdateManager?.unregisterListener(installStateUpdatedListener)
     }
 
     override fun onResume() {
         super.onResume()
         (activity as? MainActivity)?.setBottomNavVisible(false)
+        // If user previously postponed a downloaded update, show dialog immediately on return
+        appUpdateManager?.appUpdateInfo?.addOnSuccessListener { info ->
+            if (isAdded && info.installStatus() == InstallStatus.DOWNLOADED) {
+                showUpdateReadyDialog()
+            }
+        }
     }
 
     override fun onPause() {

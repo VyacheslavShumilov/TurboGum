@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "407632197012-adaeha6947vpgp2ltv5rcs6vu3243613.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vshum.turbogum",
+            "certificate_hash": "420a6b9ffedffc0690bca6795456eabe2cc57971"
+          }
+        },
+        {
           "client_id": "407632197012-ci9u9s89ub7vs6na54neamd7j86calos.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
